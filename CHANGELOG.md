@@ -27,7 +27,12 @@ Format:
   
   ### Enabled
   - enable GitHub Pages (staging via `*.github.io`).
+## 2026-01-13
 
-### Notes
-- Next milestone: attach the custom domain `sebthecanadian.ca` via Cloudflare DNS and enforce HTTPS.
+### Added
+- GitHub Pages deployment from `main` (/ root).
+- Custom domain configured: `www.sebthecanadian.ca`.
+
+### Security
+- HTTPS enforced for `www.sebthecanadian.ca`.
 
