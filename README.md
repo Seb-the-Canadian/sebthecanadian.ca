@@ -32,3 +32,11 @@ The site is designed to be:
   - These can be added later if/when they become worth the complexity
 
 ## Repository Structure
+
+
+## Ops Notes
+	•	Hosting: GitHub Pages
+	•	DNS: Cloudflare (records kept DNS-only)
+	•	Garden: https://cognitivearchitecture.ca/
+	•	Contact: hello@cognitivearchitecture.ca
+
