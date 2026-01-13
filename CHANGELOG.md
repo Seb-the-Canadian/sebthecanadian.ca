@@ -23,7 +23,11 @@ Format:
 - Initial scaffolding:
   - `README.md`
   - `CHANGELOG.md`
+  - `index.html` 
+  
+  ### Enabled
+  - enable GitHub Pages (staging via `*.github.io`).
 
 ### Notes
-- Next milestone: add `index.html` and enable GitHub Pages (staging via `*.github.io`).
-- Later milestone: attach the custom domain `sebthecanadian.ca` via Cloudflare DNS and enforce HTTPS.
+- Next milestone: attach the custom domain `sebthecanadian.ca` via Cloudflare DNS and enforce HTTPS.
+
