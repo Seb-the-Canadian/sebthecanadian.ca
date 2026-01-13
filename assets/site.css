@@ -75,6 +75,15 @@ h1 {
   letter-spacing: -0.02em;
 }
 
+.h-card .u-photo {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 0.75rem 0;
+  border-radius: var(--radius);
+}
+
 h2 {
   margin: 1.75rem 0 0.5rem 0;
   font-size: 1.1rem;
