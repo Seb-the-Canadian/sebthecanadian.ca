@@ -32,6 +32,11 @@ jobs:
             status="$(curl -sS -o /tmp/telegraph.json -w "%{http_code}" -X POST \
               --data-urlencode "source=${source}" \
               https://telegraph.p3k.io/send)"
+            if [ "${status}" -eq 404 ]; then
+              echo "Telegraph returned HTTP 404 for ${source} (no webmention targets found)."
+              cat /tmp/telegraph.json || true
+              continue
+            fi
             if [ "${status}" -ge 400 ]; then
               echo "Telegraph returned HTTP ${status} for ${source}"
               cat /tmp/telegraph.json || true
