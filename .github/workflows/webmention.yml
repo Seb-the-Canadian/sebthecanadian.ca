@@ -12,7 +12,7 @@ jobs:
   send:
     runs-on: ubuntu-latest
     steps:
-      - name: Send webmentions for posts
+      - name: Send webmentions for sources
         env:
           SITE_URL: https://www.sebthecanadian.ca
         run: |
@@ -23,5 +23,19 @@ jobs:
           )
 
           for source in "${sources[@]}"; do
-            curl -fsS -X POST -d "source=${source}" https://telegraph.p3k.io/send
+            echo "Checking ${source}"
+            curl -fsSI --retry 5 --retry-delay 10 --retry-all-errors "${source}" > /dev/null
+          done
+
+          for source in "${sources[@]}"; do
+            echo "Sending webmentions for ${source}"
+            status="$(curl -sS -o /tmp/telegraph.json -w "%{http_code}" -X POST \
+              --data-urlencode "source=${source}" \
+              https://telegraph.p3k.io/send)"
+            if [ "${status}" -ge 400 ]; then
+              echo "Telegraph returned HTTP ${status} for ${source}"
+              cat /tmp/telegraph.json || true
+              exit 1
+            fi
+            cat /tmp/telegraph.json || true
           done
