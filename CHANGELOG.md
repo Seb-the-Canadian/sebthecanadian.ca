@@ -8,9 +8,17 @@ Format:
 
 ### Added
 - Repository initialization and documentation.
+- Added a posts page with `h-entry` markup for IndieWeb tests.
+- Added visible `rel="me"` profile links on the homepage.
+- Added a representative `h-card` URL (`u-url u-uid`) on the homepage.
+- Added a homepage h-card photo and photo styling.
+- Added Webmention discovery links on the posts page.
+- Added a GitHub Action to send outbound Webmentions via Telegraph.
 
 ### Changed
-- N/A
+- Added a Posts link to the primary navigation on all pages.
+- Added a "Latest post" h-entry section to the homepage.
+- Updated the Webmention sender to use the apex domain for sources and tolerate 404s when no targets are found.
 
 ### Fixed
 - N/A
