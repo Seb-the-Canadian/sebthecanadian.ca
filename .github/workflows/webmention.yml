@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Send webmentions for sources
         env:
-          SITE_URL: https://www.sebthecanadian.ca
+          SITE_URL: https://sebthecanadian.ca
         run: |
           set -euo pipefail
           sources=(
