@@ -1,0 +1,27 @@
+name: Send Webmentions
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.html"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webmentions for posts
+        env:
+          SITE_URL: https://www.sebthecanadian.ca
+        run: |
+          set -euo pipefail
+          sources=(
+            "$SITE_URL/"
+            "$SITE_URL/posts.html"
+          )
+
+          for source in "${sources[@]}"; do
+            curl -fsS -X POST -d "source=${source}" https://telegraph.p3k.io/send
+          done
