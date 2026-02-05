@@ -30,6 +30,22 @@ Candidates for future work. No commitment implied — just things worth consider
 - [ ] Consider a subtle accent colour beyond the current link blue
 - [ ] Explore a minimal responsive breakpoint for narrow screens (< 400px)
 
+#### Theme: legible but unique site-wide identity
+
+The current design is clean and functional but reads as generic. The goal is to develop a
+cohesive visual identity that feels distinctly *this site* while never sacrificing readability.
+
+- [ ] Define a purposeful colour palette — pick 1–2 signature colours (beyond default link blue) that carry across backgrounds, borders, and accents in both light and dark modes
+- [ ] Replace the bordered-box-per-section pattern with a layout that has more visual flow — consider dropping the border on `header`/`main`/`footer` in favour of whitespace, subtle dividers, or a single page-level container
+- [ ] Introduce a distinctive typographic pairing — a character-rich heading face alongside a highly legible body face (or a single variable font used at contrasting weights)
+- [ ] Rework the heading hierarchy so each level is visually distinct (h2 currently blends with body text at 1.1rem; h1 → h2 → h3 should have clear, rhythmic steps)
+- [ ] Add texture or personality to the page without heavy assets — consider CSS-only details like a coloured top-bar, a subtle gradient on the header, or a monogram/wordmark in place of plain text
+- [ ] Give links a site-specific treatment — e.g., a custom underline style, colour shift on hover, or a subtle highlight rather than the browser-default visited purple
+- [ ] Design the dark theme as a first-class variant, not just an inversion — choose dark-mode colours that feel intentional (warm darks, tinted greys) rather than mechanical swaps
+- [ ] Audit the card/section `color-mix` backgrounds — the current 92/8 mix is barely perceptible; decide whether to make the layering more visible or remove it for simplicity
+- [ ] Consider a signature micro-interaction (e.g., a smooth nav highlight transition, a gentle fade-in on page load) that adds character without requiring JS
+- [ ] Create a simple visual style guide (even a comment block in `site.css`) documenting the chosen palette, type scale, and spacing tokens so future changes stay cohesive
+
 ### Typography
 
 - [ ] Evaluate a single hosted typeface (e.g., Inter or a variable font) vs. the current system stack
