@@ -64,6 +64,22 @@ cohesive visual identity that feels distinctly *this site* while never sacrifici
 - [ ] Consider an RSS/Atom feed for the posts page
 - [ ] Expand the posts page beyond a single entry — decide on pagination or a simple list
 
+#### CivCitDev program showcase
+
+sebthecanadian.ca should surface the CivCitDev program ([civcitdev.ca](https://civcitdev.ca))
+and its live tools — starting with the Ontario Tenant Tools app
+([ont-tenant-tools.civcitdev.ca](https://ont-tenant-tools.civcitdev.ca)). The treatment
+should be lightweight: enough context for a visitor to understand the program and click
+through, without turning this site into a project hub.
+
+- [ ] Add a "Projects" or "Work" section to the homepage (or a dedicated `/projects` page) that introduces CivCitDev with a brief description — civic-focused, open-source tooling
+- [ ] Include a card or entry for Ontario Tenant Tools as the first live project under CivCitDev — link, one-line description, and current status
+- [ ] Decide on placement: inline on the homepage below "Latest post", a new top-level page in the nav, or both (homepage teaser + full page)
+- [ ] Design the project card/entry to be reusable — future CivCitDev tools should slot in without restructuring
+- [ ] Use `rel="me"` or an equivalent link-rel on CivCitDev URLs where appropriate so the ownership relationship is machine-readable
+- [ ] Keep descriptions on this site brief and canonical — deeper project docs live on civcitdev.ca itself; avoid duplication
+- [ ] Consider adding a small status indicator (active / beta / archived) to each project entry so visitors know what's live
+
 #### Resume / CV section
 
 A living, web-native résumé that stays current without manual re-exports. It should feel
