@@ -64,6 +64,23 @@ cohesive visual identity that feels distinctly *this site* while never sacrifici
 - [ ] Consider an RSS/Atom feed for the posts page
 - [ ] Expand the posts page beyond a single entry — decide on pagination or a simple list
 
+#### Resume / CV section
+
+A living, web-native résumé that stays current without manual re-exports. It should feel
+like a natural part of the site (not a bolted-on PDF viewer) and remain easy to maintain as
+a single source of truth.
+
+- [ ] Create a `/resume` page using semantic HTML (`<article>`, `<section>`, `<dl>`, `<time>`) — structure it so the markup itself is meaningful without styling
+- [ ] Design the page layout to read well on screen while honouring the site's visual identity — clear section breaks for experience, education, skills, and projects
+- [ ] Add a print stylesheet (or extend the site-wide one) so `Ctrl+P` produces a clean, single-column, recruiter-friendly PDF — hide nav, footer, and non-essential decoration
+- [ ] Use the `h-resume` microformat (or the closest IndieWeb equivalent) so the page is machine-parseable by IndieWeb tools and aggregators
+- [ ] Keep content data-driven — consider a small JSON or YAML data file as the single source that the HTML references, making updates a one-file edit rather than surgery on markup
+- [ ] Add a visible "Download PDF" link that either points to a static export or triggers `window.print()` — keep the workflow zero-dependency
+- [ ] Include `dt-start` / `dt-end` on roles so timelines are explicit in markup and print
+- [ ] Decide on a level of detail — full history vs. curated highlights — and document the editorial rule in Process Notes so future updates stay consistent
+- [ ] Link the résumé from the homepage h-card and the primary nav (or a secondary nav) so it's discoverable without being intrusive
+- [ ] Plan a lightweight update cadence — e.g., review quarterly — and note it in Process Notes so the page doesn't go stale
+
 ### IndieWeb & Microformats
 
 - [ ] Add `h-feed` wrapper on the posts page
