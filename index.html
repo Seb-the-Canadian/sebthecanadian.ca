@@ -8,6 +8,11 @@
   <link rel="canonical" href="https://www.sebthecanadian.ca/" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 
+  <!-- Atkinson Hyperlegible font (accessibility-first) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+
   <!-- Site styles -->
   <link rel="stylesheet" href="/assets/site.css" />
 
@@ -16,6 +21,14 @@
 </head>
 
 <body>
+  <!-- Skip link for keyboard navigation -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" aria-label="Toggle dark/light mode">
+    <span class="theme-toggle-icon">◐</span>
+  </button>
+
   <header>
     <nav aria-label="Primary">
       <ul>
@@ -29,7 +42,7 @@
     </nav>
   </header>
 
-  <main class="h-card">
+  <main id="main" class="h-card">
     <img class="u-photo" src="/assets/seb-stamp.jpeg" alt="Illustrated portrait of Seb (the Canadian)" />
     <h1 class="p-name">Seb (the Canadian)</h1>
     <p class="p-note">Personal site in progress. Notes and writing live at the garden.</p>
@@ -72,5 +85,8 @@
   <footer>
     <p><em>Last updated:</em> <time datetime="2026-01-13">2026-01-13</time></p>
   </footer>
+
+  <!-- Theme toggle script -->
+  <script src="/assets/theme-toggle.js"></script>
 </body>
 </html>

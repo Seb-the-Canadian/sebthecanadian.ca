@@ -8,6 +8,11 @@
   <link rel="canonical" href="https://www.sebthecanadian.ca/colophon.html" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 
+  <!-- Atkinson Hyperlegible font (accessibility-first) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+
   <!-- Site styles -->
   <link rel="stylesheet" href="/assets/site.css" />
 
@@ -16,6 +21,12 @@
 </head>
 
 <body>
+  <a href="#content" class="skip-link">Skip to main content</a>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" aria-label="Toggle dark/light mode">
+    <span class="theme-toggle-icon">◐</span>
+  </button>
   <header>
     <nav aria-label="Primary">
       <ul>
@@ -72,5 +83,7 @@
       <p>Email: <a class="u-email" href="mailto:hello@cognitivearchitecture.ca">hello@cognitivearchitecture.ca</a></p>
     </section>
   </main>
+  <!-- Theme toggle script -->
+  <script src="/assets/theme-toggle.js"></script>
 </body>
 </html>
