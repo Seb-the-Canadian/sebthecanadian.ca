@@ -17,6 +17,22 @@ _None currently tracked._
 
 _Items committed to, roughly in priority order._
 
+### CV/Resume Page
+
+**Priority:** User has requested this be added to the site with a dedicated "CV" tab in navigation.
+
+- [ ] Create `/cv.html` page using semantic HTML (`<article>`, `<section>`, `<dl>`, `<time>`)
+- [ ] Structure: experience, education, skills, projects with clear section breaks
+- [ ] Apply Data Druid visual identity (double borders, lavender/sage palette, Atkinson Hyperlegible)
+- [ ] Implement h-resume microformat for machine-parseable data
+- [ ] Design print stylesheet for clean PDF export via `Ctrl+P`
+- [ ] Add "Download PDF" button (triggers `window.print()`)
+- [ ] Add "CV" to primary navigation
+- [ ] Link from homepage h-card
+- [ ] Keep as living document - single source of truth, easy to maintain
+
+**References:** See IMPLEMENTATION_PLAN.md Phase 5.2 for full task breakdown.
+
 ---
 
 ## Ideas
@@ -134,7 +150,9 @@ through, without turning this site into a project hub.
 
 #### Resume / CV section
 
-A living, web-native résumé that stays current without manual re-exports. It should feel
+**[MOVED TO PLANNED]** — See "CV/Resume Page" in the Planned section above.
+
+~~A living, web-native résumé that stays current without manual re-exports.~~ It should feel
 like a natural part of the site (not a bolted-on PDF viewer) and remain easy to maintain as
 a single source of truth.
 

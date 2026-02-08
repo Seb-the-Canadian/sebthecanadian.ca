@@ -319,18 +319,20 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
 - [ ] Apply established visual style (borders, colors, typography)
 - [ ] Add to primary navigation
 
-#### 5.2 `/resume` Page
+#### 5.2 `/cv` Page (Resume/CV) **[USER PRIORITY]**
 
-- [ ] Create `/resume.html` with semantic HTML
+- [ ] Create `/cv.html` or `/resume.html` with semantic HTML
   - Use `<article>`, `<section>`, `<dl>`, `<time>` elements
   - Structure: experience, education, skills, projects
-- [ ] Apply h-resume microformat
-- [ ] Design print stylesheet
+- [ ] Apply h-resume microformat for machine-readability
+- [ ] Design print stylesheet for clean PDF export
   - Hide nav/footer for PDF export
   - Ensure single-column layout
   - Test with `Ctrl+P`
-- [ ] Add "Download PDF" trigger (window.print())
-- [ ] Link from homepage h-card and nav
+- [ ] Add "Download PDF" button (triggers window.print())
+- [ ] Add to primary navigation as "CV" tab
+- [ ] Link from homepage h-card
+- [ ] Style with Data Druid aesthetic (double borders, lavender/sage accents)
 
 #### 5.3 CivCitDev Showcase
 

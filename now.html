@@ -18,6 +18,9 @@
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/assets/site.css" >
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -25,7 +28,9 @@
 
   <!-- Theme toggle -->
   <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode">
-    <span class="theme-toggle-icon">◐</span>
+    <span class="theme-toggle-icon">
+      <i data-lucide="moon" class="theme-icon"></i>
+    </span>
   </button>
 
   <header>
@@ -70,6 +75,11 @@
   <footer>
     <p><em>Last updated:</em> <time datetime="2026-01-13">2026-01-13</time></p>
   </footer>
+  <!-- Initialize Lucide icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
   <!-- Theme toggle script -->
   <script src="/assets/theme-toggle.js"></script>
 </body>
