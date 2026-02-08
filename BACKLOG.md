@@ -35,21 +35,73 @@ Candidates for future work. No commitment implied — just things worth consider
 The current design is clean and functional but reads as generic. The goal is to develop a
 cohesive visual identity that feels distinctly *this site* while never sacrificing readability.
 
-- [ ] Define a purposeful colour palette — pick 1–2 signature colours (beyond default link blue) that carry across backgrounds, borders, and accents in both light and dark modes
+**Foundation:** All visual identity work is grounded in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md) —
+IndieWeb best practices and Ivan Illich's convivial design principles. Refer to that document
+when evaluating design choices.
+
+**Aesthetic Direction:** Low-fi, Caves of Qud-inspired, "data Druid" — intentional and philosophical.
+
+This means:
+- **Low-fi authenticity** — Raw, unpretentious, human-scale. Not polished corporate design. Embrace simplicity and honest materials (basic HTML/CSS, visible structure).
+- **Caves of Qud inspiration** — Terminal aesthetic. Vibrant, intentional color (cyan, magenta, green, amber tones). Monospace accents. Dense information without clutter. Borders and frames as deliberate design elements, not decoration.
+- **Data Druid persona** — Nature + technology fusion. Cultivating knowledge like a garden. Mystical relationship with information. Wisdom over mere technicality. Living systems, not mechanical ones.
+- **Intentional philosophy** — Every design choice should reflect convivial principles and IndieWeb values. Transparent, understandable, forgivable.
+
+- [ ] Define a purposeful colour palette — purples/lavenders and greens/sages as signature colors. Test specific hex values (#b19cd9, #9b7fd6, #8fbc8f, #7ba98a) for contrast ratios and visual harmony in both light and dark modes
 - [ ] Replace the bordered-box-per-section pattern with a layout that has more visual flow — consider dropping the border on `header`/`main`/`footer` in favour of whitespace, subtle dividers, or a single page-level container
 - [ ] Introduce a distinctive typographic pairing — a character-rich heading face alongside a highly legible body face (or a single variable font used at contrasting weights)
 - [ ] Rework the heading hierarchy so each level is visually distinct (h2 currently blends with body text at 1.1rem; h1 → h2 → h3 should have clear, rhythmic steps)
 - [ ] Add texture or personality to the page without heavy assets — consider CSS-only details like a coloured top-bar, a subtle gradient on the header, or a monogram/wordmark in place of plain text
 - [ ] Give links a site-specific treatment — e.g., a custom underline style, colour shift on hover, or a subtle highlight rather than the browser-default visited purple
-- [ ] Design the dark theme as a first-class variant, not just an inversion — choose dark-mode colours that feel intentional (warm darks, tinted greys) rather than mechanical swaps
+- [ ] Design the dark theme as a first-class variant, not just an inversion — use deep charcoal (#1a1a1a) or near-black (#0d0d0d) backgrounds with lavender and sage accents that glow like bioluminescence. Tint grays with subtle purple or green hues.
 - [ ] Audit the card/section `color-mix` backgrounds — the current 92/8 mix is barely perceptible; decide whether to make the layering more visible or remove it for simplicity
 - [ ] Consider a signature micro-interaction (e.g., a smooth nav highlight transition, a gentle fade-in on page load) that adds character without requiring JS
 - [ ] Create a simple visual style guide (even a comment block in `site.css`) documenting the chosen palette, type scale, and spacing tokens so future changes stay cohesive
 
+**Translating "Data Druid" Aesthetic into Design:**
+
+*Color Palette:*
+- **Primary palette: purples/lavenders and greens/sages** — mystical garden, Data Druid aesthetic
+- Lavender spectrum: #b19cd9 (soft), #9b7fd6 (medium), #7c5fcf (vibrant), #d4c5f9 (pale)
+- Sage/green spectrum: #8fbc8f (sage), #7ba98a (muted green), #5dd39e (vibrant), #c9e4ca (pale)
+- These colors reference actual herbs (lavender + sage) = botanical wisdom
+- Dark mode as primary: deep charcoal (#1a1a1a) or near-black (#0d0d0d), not gray
+- Light mode: warm off-white (cream #faf8f3, parchment #f5f1e8) not stark white — "paper and ink" feel
+- Accent colors should feel luminous against dark backgrounds, like bioluminescent growth
+- Color semantics: links = lavender, success/growth = sage, emphasis = brighter purple, metadata = muted green
+
+*Typography:*
+- **Use Atkinson Hyperlegible or similar modern accessible typeface** (accessibility > aesthetic vibe)
+- Atkinson: designed by Braille Institute for low vision readers, distinctive letterforms prevent confusion
+- Alternatives: Public Sans, Inter, or accessible system fonts
+- **NO monospace** - terminal aesthetic comes from colors, borders, structure instead
+- Optimize for maximum readability: crisp rendering, clear hierarchy
+- Consider ASCII art elements or simple box-drawing characters (─ │ ┌ ┐ └ ┘) for section dividers (sparingly)
+
+*Layout & Structure:*
+- Bordered sections are good actually — lean into frames, panels, "terminal windows"
+- **Use double borders** (`outline` + `border`) for depth and layered terminal window effect
+- Dense information is okay: don't over-pad. Embrace information richness.
+- Use whitespace intentionally but don't fear content
+- 3px colored top bar (lavender or sage, or gradient blend) as signature element
+
+*Details & Texture:*
+- **Subtle CSS scanlines** for CRT effect (2-5% opacity, must respect `prefers-reduced-motion`)
+- Box shadows in lavender/sage for bioluminescent glow (soft, diffused)
+- Manual dark/light mode toggle with localStorage persistence
+- Consider `::before`/`::after` pseudo-elements for brackets, arrows, or sigils (sparingly)
+- Status indicators could use terminal-style symbols: ● ○ ◆ ◇ ► ▼ ✓ ✗
+
+*Micro-interactions:*
+- Links could glow on hover (text-shadow or box-shadow in accent color)
+- Smooth color transitions but instant layout changes (honor terminal snappiness)
+- Focus states: bold border or background in accent color
+- Skip animations for users with `prefers-reduced-motion`
+
 ### Typography
 
-- [ ] Evaluate a single hosted typeface (e.g., Inter or a variable font) vs. the current system stack
-- [ ] Tune heading scale — h2 at 1.1rem feels close to body text
+- [ ] Implement Atkinson Hyperlegible (or Public Sans/Inter as fallback) for accessibility-first approach
+- [ ] Tune heading scale — h2 at 1.1rem feels close to body text (URGENT: fix to 1.6rem)
 
 ### Navigation & Wayfinding
 
@@ -123,6 +175,7 @@ a single source of truth.
 ## Process Notes
 
 - Keep the site static, dependency-free, and hand-editable.
-- Design changes should honour the existing principles in the colophon: minimal, durable, portable.
+- Design changes should honour the principles documented in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md): minimal, durable, portable, accessible, autonomous, transparent, human-scale, and sustainable.
+- All decisions should pass the Convivial Test, IndieWeb Test, Sustainability Test, and Accessibility Test outlined in DESIGN_PRINCIPLES.md.
 - When an item is finished, log it in CHANGELOG.md under the appropriate date and remove it from this file.
 - Bugs and regressions go in the **Bugs / Issues** section with a short description and reproduction steps if applicable.
