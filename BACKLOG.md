@@ -47,13 +47,13 @@ This means:
 - **Data Druid persona** — Nature + technology fusion. Cultivating knowledge like a garden. Mystical relationship with information. Wisdom over mere technicality. Living systems, not mechanical ones.
 - **Intentional philosophy** — Every design choice should reflect convivial principles and IndieWeb values. Transparent, understandable, forgivable.
 
-- [ ] Define a purposeful colour palette — pick 1–2 signature colours (beyond default link blue) that carry across backgrounds, borders, and accents in both light and dark modes
+- [ ] Define a purposeful colour palette — purples/lavenders and greens/sages as signature colors. Test specific hex values (#b19cd9, #9b7fd6, #8fbc8f, #7ba98a) for contrast ratios and visual harmony in both light and dark modes
 - [ ] Replace the bordered-box-per-section pattern with a layout that has more visual flow — consider dropping the border on `header`/`main`/`footer` in favour of whitespace, subtle dividers, or a single page-level container
 - [ ] Introduce a distinctive typographic pairing — a character-rich heading face alongside a highly legible body face (or a single variable font used at contrasting weights)
 - [ ] Rework the heading hierarchy so each level is visually distinct (h2 currently blends with body text at 1.1rem; h1 → h2 → h3 should have clear, rhythmic steps)
 - [ ] Add texture or personality to the page without heavy assets — consider CSS-only details like a coloured top-bar, a subtle gradient on the header, or a monogram/wordmark in place of plain text
 - [ ] Give links a site-specific treatment — e.g., a custom underline style, colour shift on hover, or a subtle highlight rather than the browser-default visited purple
-- [ ] Design the dark theme as a first-class variant, not just an inversion — choose dark-mode colours that feel intentional (warm darks, tinted greys) rather than mechanical swaps
+- [ ] Design the dark theme as a first-class variant, not just an inversion — use deep charcoal (#1a1a1a) or near-black (#0d0d0d) backgrounds with lavender and sage accents that glow like bioluminescence. Tint grays with subtle purple or green hues.
 - [ ] Audit the card/section `color-mix` backgrounds — the current 92/8 mix is barely perceptible; decide whether to make the layering more visible or remove it for simplicity
 - [ ] Consider a signature micro-interaction (e.g., a smooth nav highlight transition, a gentle fade-in on page load) that adds character without requiring JS
 - [ ] Create a simple visual style guide (even a comment block in `site.css`) documenting the chosen palette, type scale, and spacing tokens so future changes stay cohesive
@@ -61,11 +61,14 @@ This means:
 **Translating "Data Druid" Aesthetic into Design:**
 
 *Color Palette:*
-- Embrace vibrant, terminal-inspired hues: cyan (#00d9ff, #0ac), magenta (#ff00ff, #f0f), amber (#ffaa00, #fa0), green (#00ff88, #0f8)
-- Dark mode as primary: deep charcoal or true black backgrounds, not gray
-- Light mode: warm off-white (cream, parchment tones) not stark white — "paper and ink" feel
-- Accent colors should feel luminous against dark backgrounds, like terminal phosphor glow
-- Consider color-coding information types (like game stats): links = cyan, metadata = amber, emphasis = magenta
+- **Primary palette: purples/lavenders and greens/sages** — mystical garden, Data Druid aesthetic
+- Lavender spectrum: #b19cd9 (soft), #9b7fd6 (medium), #7c5fcf (vibrant), #d4c5f9 (pale)
+- Sage/green spectrum: #8fbc8f (sage), #7ba98a (muted green), #5dd39e (vibrant), #c9e4ca (pale)
+- These colors reference actual herbs (lavender + sage) = botanical wisdom
+- Dark mode as primary: deep charcoal (#1a1a1a) or near-black (#0d0d0d), not gray
+- Light mode: warm off-white (cream #faf8f3, parchment #f5f1e8) not stark white — "paper and ink" feel
+- Accent colors should feel luminous against dark backgrounds, like bioluminescent growth
+- Color semantics: links = lavender, success/growth = sage, emphasis = brighter purple, metadata = muted green
 
 *Typography:*
 - Mix monospace and proportional: headings or UI chrome in monospace (IBM Plex Mono, JetBrains Mono, or `ui-monospace`), body in readable sans-serif
