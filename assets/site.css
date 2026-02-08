@@ -545,167 +545,189 @@ footer {
 }
 
 /* =========================================================================
-   BOTANICAL DECORATIONS — Mystical Garden Elements
+   PIXEL FOLIAGE — Vegetation growing on site elements
+   Box-shadow pixel art technique: each shadow = one crisp pixel
    Only visible for users without motion sensitivity
    ========================================================================= */
 
 @media (prefers-reduced-motion: no-preference) {
-  /* -------------------------------------------------------------------------
-     MUSHROOM CLUSTERS — Bioluminescent fungi in section corners
 
-     Why: Fungi represent cultivation and growth (Data Druid metaphor)
-     What: Three radial gradients create organic mushroom cap cluster
-     Accessibility: pointer-events:none, decorative only, respects motion prefs
-     Customize: Adjust opacity (currently 0.4) to taste
+  /* -------------------------------------------------------------------------
+     PIXEL MOSS — Lichen patches growing on section top borders
+     2px pixel grid, sage colors with occasional lavender buds
+     Sits on top of the border line like moss on a windowsill
      ------------------------------------------------------------------------- */
 
   section {
     position: relative;
+    overflow: visible;
   }
 
   section::before {
     content: '';
     position: absolute;
-    top: -1px;
-    right: 8px;
-    width: 24px;
-    height: 16px;
-
-    /* Three mushroom caps using radial gradients */
-    background:
-      radial-gradient(
-        ellipse 7px 8px at 6px 12px,
-        var(--lavender-soft) 0%,
-        var(--lavender-pale) 40%,
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 6px 7px at 14px 10px,
-        var(--sage) 0%,
-        var(--sage-pale) 40%,
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 5px 6px at 20px 13px,
-        var(--lavender-medium) 0%,
-        var(--lavender-pale) 40%,
-        transparent 70%
-      );
-
-    /* Soft bioluminescent effect */
-    filter: blur(0.3px);
-    opacity: 0.4;
-
-    /* Subtle glow */
-    box-shadow:
-      0 2px 6px rgba(155, 127, 214, 0.15),
-      0 4px 12px rgba(143, 188, 143, 0.1);
-
+    top: -5px;
+    left: 10px;
+    width: 2px;
+    height: 2px;
+    background: var(--sage);
+    opacity: 0.55;
     pointer-events: none;
+
+    /* Each shadow = 1 pixel (2px unit). Scattered moss clusters. */
+    box-shadow:
+      /* Cluster 1: small moss tuft */
+       2px  0px var(--sage-muted),
+       4px  0px var(--sage),
+       4px -2px var(--sage-pale),
+       6px  0px var(--sage-muted),
+
+      /* Cluster 2: taller patch with bud */
+      16px  0px var(--sage),
+      18px  0px var(--sage-muted),
+      20px  0px var(--sage),
+      16px -2px var(--sage-pale),
+      18px -2px var(--sage),
+      20px -2px var(--sage-pale),
+      18px -4px var(--lavender-soft),
+
+      /* Cluster 3: low spread */
+      34px  0px var(--sage-muted),
+      36px  0px var(--sage),
+      38px  0px var(--sage-pale),
+      36px -2px var(--sage),
+
+      /* Cluster 4: small accent */
+      50px  0px var(--sage),
+      52px  0px var(--sage-muted),
+      50px -2px var(--sage-pale);
   }
 
   /* -------------------------------------------------------------------------
-     VINE/MOSS DIVIDER — Growth connecting panels
-
-     Why: Vines connect and support (convivial interconnection principle)
-     What: Linear gradient with organic interruption pattern
-     Accessibility: Decorative only, doesn't overlay text
-     Customize: Adjust opacity (currently 0.3) or remove mask-image for solid line
+     PIXEL VINE — Climbing the left inside edge of main panel
+     A pixelated stem with small leaf branches, growing upward
+     Sage stem with lavender flower bud at the tip
      ------------------------------------------------------------------------- */
 
   main {
     position: relative;
+    overflow: visible;
   }
 
-  main::after {
+  main::before {
     content: '';
     position: absolute;
-    bottom: -6px;
-    left: 10%;
-    right: 10%;
+    bottom: 16px;
+    left: 5px;
+    width: 2px;
     height: 2px;
-
-    /* Organic gradient vine pattern */
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--sage-pale) 5%,
-      var(--sage) 20%,
-      var(--sage-vibrant) 50%,
-      var(--sage) 80%,
-      var(--sage-pale) 95%,
-      transparent 100%
-    );
-
-    /* Interrupted pattern for organic feel */
-    mask-image: repeating-linear-gradient(
-      90deg,
-      black 0px,
-      black 8px,
-      transparent 8px,
-      transparent 10px,
-      black 10px,
-      black 18px
-    );
-
-    opacity: 0.3;
-    filter: blur(0.5px);
-
-    /* Subtle glow */
-    box-shadow: 0 1px 4px rgba(143, 188, 143, 0.2);
-
+    background: var(--sage-muted);
+    opacity: 0.45;
     pointer-events: none;
+
+    /* Vine growing upward: negative Y = up, positive X = right */
+    box-shadow:
+      /* Stem base */
+       0px   0px var(--sage-muted),
+       0px  -2px var(--sage),
+       0px  -4px var(--sage),
+
+      /* Leaf right */
+       2px  -6px var(--sage),
+       4px  -6px var(--sage-pale),
+       0px  -6px var(--sage),
+
+      /* Stem continues */
+       0px  -8px var(--sage-muted),
+       0px -10px var(--sage),
+
+      /* Leaf left */
+      -2px -12px var(--sage),
+      -4px -12px var(--sage-pale),
+       0px -12px var(--sage),
+
+      /* Stem continues */
+       0px -14px var(--sage-muted),
+       0px -16px var(--sage),
+       0px -18px var(--sage),
+
+      /* Leaf right */
+       2px -20px var(--sage),
+       4px -20px var(--sage-pale),
+       4px -22px var(--sage-pale),
+       0px -20px var(--sage),
+
+      /* Stem continues */
+       0px -22px var(--sage-muted),
+       0px -24px var(--sage),
+
+      /* Leaf left */
+      -2px -26px var(--sage),
+      -4px -26px var(--sage-pale),
+       0px -26px var(--sage),
+
+      /* Stem to tip */
+       0px -28px var(--sage-muted),
+       0px -30px var(--sage),
+
+      /* Flower bud at top */
+       0px -32px var(--lavender-soft),
+       2px -32px var(--lavender-pale),
+      -2px -32px var(--lavender-pale),
+       0px -34px var(--lavender-medium);
   }
 
   /* -------------------------------------------------------------------------
-     ROOT SYSTEM — Knowledge has deep roots
-
-     Why: Roots anchor and nourish (sustainable/durable principle)
-     What: Organic shape using clip-path with sage gradient
-     Accessibility: Corner decoration in footer (least critical area)
-     Customize: Adjust opacity (currently 0.5) or comment out entirely
+     PIXEL MUSHROOMS — Small fungi growing near footer
+     Recognizable mushroom shapes: lavender caps, sage stems
+     Two mushrooms of different sizes side by side
      ------------------------------------------------------------------------- */
 
   footer {
     position: relative;
+    overflow: visible;
   }
 
   footer::before {
     content: '';
     position: absolute;
-    bottom: 8px;
-    left: 12px;
-    width: 32px;
-    height: 40px;
-
-    /* Organic root shape using clip-path */
-    clip-path: polygon(
-      50% 0%,
-      45% 30%,
-      40% 50%,
-      35% 70%,
-      30% 85%,
-      45% 85%,
-      50% 60%,
-      55% 40%,
-      60% 20%
-    );
-
-    /* Sage gradient suggesting growth downward */
-    background: linear-gradient(
-      180deg,
-      var(--sage-pale) 0%,
-      var(--sage) 50%,
-      var(--sage-vibrant) 100%
-    );
-
+    bottom: 6px;
+    left: 14px;
+    width: 2px;
+    height: 2px;
+    background: var(--sage-muted);
     opacity: 0.5;
-    filter: blur(0.3px);
-
-    /* Subtle glow */
-    box-shadow: 0 2px 8px rgba(143, 188, 143, 0.12);
-
     pointer-events: none;
+
+    /* Mushroom 1 (larger): 3-wide cap, 1-wide stem */
+    box-shadow:
+      /* Stem */
+       0px   0px var(--sage-muted),
+       0px  -2px var(--sage),
+      /* Cap */
+      -2px  -4px var(--lavender-soft),
+       0px  -4px var(--lavender-medium),
+       2px  -4px var(--lavender-soft),
+      -2px  -6px var(--lavender-pale),
+       0px  -6px var(--lavender-soft),
+       2px  -6px var(--lavender-pale),
+
+      /* Mushroom 2 (smaller, offset right): 2-wide cap, 1-wide stem */
+       8px   0px var(--sage-muted),
+      /* Cap */
+       6px  -2px var(--lavender-soft),
+       8px  -2px var(--lavender-medium),
+
+      /* Mushroom 3 (tiny, further right): just a cap and stem */
+      14px   0px var(--sage-muted),
+      14px  -2px var(--lavender-soft),
+      16px  -2px var(--lavender-pale),
+
+      /* Scattered ground pixels (soil/moss) */
+      -2px   0px var(--sage-pale),
+       4px   0px var(--sage-pale),
+      10px   0px var(--sage-pale),
+      18px   0px var(--sage-pale);
   }
 }
 
