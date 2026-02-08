@@ -45,6 +45,37 @@ Ivan Illich's *[Tools for Conviviality](https://en.wikipedia.org/wiki/Tools_for_
 
 ## Application to This Site
 
+### Aesthetic Direction: Data Druid
+
+The visual identity embodies a **low-fi, Caves of Qud-inspired, "data Druid"** aesthetic — intentional and philosophical.
+
+**Why This Aesthetic Aligns with Convivial + IndieWeb Principles:**
+
+**Low-fi authenticity = Convivial transparency**
+- Raw HTML/CSS with visible structure is inherently teachable and forkable
+- Rejects "professional polish" that obscures how things work
+- Celebrates human-scale imperfection over industrial perfection
+- No pretense, no hidden complexity — what you see is what you get
+
+**Terminal aesthetic = Progressive enhancement + portability**
+- Terminal interfaces are the ultimate accessible UI: text-first, keyboard-navigable, screen-reader friendly
+- Monospace fonts and simple colors work everywhere, including text browsers
+- Dense information respects reader's time (convivial efficiency)
+- Low bandwidth, fast loading, sustainable
+
+**Data Druid persona = Human-first + autonomous**
+- Technology as cultivation, not extraction
+- Knowledge as living garden, not database
+- Wisdom over metrics — reflects human relationship with data
+- Mystical but grounded — honors both wonder and pragmatism
+- Keeper of knowledge, not gatekeeper — aligns with IndieWeb ownership
+
+**Vibrant terminal colors = Accessible + joyful**
+- High-contrast palettes (cyan, magenta, amber on dark) meet WCAG standards
+- Rejects "minimal gray" aesthetic that often fails accessibility
+- Color as meaning (like terminal output) aids comprehension
+- Playful without frivolous — serious about joy
+
 ### What This Means for Visual Identity
 
 **Human-first aesthetics:**

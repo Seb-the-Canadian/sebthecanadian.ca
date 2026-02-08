@@ -39,6 +39,14 @@ cohesive visual identity that feels distinctly *this site* while never sacrifici
 IndieWeb best practices and Ivan Illich's convivial design principles. Refer to that document
 when evaluating design choices.
 
+**Aesthetic Direction:** Low-fi, Caves of Qud-inspired, "data Druid" — intentional and philosophical.
+
+This means:
+- **Low-fi authenticity** — Raw, unpretentious, human-scale. Not polished corporate design. Embrace simplicity and honest materials (basic HTML/CSS, visible structure).
+- **Caves of Qud inspiration** — Terminal aesthetic. Vibrant, intentional color (cyan, magenta, green, amber tones). Monospace accents. Dense information without clutter. Borders and frames as deliberate design elements, not decoration.
+- **Data Druid persona** — Nature + technology fusion. Cultivating knowledge like a garden. Mystical relationship with information. Wisdom over mere technicality. Living systems, not mechanical ones.
+- **Intentional philosophy** — Every design choice should reflect convivial principles and IndieWeb values. Transparent, understandable, forgivable.
+
 - [ ] Define a purposeful colour palette — pick 1–2 signature colours (beyond default link blue) that carry across backgrounds, borders, and accents in both light and dark modes
 - [ ] Replace the bordered-box-per-section pattern with a layout that has more visual flow — consider dropping the border on `header`/`main`/`footer` in favour of whitespace, subtle dividers, or a single page-level container
 - [ ] Introduce a distinctive typographic pairing — a character-rich heading face alongside a highly legible body face (or a single variable font used at contrasting weights)
@@ -49,6 +57,41 @@ when evaluating design choices.
 - [ ] Audit the card/section `color-mix` backgrounds — the current 92/8 mix is barely perceptible; decide whether to make the layering more visible or remove it for simplicity
 - [ ] Consider a signature micro-interaction (e.g., a smooth nav highlight transition, a gentle fade-in on page load) that adds character without requiring JS
 - [ ] Create a simple visual style guide (even a comment block in `site.css`) documenting the chosen palette, type scale, and spacing tokens so future changes stay cohesive
+
+**Translating "Data Druid" Aesthetic into Design:**
+
+*Color Palette:*
+- Embrace vibrant, terminal-inspired hues: cyan (#00d9ff, #0ac), magenta (#ff00ff, #f0f), amber (#ffaa00, #fa0), green (#00ff88, #0f8)
+- Dark mode as primary: deep charcoal or true black backgrounds, not gray
+- Light mode: warm off-white (cream, parchment tones) not stark white — "paper and ink" feel
+- Accent colors should feel luminous against dark backgrounds, like terminal phosphor glow
+- Consider color-coding information types (like game stats): links = cyan, metadata = amber, emphasis = magenta
+
+*Typography:*
+- Mix monospace and proportional: headings or UI chrome in monospace (IBM Plex Mono, JetBrains Mono, or `ui-monospace`), body in readable sans-serif
+- Or: fully embrace system monospace for terminal authenticity
+- Reject smoothness: prefer crisp rendering, sharp edges over rounded
+- Consider ASCII art elements or simple box-drawing characters (─ │ ┌ ┐ └ ┘) for section dividers
+
+*Layout & Structure:*
+- Bordered sections are good actually — lean into frames, panels, "terminal windows"
+- Consider single-line borders (`border: 1px solid`) or double borders (`outline` + `border`) for depth
+- Dense information is okay: don't over-pad. Embrace information richness.
+- Use whitespace intentionally but don't fear content
+- Consider a "console" or "terminal prompt" treatment for certain elements
+
+*Details & Texture:*
+- CSS-only texture: subtle scanlines (`repeating-linear-gradient`), noise, or dithering
+- Terminal cursor blink effect on focus states (if it passes accessibility test)
+- Box shadows in accent colors for depth (cyberpunk glow)
+- Consider `::before`/`::after` pseudo-elements for brackets, arrows, or sigils
+- Status indicators could use terminal-style symbols: ● ○ ◆ ◇ ► ▼ ✓ ✗
+
+*Micro-interactions:*
+- Links could glow on hover (text-shadow or box-shadow in accent color)
+- Smooth color transitions but instant layout changes (honor terminal snappiness)
+- Focus states: bold border or background in accent color
+- Skip animations for users with `prefers-reduced-motion`
 
 ### Typography
 
