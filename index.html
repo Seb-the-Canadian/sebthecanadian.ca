@@ -7,6 +7,8 @@
   <meta name="description" content="Seb’s personal site. Notes and writing at cognitivearchitecture.ca." >
   <link rel="canonical" href="https://www.sebthecanadian.ca/" >
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
 
   <!-- Atkinson Hyperlegible font (accessibility-first) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +18,12 @@
   <!-- Site styles -->
   <link rel="stylesheet" href="/assets/site.css" >
 
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Seb (the Canadian)">
+  <meta property="og:description" content="Seb's personal site. Notes and writing at cognitivearchitecture.ca.">
+  <meta property="og:url" content="https://www.sebthecanadian.ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.sebthecanadian.ca/assets/seb-stamp.jpeg">
 
   <!-- IndieWeb basics -->
   <link rel="me" href="https://cognitivearchitecture.ca/" >
@@ -25,7 +31,7 @@
 
 <body>
   <!-- Skip link for keyboard navigation -->
-  <a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#content" class="skip-link">Skip to main content</a>
 
   <!-- Theme toggle -->
   <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode">
@@ -47,8 +53,8 @@
     </nav>
   </header>
 
-  <main id="main" class="h-card">
-    <img class="u-photo" src="/assets/seb-stamp.jpeg" alt="Illustrated portrait of Seb (the Canadian)" >
+  <main id="content" class="h-card">
+    <img class="u-photo" src="/assets/seb-stamp.jpeg" alt="Illustrated portrait of Seb (the Canadian)" width="160" height="160">
     <h1 class="p-name">Seb (the Canadian)</h1>
     <p class="p-note">Personal site in progress. Notes and writing live at the garden.</p>
     <p><a class="u-url u-uid" href="https://www.sebthecanadian.ca/">sebthecanadian.ca</a></p>
@@ -91,10 +97,9 @@
     <p><em>Last updated:</em> <time datetime="2026-01-13">2026-01-13</time></p>
   </footer>
 
-  <!-- Initialize Lucide icons -->
-  <script>
-    lucide.createIcons();
-  </script>
+  <!-- Lucide icons (pinned version, moved to body to avoid render-blocking) -->
+  <script src="https://unpkg.com/lucide@0.563.0"></script>
+  <script>lucide.createIcons();</script>
 
   <!-- Theme toggle script -->
   <script src="/assets/theme-toggle.js"></script>

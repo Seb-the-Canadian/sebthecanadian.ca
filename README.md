@@ -42,6 +42,32 @@ This foundation ensures the site remains minimal, durable, portable, accessible,
 
 ## Repository Structure
 
+```
+├── index.html              # Homepage (h-card identity)
+├── posts.html              # Blog posts (h-entry)
+├── now.html                # /now page (current focus)
+├── colophon.html           # How the site is built
+├── 404.html                # Custom 404 page
+├── CNAME                   # GitHub Pages custom domain
+├── assets/
+│   ├── site.css            # Site stylesheet (Data Druid aesthetic)
+│   ├── theme-toggle.js     # Dark/light mode toggle
+│   ├── favicon.svg         # Site icon
+│   └── seb-stamp.jpeg      # Author portrait
+├── docs/
+│   ├── IMPROVEMENT_AUDIT.md
+│   ├── IMPROVEMENT_PLAN.md
+│   └── VALIDATION_REPORT.md
+├── .github/
+│   └── workflows/
+│       └── webmention.yml  # Send webmentions on push
+├── DESIGN_PRINCIPLES.md    # Philosophical foundation
+├── IMPLEMENTATION_PLAN.md  # 6-phase UX/UI roadmap
+├── PHASE1_AUDIT.md         # CSS audit results
+├── TESTING_PLAN.md         # Testing checklist
+├── BACKLOG.md              # Feature tracking
+└── CHANGELOG.md            # Version history
+```
 
 ## Ops Notes
 	•	Hosting: GitHub Pages
