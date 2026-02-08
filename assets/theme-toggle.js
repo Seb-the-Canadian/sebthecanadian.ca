@@ -35,17 +35,24 @@
     updateToggleLabel(next);
   });
 
-  // Update button label for screen readers
+  // Update button label and icon for screen readers
   function updateToggleLabel(theme) {
     const label = theme === 'dark'
       ? 'Switch to light mode'
       : 'Switch to dark mode';
     toggle.setAttribute('aria-label', label);
 
-    // Update icon
-    const icon = toggle.querySelector('.theme-toggle-icon');
-    if (icon) {
-      icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    // Update Lucide icon — Sun for dark mode, Moon for light mode
+    // Using data-lucide attribute which will be replaced by lucide.createIcons()
+    const iconWrapper = toggle.querySelector('.theme-toggle-icon');
+    if (iconWrapper) {
+      const iconName = theme === 'dark' ? 'sun' : 'moon';
+      iconWrapper.innerHTML = `<i data-lucide="${iconName}" class="theme-icon"></i>`;
+
+      // Reinitialize Lucide icons after DOM update
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     }
   }
 

@@ -152,7 +152,44 @@ body::before {
 }
 
 /* =========================================================================
+   PHASE 4: SCANLINES TEXTURE — Subtle CRT effect
+   Only visible for users without motion sensitivity
+   ========================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 998; /* Below top bar (1000), above content */
+
+    /* Subtle horizontal scanlines — 2px spacing, very low opacity */
+    /* Layered with vertical texture for depth */
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(155, 127, 214, 0.02) 0px,
+        rgba(155, 127, 214, 0.02) 1px,
+        transparent 1px,
+        transparent 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(143, 188, 143, 0.012) 0px,
+        rgba(143, 188, 143, 0.012) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+  }
+}
+
+/* =========================================================================
    LAYOUT — Terminal window panels with double borders
+   PHASE 3: Refined spacing for optimal rhythm and information density
    ========================================================================= */
 
 header, main, footer {
@@ -171,6 +208,10 @@ header, main, footer {
 
   /* Smooth transitions */
   transition: border-color 0.3s ease, outline-color 0.3s ease;
+
+  /* Subtle bioluminescent glow on panels (Phase 4) */
+  box-shadow: 0 2px 12px rgba(155, 127, 214, 0.03),
+              0 4px 24px rgba(143, 188, 143, 0.02);
 }
 
 /* First element after top bar needs extra margin */
@@ -181,6 +222,10 @@ header {
 main {
   padding-top: calc(var(--pad) * 1.25);
   padding-bottom: calc(var(--pad) * 1.25);
+
+  /* Enhanced spacing between main and adjacent panels */
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 section {
@@ -196,6 +241,10 @@ section {
   background: var(--bg);
 
   transition: border-color 0.3s ease, outline-color 0.3s ease;
+
+  /* Subtle panel glow (Phase 4) */
+  box-shadow: 0 1px 8px rgba(155, 127, 214, 0.02),
+              0 2px 16px rgba(143, 188, 143, 0.015);
 }
 
 /* =========================================================================
@@ -385,7 +434,19 @@ footer {
   font-size: 0.9rem;
   z-index: 999;
 
+  /* Center icon and ensure proper sizing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   transition: all 0.2s ease;
+}
+
+/* Lucide icon sizing within theme toggle */
+.theme-toggle .theme-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
 }
 
 .theme-toggle:hover {

@@ -130,6 +130,68 @@ Format:
 
 ---
 
+### Added — Phase 3-4: Layout Refinement & Polish (2026-02-08 continued)
+
+**Phase 3: Layout & Structure Refinement**
+- Added enhanced bioluminescent glow effects on panels (header, main, footer, sections) using subtle box-shadows
+- Added refined spacing between main element and adjacent panels (1.25rem vertical margin)
+- Added optimized vertical rhythm for better information density
+
+**Phase 4: Details, Texture & Polish**
+- Added CSS scanlines texture (CRT effect) using `body::after` pseudo-element with repeating gradients
+- Added dual-layer scanlines: horizontal (lavender, 2px spacing) + vertical (sage, 3px spacing) for depth
+- Added motion-sensitivity respect: scanlines only visible with `@media (prefers-reduced-motion: no-preference)`
+- Added Lucide icon library integration (replacing emoji with accessible SVG icons)
+- Added Lucide icons for theme toggle: Sun icon (dark mode) and Moon icon (light mode)
+- Added smooth micro-interactions throughout (all respect prefers-reduced-motion)
+
+### Changed — Phase 3-4: Layout Refinement & Polish
+
+**Layout & Spacing:**
+- Changed panel shadows: none → subtle bioluminescent glow (lavender + sage at ~2-3% opacity)
+- Changed main element margin: 1rem → 1.25rem for better breathing room between panels
+- Changed section shadows: none → very subtle glow for panel depth perception
+
+**Theme Toggle:**
+- Changed theme toggle icon: emoji (◐/☀️/🌙) → Lucide SVG icons (moon/sun)
+- Changed theme toggle display: inline → flexbox for proper icon centering
+- Changed icon sizing: uncontrolled → explicit 18px × 18px with stroke-width 2
+- Changed icon update mechanism: text content → innerHTML with dynamic Lucide re-initialization
+
+**Texture & Polish:**
+- Changed body background: flat → subtle scanlines overlay (only for users without motion sensitivity)
+- Changed scanline implementation: none → fixed overlay with z-index 998 (below top bar, above content)
+
+### Technical — Phase 3-4
+
+**Modified Files:**
+- `assets/site.css` — Added scanlines, enhanced glows, Lucide icon styling, flexbox centering for toggle (498 lines → 540 lines)
+- `assets/theme-toggle.js` — Updated to use Lucide icons with dynamic re-initialization
+- `index.html` — Added Lucide CDN, updated toggle button HTML with `<i data-lucide>`, added Lucide initialization script
+- `posts.html` — Added Lucide CDN, updated toggle button HTML, added initialization script
+- `now.html` — Added Lucide CDN, updated toggle button HTML, added initialization script
+- `colophon.html` — Added Lucide CDN, updated toggle button HTML, added initialization script
+- `IMPLEMENTATION_PLAN.md` — Updated Phase 5.2 to prioritize CV/Resume page as user priority
+- `BACKLOG.md` — Moved CV/Resume from Ideas to Planned section
+
+**External Dependencies:**
+- Added Lucide icons library: `https://unpkg.com/lucide@latest` (CDN-hosted, ~40KB)
+- Lucide chosen for: accessibility, SVG-based, themeable, lightweight, no emoji rendering issues
+
+**Accessibility:**
+- Scanlines respect `prefers-reduced-motion: no-preference` (disabled for motion-sensitive users)
+- Lucide icons have proper ARIA labels via button `aria-label` attribute
+- All transitions and animations respect motion preferences
+- Icons are SVG-based (scale perfectly, no rendering inconsistencies across platforms)
+
+**Design Philosophy:**
+- Continued commitment to progressive enhancement (scanlines are purely decorative, site functions without them)
+- Maintained accessibility-first approach (motion sensitivity, semantic HTML, ARIA labels)
+- Avoided emoji in favor of Lucide icons for better cross-platform consistency and accessibility
+- Kept texture very subtle (2-3% opacity) to enhance atmosphere without distracting from content
+
+---
+
 ## 2026-01-13
 
 ### Added
