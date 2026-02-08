@@ -71,23 +71,25 @@ This means:
 - Color semantics: links = lavender, success/growth = sage, emphasis = brighter purple, metadata = muted green
 
 *Typography:*
-- Mix monospace and proportional: headings or UI chrome in monospace (IBM Plex Mono, JetBrains Mono, or `ui-monospace`), body in readable sans-serif
-- Or: fully embrace system monospace for terminal authenticity
-- Reject smoothness: prefer crisp rendering, sharp edges over rounded
-- Consider ASCII art elements or simple box-drawing characters (─ │ ┌ ┐ └ ┘) for section dividers
+- **Use Atkinson Hyperlegible or similar modern accessible typeface** (accessibility > aesthetic vibe)
+- Atkinson: designed by Braille Institute for low vision readers, distinctive letterforms prevent confusion
+- Alternatives: Public Sans, Inter, or accessible system fonts
+- **NO monospace** - terminal aesthetic comes from colors, borders, structure instead
+- Optimize for maximum readability: crisp rendering, clear hierarchy
+- Consider ASCII art elements or simple box-drawing characters (─ │ ┌ ┐ └ ┘) for section dividers (sparingly)
 
 *Layout & Structure:*
 - Bordered sections are good actually — lean into frames, panels, "terminal windows"
-- Consider single-line borders (`border: 1px solid`) or double borders (`outline` + `border`) for depth
+- **Use double borders** (`outline` + `border`) for depth and layered terminal window effect
 - Dense information is okay: don't over-pad. Embrace information richness.
 - Use whitespace intentionally but don't fear content
-- Consider a "console" or "terminal prompt" treatment for certain elements
+- 3px colored top bar (lavender or sage, or gradient blend) as signature element
 
 *Details & Texture:*
-- CSS-only texture: subtle scanlines (`repeating-linear-gradient`), noise, or dithering
-- Terminal cursor blink effect on focus states (if it passes accessibility test)
-- Box shadows in accent colors for depth (cyberpunk glow)
-- Consider `::before`/`::after` pseudo-elements for brackets, arrows, or sigils
+- **Subtle CSS scanlines** for CRT effect (2-5% opacity, must respect `prefers-reduced-motion`)
+- Box shadows in lavender/sage for bioluminescent glow (soft, diffused)
+- Manual dark/light mode toggle with localStorage persistence
+- Consider `::before`/`::after` pseudo-elements for brackets, arrows, or sigils (sparingly)
 - Status indicators could use terminal-style symbols: ● ○ ◆ ◇ ► ▼ ✓ ✗
 
 *Micro-interactions:*
@@ -98,8 +100,8 @@ This means:
 
 ### Typography
 
-- [ ] Evaluate a single hosted typeface (e.g., Inter or a variable font) vs. the current system stack
-- [ ] Tune heading scale — h2 at 1.1rem feels close to body text
+- [ ] Implement Atkinson Hyperlegible (or Public Sans/Inter as fallback) for accessibility-first approach
+- [ ] Tune heading scale — h2 at 1.1rem feels close to body text (URGENT: fix to 1.6rem)
 
 ### Navigation & Wayfinding
 

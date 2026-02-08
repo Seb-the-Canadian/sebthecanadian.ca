@@ -101,14 +101,18 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
   - Test scale on actual content pages
   - Ensure rhythm feels natural
 
-- [ ] Evaluate monospace integration
-  - Test headings in monospace (`ui-monospace` or IBM Plex Mono via CDN)
-  - Compare full monospace vs. mixed (mono headings, sans body)
-  - Decision: commit to one approach
+- [ ] **DECISION MADE:** Use Atkinson Hyperlegible or similar modern accessible typeface
+  - Atkinson Hyperlegible: Designed by Braille Institute for low vision readers
+  - Optimized for legibility with distinctive letterforms (no b/d confusion, clear 1/l/I)
+  - Host via Google Fonts or self-host for portability
+  - Alternative: Public Sans, Inter, or system fonts with strong accessibility
+  - **NO monospace** - accessibility takes priority over terminal aesthetic
+  - Terminal aesthetic will come from colors, borders, and structure instead
 
-- [ ] Optimize for crisp rendering
-  - Set `-webkit-font-smoothing: antialiased` for dark mode
-  - Ensure text remains readable at all scales
+- [ ] Optimize for maximum readability
+  - Set `-webkit-font-smoothing: antialiased` for dark mode (if it improves clarity)
+  - Test at multiple sizes and weights
+  - Ensure text remains readable at all scales and on all devices
 
 #### 2.3 Link Treatment Design
 
@@ -131,9 +135,13 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
   - Ensure lavender/sage feel bioluminescent (glow without harshness)
   - Test all text/background combinations for comfort
 
-- [ ] Add mode toggle (optional)
-  - If user wants manual control, add toggle
-  - Otherwise rely on `prefers-color-scheme`
+- [ ] **DECISION MADE:** Add manual dark/light mode toggle
+  - Implement toggle button/icon in header or nav
+  - Store preference in `localStorage` (persist across sessions)
+  - Respect `prefers-color-scheme` as default, allow override
+  - Accessible toggle: clear labels, keyboard navigable
+  - Icon options: ☀️/🌙 or text "Light/Dark" or ◐ symbol
+  - Smooth transition between modes (CSS `transition` on color properties)
 
 ### Delegation Strategy
 
@@ -166,15 +174,17 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
 
 #### 3.1 Terminal Window Treatment
 
-- [ ] Decide on border strategy
-  - Keep bordered sections but make them intentional (terminal panels)
-  - Test single border vs. double border (outline + border)
-  - Use lavender or sage for border colors
+- [ ] **DECISION MADE:** Double border strategy (outline + border for depth)
+  - Use `border` + `outline` for layered terminal window effect
+  - Inner border: lavender or sage (accent color)
+  - Outer outline: slightly darker/lighter for depth perception
+  - Creates "stacked panel" look without heavy visual weight
 
 - [ ] Implement panel/frame aesthetic
+  - Apply double border treatment to `header`, `main`, `footer`, `section`
   - Consider adding "title bars" to sections using `::before`
-  - Experiment with box-drawing characters for corners
-  - Test "console window" look for main content area
+  - Test whether borders should be same color or use purple/green distinction
+  - Ensure borders remain visible in both light and dark modes
 
 #### 3.2 Spacing & Rhythm
 
@@ -224,18 +234,18 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
 
 #### 4.1 CSS-Only Texture
 
-- [ ] Experiment with subtle scanlines
-  - `repeating-linear-gradient` for CRT effect
-  - Must be subtle (accessibility: `prefers-reduced-motion`)
-  - Test in both light and dark modes
-
-- [ ] Consider noise/dithering texture
-  - SVG data URI for subtle background texture
-  - Keep file size minimal
+- [ ] **DECISION MADE:** Add subtle scanlines for CRT effect
+  - Use `repeating-linear-gradient` with 2-4px spacing
+  - Very low opacity (2-5%) so it's barely perceptible
+  - Apply to `body` or `main` element
+  - MUST respect `prefers-reduced-motion: reduce` (disable for motion-sensitive users)
+  - Test that it doesn't interfere with text readability
+  - Should feel like texture, not distraction
 
 - [ ] Test bioluminescent glow effects
-  - Box shadows on panels in accent colors
-  - Must enhance, not distract
+  - Box shadows on panels in lavender/sage accent colors
+  - Soft, diffused glow (not harsh neon)
+  - Enhance depth without overwhelming content
 
 #### 4.2 Micro-interactions
 
@@ -254,14 +264,17 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
 
 #### 4.3 Signature Details
 
-- [ ] Add visual signature element
-  - Colored top bar (3px lavender or sage)
-  - Or: monogram/wordmark in header
-  - Or: ASCII art sigil using `::before`
+- [ ] **DECISION MADE:** Add 3px colored top bar
+  - Horizontal bar at very top of viewport
+  - Use `position: fixed` or `body::before`
+  - Color: lavender (#9b7fd6) or sage (#8fbc8f) - test which feels better
+  - Alternative: gradient from lavender to sage (mystical garden blend)
+  - Should be distinctive without overwhelming
 
-- [ ] Consider terminal prompt styling
-  - Footer could have `$` or `>` prompt character
-  - Or: section headings could have `►` prefix
+- [ ] Consider additional subtle terminal elements
+  - Footer could have `>` prompt character before "Last updated"
+  - Section headings could have `►` or `●` prefix (optional, test carefully)
+  - Use sparingly - accessibility over vibe
 
 #### 4.4 Visual Style Guide Documentation
 
@@ -466,15 +479,15 @@ Transform the site from "clean but generic" to "distinctly Data Druid" while mai
 
 ---
 
-## Decision Points
+## Decision Points ✅ RESOLVED
 
-These require user input before proceeding:
+**User decisions made 2026-02-08:**
 
-1. **Typography:** Full monospace vs. mixed (mono headings, sans body)?
-2. **Border style:** Single border vs. double border (outline + border)?
-3. **Texture:** Scanlines? Noise? Or keep it simple?
-4. **Mode toggle:** Manual dark/light toggle or rely on `prefers-color-scheme`?
-5. **Top bar:** 3px colored bar at page top, or skip for minimalism?
+1. **Typography:** ✅ Modern accessible font (Atkinson Hyperlegible or similar) — NO monospace. Accessibility > aesthetic vibe.
+2. **Border style:** ✅ B - Double border (outline + border for depth)
+3. **Texture:** ✅ A - Add CSS scanlines (subtle CRT effect)
+4. **Mode toggle:** ✅ A - Manual dark/light toggle
+5. **Top bar:** ✅ A - 3px colored bar at page top (lavender or sage)
 
 ---
 
