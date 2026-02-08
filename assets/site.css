@@ -131,8 +131,13 @@ body {
   font-size: 1rem;
   line-height: 1.6;
 
-  /* Smooth color transitions for theme toggle */
-  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth color transitions for theme toggle (respect motion preferences) */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
 /* =========================================================================
@@ -359,7 +364,15 @@ nav a:hover {
 nav a[aria-current="page"] {
   background: var(--lavender-medium);
   color: var(--bg);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+/* External and mailto nav links — subtle departure indicator */
+nav a[href^="http"]:not([href*="sebthecanadian.ca"])::after,
+nav a[href^="mailto"]::after {
+  content: ' \2197'; /* ↗ north-east arrow */
+  font-size: 0.7em;
+  opacity: 0.6;
 }
 
 /* =========================================================================

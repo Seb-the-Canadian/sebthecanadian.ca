@@ -6,11 +6,46 @@ Format:
 
 ## [Unreleased]
 
-### Added
+### Added — Creative Improvement Review (2026-02-08)
 
-### Changed
+**Documentation:**
+- Added `docs/IMPROVEMENT_AUDIT.md` — structured audit of design, UX, accessibility, performance, and governance
+- Added `docs/IMPROVEMENT_PLAN.md` — ranked improvement backlog (quick wins, refinements, strategic upgrades)
+- Added `docs/VALIDATION_REPORT.md` — verification checklist for all implemented changes
+- Filled in README.md "Repository Structure" section with accurate file tree
 
-### Fixed
+**UX & Discoverability:**
+- Added `404.html` custom error page with Data Druid styling and wayfinding links
+- Added external link indicators (↗) in navigation for Garden and Email links (CSS-only)
+- Added Open Graph meta tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`) on all main pages
+- Added `<meta name="theme-color">` for both light and dark modes on all pages
+
+### Changed — Creative Improvement Review
+
+**Accessibility:**
+- Fixed broken skip link on colophon.html — added missing `id="content"` to `<main>`
+- Added missing `<footer>` with "Last updated" timestamp to colophon.html
+- Standardized all `<main>` element IDs to `id="content"` across all pages (was inconsistent: `#main` vs `#content`)
+- Updated skip link on index.html from `#main` to `#content`
+- Added `width="160" height="160"` to author photo to prevent Cumulative Layout Shift
+- Wrapped body color transitions in `@media (prefers-reduced-motion: no-preference)`
+- Removed incorrect `h-card` microformat class from now.html and colophon.html (kept only on index.html where identity markup exists)
+
+**Performance:**
+- Moved Lucide script from `<head>` to bottom of `<body>` — no longer render-blocking
+- Pinned Lucide to version `0.563.0` instead of `@latest` — prevents surprise breaking changes
+
+**Typography:**
+- Fixed `font-weight: 600` → `700` on `nav a[aria-current]` to match loaded Google Fonts weights
+
+### Fixed — Creative Improvement Review
+
+- **CRITICAL:** Fixed broken skip link on colophon.html (target `#content` had no matching element)
+- Fixed missing footer on colophon.html (only page without one)
+- Fixed Lucide render-blocking in `<head>` on all pages
+- Fixed layout shift from unsized author photo
+- Fixed synthesized font-weight (was 600, only 400/700 loaded)
+- Fixed body color transition ignoring `prefers-reduced-motion`
 
 ---
 
