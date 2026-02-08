@@ -35,6 +35,10 @@ Candidates for future work. No commitment implied — just things worth consider
 The current design is clean and functional but reads as generic. The goal is to develop a
 cohesive visual identity that feels distinctly *this site* while never sacrificing readability.
 
+**Foundation:** All visual identity work is grounded in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md) —
+IndieWeb best practices and Ivan Illich's convivial design principles. Refer to that document
+when evaluating design choices.
+
 - [ ] Define a purposeful colour palette — pick 1–2 signature colours (beyond default link blue) that carry across backgrounds, borders, and accents in both light and dark modes
 - [ ] Replace the bordered-box-per-section pattern with a layout that has more visual flow — consider dropping the border on `header`/`main`/`footer` in favour of whitespace, subtle dividers, or a single page-level container
 - [ ] Introduce a distinctive typographic pairing — a character-rich heading face alongside a highly legible body face (or a single variable font used at contrasting weights)
@@ -123,6 +127,7 @@ a single source of truth.
 ## Process Notes
 
 - Keep the site static, dependency-free, and hand-editable.
-- Design changes should honour the existing principles in the colophon: minimal, durable, portable.
+- Design changes should honour the principles documented in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md): minimal, durable, portable, accessible, autonomous, transparent, human-scale, and sustainable.
+- All decisions should pass the Convivial Test, IndieWeb Test, Sustainability Test, and Accessibility Test outlined in DESIGN_PRINCIPLES.md.
 - When an item is finished, log it in CHANGELOG.md under the appropriate date and remove it from this file.
 - Bugs and regressions go in the **Bugs / Issues** section with a short description and reproduction steps if applicable.

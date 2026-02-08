@@ -9,6 +9,15 @@ The site is designed to be:
 - Compatible with a future custom domain (via Cloudflare DNS)
 - Explicitly linked to an existing digital garden hosted elsewhere
 
+## Design Philosophy
+
+All design and technical decisions are grounded in **[DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md)**, which combines:
+
+- **IndieWeb principles** — own your data, human-first design, progressive enhancement
+- **Ivan Illich's convivial design** — tools that enable autonomy, require no expertise, and expand (not restrict) human agency
+
+This foundation ensures the site remains minimal, durable, portable, accessible, and sustainable.
+
 ## Live URLs (intended)
 
 - Personal site: https://sebthecanadian.ca/
