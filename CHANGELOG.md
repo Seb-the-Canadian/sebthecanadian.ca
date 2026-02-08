@@ -192,6 +192,84 @@ Format:
 
 ---
 
+### Added — Botanical Enhancements (2026-02-08 continued)
+
+**User request:** "The small banner at the very top of the page is pretty small" + desire for mushrooms/vines/trees botanical elements
+
+**Top Bar Enhancement:**
+- Increased top bar height from 3px → 8px (167% increase for prominence)
+- Updated `--top-bar-height` variable affects all dependent positioning automatically
+
+**Bioluminescent Glow Enhancements:**
+- Doubled opacity on panel glows (0.03→0.06 lavender, 0.02→0.04 sage)
+- Doubled opacity on section glows (0.02→0.045 lavender, 0.015→0.03 sage)
+- Added third depth layer to all box-shadows for atmospheric effect
+- Enhanced link hover glow with three-layer text-shadow (6px, 10px, 16px blur)
+
+**Botanical Decorative Elements (CSS-only):**
+- **Mushroom clusters** in section corners (`section::before`)
+  - Three radial gradients creating organic mushroom cap shapes
+  - Lavender and sage colors with bioluminescent glow
+  - 24x16px, 0.4 opacity, positioned top-right corner
+  - Represents cultivation and growth (Data Druid metaphor)
+
+- **Vine/moss divider** between main and footer (`main::after`)
+  - Linear gradient with interrupted pattern for organic feel
+  - Sage-dominant coloring (growth/botanical theme)
+  - 2px height, 0.3 opacity, bridges gap between panels
+  - Represents connection and support (convivial principle)
+
+- **Root system** in footer corner (`footer::before`)
+  - Organic shape using clip-path polygon with sage gradient
+  - 32x40px, 0.5 opacity, positioned bottom-left
+  - Represents anchoring and nourishment (sustainable principle)
+
+### Changed — Botanical Enhancements
+
+**Visual Prominence:**
+- Changed top bar: 3px → 8px height (signature element now clearly visible)
+- Changed panel glows: 2-3% opacity → 4-6% opacity (subtle but noticeable bioluminescence)
+- Changed link hover: two-layer → three-layer glow (tighter core + outer halo)
+
+**Atmospheric Enhancement:**
+- Changed box-shadows: all panels now have three-layer depth effect
+- Changed text-shadows: links have enhanced dimensional glow on hover
+- Changed overall mood: from subtle hints → perceptible mystical garden atmosphere
+
+### Technical — Botanical Enhancements
+
+**Modified Files:**
+- `assets/site.css` — Added ~170 lines of botanical decorations (540→710 lines)
+  - Line 57: Top bar height variable (3px→8px)
+  - Lines 213-215: Enhanced panel glows (doubled opacity + depth layer)
+  - Lines 246-248: Enhanced section glows (doubled opacity + depth layer)
+  - Lines 318-320: Enhanced link hover glow (three-layer effect)
+  - Lines 535-667: New botanical decorations section with comprehensive comments
+
+**CSS Techniques Used:**
+- Radial gradients for organic mushroom shapes
+- Linear gradients with mask-image for interrupted vine pattern
+- Clip-path polygon for root system organic shape
+- Filter blur for soft bioluminescent effect
+- Layered box-shadows for atmospheric depth
+- All wrapped in `@media (prefers-reduced-motion: no-preference)`
+
+**Accessibility:**
+- All decorations respect motion sensitivity preferences
+- `pointer-events: none` prevents interaction blocking
+- Decorative pseudo-elements (empty `content: ''`) ignored by screen readers
+- No impact on WCAG contrast ratios (decorations don't overlay text)
+- Comprehensive inline comments explain all techniques
+
+**Design Philosophy:**
+- Pure CSS, no images (sustainable, portable)
+- Botanical metaphors align with Data Druid cultivation concept
+- Each element has semantic meaning (mushrooms=growth, vines=connection, roots=stability)
+- Very subtle implementation (0.3-0.5 opacity) maintains terminal minimalism
+- Progressive enhancement (decorative only, site functions without them)
+
+---
+
 ## 2026-01-13
 
 ### Added
