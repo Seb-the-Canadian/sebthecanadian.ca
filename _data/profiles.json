@@ -1,0 +1,22 @@
+[
+  {
+    "platform": "Bluesky",
+    "url": "https://bsky.app/profile/sebthecanadian.ca",
+    "rel": "me"
+  },
+  {
+    "platform": "GitHub",
+    "url": "https://github.com/Seb-the-Canadian",
+    "rel": "me"
+  },
+  {
+    "platform": "ORCID",
+    "url": "https://orcid.org/0009-0003-1402-6973",
+    "rel": "me"
+  },
+  {
+    "platform": "Garden",
+    "url": "https://cognitivearchitecture.ca/",
+    "rel": "me"
+  }
+]

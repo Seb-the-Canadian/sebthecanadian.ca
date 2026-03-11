@@ -1,0 +1,16 @@
+{
+  "name": "sebthecanadian-ca",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal site for Seb Lathangue — sebthecanadian.ca",
+  "scripts": {
+    "garden-sync": "node scripts/garden-rss.js",
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "node scripts/garden-rss.js && npx @11ty/eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2"
+  }
+}

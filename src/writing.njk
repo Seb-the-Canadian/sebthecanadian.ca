@@ -1,0 +1,41 @@
+---
+layout: base.njk
+title: Writing
+description: "Posts syndicated from the digital garden and original writing."
+permalink: /writing/
+---
+<h1>Writing</h1>
+
+<p>These posts originate in the <a href="https://cognitivearchitecture.ca/">garden</a>. Visit the source for the full text, context, and connections. This page collects excerpts and syndication links &mdash; a hub, not a destination.</p>
+
+<section class="h-feed">
+  <h2>Posts</h2>
+  {%- for post in collections.writing %}
+    {% include "post-card.njk" %}
+  {%- endfor %}
+
+  {%- if collections.writing.length == 0 %}
+  <p>No posts yet. Check the <a href="https://cognitivearchitecture.ca/">garden</a> for current writing.</p>
+  {%- endif %}
+</section>
+
+{%- if gardenPosts.length > 0 %}
+<section>
+  <h2>From the Garden</h2>
+  <p>Recent notes and essays from <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>, pulled automatically at build time.</p>
+  {%- for gp in gardenPosts %}
+  <article class="post-card h-entry">
+    <h3 class="p-name"><a href="{{ gp.url }}" class="u-url u-syndication">{{ gp.title }}</a></h3>
+    {%- if gp.date %}
+    <p class="post-meta"><time class="dt-published" datetime="{{ gp.date }}">{{ gp.date }}</time> · <span class="badge badge--{{ gp.status }}">{{ gp.status }}</span></p>
+    {%- endif %}
+    {%- if gp.excerpt %}
+    <p class="post-excerpt p-summary">{{ gp.excerpt }}</p>
+    {%- endif %}
+    <div class="post-links">
+      <a href="{{ gp.url }}" class="u-syndication">Read in the garden &rarr;</a>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+{%- endif %}

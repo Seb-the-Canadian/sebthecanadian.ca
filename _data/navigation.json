@@ -1,0 +1,17 @@
+{
+  "primary": [
+    { "label": "Home", "url": "/" },
+    { "label": "Projects", "url": "/projects/" },
+    { "label": "Writing", "url": "/writing/" },
+    { "label": "Resume", "url": "/resume/" },
+    { "label": "Now", "url": "/now/" },
+    { "label": "Colophon", "url": "/colophon/" }
+  ],
+  "secondary": [
+    { "label": "Uses", "url": "/uses/" },
+    { "label": "Links", "url": "/links/" },
+    { "label": "Garden", "url": "https://cognitivearchitecture.ca/", "external": true },
+    { "label": "Email", "url": "mailto:hello@cognitivearchitecture.ca", "external": true },
+    { "label": "RSS", "url": "/feed.xml" }
+  ]
+}

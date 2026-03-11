@@ -19,7 +19,7 @@ jobs:
           set -euo pipefail
           sources=(
             "$SITE_URL/"
-            "$SITE_URL/posts.html"
+            "$SITE_URL/writing/"
           )
 
           for source in "${sources[@]}"; do

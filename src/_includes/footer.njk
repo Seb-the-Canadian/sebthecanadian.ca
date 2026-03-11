@@ -1,0 +1,10 @@
+<footer>
+  <nav aria-label="Secondary">
+    <ul>
+      {%- for item in navigation.secondary %}
+      <li><a href="{{ item.url }}"{% if item.external %} rel="external" target="_blank"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  <p>&copy; {{ site.author }}</p>
+</footer>

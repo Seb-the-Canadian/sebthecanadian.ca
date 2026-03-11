@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Print Stylesheet
+   Optimized for resume Ctrl+P PDF output.
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  header nav,
+  footer nav,
+  .skip-link,
+  .theme-toggle,
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555 !important;
+  }
+
+  a[href^="mailto"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555 !important;
+  }
+
+  .resume-entry {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  footer {
+    border-top: 1px solid #ccc;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  @page {
+    margin: 1.5cm 2cm;
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "CivCitDev",
+    "url": "https://civcitdev.ca",
+    "description": "Civic-focused open-source tooling program. Building software infrastructure for civic participation and tenant advocacy.",
+    "status": "active",
+    "featured": true
+  },
+  {
+    "name": "Ontario Tenant Tools",
+    "url": "https://ont-tenant-tools.civcitdev.ca",
+    "description": "Tools for Ontario tenants navigating housing regulations.",
+    "status": "active",
+    "featured": false
+  },
+  {
+    "name": "Cognitive Architecture",
+    "url": "https://cognitivearchitecture.ca",
+    "description": "Digital garden for systems thinking and knowledge work.",
+    "status": "active",
+    "featured": false
+  }
+]
