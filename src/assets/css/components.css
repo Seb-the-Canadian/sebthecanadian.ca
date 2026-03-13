@@ -331,3 +331,50 @@ footer nav a:visited {
   color: var(--accent);
   border-color: var(--accent);
 }
+
+/* ── Terminal cursor blink on hero heading ───────────────────────────────── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.hero h1::after {
+  content: "█";
+  color: var(--accent);
+  margin-left: 0.1em;
+  animation: cursor-blink 1.2s step-end infinite;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1::after {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* ── "Live" pulse dot on Now nav link ───────────────────────────────────── */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+nav[aria-label="Primary"] a[href="/now/"]::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-left: 0.4em;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  animation: live-pulse 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav[aria-label="Primary"] a[href="/now/"]::after {
+    animation: none;
+  }
+}
