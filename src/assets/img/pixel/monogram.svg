@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <!--
-    Pixel art memento mori — Data Druid treatment.
-    A skull with a leaf sprout growing from the crown.
+    Pixel art memento mori v2 — Data Druid.
+    Key geometry (2px blocks, rendered at 24px):
+      Eye sockets: 3px wide × 6px tall — taller than wide, reads as oval, not visor.
+      Nose bridge: 4px wide — wider than each eye void, clearly solid bone.
+      Void layout: cheek(3) | eye(3) | bridge(4) | eye(3) | cheek(3) = 16px.
+      Jaw tapers: brow 16px → cheekbone 14px → jaw 12px.
     Uses currentColor to adapt to light/dark themes.
   -->
   <style>
@@ -16,28 +20,29 @@
   <rect class="g" x="9"  y="4"  width="2" height="2"/><!-- left leaf tip -->
   <rect class="g" x="21" y="4"  width="2" height="2"/><!-- right leaf tip -->
 
-  <!-- Skull dome -->
-  <rect class="s" x="12" y="7"  width="8"  height="2"/>
-  <rect class="s" x="10" y="9"  width="12" height="2"/>
-  <rect class="s" x="8"  y="11" width="16" height="2"/>
+  <!-- Skull dome (widens from top to temples) -->
+  <rect class="s" x="12" y="7"  width="8"  height="2"/><!-- narrow top -->
+  <rect class="s" x="10" y="9"  width="12" height="2"/><!-- mid -->
+  <rect class="s" x="8"  y="11" width="16" height="2"/><!-- temples (widest) -->
+  <rect class="s" x="8"  y="13" width="16" height="2"/><!-- brow -->
 
-  <!-- Brow (full width) -->
-  <rect class="s" x="8"  y="13" width="16" height="2"/>
+  <!-- Eye sockets (6px tall): cheek(3) | void(3) | bridge(4) | void(3) | cheek(3)
+       Left eye void:  x=11–14   Right eye void: x=18–21
+       At 24px render: eyes are ~2px wide × ~4.5px tall — clearly oval, not a visor slit -->
+  <rect class="s" x="8"  y="15" width="3"  height="6"/><!-- left cheek -->
+  <rect class="s" x="14" y="15" width="4"  height="6"/><!-- nose bridge (4px — wider than each eye) -->
+  <rect class="s" x="21" y="15" width="3"  height="6"/><!-- right cheek -->
 
-  <!-- Eye socket row: left cheek | void (left eye) | nose bridge | void (right eye) | right cheek -->
-  <rect class="s" x="8"  y="15" width="3"  height="4"/><!-- left cheek  -->
-  <rect class="s" x="15" y="15" width="2"  height="4"/><!-- nose bridge -->
-  <rect class="s" x="21" y="15" width="3"  height="4"/><!-- right cheek -->
+  <!-- Cheekbone — narrows to 14px, breaking rectangular helmet silhouette -->
+  <rect class="s" x="9"  y="21" width="14" height="2"/>
 
-  <!-- Cheekbone (full width) -->
-  <rect class="s" x="8"  y="19" width="16" height="2"/>
+  <!-- Nasal row — 4px nose cavity centered between jaw sides -->
+  <rect class="s" x="9"  y="23" width="5"  height="2"/><!-- left jaw -->
+  <rect class="s" x="18" y="23" width="5"  height="2"/><!-- right jaw -->
+  <!-- nasal void: x=14–18 (4px) -->
 
-  <!-- Nasal cavity row: left jaw | void (nose) | right jaw -->
-  <rect class="s" x="8"  y="21" width="5"  height="2"/><!-- left jaw  -->
-  <rect class="s" x="19" y="21" width="5"  height="2"/><!-- right jaw -->
-
-  <!-- Three teeth -->
-  <rect class="s" x="9"  y="23" width="4"  height="3"/><!-- tooth L -->
-  <rect class="s" x="14" y="23" width="4"  height="3"/><!-- tooth C -->
-  <rect class="s" x="19" y="23" width="4"  height="3"/><!-- tooth R -->
+  <!-- Two teeth with 4px gap (visible at render) -->
+  <rect class="s" x="9"  y="25" width="5"  height="3"/><!-- left tooth -->
+  <rect class="s" x="18" y="25" width="5"  height="3"/><!-- right tooth -->
+  <!-- tooth gap: x=14–18 (4px) -->
 </svg>
