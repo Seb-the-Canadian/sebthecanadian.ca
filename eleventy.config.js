@@ -59,6 +59,16 @@ export default function (eleventyConfig) {
     return new Date(dateObj).toISOString().split("T")[0];
   });
 
+  eleventyConfig.addFilter("daysAgo", (dateStr) => {
+    if (!dateStr) return null;
+    const then = new Date(dateStr);
+    if (isNaN(then.getTime())) return null;
+    const days = Math.floor((Date.now() - then.getTime()) / (1000 * 60 * 60 * 24));
+    if (days === 0) return "today";
+    if (days === 1) return "yesterday";
+    return `${days} days ago`;
+  });
+
   return {
     dir: {
       input: "src",
