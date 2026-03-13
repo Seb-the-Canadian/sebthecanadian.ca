@@ -167,3 +167,21 @@ main {
   padding-top: var(--space-xl);
   padding-bottom: var(--space-2xl);
 }
+
+/* ── View Transitions API — gentle page cross-fade ──────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.18s;
+  animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01s;
+  }
+}
