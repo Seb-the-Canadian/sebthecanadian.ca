@@ -15,7 +15,7 @@
 (function () {
   "use strict";
 
-  var routes = {
+  const routes = {
     h: "/",
     w: "/writing/",
     p: "/projects/",
@@ -23,7 +23,7 @@
     n: "/now/",
   };
 
-  var chordItems = [
+  const chordItems = [
     { chord: "g → h", dest: "Home" },
     { chord: "g → w", dest: "Writing" },
     { chord: "g → p", dest: "Projects" },
@@ -31,14 +31,15 @@
     { chord: "g → n", dest: "Now" },
   ];
 
-  var waitingForSecond = false;
-  var chordTimeout = null;
-  var overlay = null;
+  let waitingForSecond = false;
+  let chordTimeout = null;
+  let overlay = null;
+  let _previousFocus = null;
 
   /* ── Overlay ──────────────────────────────────────────────────────────── */
 
   function buildOverlayHTML() {
-    var rows = chordItems
+    const rows = chordItems
       .map(function (item) {
         return (
           '<div class="kbd-shortcut-item">' +
@@ -50,8 +51,8 @@
       .join("");
 
     return (
-      '<div class="kbd-overlay-inner" role="document">' +
-      '<h2 class="kbd-overlay-title">Keyboard shortcuts</h2>' +
+      '<div class="kbd-overlay-inner" role="document" tabindex="-1">' +
+      '<h2 id="kbd-overlay-heading" class="kbd-overlay-title">Keyboard shortcuts</h2>' +
       '<dl class="kbd-shortcut-list">' + rows + "</dl>" +
       '<p class="kbd-overlay-meta"><kbd>?</kbd> to toggle &nbsp;·&nbsp; <kbd>Esc</kbd> to close</p>' +
       "</div>"
@@ -60,22 +61,29 @@
 
   function openOverlay() {
     if (overlay) return;
+    _previousFocus = document.activeElement;
     overlay = document.createElement("div");
     overlay.className = "kbd-overlay";
     overlay.setAttribute("role", "dialog");
     overlay.setAttribute("aria-modal", "true");
-    overlay.setAttribute("aria-label", "Keyboard shortcuts");
+    overlay.setAttribute("aria-labelledby", "kbd-overlay-heading");
     overlay.innerHTML = buildOverlayHTML();
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) closeOverlay();
     });
     document.body.appendChild(overlay);
+    const inner = overlay.querySelector(".kbd-overlay-inner");
+    if (inner) inner.focus();
   }
 
   function closeOverlay() {
     if (!overlay) return;
     overlay.remove();
     overlay = null;
+    if (_previousFocus && document.contains(_previousFocus)) {
+      _previousFocus.focus();
+    }
+    _previousFocus = null;
   }
 
   /* ── Key handler ──────────────────────────────────────────────────────── */
@@ -119,7 +127,7 @@
     if (waitingForSecond) {
       waitingForSecond = false;
       if (chordTimeout) clearTimeout(chordTimeout);
-      var dest = routes[e.key];
+      const dest = routes[e.key];
       if (dest) {
         e.preventDefault();
         window.location.href = dest;
