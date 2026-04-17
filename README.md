@@ -100,6 +100,24 @@ See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 
 All 22 Linear issues complete (COG-250 through COG-271). The full redesign sprint is done. See `BACKLOG.md` for details and `CHANGELOG.md` for version history.
 
+## Fork this site
+
+This repo is readable enough to fork as a starting point for your own personal site. The fastest path to a rebrand without touching layout:
+
+1. **`_data/site.json`** — title, URL, description, author, email.
+2. **`_data/profiles.json`** — your rel=me profile links (GitHub, Mastodon, LinkedIn, etc.).
+3. **`_data/navigation.json`** — primary + secondary nav items.
+4. **`_data/projects.json`** — your project cards.
+5. **`_data/resume.yml`** — experience, skills, education.
+6. **`src/index.njk`** — hero copy and the h-card block.
+7. **`src/assets/img/seb-stamp.jpeg`** — replace with your own portrait (same filename or update references).
+8. **`src/assets/img/pixel/monogram.svg`** + **`src/assets/img/favicon.svg`** — your own mark.
+9. **`src/assets/css/tokens.css`** — palette tokens, both light and dark themes.
+
+Everything else (layout, microformats, the garden RSS importer, the POSSE pattern) can stay as-is. The `CNAME` file and `.github/workflows/webmention.yml` reference `sebthecanadian.ca` explicitly — change those before deploying, or delete them if you don't need webmentions or a custom domain. Self-host or adapt: the codebase is yours.
+
+Runtime floor: **Node 22+**, `npm install`, then `npm run build`. No other services required to build. Deployment is GitHub Pages via the included workflow; swap in whichever static host you prefer.
+
 ## Ops Notes
 
 - **Hosting:** GitHub Pages (free)
