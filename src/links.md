@@ -21,7 +21,3 @@ A blogroll — people, projects, and corners of the web worth following.
 ## Knowledge Tools
 
 - [Obsidian](https://obsidian.md/) — Local-first knowledge management.
-
-## People
-
-*To be filled in.*
