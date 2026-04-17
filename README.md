@@ -35,7 +35,8 @@ sebthecanadian.ca/
 │   ├── writing.njk            # POSSE syndication hub (h-feed)
 │   ├── resume.njk             # Data-driven resume (h-resume)
 │   ├── now.md                 # /now page
-│   ├── colophon.md            # Colophon
+│   ├── about.md               # About page (bio + how this site is built)
+│   ├── colophon.md            # Redirect stub → /about/
 │   ├── uses.md                # /uses page
 │   ├── links.md               # Blogroll
 │   ├── 404.md                 # Custom 404

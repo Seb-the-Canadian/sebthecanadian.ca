@@ -27,17 +27,6 @@ permalink: /resume/
 
   <button class="theme-toggle no-print" onclick="window.print()">Download PDF</button>
 
-  {%- if resume.about %}
-  <section class="resume-section resume-about">
-    <h2>About My Work</h2>
-    <div class="p-note">
-      {%- for para in resume.about | paragraphs %}
-      <p>{{ para | trim }}</p>
-      {%- endfor %}
-    </div>
-  </section>
-  {%- endif %}
-
   <section class="resume-section">
     <h2>Experience</h2>
     {%- for role in resume.experience %}

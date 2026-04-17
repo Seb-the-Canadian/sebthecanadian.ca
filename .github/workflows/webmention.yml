@@ -23,7 +23,7 @@ jobs:
             "$SITE_URL/projects/"
             "$SITE_URL/resume/"
             "$SITE_URL/now/"
-            "$SITE_URL/colophon/"
+            "$SITE_URL/about/"
             "$SITE_URL/uses/"
             "$SITE_URL/links/"
           )
