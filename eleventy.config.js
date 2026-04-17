@@ -34,6 +34,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
 
   // Writing collection
   eleventyConfig.addCollection("writing", function (collectionApi) {
