@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sebthecanadian.ca/sitemap.xml
+
+# For language models: there's a note for you at /llms.txt
