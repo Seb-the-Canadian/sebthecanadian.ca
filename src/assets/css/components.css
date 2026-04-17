@@ -496,6 +496,13 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
   flex-shrink: 0;
 }
 
+.garden-activity time,
+.meta-updated time {
+  text-decoration: underline dotted var(--border);
+  text-underline-offset: 0.25em;
+  cursor: help;
+}
+
 /* ── Keyboard shortcuts overlay ─────────────────────────────────────────── */
 .kbd-overlay {
   position: fixed;

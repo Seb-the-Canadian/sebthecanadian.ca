@@ -80,6 +80,22 @@ export default function (eleventyConfig) {
     return `${days} days ago`;
   });
 
+  // Categorical freshness — same signal as daysAgo, but in voice.
+  // Buckets: 0 / 1 / 2–7 / 8–30 / 31–90 / 91–180 / 181+
+  eleventyConfig.addFilter("tendedState", (dateStr) => {
+    if (!dateStr) return null;
+    const then = new Date(dateStr);
+    if (isNaN(then.getTime())) return null;
+    const days = Math.floor((Date.now() - then.getTime()) / (1000 * 60 * 60 * 24));
+    if (days <= 0) return "tended today";
+    if (days === 1) return "tended yesterday";
+    if (days <= 7) return "tended recently";
+    if (days <= 30) return "tended this month";
+    if (days <= 90) return "resting";
+    if (days <= 180) return "dormant";
+    return "fallow";
+  });
+
   return {
     dir: {
       input: "src",
