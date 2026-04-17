@@ -108,6 +108,23 @@ footer nav a:visited {
   color: var(--muted);
 }
 
+.build-stamp {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-top: var(--space-xs);
+  opacity: 0.75;
+}
+
+/* Page-level updated / last-tended signal */
+.meta-updated {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: calc(-1 * var(--space-sm));
+  margin-bottom: var(--space-lg);
+}
+
 /* Card */
 .card {
   border: 1px solid var(--border);

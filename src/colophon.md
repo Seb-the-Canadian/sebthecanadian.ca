@@ -9,6 +9,8 @@ permalink: /colophon/
 
 How this site is built.
 
+<p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | readableDate }}</time></p>
+
 ## What this site is
 
 **sebthecanadian.ca** is a personal site — a stable identity page with durable links to the places I publish and work. It houses projects, writing (syndicated from the garden), a resume, and the usual /now and /uses pages.

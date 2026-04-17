@@ -9,6 +9,8 @@ permalink: /now/
 
 A short, periodically updated snapshot of current focus.
 
+<p class="meta-updated">last tended: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | daysAgo }}</time></p>
+
 ## Current focus
 
 - Building and stabilizing a personal "front door" site at **sebthecanadian.ca**.
