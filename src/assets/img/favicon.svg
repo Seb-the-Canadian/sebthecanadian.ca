@@ -1,4 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#111"/>
-  <path d="M18 42c0-10 8-18 18-18h10v6H36c-6.6 0-12 5.4-12 12v2h22v6H18v-8z" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!--
+    Favicon — simplified memento mori skull, optimized for 16px rendering.
+    No leaf sprout (loses legibility below 24px). Forest-green dome on
+    warm parchment, tuned so each pixel carries weight at tab size.
+  -->
+  <rect width="16" height="16" fill="#f5f2eb"/>
+  <g fill="#4a8c6f">
+    <!-- Dome -->
+    <rect x="4" y="2" width="8" height="2"/>
+    <rect x="3" y="4" width="10" height="2"/>
+    <!-- Brow / temples -->
+    <rect x="3" y="6" width="10" height="1"/>
+    <!-- Eye sockets row: filled cheek(2) | void(2) | bridge(2) | void(2) | cheek(2) -->
+    <rect x="3" y="7" width="2" height="3"/>
+    <rect x="7" y="7" width="2" height="3"/>
+    <rect x="11" y="7" width="2" height="3"/>
+    <!-- Cheekbone taper -->
+    <rect x="4" y="10" width="8" height="1"/>
+    <!-- Jaw sides + nasal void (x=7 w=2) -->
+    <rect x="4" y="11" width="3" height="1"/>
+    <rect x="9" y="11" width="3" height="1"/>
+    <!-- Teeth row + gap -->
+    <rect x="4" y="12" width="3" height="2"/>
+    <rect x="9" y="12" width="3" height="2"/>
+  </g>
 </svg>
