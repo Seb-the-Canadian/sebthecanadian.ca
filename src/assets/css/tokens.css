@@ -37,7 +37,7 @@
   /* Colors — Light Mode */
   --bg: #f5f2eb;
   --fg: #1a1a1a;
-  --muted: #6b6459;
+  --muted: #595249;
   --accent: #4a8c6f;
   --accent-secondary: #e9d66b;
   --border: #d4cfc5;
@@ -91,7 +91,7 @@
   :root {
     --bg: #0f1a14;
     --fg: #e8e4dc;
-    --muted: #8a8477;
+    --muted: #a8a195;
     --accent: #6bb896;
     --accent-secondary: #d4c15a;
     --border: #2a3a30;
@@ -105,7 +105,7 @@
 html[data-theme="light"] {
   --bg: #f5f2eb;
   --fg: #1a1a1a;
-  --muted: #6b6459;
+  --muted: #595249;
   --accent: #4a8c6f;
   --accent-secondary: #e9d66b;
   --border: #d4cfc5;
@@ -117,7 +117,7 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   --bg: #0f1a14;
   --fg: #e8e4dc;
-  --muted: #8a8477;
+  --muted: #a8a195;
   --accent: #6bb896;
   --accent-secondary: #d4c15a;
   --border: #2a3a30;
