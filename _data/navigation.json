@@ -5,7 +5,7 @@
     { "label": "Writing", "url": "/writing/" },
     { "label": "Resume", "url": "/resume/" },
     { "label": "Now", "url": "/now/" },
-    { "label": "Colophon", "url": "/colophon/" }
+    { "label": "About", "url": "/about/" }
   ],
   "secondary": [
     { "label": "Uses", "url": "/uses/" },

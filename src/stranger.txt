@@ -1,0 +1,17 @@
+hello, stranger.
+
+you found this by typing on a hunch, or by following a breadcrumb
+in some other file. either way — welcome.
+
+i'm seb. i build this site slowly, by hand, in toronto. the rest of
+it lives at /. the real writing lives in the garden at
+cognitivearchitecture.ca.
+
+this text file isn't linked from anywhere. it's here because a site
+should have a place you can only reach by looking. a shelf at the
+back of a shop. a note left for whoever gets there.
+
+if you read this far, write back. i'd like to know who you are.
+
+  — seb
+    hello@cognitivearchitecture.ca

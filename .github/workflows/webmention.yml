@@ -20,6 +20,12 @@ jobs:
           sources=(
             "$SITE_URL/"
             "$SITE_URL/writing/"
+            "$SITE_URL/projects/"
+            "$SITE_URL/resume/"
+            "$SITE_URL/now/"
+            "$SITE_URL/about/"
+            "$SITE_URL/uses/"
+            "$SITE_URL/links/"
           )
 
           for source in "${sources[@]}"; do
