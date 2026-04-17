@@ -5,18 +5,25 @@ description: "Resume for Seb Lathangue — civic technology, knowledge architect
 permalink: /resume/
 ---
 <article class="h-resume h-card">
-  <h1 class="p-name">{{ resume.name }}</h1>
-  <p class="tagline">{{ resume.tagline }}</p>
-  <p class="resume-contact">
-    <a class="u-email" href="mailto:{{ resume.email }}">{{ resume.email }}</a>
-    &middot; <span class="p-locality">Toronto</span>, <span class="p-region">Ontario</span>, <span class="p-country-name">Canada</span>
-    &middot; <a class="u-url" href="{{ resume.website }}">{{ resume.website }}</a>
-  </p>
-  <p class="resume-profiles">
-    {%- for profile in resume.profiles %}
-    <a href="{{ profile.url }}" rel="me">{{ profile.platform }}</a>{% if not loop.last %} &middot; {% endif %}
-    {%- endfor %}
-  </p>
+  <header class="resume-header">
+    <figure class="resume-portrait">
+      <img class="u-photo" src="/assets/img/seb-stamp-pixel.png" alt="Pixel-art portrait of Seb Lathangue" />
+    </figure>
+    <div class="resume-identity">
+      <h1 class="p-name">{{ resume.name }}</h1>
+      <p class="tagline">{{ resume.tagline }}</p>
+      <p class="resume-contact">
+        <a class="u-email" href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+        &middot; <span class="p-locality">Toronto</span>, <span class="p-region">Ontario</span>, <span class="p-country-name">Canada</span>
+        &middot; <a class="u-url" href="{{ resume.website }}">{{ resume.website }}</a>
+      </p>
+      <p class="resume-profiles">
+        {%- for profile in resume.profiles %}
+        <a href="{{ profile.url }}" rel="me">{{ profile.platform }}</a>{% if not loop.last %} &middot; {% endif %}
+        {%- endfor %}
+      </p>
+    </div>
+  </header>
 
   <button class="theme-toggle no-print" onclick="window.print()">Download PDF</button>
 

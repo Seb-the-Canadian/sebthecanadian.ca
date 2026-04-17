@@ -5,6 +5,10 @@ description: "How this site is built and maintained."
 permalink: /colophon/
 ---
 
+<figure class="page-banner">
+  <img src="/assets/img/pixel/banner-night.png" alt="Pixel-art banner: silhouette of a forest at night, stars scattered above the tree line." />
+</figure>
+
 # Colophon
 
 How this site is built.
