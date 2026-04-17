@@ -210,6 +210,17 @@ footer nav a:visited {
   image-rendering: crisp-edges;
 }
 
+/* One-shot drift on the 404 illustration — the leaf lands, once. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes leaf-drift {
+    0%   { transform: translateY(-14px); opacity: 0; }
+    100% { transform: translateY(0);     opacity: 1; }
+  }
+  .page-illustration.is-404 img {
+    animation: leaf-drift 1.4s ease-out 0.1s 1 both;
+  }
+}
+
 /* Hero */
 .hero {
   margin-bottom: var(--space-2xl);
