@@ -61,6 +61,13 @@ export default function (eleventyConfig) {
     return new Date(dateObj).toISOString().split("T")[0];
   });
 
+  // Split a prose block on blank lines, returning an array of paragraphs.
+  // Used in resume.njk and anywhere else YAML multiline prose needs <p> wrapping.
+  eleventyConfig.addFilter("paragraphs", (str) => {
+    if (!str) return [];
+    return String(str).trim().split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+  });
+
   eleventyConfig.addFilter("daysAgo", (dateStr) => {
     if (!dateStr) return null;
     const then = new Date(dateStr);

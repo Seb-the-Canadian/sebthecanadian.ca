@@ -331,6 +331,28 @@ footer nav a:visited {
   margin-top: var(--space-sm);
 }
 
+.resume-about,
+.resume-section .p-note {
+  max-width: 62ch;
+}
+
+.resume-about p,
+.resume-entry .p-summary p {
+  margin-bottom: var(--space-md);
+  line-height: var(--leading-normal);
+}
+
+.resume-entry .p-summary p:last-child,
+.resume-about p:last-child {
+  margin-bottom: 0;
+}
+
+.resume-contact,
+.resume-profiles {
+  margin-bottom: var(--space-sm);
+  color: var(--muted);
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
   background: none;
