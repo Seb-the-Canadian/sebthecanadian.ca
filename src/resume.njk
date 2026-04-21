@@ -27,6 +27,17 @@ permalink: /resume/
 
   <button class="theme-toggle no-print" onclick="window.print()">Download PDF</button>
 
+  {%- if resume.summary %}
+  <section class="resume-section">
+    <h2>Summary</h2>
+    <div class="resume-about p-summary">
+      {%- for para in resume.summary | paragraphs %}
+      <p>{{ para | trim }}</p>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
   <section class="resume-section">
     <h2>Experience</h2>
     {%- for role in resume.experience %}
@@ -48,6 +59,28 @@ permalink: /resume/
     {%- endfor %}
   </section>
 
+  {%- if resume.skills %}
+  <section class="resume-section">
+    <h2>Skills</h2>
+    <div class="resume-about">
+      {%- for group in resume.skills %}
+      <p><strong>{{ group.category }}:</strong> <span class="p-skill">{{ group.items | join(" · ") }}</span></p>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if resume.credentials %}
+  <section class="resume-section">
+    <h2>Credentials</h2>
+    <div class="resume-about p-note">
+      {%- for para in resume.credentials | paragraphs %}
+      <p>{{ para | trim }}</p>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
   <section class="resume-section">
     <h2>Education</h2>
     {%- for edu in resume.education %}
@@ -59,15 +92,4 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
-
-  {%- if resume.credentials %}
-  <section class="resume-section">
-    <h2>Credentials</h2>
-    <div class="p-note">
-      {%- for para in resume.credentials | paragraphs %}
-      <p>{{ para | trim }}</p>
-      {%- endfor %}
-    </div>
-  </section>
-  {%- endif %}
 </article>
