@@ -42,6 +42,23 @@ export default function (eleventyConfig) {
     });
   });
 
+  // tagList — union of tags across the writing collection
+  eleventyConfig.addCollection("tagList", function (collectionApi) {
+    const tags = new Set();
+    collectionApi.getFilteredByGlob("src/writing/*.md").forEach((item) => {
+      (item.data.tags || []).forEach((tag) => tags.add(tag));
+    });
+    return [...tags].sort();
+  });
+
+  // Slug filter (lowercase ASCII slugs for tag permalinks)
+  eleventyConfig.addFilter("slug", (input) => {
+    return String(input)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  });
+
   // Date filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("en-CA", {

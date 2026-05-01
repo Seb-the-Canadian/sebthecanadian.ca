@@ -1,0 +1,39 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+layout: base.njk
+eleventyComputed:
+  title: "Posts tagged #{{ tag }}"
+  description: "Native posts on sebthecanadian.ca tagged #{{ tag }}."
+permalink: /writing/tags/{{ tag | slug }}/
+---
+<h1>Posts tagged <code>#{{ tag }}</code></h1>
+
+<p><a href="/writing/">&larr; All writing</a></p>
+
+<section class="h-feed">
+  {%- set tagPosts = collections.writing | reverse %}
+  {%- set anyMatch = false %}
+  {%- for post in tagPosts %}
+    {%- if tag in (post.data.tags or []) %}
+      {%- set anyMatch = true %}
+  <article class="post-card h-entry">
+    <h2 class="p-name">
+      <a class="u-url" href="{{ post.url }}">{{ post.data.title }}</a>
+    </h2>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+    </p>
+    {%- if post.data.excerpt %}
+    <p class="post-excerpt p-summary">{{ post.data.excerpt }}</p>
+    {%- endif %}
+  </article>
+    {%- endif %}
+  {%- endfor %}
+
+  {%- if not anyMatch %}
+  <p>No posts under this tag yet.</p>
+  {%- endif %}
+</section>

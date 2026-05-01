@@ -19,6 +19,15 @@ permalink: /writing/
   {%- endif %}
 </section>
 
+{%- if collections.tagList.length > 0 %}
+<p class="tag-index">
+  Browse by tag:
+  {%- for tag in collections.tagList %}
+  <a class="p-category" rel="tag" href="/writing/tags/{{ tag | slug }}/">#{{ tag }}</a>{% if not loop.last %} {% endif %}
+  {%- endfor %}
+</p>
+{%- endif %}
+
 {%- set syndicatedUrls = [] %}
 {%- for post in collections.writing %}
   {%- if post.data.syndicated and post.data.gardenUrl %}

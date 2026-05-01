@@ -551,3 +551,20 @@ kbd {
 .h-entry .post-footer .p-author .p-name {
   color: var(--fg);
 }
+
+/* ── Footer kbd hint ─────────────────────────────────────────────────────── */
+.kbd-hint {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+.kbd-hint a {
+  color: var(--muted);
+  text-decoration-color: var(--border);
+}
+
+.kbd-hint a:hover {
+  color: var(--accent);
+}
