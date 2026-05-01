@@ -1,3 +1,5 @@
+> **ARCHIVED — describes the pre-Eleventy build (pre-2026-03-10). Kept for provenance; do not treat as current guidance.**
+
 # Improvement Plan
 
 **Date:** 2026-02-08

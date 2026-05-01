@@ -73,9 +73,10 @@ sebthecanadian.ca/
 │   ├── build-deploy.yml       # Eleventy build → GitHub Pages
 │   └── webmention.yml         # Telegraph webmention sender
 ├── DESIGN_BRIEF.md            # Approved design spec
-├── HANDOFF.md                 # Implementation brief (completed)
 ├── BACKLOG.md                 # Feature roadmap
-└── CHANGELOG.md               # Version history
+├── CHANGELOG.md               # Version history
+└── docs/
+    └── archive/               # Archived pre-Eleventy planning docs (provenance only)
 ```
 
 ## Development

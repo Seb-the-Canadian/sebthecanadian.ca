@@ -1,3 +1,5 @@
+> **ARCHIVED — describes the pre-Eleventy build (pre-2026-03-10). Kept for provenance; do not treat as current guidance.**
+
 # UX/UI Evolution Implementation Plan
 
 **Project:** Transform sebthecanadian.ca into a low-fi, Data Druid-inspired site with lavender/sage palette
