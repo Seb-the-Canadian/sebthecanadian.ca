@@ -1,6 +1,8 @@
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import yaml from "js-yaml";
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
 export default function (eleventyConfig) {
   // YAML data file support
@@ -84,6 +86,21 @@ export default function (eleventyConfig) {
     if (days === 0) return "today";
     if (days === 1) return "yesterday";
     return `${days} days ago`;
+  });
+
+  // Last-modified date for a given input file, sourced from git
+  eleventyConfig.addFilter("gitLastModified", (inputPath) => {
+    if (!inputPath) return null;
+    try {
+      const { execSync } = require("node:child_process");
+      const out = execSync(`git log -1 --format=%cI -- "${inputPath}"`, {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }).trim();
+      return out || null;
+    } catch {
+      return null;
+    }
   });
 
   return {

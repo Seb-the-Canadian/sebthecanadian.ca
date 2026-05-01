@@ -6,6 +6,12 @@
       {%- endfor %}
     </ul>
   </nav>
+  {%- set lastModified = page.inputPath | gitLastModified %}
+  {%- if lastModified %}
+  <p class="footer-meta">
+    <time class="dt-updated" datetime="{{ lastModified }}">Last updated {{ lastModified | readableDate }}</time>
+  </p>
+  {%- endif %}
   <p class="kbd-hint">Press <kbd>?</kbd> for shortcuts &middot; <a href="/keyboard/">Keyboard reference</a></p>
   <p>&copy; {{ site.author }}</p>
 </footer>
