@@ -18,8 +18,16 @@ permalink: /resume/
     {%- endfor %}
   </p>
 
+  {%- if resume.currently %}
+  <section class="resume-section">
+    <h2>Currently</h2>
+    <p class="p-summary">{{ resume.currently }}</p>
+  </section>
+  {%- endif %}
+
   <button class="theme-toggle no-print" onclick="window.print()">Download PDF</button>
 
+  {%- if resume.experience and resume.experience.length > 0 %}
   <section class="resume-section">
     <h2>Experience</h2>
     {%- for role in resume.experience %}
@@ -48,7 +56,9 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 
+  {%- if resume.education and resume.education.length > 0 %}
   <section class="resume-section">
     <h2>Education</h2>
     {%- for edu in resume.education %}
@@ -66,7 +76,9 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 
+  {%- if resume.skills and resume.skills.length > 0 %}
   <section class="resume-section">
     <h2>Skills</h2>
     {%- for group in resume.skills %}
@@ -76,7 +88,9 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 
+  {%- if resume.projects and resume.projects.length > 0 %}
   <section class="resume-section">
     <h2>Projects</h2>
     {%- for proj in resume.projects %}
@@ -87,4 +101,5 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 </article>

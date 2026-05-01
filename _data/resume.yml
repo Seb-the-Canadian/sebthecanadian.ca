@@ -1,12 +1,3 @@
-# Resume Data Scaffold — sebthecanadian.ca
-#
-# This file defines the YAML shape for _data/resume.yml.
-# Seb provides actual content later; this scaffold defines the structure
-# so the Eleventy template can be built and tested with placeholder data.
-#
-# The template renders semantic HTML with h-resume microformat,
-# dt-start/dt-end on roles, and a print stylesheet for clean PDF output.
-
 name: "Sebastian Lathangue"
 tagline: "Civic Technology · Knowledge Architecture"
 email: "hello@cognitivearchitecture.ca"
@@ -14,74 +5,11 @@ location: "Ontario, Canada"
 website: "https://sebthecanadian.ca"
 profiles:
   - platform: "GitHub"
-    url: "https://github.com/seb-the-canadian"
+    url: "https://github.com/Seb-the-Canadian"
   - platform: "Bluesky"
-    url: "https://bsky.app/profile/sebthecanadian.bsky.social"
+    url: "https://bsky.app/profile/sebthecanadian.ca"
   - platform: "ORCID"
-    url: ""  # Add ORCID URL
+    url: "https://orcid.org/0009-0003-1402-6973"
   - platform: "Garden"
     url: "https://cognitivearchitecture.ca"
-
-experience:
-  - title: "Job Title"
-    organization: "Organization Name"
-    url: ""  # Optional org URL
-    start: "2024-01"  # YYYY-MM format for dt-start
-    end: ""  # Empty string = current role
-    description: "Brief description of the role and key responsibilities."
-    highlights:
-      - "Key achievement or responsibility"
-      - "Another highlight"
-
-  - title: "Previous Role"
-    organization: "Previous Org"
-    url: ""
-    start: "2022-06"
-    end: "2024-01"
-    description: "Role description."
-    highlights:
-      - "Highlight"
-
-education:
-  - institution: "University Name"
-    credential: "Degree Name"
-    field: "Field of Study"
-    start: "2018"
-    end: "2022"
-    notes: ""  # Optional: honors, thesis, etc.
-
-skills:
-  - category: "Domain Expertise"
-    items:
-      - "Civic technology"
-      - "Knowledge architecture"
-      - "Information governance"
-
-  - category: "Technical"
-    items:
-      - "Static site generators (Eleventy, Hugo)"
-      - "Obsidian / knowledge management systems"
-      - "HTML, CSS, JavaScript"
-      - "Git, GitHub Actions"
-
-  - category: "Tools & Platforms"
-    items:
-      - "Obsidian"
-      - "GitHub"
-      - "Cloudflare"
-
-projects:
-  - name: "CivCitDev"
-    url: "https://civcitdev.ca"
-    description: "Civic-focused open-source tooling program."
-    status: "active"  # active | beta | archived
-
-  - name: "Ontario Tenant Tools"
-    url: "https://ont-tenant-tools.civcitdev.ca"
-    description: "Tools for Ontario tenants navigating housing regulations."
-    status: "active"
-
-  - name: "Cognitive Architecture"
-    url: "https://cognitivearchitecture.ca"
-    description: "Digital garden for systems thinking and knowledge work."
-    status: "active"
+currently: "Building civic technology tools at CivCitDev (Ontario tenant tools, civic open-source infrastructure), publishing notes and long-form thinking in the digital garden at cognitivearchitecture.ca, and exploring IndieWeb conventions for durable identity and portable publishing. A full résumé will be published here in time."
