@@ -552,6 +552,25 @@ kbd {
   color: var(--fg);
 }
 
+/* ── Tag index on /writing/ ──────────────────────────────────────────────── */
+.tag-index {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.tag-index .p-category {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: var(--space-xs);
+}
+
+.tag-index .p-category:hover {
+  color: var(--accent);
+}
+
 /* ── Footer kbd hint ─────────────────────────────────────────────────────── */
 .kbd-hint {
   font-family: var(--font-code);
