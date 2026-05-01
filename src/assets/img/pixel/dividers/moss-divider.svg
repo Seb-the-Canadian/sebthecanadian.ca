@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 8" width="320" height="8" preserveAspectRatio="none">
   <!-- Pixel art moss/forest floor divider -->
   <style>
-    .g1 { fill: #4a8c6f; }
-    .g2 { fill: #6bb896; opacity: 0.6; }
-    .g3 { fill: #2a6b4a; }
-    .e { fill: #5e4b3e; opacity: 0.4; }
+    .g1, .g2, .g3, .e { fill: currentColor; }
   </style>
   <!-- Base line -->
   <rect class="g3" x="0" y="3" width="320" height="2"/>

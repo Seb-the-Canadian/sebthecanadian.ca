@@ -127,13 +127,14 @@ img {
   display: block;
 }
 
-/* Horizontal rules — pixel art moss divider */
+/* Horizontal rules — pixel art moss divider, theme-aware via mask */
 hr {
   border: none;
   height: 8px;
-  background: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center;
-  background-size: auto 8px;
   margin: var(--space-2xl) 0;
+  background-color: var(--accent);
+  -webkit-mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
+          mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
   opacity: 0.6;
 }
 
