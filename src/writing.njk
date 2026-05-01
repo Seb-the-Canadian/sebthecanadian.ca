@@ -19,11 +19,18 @@ permalink: /writing/
   {%- endif %}
 </section>
 
+{%- set syndicatedUrls = [] %}
+{%- for post in collections.writing %}
+  {%- if post.data.syndicated and post.data.gardenUrl %}
+    {%- set syndicatedUrls = (syndicatedUrls.push(post.data.gardenUrl), syndicatedUrls) %}
+  {%- endif %}
+{%- endfor %}
 {%- if gardenPosts.length > 0 %}
 <section>
   <h2>From the Garden</h2>
   <p>Recent notes and essays from <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>, pulled automatically at build time.</p>
   {%- for gp in gardenPosts %}
+    {%- if gp.url not in syndicatedUrls %}
   <article class="post-card h-entry">
     <h3 class="p-name"><a href="{{ gp.url }}" class="u-url u-syndication">{{ gp.title }}</a></h3>
     {%- if gp.date %}
@@ -36,6 +43,7 @@ permalink: /writing/
       <a href="{{ gp.url }}" class="u-syndication">Read in the garden &rarr;</a>
     </div>
   </article>
+    {%- endif %}
   {%- endfor %}
 </section>
 {%- endif %}
