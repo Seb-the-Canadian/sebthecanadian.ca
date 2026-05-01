@@ -500,3 +500,54 @@ kbd {
 .button--print {
   margin-top: var(--space-md);
 }
+
+/* ── Single post page ──────────────────────────────────────────────────── */
+.h-entry .post-header {
+  margin-bottom: var(--space-xl);
+}
+
+.h-entry .post-header .p-name {
+  margin-bottom: var(--space-sm);
+}
+
+.h-entry .post-meta {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.h-entry .post-meta .p-category {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.h-entry .post-meta .p-category:hover {
+  color: var(--accent);
+}
+
+.h-entry .e-content {
+  margin-bottom: var(--space-2xl);
+}
+
+.h-entry .post-syndication {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.h-entry .post-footer {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.h-entry .post-footer .p-author .p-name {
+  color: var(--fg);
+}
