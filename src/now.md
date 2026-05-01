@@ -2,12 +2,15 @@
 layout: base.njk
 title: Now
 description: "What I'm focused on right now."
+updated: 2026-05-01
 permalink: /now/
 ---
 
 # Now
 
 A short, periodically updated snapshot of current focus.
+
+<p class="post-meta"><time class="dt-updated" datetime="{{ updated }}">Updated {{ updated | readableDate }}</time> · {{ updated | daysAgo }}</p>
 
 ## Current focus
 
