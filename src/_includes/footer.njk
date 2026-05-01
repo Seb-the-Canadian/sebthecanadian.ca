@@ -1,4 +1,5 @@
 <footer>
+  <p class="sr-only">Keyboard shortcuts are available. Press the question mark key for a list.</p>
   <nav aria-label="Secondary">
     <ul>
       {%- for item in navigation.secondary %}
@@ -14,4 +15,5 @@
   {%- endif %}
   <p class="kbd-hint">Press <kbd>?</kbd> for shortcuts &middot; <a href="/keyboard/">Keyboard reference</a></p>
   <p>&copy; {{ site.author }}</p>
+  <p class="build-stamp"><time datetime="{{ build.timestamp }}">last built: {{ build.timestamp | readableDate }}</time></p>
 </footer>

@@ -1,35 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 8" width="320" height="8" preserveAspectRatio="none">
-  <!-- Pixel art moss/forest floor divider -->
+  <!-- Pixel art moss/forest floor divider — silhouette for use with CSS mask-image + background-color -->
   <style>
-    .g1, .g2, .g3, .e { fill: currentColor; }
+    .base { fill: #000; opacity: 0.55; }
+    .tall { fill: #000; opacity: 0.90; }
+    .med  { fill: #000; opacity: 0.70; }
+    .low  { fill: #000; opacity: 0.40; }
   </style>
   <!-- Base line -->
-  <rect class="g3" x="0" y="3" width="320" height="2"/>
+  <rect class="base" x="0" y="3" width="320" height="2"/>
   <!-- Moss tufts -->
-  <rect class="g1" x="12" y="1" width="2" height="4"/>
-  <rect class="g2" x="14" y="2" width="2" height="3"/>
-  <rect class="g1" x="28" y="2" width="2" height="3"/>
-  <rect class="g1" x="48" y="1" width="2" height="4"/>
-  <rect class="g2" x="50" y="0" width="2" height="4"/>
-  <rect class="g1" x="52" y="2" width="2" height="3"/>
-  <rect class="e" x="72" y="2" width="2" height="3"/>
-  <rect class="g1" x="88" y="1" width="2" height="4"/>
-  <rect class="g2" x="90" y="2" width="2" height="3"/>
-  <rect class="g1" x="108" y="2" width="2" height="3"/>
-  <rect class="g1" x="128" y="0" width="2" height="4"/>
-  <rect class="g2" x="130" y="1" width="2" height="4"/>
-  <rect class="e" x="148" y="2" width="2" height="3"/>
-  <rect class="g1" x="168" y="1" width="2" height="4"/>
-  <rect class="g2" x="170" y="2" width="2" height="3"/>
-  <rect class="g1" x="188" y="2" width="2" height="3"/>
-  <rect class="g1" x="208" y="1" width="2" height="4"/>
-  <rect class="g2" x="210" y="0" width="2" height="4"/>
-  <rect class="g1" x="212" y="2" width="2" height="3"/>
-  <rect class="e" x="228" y="2" width="2" height="3"/>
-  <rect class="g1" x="248" y="1" width="2" height="4"/>
-  <rect class="g2" x="250" y="2" width="2" height="3"/>
-  <rect class="g1" x="268" y="2" width="2" height="3"/>
-  <rect class="g1" x="288" y="0" width="2" height="4"/>
-  <rect class="g2" x="290" y="1" width="2" height="4"/>
-  <rect class="e" x="308" y="2" width="2" height="3"/>
+  <rect class="tall" x="12" y="1" width="2" height="4"/>
+  <rect class="med"  x="14" y="2" width="2" height="3"/>
+  <rect class="tall" x="28" y="2" width="2" height="3"/>
+  <rect class="tall" x="48" y="1" width="2" height="4"/>
+  <rect class="med"  x="50" y="0" width="2" height="4"/>
+  <rect class="tall" x="52" y="2" width="2" height="3"/>
+  <rect class="low"  x="72" y="2" width="2" height="3"/>
+  <rect class="tall" x="88" y="1" width="2" height="4"/>
+  <rect class="med"  x="90" y="2" width="2" height="3"/>
+  <rect class="tall" x="108" y="2" width="2" height="3"/>
+  <rect class="tall" x="128" y="0" width="2" height="4"/>
+  <rect class="med"  x="130" y="1" width="2" height="4"/>
+  <rect class="low"  x="148" y="2" width="2" height="3"/>
+  <rect class="tall" x="168" y="1" width="2" height="4"/>
+  <rect class="med"  x="170" y="2" width="2" height="3"/>
+  <rect class="tall" x="188" y="2" width="2" height="3"/>
+  <rect class="tall" x="208" y="1" width="2" height="4"/>
+  <rect class="med"  x="210" y="0" width="2" height="4"/>
+  <rect class="tall" x="212" y="2" width="2" height="3"/>
+  <rect class="low"  x="228" y="2" width="2" height="3"/>
+  <rect class="tall" x="248" y="1" width="2" height="4"/>
+  <rect class="med"  x="250" y="2" width="2" height="3"/>
+  <rect class="tall" x="268" y="2" width="2" height="3"/>
+  <rect class="tall" x="288" y="0" width="2" height="4"/>
+  <rect class="med"  x="290" y="1" width="2" height="4"/>
+  <rect class="low"  x="308" y="2" width="2" height="3"/>
 </svg>

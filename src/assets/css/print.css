@@ -47,6 +47,11 @@
     page-break-inside: avoid;
   }
 
+  .resume-about,
+  .resume-section .p-note {
+    page-break-inside: avoid;
+  }
+
   h1, h2, h3 {
     page-break-after: avoid;
   }
@@ -65,5 +70,19 @@
 
   @page {
     margin: 1.5cm 2cm;
+  }
+
+  /* Print-only flourish on the resume — a small hand mark on hard copies. */
+  .h-resume::after {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin: 1.5rem 0 0 auto;
+    background-image: url("/assets/img/favicon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.7;
   }
 }

@@ -50,26 +50,6 @@ nav[aria-label="Primary"] a[aria-current="page"] {
   margin-bottom: var(--space-lg);
 }
 
-.site-header .site-mark {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: var(--text-lg);
-  color: var(--fg);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.site-monogram {
-  color: var(--accent);
-  display: block;
-}
-
-.site-header .site-mark:visited {
-  color: var(--fg);
-}
-
 @media (max-width: 600px) {
   .site-header {
     flex-wrap: wrap;
@@ -106,6 +86,23 @@ footer nav a:hover {
 
 footer nav a:visited {
   color: var(--muted);
+}
+
+.build-stamp {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-top: var(--space-xs);
+  opacity: 0.75;
+}
+
+/* Page-level updated / last-tended signal */
+.meta-updated {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: calc(-1 * var(--space-sm));
+  margin-bottom: var(--space-lg);
 }
 
 /* Card */
@@ -185,17 +182,52 @@ footer nav a:visited {
   margin-bottom: 0;
 }
 
+/* Page banner — full-width pixel-art header for interior pages */
+.page-banner {
+  margin: 0 0 var(--space-xl) 0;
+}
+
+.page-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border-radius: var(--radius-sm);
+}
+
+/* Page illustration — centered standalone pixel-art figure */
+.page-illustration {
+  margin: 0 auto var(--space-lg) auto;
+  max-width: 320px;
+}
+
+.page-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* One-shot drift on the 404 illustration — the leaf lands, once. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes leaf-drift {
+    0%   { transform: translateY(-14px); opacity: 0; }
+    100% { transform: translateY(0);     opacity: 1; }
+  }
+  .page-illustration.is-404 img {
+    animation: leaf-drift 1.4s ease-out 0.1s 1 both;
+  }
+}
+
 /* Hero */
 .hero {
   margin-bottom: var(--space-2xl);
 }
 
-.hero .u-photo {
-  width: 160px;
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  margin-bottom: var(--space-lg);
+.hero h1 {
+  font-size: var(--text-2xl);
 }
 
 .hero .tagline {
@@ -314,6 +346,81 @@ footer nav a:visited {
   margin-top: var(--space-sm);
 }
 
+.resume-about,
+.resume-section .p-note {
+  max-width: 62ch;
+}
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.resume-portrait {
+  flex-shrink: 0;
+  width: 140px;
+  margin: 0;
+}
+
+.resume-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border-radius: var(--radius-sm);
+}
+
+.resume-identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.resume-identity h1 {
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+}
+
+.resume-identity .tagline {
+  margin-bottom: var(--space-sm);
+}
+
+.resume-identity .resume-contact,
+.resume-identity .resume-profiles {
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 600px) {
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .resume-portrait {
+    width: 120px;
+  }
+}
+
+.resume-about p,
+.resume-entry .p-summary p {
+  margin-bottom: var(--space-md);
+  line-height: var(--leading-normal);
+}
+
+.resume-entry .p-summary p:last-child,
+.resume-about p:last-child {
+  margin-bottom: 0;
+}
+
+.resume-contact,
+.resume-profiles {
+  margin-bottom: var(--space-sm);
+  color: var(--muted);
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
   background: none;
@@ -398,6 +505,13 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
   background: var(--accent);
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.garden-activity time,
+.meta-updated time {
+  text-decoration: underline dotted var(--border);
+  text-underline-offset: 0.25em;
+  cursor: help;
 }
 
 /* ── Keyboard shortcuts overlay ─────────────────────────────────────────── */

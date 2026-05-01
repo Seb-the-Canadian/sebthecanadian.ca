@@ -1,15 +1,126 @@
+# Resume data — sebthecanadian.ca
+# Prose shape, not a bulleted corporate resume.
+# Multi-paragraph fields (summary, credentials, description) split on blank lines
+# in the template and render as <p> blocks.
+
 name: "Sebastian Lathangue"
-tagline: "Civic Technology · Knowledge Architecture"
-email: "hello@cognitivearchitecture.ca"
-location: "Ontario, Canada"
+tagline: "Data Governance · Information Architecture"
+email: "seb@cognitivearchitecture.ca"
+location: "Toronto, Ontario, Canada"
 website: "https://sebthecanadian.ca"
+
 profiles:
+  - platform: "LinkedIn"
+    url: "https://www.linkedin.com/in/sebastianl-8b6688225"
   - platform: "GitHub"
     url: "https://github.com/Seb-the-Canadian"
   - platform: "Bluesky"
-    url: "https://bsky.app/profile/sebthecanadian.ca"
+    url: "https://bsky.app/profile/sebthecanadian.bsky.social"
   - platform: "ORCID"
     url: "https://orcid.org/0009-0003-1402-6973"
   - platform: "Garden"
     url: "https://cognitivearchitecture.ca"
-currently: "Building civic technology tools at CivCitDev (Ontario tenant tools, civic open-source infrastructure), publishing notes and long-form thinking in the digital garden at cognitivearchitecture.ca, and exploring IndieWeb conventions for durable identity and portable publishing. A full résumé will be published here in time."
+
+summary: |
+  I work on the structures that make information findable, legible, and trustworthy inside organizations — taxonomies, classification schemes, business glossaries, metadata standards, governance frameworks. I came to this through learning design, digital adoption, and enterprise technical support, each of which posed the same underlying problem in different clothing: complex systems on one side, people trying to use them on the other, and not enough translation between the two.
+
+  I treat governance less as rulemaking and more as a design problem. If the governed path is easier than the ungoverned one, people will take it without being told to. Most of my work starts from there.
+
+experience:
+  - title: "Senior Data Governance & Information Architect"
+    organization: "Meridian Credit Union"
+    start: "2026"
+    end: ""
+    description: |
+      I own the enterprise taxonomies, classification schemes, business glossary, and metadata standards that underpin Meridian's governance posture. Most of the real work happens alongside data owners and stewards, converging on shared definitions — the slow, unglamorous labour of turning tacit agreement into explicit, reusable structure.
+
+      I also contribute to data architecture decisions and to the broader knowledge frameworks that connect data assets back to the policies, contexts, and decisions they're meant to serve.
+
+  - title: "Data Culture & Communications Analyst"
+    organization: "Meridian Credit Union"
+    start: "2025"
+    end: "2026"
+    description: |
+      I designed and maintained an enterprise-wide knowledge environment — a self-serve hub for data literacy, governance content, and program communication reaching 2,000+ employees — and built the information architecture underneath it: navigation, classification, a taxonomy for learning content, and an editorial cadence that treated literacy less as a campaign and more as infrastructure.
+
+      On top of that sat a set of self-serve learning journeys and capability roadmaps aimed at the adoption of enterprise data and productivity platforms, with assessment frameworks that tried to measure technical fluency alongside cultural readiness. A lot of the job was partnering with HR, L&D, and business leaders to align culture-level programming with governance objectives, and arguing — consistently — that governance communication is itself a governance intervention.
+
+  - title: "Senior Learning Partner"
+    organization: "Meridian Credit Union"
+    start: "2022"
+    end: "2025"
+    description: |
+      I co-authored a human-centred-design-led advisory transformation rolled out across Retail and Wealth operations (~1,000 employees), aimed at reshaping how frontline staff hold conversations with members. Alongside it, I designed and launched the organization's first low-code governance program — a scaffold for citizen-built applications that grew participation from 50 to 150 while establishing decision rights, review patterns, and accountability boundaries for non-technical builders.
+
+      I also delivered enterprise AI tooling training to ~250 employees, translating the mechanics of generative assistants into a practice people could reason about rather than simply invoke, and designed and delivered a sustainability transformation program for the Wealth line of business (~150 staff) that connected ESG principles to day-to-day advisory practice.
+
+  - title: "Founding Contributor"
+    organization: "Cognitive Architecture"
+    url: "https://cognitivearchitecture.ca"
+    start: "2025"
+    end: ""
+    description: |
+      An independent writing and research initiative — a grassroots think-tank and digital-garden publication on human-machine partnership, digital sovereignty, and governance-by-design. I publish essays and long-form pieces on reclaiming agency in relationships with data and digital tools, written for a civic readership rather than a corporate one, drawing on Ivan Illich's design ethics and a broader tradition of convivial tools.
+
+      I also develop and release open frameworks for responsible AI use at the individual and small-organization scale — decision rights, definitions, prompt patterns, guardrails — with a bias toward transparency, portability, and human sovereignty over efficiency-first automation. The publication itself is architected as a working artefact: its taxonomy, cross-linking, editorial cadence, and Garden → Greenhouse → Grove publication model are part of the argument the site is making.
+
+  - title: "Technical Associate, Enterprise"
+    organization: "Phreesia"
+    start: "2021"
+    end: "2022"
+    description: |
+      I supported U.S. multi-specialty medical groups averaging 300+ clinicians per account, sitting as the primary translation layer between engineering and client operations. The volume was high — 100+ tickets closed weekly, a recurring spot on the internal high-performer leaderboard — but the harder discipline was a refusal to close tickets that had only been understood superficially.
+
+      Executive-level client stakeholders got the same treatment as engineers: technical explanations that respected their time without collapsing into oversimplification. I also built working SQL and database fluency along the way, in service of the same goal — diagnose at the level of the system, not the symptom.
+
+  - title: "Academic & Library Roles"
+    organization: "University of Guelph"
+    start: "2017"
+    end: "2021"
+    description: |
+      A layered progression through graduate and undergraduate research, teaching, and library service: graduate TA and research assistantships (2020–2021), senior access services work in the library (2019–2020), and earlier research and frontline library roles stretching back to 2017.
+
+      The research thread was NVivo-based qualitative coding and codebook design across studies of homelessness media framing, post-secondary policy, and comparative library services — work that shaped how I now think about classification as a site of interpretive labour rather than administrative housekeeping. The teaching thread was undergraduate sociology tutorials and a guest lecture on essay writing to an audience of 300+ students. The library thread ran underneath both, supervising frontline service staff through the higher-friction shifts of the academic year.
+
+skills:
+  - category: "Domain"
+    items:
+      - "Data Governance"
+      - "Information Architecture"
+      - "Taxonomy Design"
+      - "Metadata Standards"
+      - "Data Stewardship"
+      - "Change Management"
+      - "Digital Adoption"
+      - "Learning Design"
+      - "Human-Centred Design"
+
+  - category: "Tools"
+    items:
+      - "Microsoft Fabric"
+      - "Microsoft Copilot"
+      - "SharePoint"
+      - "Low-code Platforms"
+      - "NVivo"
+      - "SQL"
+
+  - category: "Methods"
+    items:
+      - "Qualitative Coding"
+      - "Literacy Assessment"
+      - "Capability Roadmapping"
+      - "Self-serve Learning Design"
+      - "Long-form Writing"
+      - "Governance-by-Design"
+
+credentials: |
+  My credentials cluster around data literacy and analytics (Data Literacy Professional, Data Analyst Associate), Microsoft Fabric (Introduction to Microsoft Fabric), AI Fundamentals, and Digital Transformation — most earned through DataCamp and the University of Waterloo.
+
+education:
+  - credential: "Master of Arts, Sociology"
+    institution: "University of Guelph"
+    notes: "2020–2023"
+
+  - credential: "Bachelor of Arts (Honours), Pre-Law Studies"
+    institution: "University of Guelph"
+    notes: "2017–2020"

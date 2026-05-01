@@ -4,24 +4,42 @@ title: Resume
 description: "Resume for Seb Lathangue — civic technology, knowledge architecture."
 permalink: /resume/
 ---
-<article class="h-resume">
-  <h1 class="p-name">{{ resume.name }}</h1>
-  <p class="tagline">{{ resume.tagline }}</p>
-  <p>
-    <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
-    &middot; {{ resume.location }}
-    &middot; <a href="{{ resume.website }}">{{ resume.website }}</a>
-  </p>
-  <p>
-    {%- for profile in resume.profiles %}
-    <a href="{{ profile.url }}" rel="me">{{ profile.platform }}</a>{% if not loop.last %} &middot; {% endif %}
-    {%- endfor %}
-  </p>
+<article class="h-resume h-card">
+  <header class="resume-header">
+    <figure class="resume-portrait">
+      <img class="u-photo" src="/assets/img/seb-stamp-pixel.png" alt="Pixel-art portrait of Seb Lathangue" />
+    </figure>
+    <div class="resume-identity">
+      <h1 class="p-name">{{ resume.name }}</h1>
+      <p class="tagline">{{ resume.tagline }}</p>
+      <p class="resume-contact">
+        <a class="u-email" href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+        &middot; <span class="p-locality">Toronto</span>, <span class="p-region">Ontario</span>, <span class="p-country-name">Canada</span>
+        &middot; <a class="u-url" href="{{ resume.website }}">{{ resume.website }}</a>
+      </p>
+      <p class="resume-profiles">
+        {%- for profile in resume.profiles %}
+        <a href="{{ profile.url }}" rel="me">{{ profile.platform }}</a>{% if not loop.last %} &middot; {% endif %}
+        {%- endfor %}
+      </p>
+    </div>
+  </header>
 
   {%- if resume.currently %}
   <section class="resume-section">
     <h2>Currently</h2>
     <p class="p-summary">{{ resume.currently }}</p>
+  </section>
+  {%- endif %}
+
+  {%- if resume.summary %}
+  <section class="resume-section">
+    <h2>Summary</h2>
+    <div class="resume-about p-summary">
+      {%- for para in resume.summary | paragraphs %}
+      <p>{{ para | trim }}</p>
+      {%- endfor %}
+    </div>
   </section>
   {%- endif %}
 
@@ -35,26 +53,40 @@ permalink: /resume/
       <h3 class="p-name">{{ role.title }}</h3>
       <p class="org p-location">
         {%- if role.url %}<a href="{{ role.url }}">{{ role.organization }}</a>{% else %}{{ role.organization }}{% endif %}
+        <span class="dates">
+          &middot;
+          <time class="dt-start" datetime="{{ role.start }}">{{ role.start }}</time>&ndash;{% if role.end %}<time class="dt-end" datetime="{{ role.end }}">{{ role.end }}</time>{% else %}<span>Present</span>{% endif %}
+        </span>
       </p>
-      <p class="dates">
-        <time class="dt-start" datetime="{{ role.start }}">{{ role.start }}</time>
-        &ndash;
-        {%- if role.end %}
-        <time class="dt-end" datetime="{{ role.end }}">{{ role.end }}</time>
-        {%- else %}
-        <span>Present</span>
-        {%- endif %}
-      </p>
-      <p class="p-summary">{{ role.description }}</p>
-      {%- if role.highlights %}
-      <ul class="highlights">
-        {%- for highlight in role.highlights %}
-        <li>{{ highlight }}</li>
+      <div class="p-summary">
+        {%- for para in role.description | paragraphs %}
+        <p>{{ para | trim }}</p>
         {%- endfor %}
-      </ul>
-      {%- endif %}
+      </div>
     </div>
     {%- endfor %}
+  </section>
+  {%- endif %}
+
+  {%- if resume.skills %}
+  <section class="resume-section">
+    <h2>Skills</h2>
+    <div class="resume-about">
+      {%- for group in resume.skills %}
+      <p><strong>{{ group.category }}:</strong> <span class="p-skill">{{ group.items | join(" · ") }}</span></p>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if resume.credentials %}
+  <section class="resume-section">
+    <h2>Credentials</h2>
+    <div class="resume-about p-note">
+      {%- for para in resume.credentials | paragraphs %}
+      <p>{{ para | trim }}</p>
+      {%- endfor %}
+    </div>
   </section>
   {%- endif %}
 
@@ -63,41 +95,10 @@ permalink: /resume/
     <h2>Education</h2>
     {%- for edu in resume.education %}
     <div class="resume-entry p-education h-event">
-      <h3 class="p-name">{{ edu.credential }} — {{ edu.field }}</h3>
-      <p class="org">{{ edu.institution }}</p>
-      <p class="dates">
-        <time class="dt-start" datetime="{{ edu.start }}">{{ edu.start }}</time>
-        &ndash;
-        <time class="dt-end" datetime="{{ edu.end }}">{{ edu.end }}</time>
+      <h3 class="p-name">{{ edu.credential }}</h3>
+      <p class="org">
+        {{ edu.institution }}{%- if edu.notes %} <span class="dates">&middot; {{ edu.notes }}</span>{%- endif %}
       </p>
-      {%- if edu.notes %}
-      <p>{{ edu.notes }}</p>
-      {%- endif %}
-    </div>
-    {%- endfor %}
-  </section>
-  {%- endif %}
-
-  {%- if resume.skills and resume.skills.length > 0 %}
-  <section class="resume-section">
-    <h2>Skills</h2>
-    {%- for group in resume.skills %}
-    <div class="resume-entry">
-      <h3>{{ group.category }}</h3>
-      <p class="p-skill">{{ group.items | join(", ") }}</p>
-    </div>
-    {%- endfor %}
-  </section>
-  {%- endif %}
-
-  {%- if resume.projects and resume.projects.length > 0 %}
-  <section class="resume-section">
-    <h2>Projects</h2>
-    {%- for proj in resume.projects %}
-    <div class="resume-entry">
-      <h3><a href="{{ proj.url }}">{{ proj.name }}</a></h3>
-      <span class="badge badge--{{ proj.status }}">{{ proj.status }}</span>
-      <p>{{ proj.description }}</p>
     </div>
     {%- endfor %}
   </section>

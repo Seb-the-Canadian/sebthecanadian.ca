@@ -1,0 +1,3 @@
+Contact: mailto:hello@cognitivearchitecture.ca
+Preferred-Languages: en
+Canonical: https://sebthecanadian.ca/.well-known/security.txt

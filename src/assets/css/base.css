@@ -132,7 +132,9 @@ img {
   display: block;
 }
 
-/* Horizontal rules — pixel art moss divider, theme-aware via mask */
+/* Horizontal rules — pixel art moss divider.
+   Uses mask-image so the fill color is driven by background-color,
+   which inherits from theme tokens (works in light + dark mode). */
 hr {
   border: none;
   height: 8px;
