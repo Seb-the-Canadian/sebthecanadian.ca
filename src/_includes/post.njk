@@ -22,6 +22,33 @@ layout: base.njk
     {{ content | safe }}
   </div>
 
+  {%- set canonicalUrl = site.url ~ page.url %}
+  {%- set thisMentions = webmentions[canonicalUrl] %}
+  {%- if thisMentions and thisMentions.length > 0 %}
+  <section class="webmentions">
+    <h2 class="webmentions-title">Webmentions</h2>
+    <ol class="webmentions-list">
+      {%- for m in thisMentions %}
+      <li class="webmention h-cite">
+        <a class="u-author h-card" href="{{ m.author.url }}">
+          {%- if m.author.photo %}
+          <img class="u-photo" src="{{ m.author.photo }}" alt="" width="24" height="24" />
+          {%- endif %}
+          <span class="p-name">{{ m.author.name or m.author.url }}</span>
+        </a>
+        <span class="webmention-type">{{ m.type | replace("-", " ") }}</span>
+        {%- if m.published %}
+        <time class="dt-published" datetime="{{ m.published }}">{{ m.published | readableDate }}</time>
+        {%- endif %}
+        {%- if m.url %}
+        &middot; <a class="u-url" href="{{ m.url }}" rel="external">source</a>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endif %}
+
   {%- if syndicated and gardenUrl %}
   <p class="post-syndication">
     <a class="u-syndication" href="{{ gardenUrl }}" rel="external">Read in the garden &rarr;</a>
@@ -40,6 +67,9 @@ layout: base.njk
     </p>
     <p class="post-permalink">
       <a class="u-url" href="{{ site.url }}{{ page.url }}">Permalink</a>
+    </p>
+    <p class="post-webmention-prompt">
+      <a href="https://webmention.io/sebthecanadian.ca/webmention" rel="webmention">Send a webmention &rarr;</a>
     </p>
   </footer>
 </article>

@@ -6,8 +6,9 @@
   "description": "Personal site for Seb Lathangue — sebthecanadian.ca",
   "scripts": {
     "garden-sync": "node scripts/garden-rss.js",
+    "webmentions-sync": "node scripts/webmentions.js",
     "dev": "npx @11ty/eleventy --serve",
-    "build": "node scripts/garden-rss.js && npx @11ty/eleventy"
+    "build": "node scripts/garden-rss.js && node scripts/webmentions.js && npx @11ty/eleventy"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

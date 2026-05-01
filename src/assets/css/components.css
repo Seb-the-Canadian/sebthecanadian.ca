@@ -595,3 +595,72 @@ kbd {
   color: var(--muted);
   margin-bottom: var(--space-sm);
 }
+
+/* ── Webmentions on post pages ───────────────────────────────────────────── */
+.webmentions {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.webmentions-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.webmentions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.webmention {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.webmention:last-child {
+  border-bottom: none;
+}
+
+.webmention .u-author {
+  color: var(--fg);
+  text-decoration: none;
+  margin-right: var(--space-sm);
+}
+
+.webmention .u-author:hover {
+  color: var(--accent);
+}
+
+.webmention .u-photo {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-right: var(--space-xs);
+}
+
+.webmention-type {
+  display: inline-block;
+  font-size: var(--text-xs);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.05em 0.4em;
+  margin-right: var(--space-sm);
+}
+
+.post-webmention-prompt {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
+}
