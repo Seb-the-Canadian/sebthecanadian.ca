@@ -15,6 +15,31 @@ _None currently tracked._
 
 ---
 
+## Done — Stewardship Pass (2026-05-01)
+
+Sixteen-item review-driven pass executed by a team of nine specialised
+sub-agents. Hygiene + Coherence + Depth tiers complete. See CHANGELOG.md
+(2026-05-01 — Stewardship Pass) for details.
+
+- [x] Remove pre-Eleventy artifacts from repo root
+- [x] Archive stale planning docs to docs/archive/
+- [x] Replace placeholder resume content (honest sparse approach)
+- [x] Theme moss divider via mask-image so it tracks light/dark
+- [x] Wrap scroll-behavior:smooth in prefers-reduced-motion guard
+- [x] Add <meta name="theme-color"> for light + dark
+- [x] OpenGraph + Twitter card meta + monogram OG image (1200×630)
+- [x] Generate /sitemap.xml + <link rel="sitemap"> discovery
+- [x] Introduce post.njk h-entry layout for native posts
+- [x] De-duplicate writing index by gardenUrl
+- [x] Datestamp /now/ with updated + daysAgo signal
+- [x] Refactor resume "Download PDF" button class
+- [x] Tag archives + tag index on /writing/
+- [x] Make keyboard shortcuts discoverable (/keyboard/ page)
+- [x] Per-page "last updated" footer line, sourced from git
+- [x] Render received webmentions on native posts (interactions only)
+
+---
+
 ## Done — Eleventy Redesign Sprint (2026-03-10)
 
 Full site redesign complete. Eleventy 3.x, Data Druid aesthetic, POSSE writing system, data-driven resume. See CHANGELOG.md (2026-03-10) for details.
