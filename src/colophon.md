@@ -39,6 +39,7 @@ The primary body of notes and writing lives in the garden: [cognitivearchitectur
 - Webmention discovery for IndieWeb interoperability.
 - Accessible: skip links, focus-visible styles, WCAG AA contrast.
 - Portable by default — easy to migrate to another host or SSG.
+- Keyboard navigation chords (see [Keyboard reference](/keyboard/)) for fast browsing.
 
 ## Contact
 
