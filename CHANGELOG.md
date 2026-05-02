@@ -11,7 +11,7 @@ the design is now fully monospace, the nav has four doors, the home reads as
 a terminal-style index-table front door, and the identity system is locked
 to the woodcut on the resume. Shipped as PRs #11, #12, #13, #14. Pitch
 reference: `pitch-v1.html` on `main` (`4bf9261`). Plan archived at
-`/root/.claude/plans/pitch-v1-migration.md`.
+[`docs/pitch-v1-migration-plan.md`](docs/pitch-v1-migration-plan.md).
 
 ### Changed (Day 01 — tokens + type)
 - **Token system renamed** — `--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`+`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`. `--accent-dim` deleted. Names now describe the thing, not the role.

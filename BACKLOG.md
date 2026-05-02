@@ -21,7 +21,7 @@ Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
 edges") across tokens, shell, home/writing, and identity. Shipped as four PRs
 (#11, #12, #13, #14). See CHANGELOG.md (2026-05-02 — Pitch v1 design sprint)
 for details. Pitch reference: `pitch-v1.html` on `main` (`4bf9261`). Plan:
-`/root/.claude/plans/pitch-v1-migration.md`.
+[`docs/pitch-v1-migration-plan.md`](docs/pitch-v1-migration-plan.md).
 
 - [x] Day 01 — Token rename + AA recalibration (`--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`/`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`); new `--ink-soft`, `--bg-alt`, `--wash`, `--col` tokens
 - [x] Day 01 — Body to monospace (15.5px / 1.62); retire `@view-transition` + smooth-scroll guard
