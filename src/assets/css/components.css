@@ -13,8 +13,8 @@ nav[aria-label="Primary"] ul {
 
 nav[aria-label="Primary"] a {
   text-decoration: none;
-  color: var(--fg);
-  font-family: var(--font-heading);
+  color: var(--ink);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   font-weight: 400;
   padding: 0.25rem 0.5rem;
@@ -23,18 +23,18 @@ nav[aria-label="Primary"] a {
 }
 
 nav[aria-label="Primary"] a:visited {
-  color: var(--fg);
+  color: var(--ink);
 }
 
 nav[aria-label="Primary"] a:hover {
   background: var(--surface);
-  color: var(--accent);
+  color: var(--moss);
   text-decoration: none;
 }
 
 nav[aria-label="Primary"] a[aria-current="page"] {
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--wash);
+  color: var(--moss);
   font-weight: 600;
 }
 
@@ -46,7 +46,7 @@ nav[aria-label="Primary"] a[aria-current="page"] {
   gap: var(--space-md);
   padding-top: var(--space-lg);
   padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
   margin-bottom: var(--space-lg);
 }
 
@@ -58,7 +58,7 @@ nav[aria-label="Primary"] a[aria-current="page"] {
 
 /* Footer */
 footer {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
   padding-top: var(--space-lg);
   margin-top: var(--space-2xl);
   color: var(--muted);
@@ -81,7 +81,7 @@ footer nav a {
 }
 
 footer nav a:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 footer nav a:visited {
@@ -107,7 +107,7 @@ footer nav a:visited {
 
 /* Card */
 .card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
   background: var(--surface);
@@ -116,7 +116,7 @@ footer nav a:visited {
 }
 
 .card:hover {
-  border-color: var(--accent);
+  border-color: var(--moss);
 }
 
 .card h3 {
@@ -125,12 +125,12 @@ footer nav a:visited {
 }
 
 .card h3 a {
-  color: var(--fg);
+  color: var(--ink);
   text-decoration: none;
 }
 
 .card h3 a:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 .card p {
@@ -152,24 +152,24 @@ footer nav a:visited {
   letter-spacing: 0.05em;
   padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
 }
 
 .badge--active {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  color: var(--moss);
+  border-color: var(--moss);
+  background: color-mix(in oklab, var(--moss) 10%, transparent);
 }
 
 .badge--beta {
-  color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
-  background: color-mix(in oklab, var(--accent-secondary) 10%, transparent);
+  color: var(--amber);
+  border-color: var(--amber);
+  background: color-mix(in oklab, var(--amber) 10%, transparent);
 }
 
 .badge--archived {
   color: var(--muted);
-  border-color: var(--border);
+  border-color: var(--rule);
   background: var(--surface);
 }
 
@@ -231,7 +231,7 @@ footer nav a:visited {
 }
 
 .hero .tagline {
-  font-family: var(--font-heading);
+  font-family: var(--mono);
   font-size: var(--text-lg);
   color: var(--muted);
   margin-bottom: var(--space-lg);
@@ -253,21 +253,20 @@ footer nav a:visited {
 
 /* Garden Section (featured) */
 .garden-feature {
-  border: 1px solid var(--accent);
   border-radius: var(--radius);
   padding: var(--space-lg);
-  background: color-mix(in oklab, var(--accent) 5%, var(--bg));
+  background: var(--wash);
   margin-bottom: var(--space-2xl);
 }
 
 .garden-feature h2 {
   margin-top: 0;
-  color: var(--accent);
+  color: var(--moss);
 }
 
 /* Post Card */
 .post-card {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
   padding-bottom: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
@@ -283,12 +282,12 @@ footer nav a:visited {
 }
 
 .post-card h3 a {
-  color: var(--fg);
+  color: var(--ink);
   text-decoration: none;
 }
 
 .post-card h3 a:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 .post-card .post-meta {
@@ -318,7 +317,7 @@ footer nav a:visited {
 .resume-entry {
   margin-bottom: var(--space-xl);
   padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
 
 .resume-entry:last-child {
@@ -331,7 +330,7 @@ footer nav a:visited {
 }
 
 .resume-entry .org {
-  font-family: var(--font-heading);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
 }
@@ -424,7 +423,7 @@ footer nav a:visited {
 /* Theme Toggle Button */
 .theme-toggle {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   padding: 0.25rem 0.5rem;
   font-family: var(--font-code);
@@ -435,8 +434,8 @@ footer nav a:visited {
 }
 
 .theme-toggle:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--moss);
+  border-color: var(--moss);
 }
 
 /* ── Terminal cursor blink on hero heading ───────────────────────────────── */
@@ -447,7 +446,7 @@ footer nav a:visited {
 
 .hero h1::after {
   content: "█";
-  color: var(--accent);
+  color: var(--moss);
   margin-left: 0.1em;
   animation: cursor-blink 1.2s step-end infinite;
   font-weight: 400;
@@ -471,7 +470,7 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
   display: inline-block;
   width: 5px;
   height: 5px;
-  background: var(--accent);
+  background: var(--moss);
   border-radius: 50%;
   margin-left: 0.4em;
   vertical-align: middle;
@@ -502,14 +501,14 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
   display: inline-block;
   width: 5px;
   height: 5px;
-  background: var(--accent);
+  background: var(--moss);
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .garden-activity time,
 .meta-updated time {
-  text-decoration: underline dotted var(--border);
+  text-decoration: underline dotted var(--rule);
   text-underline-offset: 0.25em;
   cursor: help;
 }
@@ -529,19 +528,19 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
 
 .kbd-overlay-inner {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-xl);
   max-width: 340px;
   width: 100%;
-  box-shadow: 0 4px 24px color-mix(in oklab, var(--fg) 12%, transparent);
+  box-shadow: 0 4px 24px color-mix(in oklab, var(--ink) 12%, transparent);
 }
 
 .kbd-overlay-title {
-  font-family: var(--font-heading);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--accent);
+  color: var(--moss);
   margin-top: 0;
   margin-bottom: var(--space-md);
   text-transform: uppercase;
@@ -558,7 +557,7 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
   align-items: baseline;
   gap: var(--space-md);
   padding: var(--space-xs) 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
 
 .kbd-shortcut-item:last-child {
@@ -580,10 +579,10 @@ kbd {
   font-family: var(--font-code);
   font-size: var(--text-xs);
   background: var(--code-bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   padding: 0.1em 0.45em;
-  color: var(--accent);
+  color: var(--moss);
 }
 
 .kbd-overlay-meta {
@@ -596,7 +595,7 @@ kbd {
 /* ── Buttons (non-toggle) ───────────────────────────────────────────────── */
 .button {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   padding: 0.25rem 0.5rem;
   font-family: var(--font-code);
@@ -607,8 +606,8 @@ kbd {
 }
 
 .button:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--moss);
+  border-color: var(--moss);
 }
 
 .button--print {
@@ -637,7 +636,7 @@ kbd {
 }
 
 .h-entry .post-meta .p-category:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 .h-entry .e-content {
@@ -648,13 +647,13 @@ kbd {
   font-family: var(--font-code);
   font-size: var(--text-sm);
   color: var(--muted);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
   padding-top: var(--space-md);
   margin-top: var(--space-xl);
 }
 
 .h-entry .post-footer {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
   padding-top: var(--space-md);
   margin-top: var(--space-xl);
   font-family: var(--font-code);
@@ -663,7 +662,7 @@ kbd {
 }
 
 .h-entry .post-footer .p-author .p-name {
-  color: var(--fg);
+  color: var(--ink);
 }
 
 /* ── Tag index on /writing/ ──────────────────────────────────────────────── */
@@ -682,7 +681,7 @@ kbd {
 }
 
 .tag-index .p-category:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 /* ── Footer kbd hint ─────────────────────────────────────────────────────── */
@@ -695,11 +694,11 @@ kbd {
 
 .kbd-hint a {
   color: var(--muted);
-  text-decoration-color: var(--border);
+  text-decoration-color: var(--rule);
 }
 
 .kbd-hint a:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 /* ── Footer last-updated line ────────────────────────────────────────────── */
@@ -712,18 +711,18 @@ kbd {
 
 /* ── Webmentions on post pages ───────────────────────────────────────────── */
 .webmentions {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
   padding-top: var(--space-md);
   margin-top: var(--space-xl);
 }
 
 .webmentions-title {
-  font-family: var(--font-heading);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--moss);
   margin-bottom: var(--space-md);
 }
 
@@ -738,7 +737,7 @@ kbd {
   font-size: var(--text-sm);
   color: var(--muted);
   padding: var(--space-xs) 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
 
 .webmention:last-child {
@@ -746,13 +745,13 @@ kbd {
 }
 
 .webmention .u-author {
-  color: var(--fg);
+  color: var(--ink);
   text-decoration: none;
   margin-right: var(--space-sm);
 }
 
 .webmention .u-author:hover {
-  color: var(--accent);
+  color: var(--moss);
 }
 
 .webmention .u-photo {
@@ -766,7 +765,7 @@ kbd {
   display: inline-block;
   font-size: var(--text-xs);
   background: var(--code-bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   padding: 0.05em 0.4em;
   margin-right: var(--space-sm);
