@@ -20,11 +20,11 @@
   height: auto;
   padding: var(--space-sm) var(--space-md);
   background: var(--bg);
-  color: var(--fg);
-  border: 2px solid var(--accent);
+  color: var(--ink);
+  border: 2px solid var(--moss);
   border-radius: var(--radius);
   z-index: 9999;
-  font-family: var(--font-heading);
+  font-family: var(--mono);
   font-size: var(--text-sm);
 }
 
@@ -43,7 +43,7 @@
 
 /* Focus Visible */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--moss);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
