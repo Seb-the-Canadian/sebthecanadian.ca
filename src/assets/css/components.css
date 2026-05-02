@@ -795,7 +795,7 @@ kbd {
 .index-pill--active {
   background: var(--wash);
   border-color: var(--moss);
-  color: var(--moss);
+  color: var(--ink);
 }
 
 @media (max-width: 520px) {
