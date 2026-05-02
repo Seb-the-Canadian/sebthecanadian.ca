@@ -29,10 +29,10 @@ Drawn from the digital_forest design system, adapted for web:
 | Role | Light Mode | Dark Mode | Notes |
 |------|-----------|-----------|-------|
 | Background | `#f5f2eb` (warm parchment) | `#0f1a14` (deep forest dark) | Warm, not clinical white or pure black |
-| Foreground | `#1a1a1a` | `#e8e4dc` | High contrast, warm undertone |
+| Foreground | `#15201a` | `#e8e4dc` | High contrast, warm undertone |
 | Muted | `#6b6459` | `#8a8477` | Earthy neutral for secondary text |
-| Primary accent | `#4a8c6f` (forest green) | `#6bb896` | The signature color — carries across both modes |
-| Secondary accent | `#e9d66b` (amber/gold) | `#d4c15a` | Warm complement, used sparingly for highlights |
+| Primary accent | `#3f7a5f` (forest green) | `#6bb896` | The signature color — carries across both modes |
+| Secondary accent | `#b07a0f` (amber/gold) | `#d9b24a` | Warm complement, used sparingly for highlights |
 | Border | `#d4cfc5` | `#2a3a30` | Subtle, tinted to match palette |
 | Link | `#2a6b4a` (dark green) | `#8eba9e` (light green) | Distinct from body text, on-brand |
 | Visited | `#5e4b3e` (earth brown) | `#b89c84` | Warm, not jarring purple |

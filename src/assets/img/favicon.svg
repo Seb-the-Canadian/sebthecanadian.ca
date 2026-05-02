@@ -5,7 +5,7 @@
     warm parchment, tuned so each pixel carries weight at tab size.
   -->
   <rect width="16" height="16" fill="#f5f2eb"/>
-  <g fill="#4a8c6f">
+  <g fill="#3f7a5f">
     <!-- Dome -->
     <rect x="4" y="2" width="8" height="2"/>
     <rect x="3" y="4" width="10" height="2"/>

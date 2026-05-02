@@ -23,7 +23,7 @@ Personal site for Seb Lathangue — civic technology, knowledge architecture, an
 
 ## Design Direction: Data Druid
 
-Caves of Qud meets iOS — pixel texture and retro-organic elements layered onto a clean, modern shell. Forest palette (`#4a8c6f` primary, `#e9d66b` amber accent), warm parchment light mode, "forest at night" dark mode. See `DESIGN_BRIEF.md` for the full spec.
+Caves of Qud meets iOS — pixel texture and retro-organic elements layered onto a clean, modern shell. Forest palette (`#3f7a5f` primary, `#b07a0f` amber accent), warm parchment light mode, "forest at night" dark mode. See `DESIGN_BRIEF.md` for the full spec.
 
 ## Project Structure
 
