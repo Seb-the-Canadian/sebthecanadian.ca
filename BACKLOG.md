@@ -15,6 +15,30 @@ _None currently tracked._
 
 ---
 
+## Done — Pitch v1 Design Sprint (2026-05-02)
+
+Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
+edges") across tokens, shell, home/writing, and identity. Shipped as four PRs
+(#11, #12, #13, #14). See CHANGELOG.md (2026-05-02 — Pitch v1 design sprint)
+for details. Pitch reference: `pitch-v1.html` on `main` (`4bf9261`). Plan:
+`/root/.claude/plans/pitch-v1-migration.md`.
+
+- [x] Day 01 — Token rename + AA recalibration (`--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`/`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`); new `--ink-soft`, `--bg-alt`, `--wash`, `--col` tokens
+- [x] Day 01 — Body to monospace (15.5px / 1.62); retire `@view-transition` + smooth-scroll guard
+- [x] Day 02 — Collapse primary nav 6 → 4 doors (Home / Writing / Projects / Resume)
+- [x] Day 02 — Rename secondary nav to "Colophon" landmark; absorb About + Uses + Links + Garden + Email + RSS
+- [x] Day 02 — Fold `/now/` into home (`now.md` → `now.njk` redirect to `/#now`); delete `garden-section.njk`
+- [x] Day 03 — Home rewritten as terminal-style index-table front door (identity line + Now + index-table + footer)
+- [x] Day 03 — `/writing/` leads with garden activity; native posts demoted to lightweight list; tag archives moved to bottom
+- [x] Day 03 — New filters: `shortDate`, `hostname`; new components: `.identity`, `.index-table`, `.index-row`, `.index-pill`
+- [x] Day 03 — Retire `post-card.njk` + orphan `.post-card` rules; fix `collections.writing | reverse | first` (now resolves to newest)
+- [x] Day 04 — Resume portrait swapped pixel → woodcut (`seb-stamp.jpeg`); `u-photo` formalized per pitch P5
+- [x] Day 04 — Remove banner figures from `/about/` and `/projects/`; retire `.page-banner`, `<hr>` moss-divider mask, `@keyframes leaf-drift`
+- [x] Day 04 — AA fix: `.index-pill--active` text uses `--ink` (was 4.17:1, now 14.99:1)
+- [x] Day 04 — Delete orphan asset files: `banner-night.png`, `og-dark.png`, `project-placeholder.png`
+
+---
+
 ## Done — Stewardship Pass (2026-05-01)
 
 Sixteen-item review-driven pass executed by a team of nine specialised
@@ -88,6 +112,16 @@ Comprehensive verification of all pages, responsive design, accessibility, micro
 ## Ideas
 
 Candidates for future work beyond the current sprint. No commitment implied.
+
+### Pitch v1 Follow-ups
+
+- [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
+- [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
+- [ ] Inline monogram at section starts (pitch P5 detail)
+- [ ] Revisit `--rule` border contrast (light 1.39:1, dark 1.48:1 vs WCAG 1.4.11 strict; soft fail today via spacing redundancy) if low-vision feedback surfaces
+- [ ] Revisit `--amber` text on `--bg` light (3.33:1) before any active text use
+- [ ] Clean up live-pulse CSS dead-DOM selector (`nav a[href="/now/"]::after` — harmless)
+- [ ] Preserve `_data/gardenPosts.json` cache when `garden-rss.js` fetch fails (build-script concern)
 
 ### IndieWeb & Microformats
 

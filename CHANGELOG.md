@@ -4,6 +4,65 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-05-02 — Pitch v1 Design Sprint (4 PRs)
+
+Four-afternoon sprint applying pitch-v1's "Same soul, sharper edges" direction:
+the design is now fully monospace, the nav has four doors, the home reads as
+a terminal-style index-table front door, and the identity system is locked
+to the woodcut on the resume. Shipped as PRs #11, #12, #13, #14. Pitch
+reference: `pitch-v1.html` on `main` (`4bf9261`). Plan archived at
+`/root/.claude/plans/pitch-v1-migration.md`.
+
+### Changed (Day 01 — tokens + type)
+- **Token system renamed** — `--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`+`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`. `--accent-dim` deleted. Names now describe the thing, not the role.
+- **AA recalibration** — Light moss `#4a8c6f`→`#3f7a5f`, light amber `#e9d66b`→`#b07a0f`, light ink `#1a1a1a`→`#15201a`, dark amber `#d4c15a`→`#d9b24a`. All foreground uses clear WCAG AA on their respective backgrounds.
+- **Body now monospace** — 15.5px / 1.62 line-height across the site. The "two-typeface" split is gone; `--font-code` aliases `var(--mono)`.
+- **DRY refactor** — `--wash` derives from `--moss` via `color-mix`, so palette adjustments propagate without manual sync.
+- **Docs synced** — `DESIGN_BRIEF.md`, `README.md`, and `favicon.svg` updated to the new moss/amber values.
+
+### Changed (Day 02 — shell + nav)
+- **Primary nav collapsed 6 → 4** — Home / Writing / Projects / Resume. Everything else moved to the colophon landmark.
+- **Colophon footer** — Secondary nav renamed to `colophon` with `<nav aria-label="Colophon">`, absorbing About + Uses + Links + Garden + Email + RSS (six entries).
+- **`/now/` folded into home** — `now.md` replaced by `now.njk` redirect to `/#now`; new `<section id="now">` block on the home page becomes the canonical Now anchor.
+
+### Changed (Day 03 — home + writing)
+- **Home as index-table front door** — Identity line + Now block + index-table (writing / garden / projects / contact) + footer. Hero illustration retired in favor of typographic structure.
+- **`/writing/` leads with garden** — Garden activity is now the primary feed; native posts demoted to a lightweight list; tag archives moved to the bottom as a quiet "Browse by tag" line.
+
+### Changed (Day 04 — identity + polish)
+- **Resume portrait** — Pixel portrait swapped to woodcut (`seb-stamp.jpeg`). The pixel monogram remains in the site mark; the woodcut now carries the personal identity.
+
+### Added
+- **New tokens** — `--ink-soft`, `--bg-alt`, `--wash`, and `--col: 64ch` (canonical column width). (Day 01)
+- **`shortDate` + `hostname` Nunjucks filters** — `shortDate` formats as `dd mmm` for the index-table; `hostname` extracts the bare domain from external URLs. (`eleventy.config.js`, Day 03)
+- **Index-table component styles** — `.identity`, `.index-table`, `.index-row`, `.index-pill[--active]`, with mobile collapse. (Day 03)
+- **`.tag-browse` + `.native-posts` polish styles** — Minimal CSS for the demoted writing-page sections. (Day 04)
+- **`u-photo` on resume woodcut** — Pitch P5 IndieWeb addition; the visible portrait is now machine-readable as the canonical photo. (Day 04)
+
+### Removed
+- **`@view-transition` + smooth-scroll guard** — Both retired with the type pass; the site is now snappy by default. (Day 01)
+- **`garden-section.njk`** — No callers after `/writing/` was rewritten to render garden inline. (Day 02)
+- **`post-card.njk`** — No callers after the writing-list was demoted to a lightweight list. Orphan `.post-card` CSS rules removed alongside. (Day 03)
+- **`.page-banner` rules** — Banner figures pulled from `/about/` and `/projects/`; the rule set is gone. (Day 04)
+- **`<hr>` moss-divider mask-image** — `<hr>` now renders as a quiet 1px `--rule` line. The `dividers/moss-divider.svg` asset is preserved on disk but no longer referenced. (Day 04)
+- **`@keyframes leaf-drift`** — Animation and its application removed. `.page-illustration` base CSS preserved (still in use on `/404/`). (Day 04)
+- **Orphan asset files** — `banner-night.png`, `og-dark.png`, `project-placeholder.png` deleted from `src/assets/img/`. (Day 04)
+
+### Fixed
+- **`.index-pill--active` AA contrast** — Active-pill text was using `--moss` on `--wash` (4.17:1, AA-borderline). Switched to `--ink`, now 14.99:1. (Day 04 a11y follow-up)
+- **`collections.writing | reverse | first` resolved to oldest** — The collection is already sorted descending by date in `eleventy.config.js`, so `| reverse | first` was returning the *oldest* post. Dropped `| reverse |` so `| first` resolves to the newest. Invisible at N=1; would have surfaced the wrong post on the home as soon as a second native post landed. (Day 03)
+
+### Deferred
+- `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` — falls back to `og-default.png` for now.
+- Visible woodcut promotion to home + about — pitch P5 implies; Day 04 stuck to the resume-only swap.
+- Monogram inline at section starts — pitch P5 detail, not yet wired.
+- `--rule` border contrast at WCAG 1.4.11 strict reading (light 1.39:1, dark 1.48:1) — soft fail; structural redundancy via spacing. Revisit if low-vision feedback surfaces.
+- `--amber` text on `--bg` light (3.33:1) — currently no active text use; flag for future.
+- Live-pulse CSS targets dead-DOM selector (`nav a[href="/now/"]::after`) — harmless after `/now/` was folded into home, but cleanup-eligible.
+- `_data/gardenPosts.json` cache-preserve-on-fetch-failure logic in `garden-rss.js` — currently overwrites with empty on failure.
+
+---
+
 ## 2026-05-01 — Stewardship Pass (Hygiene · Coherence · Depth)
 
 Sixteen-item stewardship pass across four tiers, executed by a team of nine
