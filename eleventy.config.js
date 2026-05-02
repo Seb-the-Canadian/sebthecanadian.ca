@@ -82,6 +82,19 @@ export default function (eleventyConfig) {
     return new Date(dateObj).toISOString().split("T")[0];
   });
 
+  // Short date for index-table rows: "23 feb" (lowercase, no year, no padding)
+  eleventyConfig.addFilter("shortDate", (input) => {
+    const d = input instanceof Date ? input : new Date(input);
+    if (isNaN(d.getTime())) return "";
+    const months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+    return `${String(d.getUTCDate())} ${months[d.getUTCMonth()]}`;
+  });
+
+  // Extract hostname from a URL string (falls back to original input on failure)
+  eleventyConfig.addFilter("hostname", (url) => {
+    try { return new URL(url).hostname; } catch { return url; }
+  });
+
   // Split a prose block on blank lines, returning an array of paragraphs.
   // Used in resume.njk and anywhere else YAML multiline prose needs <p> wrapping.
   eleventyConfig.addFilter("paragraphs", (str) => {

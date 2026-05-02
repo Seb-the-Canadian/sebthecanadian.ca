@@ -1,32 +1,12 @@
 ---
 layout: base.njk
 title: Writing
-description: "Posts syndicated from the digital garden and original writing."
+description: "Posts from the digital garden, with native posts published occasionally on this site."
 permalink: /writing/
 ---
 <h1>Writing</h1>
 
-<p>These posts originate in the <a href="https://cognitivearchitecture.ca/">garden</a>. Visit the source for the full text, context, and connections. This page collects excerpts and syndication links &mdash; a hub, not a destination.</p>
-
-<section class="h-feed">
-  <h2>Posts</h2>
-  {%- for post in collections.writing %}
-    {% include "post-card.njk" %}
-  {%- endfor %}
-
-  {%- if collections.writing.length == 0 %}
-  <p>No posts yet. Check the <a href="https://cognitivearchitecture.ca/">garden</a> for current writing.</p>
-  {%- endif %}
-</section>
-
-{%- if collections.tagList.length > 0 %}
-<p class="tag-index">
-  Browse by tag:
-  {%- for tag in collections.tagList %}
-  <a class="p-category" rel="tag" href="/writing/tags/{{ tag | slug }}/">#{{ tag }}</a>{% if not loop.last %} {% endif %}
-  {%- endfor %}
-</p>
-{%- endif %}
+<p>Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.</p>
 
 {%- set syndicatedUrls = [] %}
 {%- for post in collections.writing %}
@@ -34,25 +14,62 @@ permalink: /writing/
     {%- set syndicatedUrls = (syndicatedUrls.push(post.data.gardenUrl), syndicatedUrls) %}
   {%- endif %}
 {%- endfor %}
-{%- if gardenPosts.length > 0 %}
-<section>
+
+<section class="h-feed" aria-labelledby="writing-feed-heading">
+  <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
+
+  {%- if gardenPosts.length %}
   <h2>From the Garden</h2>
-  <p>Recent notes and essays from <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>, pulled automatically at build time.</p>
-  {%- for gp in gardenPosts %}
-    {%- if gp.url not in syndicatedUrls %}
-  <article class="post-card h-entry">
-    <h3 class="p-name"><a href="{{ gp.url }}" class="u-url u-syndication">{{ gp.title }}</a></h3>
-    {%- if gp.date %}
-    <p class="post-meta"><time class="dt-published" datetime="{{ gp.date }}">{{ gp.date }}</time> · <span class="badge badge--{{ gp.status }}">{{ gp.status }}</span></p>
-    {%- endif %}
-    {%- if gp.excerpt %}
-    <p class="post-excerpt p-summary">{{ gp.excerpt }}</p>
-    {%- endif %}
-    <div class="post-links">
-      <a href="{{ gp.url }}" class="u-syndication">Read in the garden &rarr;</a>
+  <section class="index-table" aria-label="From the Garden">
+    {%- set gardenShown = 0 %}
+    {%- for gp in gardenPosts %}
+      {%- if gp.url not in syndicatedUrls and gardenShown < 12 %}
+        {%- set gardenShown = gardenShown + 1 %}
+    <article class="index-row h-entry">
+      <span class="index-row__label">garden/</span>
+      <span class="index-row__desc">
+        <a class="u-url p-name" href="{{ gp.url }}" rel="external">{{ gp.title }}</a>
+        {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
+      </span>
+      {%- if gp.date %}
+      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
+      {%- else %}
+      <span class="index-row__meta"></span>
+      {%- endif %}
+    </article>
+      {%- endif %}
+    {%- endfor %}
+    <div class="index-row">
+      <span class="index-row__label">garden/</span>
+      <span class="index-row__desc">
+        <a href="https://cognitivearchitecture.ca/" rel="external">more in the garden &rarr;</a>
+      </span>
+      <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
     </div>
-  </article>
-    {%- endif %}
-  {%- endfor %}
+  </section>
+  {%- else %}
+  <p>Garden offline at build time. See <a href="https://cognitivearchitecture.ca/">the source</a>.</p>
+  {%- endif %}
+
+  {%- if collections.writing.length %}
+  <h2>Also published natively here</h2>
+  <ul class="native-posts">
+    {%- for post in collections.writing %}
+    <li class="h-entry">
+      <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
+      <time class="dt-published" datetime="{{ post.date | isoDate }}"> &middot; {{ post.date | isoDateShort }}</time>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
 </section>
+
+{%- if collections.tagList and collections.tagList.length %}
+<p class="tag-browse">
+  Browse by tag:
+  {%- for tag in collections.tagList %}
+  {% if loop.index0 > 0 %}&middot;{% endif %}
+  <a href="/writing/tags/{{ tag | slug }}/">{{ tag }}</a>
+  {%- endfor %}
+</p>
 {%- endif %}
