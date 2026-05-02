@@ -27,7 +27,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
   </section>
 
   <section class="index-table" aria-label="Index">
-    {%- set latestPost = collections.writing | reverse | first %}
+    {%- set latestPost = collections.writing | first %}
     {%- if latestPost %}
     <article class="index-row h-entry">
       <span class="index-row__label">writing/</span>
