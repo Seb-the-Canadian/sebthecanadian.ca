@@ -46,7 +46,7 @@
   --link: #2a6b4a;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
-  --wash: rgba(63, 122, 95, 0.06);
+  --wash: color-mix(in oklab, var(--moss) 6%, transparent);
 
   /* Derived Colors */
   --surface: color-mix(in oklab, var(--bg) 92%, var(--ink));
@@ -54,7 +54,7 @@
 
   /* Typography */
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
-  --font-code: "IBM Plex Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  --font-code: var(--mono);
 
   /* Type Scale */
   --text-xs: 0.75rem;
@@ -101,7 +101,7 @@
     --link: #8eba9e;
     --visited: #b89c84;
     --code-bg: #162018;
-    --wash: rgba(107, 184, 150, 0.07);
+    --wash: color-mix(in oklab, var(--moss) 7%, transparent);
   }
 }
 
@@ -118,7 +118,7 @@ html[data-theme="light"] {
   --link: #2a6b4a;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
-  --wash: rgba(63, 122, 95, 0.06);
+  --wash: color-mix(in oklab, var(--moss) 6%, transparent);
 }
 
 html[data-theme="dark"] {
@@ -133,5 +133,5 @@ html[data-theme="dark"] {
   --link: #8eba9e;
   --visited: #b89c84;
   --code-bg: #162018;
-  --wash: rgba(107, 184, 150, 0.07);
+  --wash: color-mix(in oklab, var(--moss) 7%, transparent);
 }
