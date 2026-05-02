@@ -30,13 +30,13 @@ Caves of Qud meets iOS — pixel texture and retro-organic elements layered onto
 ```
 sebthecanadian.ca/
 ├── src/
-│   ├── index.njk              # Homepage (h-card, hero, garden, projects, writing)
+│   ├── index.njk              # Homepage (h-card, hero, Now block, featured project, latest writing, profiles)
 │   ├── projects.njk           # Projects page (cards from data)
 │   ├── writing.njk            # POSSE syndication hub (h-feed)
 │   ├── resume.njk             # Data-driven resume (h-resume)
-│   ├── now.md                 # /now page
+│   ├── now.njk                # /now/ → /#now redirect (Now block lives on home)
 │   ├── about.md               # About page (bio + how this site is built)
-│   ├── colophon.md            # Redirect stub → /about/
+│   ├── colophon.njk           # Redirect stub → /about/
 │   ├── uses.md                # /uses page
 │   ├── links.md               # Blogroll
 │   ├── 404.md                 # Custom 404
@@ -45,10 +45,9 @@ sebthecanadian.ca/
 │   ├── _includes/
 │   │   ├── base.njk           # Base HTML layout
 │   │   ├── nav.njk            # Primary navigation
-│   │   ├── footer.njk         # Footer with secondary nav
+│   │   ├── footer.njk         # Footer with colophon row
 │   │   ├── project-card.njk   # Reusable project card
-│   │   ├── post-card.njk      # POSSE post excerpt card
-│   │   └── garden-section.njk # Garden feature section
+│   │   └── post-card.njk      # POSSE post excerpt card
 │   └── assets/
 │       ├── css/               # tokens, base, components, utilities, print
 │       ├── fonts/             # IBM Plex Mono WOFF2 (self-hosted)

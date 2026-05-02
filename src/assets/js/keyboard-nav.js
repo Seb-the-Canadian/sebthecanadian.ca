@@ -20,7 +20,7 @@
     w: "/writing/",
     p: "/projects/",
     r: "/resume/",
-    n: "/now/",
+    n: "/#now",
   };
 
   const chordItems = [
