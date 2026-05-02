@@ -182,20 +182,6 @@ footer nav a:visited {
   margin-bottom: 0;
 }
 
-/* Page banner — full-width pixel-art header for interior pages */
-.page-banner {
-  margin: 0 0 var(--space-xl) 0;
-}
-
-.page-banner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-  border-radius: var(--radius-sm);
-}
-
 /* Page illustration — centered standalone pixel-art figure */
 .page-illustration {
   margin: 0 auto var(--space-lg) auto;
@@ -208,17 +194,6 @@ footer nav a:visited {
   height: auto;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
-}
-
-/* One-shot drift on the 404 illustration — the leaf lands, once. */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes leaf-drift {
-    0%   { transform: translateY(-14px); opacity: 0; }
-    100% { transform: translateY(0);     opacity: 1; }
-  }
-  .page-illustration.is-404 img {
-    animation: leaf-drift 1.4s ease-out 0.1s 1 both;
-  }
 }
 
 /* Hero */
@@ -637,6 +612,23 @@ kbd {
 
 .tag-index .p-category:hover {
   color: var(--moss);
+}
+
+/* ── Writing — Day 03 follow-up polish ──────────────────────────────────── */
+.tag-browse {
+  margin-block-start: var(--space-xl);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.native-posts {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block: var(--space-md) 0;
+}
+
+.native-posts li {
+  padding-block: var(--space-xs);
 }
 
 /* ── Footer kbd hint ─────────────────────────────────────────────────────── */
