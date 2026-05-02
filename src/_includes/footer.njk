@@ -1,11 +1,12 @@
 <footer>
   <p class="sr-only">Keyboard shortcuts are available. Press the question mark key for a list.</p>
-  <nav aria-label="Secondary">
-    <ul>
-      {%- for item in navigation.secondary %}
-      <li><a href="{{ item.url }}"{% if item.external %} rel="external" target="_blank"{% endif %}>{{ item.label }}</a></li>
-      {%- endfor %}
-    </ul>
+  <nav aria-label="Colophon">
+    <p class="colophon-row">
+      {%- for item in navigation.colophon -%}
+        {%- if loop.index0 > 0 %} &middot; {% endif -%}
+        <a href="{{ item.url }}"{% if item.external %} rel="external" target="_blank"{% endif %}>{{ item.label }}</a>
+      {%- endfor -%}
+    </p>
   </nav>
   {%- set lastModified = page.inputPath | gitLastModified %}
   {%- if lastModified %}

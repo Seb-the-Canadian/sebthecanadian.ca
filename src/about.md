@@ -27,7 +27,7 @@ If you want the formal version — titles, dates, credentials — the [resume](/
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, writing (syndicated from the garden), a resume, and the usual `/now` and `/uses` pages. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, writing (syndicated from the garden), a resume, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
 
 ### Stack
 
