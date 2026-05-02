@@ -1,6 +1,8 @@
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import yaml from "js-yaml";
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
 export default function (eleventyConfig) {
   // YAML data file support
@@ -46,6 +48,23 @@ export default function (eleventyConfig) {
     });
   });
 
+  // tagList — union of tags across the writing collection
+  eleventyConfig.addCollection("tagList", function (collectionApi) {
+    const tags = new Set();
+    collectionApi.getFilteredByGlob("src/writing/*.md").forEach((item) => {
+      (item.data.tags || []).forEach((tag) => tags.add(tag));
+    });
+    return [...tags].sort();
+  });
+
+  // Slug filter (lowercase ASCII slugs for tag permalinks)
+  eleventyConfig.addFilter("slug", (input) => {
+    return String(input)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  });
+
   // Date filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("en-CA", {
@@ -78,6 +97,21 @@ export default function (eleventyConfig) {
     if (days === 0) return "today";
     if (days === 1) return "yesterday";
     return `${days} days ago`;
+  });
+
+  // Last-modified date for a given input file, sourced from git
+  eleventyConfig.addFilter("gitLastModified", (inputPath) => {
+    if (!inputPath) return null;
+    try {
+      const { execSync } = require("node:child_process");
+      const out = execSync(`git log -1 --format=%cI -- "${inputPath}"`, {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }).trim();
+      return out || null;
+    } catch {
+      return null;
+    }
   });
 
   // Categorical freshness — same signal as daysAgo, but in voice.

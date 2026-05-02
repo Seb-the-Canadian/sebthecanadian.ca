@@ -191,8 +191,8 @@ footer nav a:visited {
   display: block;
   width: 100%;
   height: auto;
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
   border-radius: var(--radius-sm);
 }
 
@@ -206,8 +206,8 @@ footer nav a:visited {
   display: block;
   width: 100%;
   height: auto;
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
 /* One-shot drift on the 404 illustration — the leaf lands, once. */
@@ -368,8 +368,8 @@ footer nav a:visited {
   display: block;
   width: 100%;
   height: auto;
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
   border-radius: var(--radius-sm);
 }
 
@@ -591,4 +591,190 @@ kbd {
   color: var(--muted);
   text-align: center;
   margin-bottom: 0;
+}
+
+/* ── Buttons (non-toggle) ───────────────────────────────────────────────── */
+.button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.button--print {
+  margin-top: var(--space-md);
+}
+
+/* ── Single post page ──────────────────────────────────────────────────── */
+.h-entry .post-header {
+  margin-bottom: var(--space-xl);
+}
+
+.h-entry .post-header .p-name {
+  margin-bottom: var(--space-sm);
+}
+
+.h-entry .post-meta {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.h-entry .post-meta .p-category {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.h-entry .post-meta .p-category:hover {
+  color: var(--accent);
+}
+
+.h-entry .e-content {
+  margin-bottom: var(--space-2xl);
+}
+
+.h-entry .post-syndication {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.h-entry .post-footer {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.h-entry .post-footer .p-author .p-name {
+  color: var(--fg);
+}
+
+/* ── Tag index on /writing/ ──────────────────────────────────────────────── */
+.tag-index {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.tag-index .p-category {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: var(--space-xs);
+}
+
+.tag-index .p-category:hover {
+  color: var(--accent);
+}
+
+/* ── Footer kbd hint ─────────────────────────────────────────────────────── */
+.kbd-hint {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+.kbd-hint a {
+  color: var(--muted);
+  text-decoration-color: var(--border);
+}
+
+.kbd-hint a:hover {
+  color: var(--accent);
+}
+
+/* ── Footer last-updated line ────────────────────────────────────────────── */
+.footer-meta {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Webmentions on post pages ───────────────────────────────────────────── */
+.webmentions {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.webmentions-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.webmentions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.webmention {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.webmention:last-child {
+  border-bottom: none;
+}
+
+.webmention .u-author {
+  color: var(--fg);
+  text-decoration: none;
+  margin-right: var(--space-sm);
+}
+
+.webmention .u-author:hover {
+  color: var(--accent);
+}
+
+.webmention .u-photo {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-right: var(--space-xs);
+}
+
+.webmention-type {
+  display: inline-block;
+  font-size: var(--text-xs);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.05em 0.4em;
+  margin-right: var(--space-sm);
+}
+
+.post-webmention-prompt {
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
 }

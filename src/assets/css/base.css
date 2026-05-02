@@ -15,7 +15,12 @@
 
 html {
   color-scheme: light dark;
-  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -133,10 +138,10 @@ img {
 hr {
   border: none;
   height: 8px;
+  margin: var(--space-2xl) 0;
   background-color: var(--accent);
   -webkit-mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
           mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
-  margin: var(--space-2xl) 0;
   opacity: 0.6;
 }
 

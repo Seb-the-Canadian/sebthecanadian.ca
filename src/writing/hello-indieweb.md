@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: post.njk
 title: "Hello, IndieWeb"
 date: 2026-01-13
 excerpt: "First post on sebthecanadian.ca — testing h-entry markup and webmentions."

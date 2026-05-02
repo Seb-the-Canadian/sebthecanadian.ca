@@ -1,3 +1,5 @@
+> **ARCHIVED — describes the pre-Eleventy build (pre-2026-03-10). Kept for provenance; do not treat as current guidance.**
+
 # Phase 1: Foundation Audit & Color Testing
 
 **Date:** 2026-02-08

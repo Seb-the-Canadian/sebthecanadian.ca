@@ -13,9 +13,11 @@ profiles:
   - platform: "LinkedIn"
     url: "https://www.linkedin.com/in/sebastianl-8b6688225"
   - platform: "GitHub"
-    url: "https://github.com/seb-the-canadian"
+    url: "https://github.com/Seb-the-Canadian"
   - platform: "Bluesky"
     url: "https://bsky.app/profile/sebthecanadian.bsky.social"
+  - platform: "ORCID"
+    url: "https://orcid.org/0009-0003-1402-6973"
   - platform: "Garden"
     url: "https://cognitivearchitecture.ca"
 

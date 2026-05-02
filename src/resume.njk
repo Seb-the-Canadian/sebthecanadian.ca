@@ -25,7 +25,12 @@ permalink: /resume/
     </div>
   </header>
 
-  <button class="theme-toggle no-print" onclick="window.print()">Download PDF</button>
+  {%- if resume.currently %}
+  <section class="resume-section">
+    <h2>Currently</h2>
+    <p class="p-summary">{{ resume.currently }}</p>
+  </section>
+  {%- endif %}
 
   {%- if resume.summary %}
   <section class="resume-section">
@@ -38,6 +43,9 @@ permalink: /resume/
   </section>
   {%- endif %}
 
+  <button class="button button--print no-print" type="button" onclick="window.print()">Download PDF</button>
+
+  {%- if resume.experience and resume.experience.length > 0 %}
   <section class="resume-section">
     <h2>Experience</h2>
     {%- for role in resume.experience %}
@@ -58,6 +66,7 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 
   {%- if resume.skills %}
   <section class="resume-section">
@@ -81,6 +90,7 @@ permalink: /resume/
   </section>
   {%- endif %}
 
+  {%- if resume.education and resume.education.length > 0 %}
   <section class="resume-section">
     <h2>Education</h2>
     {%- for edu in resume.education %}
@@ -92,4 +102,5 @@ permalink: /resume/
     </div>
     {%- endfor %}
   </section>
+  {%- endif %}
 </article>
