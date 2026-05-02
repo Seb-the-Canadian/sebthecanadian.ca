@@ -126,19 +126,6 @@ img {
   display: block;
 }
 
-/* Horizontal rules — pixel art moss divider.
-   Uses mask-image so the fill color is driven by background-color,
-   which inherits from theme tokens (works in light + dark mode). */
-hr {
-  border: none;
-  height: 8px;
-  margin: var(--space-2xl) 0;
-  background-color: var(--moss);
-  -webkit-mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
-          mask: url('/assets/img/pixel/dividers/moss-divider.svg') repeat-x center / auto 8px;
-  opacity: 0.6;
-}
-
 /* Blockquotes */
 blockquote {
   border-left: 3px solid var(--moss);
@@ -146,6 +133,13 @@ blockquote {
   color: var(--muted);
   margin: var(--space-lg) 0;
   font-style: italic;
+}
+
+/* Horizontal rules — quiet 1px line per pitch P5 (moss-divider mask retired) */
+hr {
+  border: 0;
+  border-block-end: 1px solid var(--rule);
+  margin-block: var(--space-2xl);
 }
 
 /* Time / Date */

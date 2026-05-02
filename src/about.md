@@ -5,10 +5,6 @@ description: "About Seb Lathangue and how this site is built."
 permalink: /about/
 ---
 
-<figure class="page-banner">
-  <img src="/assets/img/pixel/banner-night.png" alt="Pixel-art banner: silhouette of a forest at night, stars scattered above the tree line." />
-</figure>
-
 # About
 
 I'm Seb Lathangue. I live in Toronto. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called [CivCitDev](/projects/) on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.
