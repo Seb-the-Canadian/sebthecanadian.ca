@@ -14,26 +14,29 @@ permalink: /writing/tags/{{ tag | slug }}/
 <p><a href="/writing/">&larr; All writing</a></p>
 
 <section class="h-feed">
-  {%- set tagPosts = collections.writing | reverse %}
+  <span class="p-name sr-only">Posts tagged #{{ tag }}</span>
+  {%- set tagPosts = collections.writing %}
   {%- set anyMatch = false %}
   {%- for post in tagPosts %}
     {%- if tag in (post.data.tags or []) %}
       {%- set anyMatch = true %}
-  <article class="post-card h-entry">
-    <h2 class="p-name">
-      <a class="u-url" href="{{ post.url }}">{{ post.data.title }}</a>
-    </h2>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-    </p>
-    {%- if post.data.excerpt %}
-    <p class="post-excerpt p-summary">{{ post.data.excerpt }}</p>
-    {%- endif %}
-  </article>
     {%- endif %}
   {%- endfor %}
-
-  {%- if not anyMatch %}
+  {%- if anyMatch %}
+  <div class="index-table">
+    {%- for post in tagPosts %}
+      {%- if tag in (post.data.tags or []) %}
+    <article class="index-row h-entry">
+      <span class="index-row__label">writing/</span>
+      <span class="index-row__desc">
+        <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
+      </span>
+      <time class="index-row__meta dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | shortDate }}</time>
+    </article>
+      {%- endif %}
+    {%- endfor %}
+  </div>
+  {%- else %}
   <p>No posts under this tag yet.</p>
   {%- endif %}
 </section>

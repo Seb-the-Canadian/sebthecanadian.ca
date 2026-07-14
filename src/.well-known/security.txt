@@ -1,3 +1,4 @@
 Contact: mailto:hello@cognitivearchitecture.ca
+Expires: 2027-07-01T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://sebthecanadian.ca/.well-known/security.txt
