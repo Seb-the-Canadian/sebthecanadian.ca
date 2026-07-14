@@ -16,7 +16,7 @@ Personal site for Seb Lathangue — civic technology, knowledge architecture, an
 | Templating | Nunjucks |
 | Styling | Vanilla CSS with custom properties (no Tailwind, no preprocessor) |
 | Content | Markdown + YAML front matter |
-| Fonts | IBM Plex Mono (self-hosted WOFF2, headings + code) + system stack (body) |
+| Fonts | IBM Plex Mono (self-hosted WOFF2) — the site is fully monospace, body included |
 | JS | Progressive enhancement only — zero JS in critical path |
 | Deployment | GitHub Actions → GitHub Pages |
 | DNS | Cloudflare (DNS-only records) |
@@ -41,21 +41,22 @@ sebthecanadian.ca/
 │   ├── links.md               # Blogroll
 │   ├── 404.md                 # Custom 404
 │   ├── writing/               # Blog posts (markdown)
-│   │   └── hello-indieweb.md  # First native post
+│   │   ├── hello-indieweb.md  # First native post
+│   │   └── tags.njk           # Tag archive pages (/writing/tags/<tag>/)
 │   ├── _includes/
 │   │   ├── base.njk           # Base HTML layout
 │   │   ├── nav.njk            # Primary navigation
 │   │   ├── footer.njk         # Footer with colophon row
 │   │   ├── project-card.njk   # Reusable project card
-│   │   └── post-card.njk      # POSSE post excerpt card
+│   │   └── post.njk           # h-entry layout for native posts
 │   └── assets/
 │       ├── css/               # tokens, base, components, utilities, print
 │       ├── fonts/             # IBM Plex Mono WOFF2 (self-hosted)
 │       ├── img/
-│       │   ├── seb-stamp.jpeg # Profile illustration
-│       │   ├── favicon.svg    # Monogram favicon (SVG)
-│       │   ├── favicon.png    # Monogram favicon (32x32 PNG fallback)
-│       │   └── pixel/         # Pixel art: monogram, dividers, textures
+│       │   ├── seb-stamp.jpeg # Woodcut portrait (resume, u-photo)
+│       │   ├── favicon.svg    # Maple-leaf favicon (SVG)
+│       │   ├── favicon.png    # Maple-leaf favicon (32x32 PNG fallback)
+│       │   └── pixel/         # Pixel art: 404 illustration, dividers, textures
 │       └── js/
 │           └── theme-toggle.js # Dark/light/system toggle
 ├── _data/
@@ -64,7 +65,7 @@ sebthecanadian.ca/
 │   ├── projects.json          # Project data
 │   ├── profiles.json          # Profile links
 │   ├── resume.yml             # Resume data (experience, education, skills)
-│   └── gardenPosts.json       # Auto-generated garden posts (from scripts/garden-rss.js)
+│   └── gardenPosts.json       # Garden posts snapshot — regenerated at build, kept-last-good on fetch failure
 ├── scripts/
 │   └── garden-rss.js          # Obsidian Publish → garden posts JSON
 ├── eleventy.config.js         # Eleventy config (ESM)
@@ -112,7 +113,7 @@ This repo is readable enough to fork as a starting point for your own personal s
 5. **`_data/resume.yml`** — experience, skills, education.
 6. **`src/index.njk`** — hero copy and the h-card block.
 7. **`src/assets/img/seb-stamp.jpeg`** — replace with your own portrait (same filename or update references).
-8. **`src/assets/img/pixel/monogram.svg`** + **`src/assets/img/favicon.svg`** — your own mark.
+8. **`src/assets/img/favicon.svg`** + **`favicon.png`** + **`apple-touch-icon.png`** — your own mark.
 9. **`src/assets/css/tokens.css`** — palette tokens, both light and dark themes.
 
 Everything else (layout, microformats, the garden RSS importer, the POSSE pattern) can stay as-is. The `CNAME` file and `.github/workflows/webmention.yml` reference `sebthecanadian.ca` explicitly — change those before deploying, or delete them if you don't need webmentions or a custom domain. Self-host or adapt: the codebase is yours.

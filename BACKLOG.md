@@ -20,7 +20,7 @@ _None currently tracked._
 Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
 edges") across tokens, shell, home/writing, and identity. Shipped as four PRs
 (#11, #12, #13, #14). See CHANGELOG.md (2026-05-02 — Pitch v1 design sprint)
-for details. Pitch reference: `pitch-v1.html` on `main` (`4bf9261`). Plan:
+for details. Pitch reference: `docs/pitch-v1.html` (originally at repo root, `4bf9261`). Plan:
 [`docs/pitch-v1-migration-plan.md`](docs/pitch-v1-migration-plan.md).
 
 - [x] Day 01 — Token rename + AA recalibration (`--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`/`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`); new `--ink-soft`, `--bg-alt`, `--wash`, `--col` tokens
@@ -117,7 +117,7 @@ Candidates for future work beyond the current sprint. No commitment implied.
 
 - [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
 - [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
-- [ ] Inline monogram at section starts (pitch P5 detail)
+- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted)
 - [ ] Revisit `--rule` border contrast (light 1.39:1, dark 1.48:1 vs WCAG 1.4.11 strict; soft fail today via spacing redundancy) if low-vision feedback surfaces
 - [ ] Revisit `--amber` text on `--bg` light (3.33:1) before any active text use
 - [ ] Clean up live-pulse CSS dead-DOM selector (`nav a[href="/now/"]::after` — harmless)
