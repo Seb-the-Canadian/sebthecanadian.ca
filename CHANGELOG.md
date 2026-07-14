@@ -4,6 +4,87 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-07-14 — Finishing Pass (durability · correctness · freshness · cleanup)
+
+Six-phase pass closing the gap between "designed" and "finished" after two
+idle months. The organizing goal: the site must stop rotting when
+unattended. Shipped as stacked branches (durability → regression fixes →
+freshness → cleanup → feed/polish → content drafts + this runbook).
+
+### Added
+- **Daily rebuild cron** — `build-deploy.yml` now runs on a schedule
+  (09:17 UTC) in addition to push + dispatch. Garden posts and webmentions
+  refresh on the live site without commits — previously the site was frozen
+  at its last deploy forever.
+- **PR quality gate** — new `pr-check.yml`: full build + non-empty
+  gardenPosts assertion + core-output existence on every pull request. The
+  repo's first CI gate.
+- **Garden in the Atom feed** — `feed.xml` is now a hand-rolled template
+  (`src/feed.njk`) over a merged collection: native posts (full content) +
+  garden posts (external entries), interleaved by date, capped at 20. It
+  carried exactly one entry before; now it carries the body of work.
+  `@11ty/eleventy-plugin-rss` dependency removed.
+- **Data-driven Now block** — `_data/now.json` (`updated` + `currently`);
+  the home block renders freshness via the previously-orphaned
+  `tendedState` filter ("tended today" … "resting" … "fallow"). The old
+  template hardcoded a date that had drifted 10 weeks stale.
+- **README Maintenance runbook** — cron behavior, keep-last-good warnings,
+  snapshot refresh, now.json updates, posting steps, renewal dates.
+
+### Fixed
+- **Keep-last-good data fallbacks** — `garden-rss.js` and `webmentions.js`
+  previously overwrote their `_data/*.json` snapshots with empty data and
+  exited 0 on ANY fetch failure: a transient outage would silently ship an
+  empty site. Both now preserve the existing snapshot and emit a
+  `::warning::`; garden-rss also refuses to clobber a good snapshot when a
+  "successful" fetch filters to zero posts (upstream structure change).
+- **Unstyled tag archives** — `/writing/tags/*` still emitted `.post-card`
+  markup whose CSS was deleted in the pitch-v1 sprint; converted to the
+  `.index-table` row pattern used everywhere else.
+- **Double-branded home title** — `<title>` rendered "Seb (the Canadian).
+  — Seb (the Canadian)"; a pageTitle guard now single-brands the home and
+  keeps the suffix pattern on interior pages (applied to og/twitter too).
+- **Post meta descriptions** — posts set `excerpt` but base.njk only read
+  `description`; fallback chain is now description → excerpt → site.
+- **`/404.html` leaked into sitemap.xml** — excluded from collections.
+- **security.txt was RFC 9116-invalid** — missing `Expires:` added
+  (2027-07-01; annual renewal noted in the runbook).
+- **`.badge--beta` latent AA fail** — amber text (3.33:1 light) switched
+  to `--ink`; amber border + tint carry the state.
+- **Bluesky handle drift** — `resume.yml` and the POSSE template pointed
+  at `sebthecanadian.bsky.social`; unified to the custom-domain handle
+  `bsky.app/profile/sebthecanadian.ca` used everywhere else.
+- **OG card carried the retired identity** — `og-default.png` (1.1 MB)
+  still featured the skull monogram replaced by the maple leaf in PR #16,
+  plus the trailing-period title. Regenerated from the site's own tokens,
+  favicon geometry, and self-hosted IBM Plex Mono: 21 KB (−98%).
+
+### Changed
+- **Doc drift eliminated** — README (fonts, structure tree, favicon,
+  gardenPosts framing, fork guide), about.md (fonts), POSSE template
+  (native-post rendering), DESIGN_BRIEF (dated "superseded in part by
+  pitch-v1" note; the signed-off contract itself is preserved).
+- **head `rel=me`** — expanded from garden-only to all four profiles.
+- **`shortDate` filter** — appends a two-digit year for non-current years
+  so old garden entries can't masquerade as fresh.
+- **Content drafts (owner-reviewed)** — refreshed Now prose, expanded
+  links.md (+POSSE, Civic Tech Toronto, Eleventy, Tools for Conviviality),
+  fuller uses.md (+NVivo, Day Job section) — drafted from repo evidence.
+
+### Removed
+- **Dead CSS** (~120 lines) — `.hero` + cursor-blink, live-pulse (dead-DOM
+  since Now left the nav), `.garden-feature`, `.garden-activity`,
+  `.tag-index`, `.profile-links`; `.theme-toggle` merged into the
+  identical `.button` rule.
+- **Unused tokens** — `--col`, `--bg-alt`, `--ink-soft`, `--surface-hover`;
+  `--font-code` alias consolidated to `var(--mono)` everywhere.
+- **Dead template code** — `resume.njk` "Currently" branch (key never
+  existed; home Now owns it).
+- **Orphan assets** — `seb-stamp-pixel.png` (523 KB), `pixel/monogram.svg`
+  (idea logged in BACKLOG); `pitch-v1.html` (1.3 MB) moved to `docs/`.
+- **Print noise** — kbd-hint, footer-meta, build-stamp no longer print on
+  the resume PDF.
+
 ## 2026-05-02 — Pitch v1 Design Sprint (4 PRs)
 
 Four-afternoon sprint applying pitch-v1's "Same soul, sharper edges" direction:

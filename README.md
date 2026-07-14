@@ -98,9 +98,41 @@ Posts originate in the digital garden and are syndicated here as excerpts. The w
 
 See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 
+## Maintenance (runbook)
+
+The site is designed to run itself. What that means in practice:
+
+- **Daily rebuild.** `build-deploy.yml` has a `schedule:` cron (09:17 UTC daily)
+  in addition to push + manual dispatch. Garden posts and webmentions refresh
+  on the live site within a day of changing upstream — no commit needed.
+- **Keep-last-good data.** `scripts/garden-rss.js` and `scripts/webmentions.js`
+  never overwrite `_data/*.json` on a failed fetch. A transient outage keeps
+  the last good snapshot and emits a `::warning::` annotation in the Actions
+  run — check the workflow summary if the garden looks stale for several days.
+  An empty file is only written if no snapshot exists at all (fresh fork).
+- **Refreshing snapshots in git.** The committed `_data/gardenPosts.json` is a
+  baseline for forks, PR checks, and offline builds. Any successful build
+  regenerates it; commit the regenerated file occasionally
+  (`npm run garden-sync && git add _data/gardenPosts.json`) to keep the
+  baseline current.
+- **PR quality gate.** `pr-check.yml` runs on every pull request: full build,
+  gardenPosts must parse as a non-empty array, and `_site/{index.html,
+  feed.xml,sitemap.xml,404.html}` must exist.
+- **Updating Now.** Edit `_data/now.json` (`currently` prose + `updated`
+  date). The home page renders the freshness state ("tended today" …
+  "resting" … "fallow") from the date automatically.
+- **Posting.** Native posts: markdown in `src/writing/` per
+  `POSSE_POST_TEMPLATE.md`. Garden posts flow in automatically. Both appear
+  in `/feed.xml` (hand-rolled Atom template at `src/feed.njk`, capped at 20).
+- **Renewals.** `src/.well-known/security.txt` `Expires:` is set to
+  **2027-07-01** — bump it annually.
+
 ## Build Status
 
-All 22 Linear issues complete (COG-250 through COG-271). The full redesign sprint is done. See `BACKLOG.md` for details and `CHANGELOG.md` for version history.
+Redesign sprint (2026-03, COG-250–271), stewardship pass (2026-05-01),
+pitch-v1 design sprint (2026-05-02), and the finishing pass (2026-07) are
+all complete. See `BACKLOG.md` for open ideas and `CHANGELOG.md` for
+version history.
 
 ## Fork this site
 
