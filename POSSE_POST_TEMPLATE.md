@@ -10,7 +10,7 @@ title: "Post Title"
 date: 2026-03-09
 excerpt: "A brief summary of the post for the card display on the writing page. Keep to 1-2 sentences."
 gardenUrl: "https://cognitivearchitecture.ca/post-slug"
-blueskyUrl: "https://bsky.app/profile/sebthecanadian.bsky.social/post/xxx"  # optional
+blueskyUrl: "https://bsky.app/profile/sebthecanadian.ca/post/xxx"  # optional
 tags:
   - tag1
   - tag2
