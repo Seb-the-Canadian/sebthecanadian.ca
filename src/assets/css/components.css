@@ -162,7 +162,9 @@ footer nav a:visited {
 }
 
 .badge--beta {
-  color: var(--amber);
+  /* State carried by the amber border + tint; text stays --ink for AA
+     (light-mode amber on parchment is only 3.3:1 — fails as text). */
+  color: var(--ink);
   border-color: var(--amber);
   background: color-mix(in oklab, var(--amber) 10%, transparent);
 }

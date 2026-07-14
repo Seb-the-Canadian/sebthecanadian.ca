@@ -118,8 +118,9 @@ Candidates for future work beyond the current sprint. No commitment implied.
 - [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
 - [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
 - [ ] Inline monogram at section starts (pitch P5 detail)
-- [ ] Revisit `--rule` border contrast (light 1.39:1, dark 1.48:1 vs WCAG 1.4.11 strict; soft fail today via spacing redundancy) if low-vision feedback surfaces
-- [ ] Revisit `--amber` text on `--bg` light (3.33:1) before any active text use
+- [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
+- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
+- [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
 - [ ] Clean up live-pulse CSS dead-DOM selector (`nav a[href="/now/"]::after` — harmless)
 - [ ] Preserve `_data/gardenPosts.json` cache when `garden-rss.js` fetch fails (build-script concern)
 
