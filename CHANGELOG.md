@@ -10,7 +10,7 @@ Four-afternoon sprint applying pitch-v1's "Same soul, sharper edges" direction:
 the design is now fully monospace, the nav has four doors, the home reads as
 a terminal-style index-table front door, and the identity system is locked
 to the woodcut on the resume. Shipped as PRs #11, #12, #13, #14. Pitch
-reference: `pitch-v1.html` on `main` (`4bf9261`). Plan archived at
+reference: `docs/pitch-v1.html` (originally at repo root, `4bf9261`). Plan archived at
 [`docs/pitch-v1-migration-plan.md`](docs/pitch-v1-migration-plan.md).
 
 ### Changed (Day 01 — tokens + type)

@@ -1,8 +1,17 @@
 # Design & Implementation Brief — sebthecanadian.ca
 
-**Status:** APPROVED — Signed off 2026-03-09
+**Status:** APPROVED — Signed off 2026-03-09 · **Superseded in part by pitch-v1 (2026-05)**
 **Date:** 2026-03-09
 **Author:** Design Sprint Session (Phase 2 output)
+
+> **Historical note (2026-07):** This brief is preserved as the original
+> signed-off contract. The pitch-v1 sprint (May 2026, PRs #11–14) revised
+> parts of it: the body is now fully monospace (IBM Plex Mono, self-hosted —
+> not Google Fonts, not a system stack), primary nav is four doors
+> (Home · Writing · Projects · Resume; Now folded into the home page,
+> Colophon into About), and the home is a terminal-style index table.
+> Where this document and the built site disagree, the site is correct.
+> See `docs/pitch-v1-migration-plan.md` and CHANGELOG 2026-05-02.
 
 ---
 
