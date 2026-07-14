@@ -12,24 +12,35 @@ const DOMAIN = "sebthecanadian.ca";
 const API_URL = `https://webmention.io/api/mentions.jf2?domain=${DOMAIN}&per-page=200`;
 const ALLOWED_TYPES = new Set(["in-reply-to", "like-of", "repost-of", "bookmark-of"]);
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "_data", "webmentions.json");
 
-function writeEmpty(reason) {
+/**
+ * Keep-last-good fallback: on fetch failure, leave the committed
+ * webmentions.json snapshot untouched so a transient webmention.io outage
+ * never wipes received mentions. Only write an empty object if no snapshot
+ * exists at all. (An empty *successful* response is legitimate and is
+ * written normally by main().)
+ */
+function keepLastGood(reason) {
+  if (existsSync(OUTPUT_PATH)) {
+    console.warn(`::warning::webmentions: ${reason} — keeping existing webmentions.json`);
+    return;
+  }
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, "{}", "utf-8");
-  console.log(`Wrote empty webmentions.json (${reason})`);
+  console.warn(`::warning::webmentions: ${reason} — no existing snapshot, wrote empty webmentions.json`);
 }
 
 async function main() {
   console.log(`Fetching mentions from ${API_URL}...`);
   const response = await fetch(API_URL);
   if (!response.ok) {
-    writeEmpty(`fetch failed: ${response.status} ${response.statusText}`);
+    keepLastGood(`fetch failed: ${response.status} ${response.statusText}`);
     return;
   }
   const data = await response.json();
@@ -67,7 +78,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Webmentions fetch failed:", err.message);
-  writeEmpty("uncaught error");
+  keepLastGood(`uncaught error: ${err.message}`);
   process.exit(0);
 });

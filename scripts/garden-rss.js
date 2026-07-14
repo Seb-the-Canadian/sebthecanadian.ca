@@ -28,12 +28,28 @@ const INCLUDE_PATTERNS = [
   /^Atlas\/The Almanac\/The Grove \(index\)\//,    // Long-form
 ];
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "_data", "gardenPosts.json");
+
+/**
+ * Keep-last-good fallback: the committed gardenPosts.json snapshot is the
+ * baseline. On any fetch failure, leave it untouched so a transient outage
+ * never ships an empty garden. Only write an empty array if no snapshot
+ * exists at all (fresh fork). `::warning::` surfaces in GitHub Actions.
+ */
+function keepLastGood(reason) {
+  if (existsSync(OUTPUT_PATH)) {
+    console.warn(`::warning::garden-rss: ${reason} — keeping existing gardenPosts.json`);
+    return;
+  }
+  mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
+  writeFileSync(OUTPUT_PATH, "[]", "utf-8");
+  console.warn(`::warning::garden-rss: ${reason} — no existing snapshot, wrote empty gardenPosts.json`);
+}
 
 function slugFromPath(mdPath) {
   // "Atlas/The Almanac/Greenhouse (index)/Some Title.md" → "Some+Title"
@@ -64,10 +80,7 @@ async function main() {
   console.log("Fetching garden cache manifest...");
   const response = await fetch(CACHE_URL);
   if (!response.ok) {
-    console.error(`Failed to fetch cache: ${response.status} ${response.statusText}`);
-    // Write empty array as graceful fallback
-    writeFileSync(OUTPUT_PATH, "[]", "utf-8");
-    console.log("Wrote empty gardenPosts.json (fetch failed)");
+    keepLastGood(`fetch failed: ${response.status} ${response.statusText}`);
     process.exit(0);
   }
 
@@ -120,14 +133,20 @@ async function main() {
     return new Date(b.date) - new Date(a.date);
   });
 
+  // A successful fetch that filters down to zero posts almost certainly
+  // means the upstream manifest structure changed, not that the garden
+  // was emptied — don't clobber a good snapshot with it.
+  if (posts.length === 0 && existsSync(OUTPUT_PATH)) {
+    keepLastGood("fetch succeeded but yielded 0 posts (manifest structure change?)");
+    return;
+  }
+
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, JSON.stringify(posts, null, 2), "utf-8");
   console.log(`Wrote ${posts.length} garden posts to ${OUTPUT_PATH}`);
 }
 
 main().catch((err) => {
-  console.error("Garden RSS generator failed:", err.message);
-  // Graceful fallback — don't break the build
-  writeFileSync(OUTPUT_PATH, "[]", "utf-8");
+  keepLastGood(`generator failed: ${err.message}`);
   process.exit(0);
 });
