@@ -34,6 +34,27 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 
 ---
 
+## Idea — From neilwengerd.com design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-neil-wengerd.md`](docs/design-reference-neil-wengerd.md).
+
+- [ ] Braver, metaphor-driven section/nav copy — let the Data Druid framing
+      shape actual labels (not just tokens/visuals), the way Campfire's
+      section titles ("Who Campfire is for," "Ways to Sit Around the Fire")
+      carry its fire metaphor throughout
+- [ ] Numbered process cards — large muted numeral + short label + one
+      sentence, for a "how a project/post gets made" style section
+- [ ] Plain-text client/collaborator list — stacked text names, no logo
+      wall, for listing past collaborators/orgs without an asset pipeline
+- [ ] Pull-line emphasis style — a bolded, single-sentence emphasis
+      treatment inside body copy (distinct from the eyebrow-label idea
+      above), for one standout line per section
+- [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly
+      into visitor-facing home page copy, not just an internal doc
+
+---
+
 ## Done — Pitch v1 Design Sprint (2026-05-02)
 
 Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
