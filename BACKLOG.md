@@ -63,6 +63,28 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 
 ---
 
+## Idea — From henry.codes design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-henry-codes.md`](docs/design-reference-henry-codes.md).
+
+- [ ] "Echo" ghost-text behind project titles — large, muted,
+      `aria-hidden` repeated project name flanking the real title/logo,
+      for project rows that don't have a hero image yet
+- [ ] Category axis alongside tags on writing posts (e.g. "journal" vs.
+      "resource") — distinct from topic tags, only if `/writing/` grows
+      enough to need two taxonomies instead of one
+- [ ] "You are here" as the footer breadcrumb label, if/when one exists —
+      friendlier than a generic Home / Section / Page trail
+- [ ] Visibly-disabled (not deleted) social link pattern — a modifier
+      class for an account still linked but no longer endorsed/active,
+      instead of silently removing it or leaving it looking current
+- [ ] Fathom (or similar privacy-respecting analytics) named as the
+      default option if analytics are ever wanted, instead of reaching
+      for Google Analytics by default
+
+---
+
 ## Done — Pitch v1 Design Sprint (2026-05-02)
 
 Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
