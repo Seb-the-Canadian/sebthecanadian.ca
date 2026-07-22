@@ -15,6 +15,25 @@ _None currently tracked._
 
 ---
 
+## Idea — From yepsen.net design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-yepsen.md`](docs/design-reference-yepsen.md).
+
+- [ ] Eyebrow labels — small uppercase `--mono`/`--amber` micro-label above
+      section headings (home, writing, projects) as a wayfinding device
+- [ ] Post template: lede paragraph style — larger, `--ink-soft` intro
+      paragraph distinct from body copy, between title and content
+- [ ] Post template: styled `blockquote` — left accent border (`--moss` or
+      `--amber`) + `--wash` background, instead of default browser styling
+- [ ] Featured pull-quote pattern — one oversized quote among smaller ones,
+      for surfacing a standout webmention or project testimonial
+- [ ] `schema.org` JSON-LD (`Person` on home, `Article` on posts,
+      `CollectionPage` on `/writing/`) alongside existing h-card/h-entry
+      microformats — machine-second layer, doesn't conflict with IndieWeb
+
+---
+
 ## Done — Pitch v1 Design Sprint (2026-05-02)
 
 Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
