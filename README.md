@@ -126,6 +126,33 @@ The site is designed to run itself. What that means in practice:
   in `/feed.xml` (hand-rolled Atom template at `src/feed.njk`, capped at 20).
 - **Renewals.** `src/.well-known/security.txt` `Expires:` is set to
   **2027-07-01** — bump it annually.
+- **Domain canary.** `domain-check.yml` curls the apex, www, and the feed
+  daily (10:43 UTC) and fails the run — which emails the repo owner — if
+  any stop answering. A red run here almost always means DNS, not the
+  repo (deploys that fail keep the last good site up; only DNS or Pages
+  config can take the URL down entirely).
+- **DNS (Cloudflare) — the records that must exist.** The July 2026
+  outage was exactly this: the apex records vanished from the zone while
+  everything repo-side stayed green. To serve GitHub Pages on the custom
+  domain, the Cloudflare zone needs, all **DNS-only (grey cloud)** per
+  this site's documented posture:
+
+  | Type | Name | Value |
+  |------|------|-------|
+  | A | `sebthecanadian.ca` | `185.199.108.153` |
+  | A | `sebthecanadian.ca` | `185.199.109.153` |
+  | A | `sebthecanadian.ca` | `185.199.110.153` |
+  | A | `sebthecanadian.ca` | `185.199.111.153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8000::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8001::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8002::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8003::153` |
+  | CNAME | `www` | `seb-the-canadian.github.io` |
+
+  After restoring records: GitHub repo **Settings → Pages** — confirm
+  the custom domain still reads `sebthecanadian.ca` (re-save it if it
+  shows an error) and re-enable **Enforce HTTPS** once the certificate
+  re-provisions (can take up to an hour after DNS returns).
 
 ## Build Status
 

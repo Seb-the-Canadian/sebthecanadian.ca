@@ -1,0 +1,27 @@
+name: Domain Check
+
+# Daily canary: fail loudly if the live site stops answering.
+# In July 2026 the apex DNS records silently vanished from the
+# Cloudflare zone and the site was unreachable for weeks before anyone
+# noticed. A failing run here emails the repo owner within a day.
+
+on:
+  schedule:
+    - cron: "43 10 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apex resolves and serves
+        run: |
+          curl -sSf --max-time 30 -o /dev/null -w "apex: HTTP %{http_code}\n" https://sebthecanadian.ca/
+      - name: www resolves (redirect or 200 both fine)
+        run: |
+          curl -sSfL --max-time 30 -o /dev/null -w "www: HTTP %{http_code}\n" https://www.sebthecanadian.ca/
+      - name: Feed serves
+        run: |
+          curl -sSf --max-time 30 -o /dev/null -w "feed: HTTP %{http_code}\n" https://sebthecanadian.ca/feed.xml
