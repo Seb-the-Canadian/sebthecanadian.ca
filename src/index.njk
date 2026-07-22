@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Seb (the Canadian).
+title: Seb (the Canadian)
 description: "Personal site for Seb Lathangue — civic technology, knowledge architecture, and the digital garden."
 ---
 <div class="h-card">
@@ -19,10 +19,10 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
   <section id="now" class="home-now">
     <h2>Now</h2>
     <p>
-      <strong>Currently:</strong> stabilizing a personal "front door" at sebthecanadian.ca, publishing notes and long-form thinking in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>, and building civic-tech tooling through <a href="https://civcitdev.ca">CivCitDev</a>.
+      <strong>Currently:</strong> {{ now.currently | safe }}
     </p>
     <p class="post-meta">
-      <time class="dt-updated" datetime="2026-05-01">Tended {{ "2026-05-01" | daysAgo }}</time>
+      <time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
     </p>
   </section>
 

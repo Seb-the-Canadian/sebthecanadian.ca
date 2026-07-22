@@ -1,0 +1,49 @@
+name: PR Check
+
+# Quality gate for pull requests: the site must build cleanly and the
+# data snapshots must survive the build (keep-last-good guarantees the
+# committed baseline is never clobbered by a transient fetch failure).
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npm run build
+
+      - name: Assert garden data is a non-empty array
+        run: |
+          node -e "
+            const d = JSON.parse(require('node:fs').readFileSync('_data/gardenPosts.json', 'utf-8'));
+            if (!Array.isArray(d) || d.length === 0) {
+              console.error('gardenPosts.json is empty or not an array — keep-last-good failed or snapshot missing');
+              process.exit(1);
+            }
+            console.log('gardenPosts.json OK:', d.length, 'posts');
+          "
+
+      - name: Assert core outputs exist
+        run: |
+          test -f _site/index.html
+          test -f _site/feed.xml
+          test -f _site/sitemap.xml
+          test -f _site/404.html
+          echo "Core outputs present"

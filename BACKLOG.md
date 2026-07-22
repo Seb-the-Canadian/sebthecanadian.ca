@@ -15,12 +15,43 @@ _None currently tracked._
 
 ---
 
+## Done — Finishing Pass (2026-07-14)
+
+Six-phase pass making the site self-tending: daily rebuild cron,
+keep-last-good data fallbacks, first PR quality gate, regression +
+correctness fixes, freshness mechanics, doc/dead-code/asset cleanup,
+garden-inclusive Atom feed, and a README runbook. See CHANGELOG.md
+(2026-07-14 — Finishing Pass) for the full record.
+
+- [x] Daily rebuild cron + keep-last-good fetch fallbacks (resolves "Preserve gardenPosts cache" + "Automated rebuild triggers" ideas)
+- [x] PR quality gate (build + data assertions)
+- [x] Unstyled tag-archive regression fixed (index-table pattern)
+- [x] Title/meta/sitemap/security.txt/rel=me correctness fixes
+- [x] Data-driven Now block + tendedState wiring
+- [x] Doc drift eliminated (README, about, POSSE template, DESIGN_BRIEF annotation)
+- [x] Dead CSS + unused tokens + orphan assets removed (resolves "live-pulse dead-DOM selector" idea)
+- [x] Garden posts in feed.xml; RSS plugin dependency dropped
+- [x] og-default.png regenerated with current maple identity (21 KB, was 1.1 MB skull card)
+- [x] Content drafts for owner review: Now prose, links.md, uses.md
+- [x] README Maintenance runbook
+
+---
+
+## Owner TODOs (content — nothing blocks on these)
+
+- [ ] Review + edit the Phase C content drafts (Now prose in `_data/now.json`, `links.md`, `uses.md`) — merging the now.json date attests the prose is current
+- [ ] Hardware section for `/uses/` (only you can list it)
+- [ ] A second native post whenever there's something to say — the pipeline is ready
+- [ ] Re-authorize the GitHub connector so PRs can be opened/managed from sessions (or open PRs manually from the pushed branches)
+
+---
+
 ## Done — Pitch v1 Design Sprint (2026-05-02)
 
 Four-afternoon sprint applying the pitch-v1 direction ("Same soul, sharper
 edges") across tokens, shell, home/writing, and identity. Shipped as four PRs
 (#11, #12, #13, #14). See CHANGELOG.md (2026-05-02 — Pitch v1 design sprint)
-for details. Pitch reference: `pitch-v1.html` on `main` (`4bf9261`). Plan:
+for details. Pitch reference: `docs/pitch-v1.html` (originally at repo root, `4bf9261`). Plan:
 [`docs/pitch-v1-migration-plan.md`](docs/pitch-v1-migration-plan.md).
 
 - [x] Day 01 — Token rename + AA recalibration (`--accent`→`--moss`, `--accent-secondary`→`--amber`, `--font-body`/`--font-heading`→`--mono`, `--border`→`--rule`, `--fg`→`--ink`); new `--ink-soft`, `--bg-alt`, `--wash`, `--col` tokens
@@ -117,11 +148,10 @@ Candidates for future work beyond the current sprint. No commitment implied.
 
 - [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
 - [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
-- [ ] Inline monogram at section starts (pitch P5 detail)
-- [ ] Revisit `--rule` border contrast (light 1.39:1, dark 1.48:1 vs WCAG 1.4.11 strict; soft fail today via spacing redundancy) if low-vision feedback surfaces
-- [ ] Revisit `--amber` text on `--bg` light (3.33:1) before any active text use
-- [ ] Clean up live-pulse CSS dead-DOM selector (`nav a[href="/now/"]::after` — harmless)
-- [ ] Preserve `_data/gardenPosts.json` cache when `garden-rss.js` fetch fails (build-script concern)
+- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted)
+- [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
+- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
+- [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
 
 ### IndieWeb & Microformats
 
@@ -136,7 +166,6 @@ Candidates for future work beyond the current sprint. No commitment implied.
 ### Future POSSE Enhancements
 
 - [ ] Bluesky automation via Bridgy Fed or AT Protocol GitHub Action
-- [ ] Automated rebuild triggers (cron or webhook on garden publish)
 
 ---
 

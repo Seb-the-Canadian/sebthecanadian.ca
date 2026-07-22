@@ -97,7 +97,7 @@ li {
 
 /* Code */
 code {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: 0.9em;
   background: var(--code-bg);
   padding: 0.15em 0.35em;
@@ -105,7 +105,7 @@ code {
 }
 
 pre {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   background: var(--code-bg);
   padding: var(--space-md);
@@ -144,7 +144,7 @@ hr {
 
 /* Time / Date */
 time {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
 }

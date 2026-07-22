@@ -10,7 +10,7 @@ title: "Post Title"
 date: 2026-03-09
 excerpt: "A brief summary of the post for the card display on the writing page. Keep to 1-2 sentences."
 gardenUrl: "https://cognitivearchitecture.ca/post-slug"
-blueskyUrl: "https://bsky.app/profile/sebthecanadian.bsky.social/post/xxx"  # optional
+blueskyUrl: "https://bsky.app/profile/sebthecanadian.ca/post/xxx"  # optional
 tags:
   - tag1
   - tag2
@@ -54,6 +54,6 @@ The full text is rendered on the writing page, not just an excerpt.
 ## Template Behavior
 
 - **Syndicated posts** (`syndicated: true`): Rendered as excerpt cards with "Read more →" linking to `gardenUrl`. `u-syndication` markup on the garden link.
-- **Native posts** (`syndicated: false`): Full content rendered on the writing page. No external source link.
+- **Native posts** (`syndicated: false`): Listed by title + date on the writing page ("Also published natively here"); full content renders on the post's own page via `post.njk`.
 - Both types appear in the h-feed and RSS/Atom output.
 - `dt-published` set from `date` field.

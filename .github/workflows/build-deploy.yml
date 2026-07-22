@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # Daily rebuild so garden posts + webmentions stay fresh without commits
+    - cron: "17 9 * * *"
   workflow_dispatch:
 
 permissions:

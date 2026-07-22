@@ -16,7 +16,7 @@ Personal site for Seb Lathangue — civic technology, knowledge architecture, an
 | Templating | Nunjucks |
 | Styling | Vanilla CSS with custom properties (no Tailwind, no preprocessor) |
 | Content | Markdown + YAML front matter |
-| Fonts | IBM Plex Mono (self-hosted WOFF2, headings + code) + system stack (body) |
+| Fonts | IBM Plex Mono (self-hosted WOFF2) — the site is fully monospace, body included |
 | JS | Progressive enhancement only — zero JS in critical path |
 | Deployment | GitHub Actions → GitHub Pages |
 | DNS | Cloudflare (DNS-only records) |
@@ -41,21 +41,22 @@ sebthecanadian.ca/
 │   ├── links.md               # Blogroll
 │   ├── 404.md                 # Custom 404
 │   ├── writing/               # Blog posts (markdown)
-│   │   └── hello-indieweb.md  # First native post
+│   │   ├── hello-indieweb.md  # First native post
+│   │   └── tags.njk           # Tag archive pages (/writing/tags/<tag>/)
 │   ├── _includes/
 │   │   ├── base.njk           # Base HTML layout
 │   │   ├── nav.njk            # Primary navigation
 │   │   ├── footer.njk         # Footer with colophon row
 │   │   ├── project-card.njk   # Reusable project card
-│   │   └── post-card.njk      # POSSE post excerpt card
+│   │   └── post.njk           # h-entry layout for native posts
 │   └── assets/
 │       ├── css/               # tokens, base, components, utilities, print
 │       ├── fonts/             # IBM Plex Mono WOFF2 (self-hosted)
 │       ├── img/
-│       │   ├── seb-stamp.jpeg # Profile illustration
-│       │   ├── favicon.svg    # Monogram favicon (SVG)
-│       │   ├── favicon.png    # Monogram favicon (32x32 PNG fallback)
-│       │   └── pixel/         # Pixel art: monogram, dividers, textures
+│       │   ├── seb-stamp.jpeg # Woodcut portrait (resume, u-photo)
+│       │   ├── favicon.svg    # Maple-leaf favicon (SVG)
+│       │   ├── favicon.png    # Maple-leaf favicon (32x32 PNG fallback)
+│       │   └── pixel/         # Pixel art: 404 illustration, dividers, textures
 │       └── js/
 │           └── theme-toggle.js # Dark/light/system toggle
 ├── _data/
@@ -64,7 +65,7 @@ sebthecanadian.ca/
 │   ├── projects.json          # Project data
 │   ├── profiles.json          # Profile links
 │   ├── resume.yml             # Resume data (experience, education, skills)
-│   └── gardenPosts.json       # Auto-generated garden posts (from scripts/garden-rss.js)
+│   └── gardenPosts.json       # Garden posts snapshot — regenerated at build, kept-last-good on fetch failure
 ├── scripts/
 │   └── garden-rss.js          # Obsidian Publish → garden posts JSON
 ├── eleventy.config.js         # Eleventy config (ESM)
@@ -97,9 +98,68 @@ Posts originate in the digital garden and are syndicated here as excerpts. The w
 
 See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 
+## Maintenance (runbook)
+
+The site is designed to run itself. What that means in practice:
+
+- **Daily rebuild.** `build-deploy.yml` has a `schedule:` cron (09:17 UTC daily)
+  in addition to push + manual dispatch. Garden posts and webmentions refresh
+  on the live site within a day of changing upstream — no commit needed.
+- **Keep-last-good data.** `scripts/garden-rss.js` and `scripts/webmentions.js`
+  never overwrite `_data/*.json` on a failed fetch. A transient outage keeps
+  the last good snapshot and emits a `::warning::` annotation in the Actions
+  run — check the workflow summary if the garden looks stale for several days.
+  An empty file is only written if no snapshot exists at all (fresh fork).
+- **Refreshing snapshots in git.** The committed `_data/gardenPosts.json` is a
+  baseline for forks, PR checks, and offline builds. Any successful build
+  regenerates it; commit the regenerated file occasionally
+  (`npm run garden-sync && git add _data/gardenPosts.json`) to keep the
+  baseline current.
+- **PR quality gate.** `pr-check.yml` runs on every pull request: full build,
+  gardenPosts must parse as a non-empty array, and `_site/{index.html,
+  feed.xml,sitemap.xml,404.html}` must exist.
+- **Updating Now.** Edit `_data/now.json` (`currently` prose + `updated`
+  date). The home page renders the freshness state ("tended today" …
+  "resting" … "fallow") from the date automatically.
+- **Posting.** Native posts: markdown in `src/writing/` per
+  `POSSE_POST_TEMPLATE.md`. Garden posts flow in automatically. Both appear
+  in `/feed.xml` (hand-rolled Atom template at `src/feed.njk`, capped at 20).
+- **Renewals.** `src/.well-known/security.txt` `Expires:` is set to
+  **2027-07-01** — bump it annually.
+- **Domain canary.** `domain-check.yml` curls the apex, www, and the feed
+  daily (10:43 UTC) and fails the run — which emails the repo owner — if
+  any stop answering. A red run here almost always means DNS, not the
+  repo (deploys that fail keep the last good site up; only DNS or Pages
+  config can take the URL down entirely).
+- **DNS (Cloudflare) — the records that must exist.** The July 2026
+  outage was exactly this: the apex records vanished from the zone while
+  everything repo-side stayed green. To serve GitHub Pages on the custom
+  domain, the Cloudflare zone needs, all **DNS-only (grey cloud)** per
+  this site's documented posture:
+
+  | Type | Name | Value |
+  |------|------|-------|
+  | A | `sebthecanadian.ca` | `185.199.108.153` |
+  | A | `sebthecanadian.ca` | `185.199.109.153` |
+  | A | `sebthecanadian.ca` | `185.199.110.153` |
+  | A | `sebthecanadian.ca` | `185.199.111.153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8000::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8001::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8002::153` |
+  | AAAA | `sebthecanadian.ca` | `2606:50c0:8003::153` |
+  | CNAME | `www` | `seb-the-canadian.github.io` |
+
+  After restoring records: GitHub repo **Settings → Pages** — confirm
+  the custom domain still reads `sebthecanadian.ca` (re-save it if it
+  shows an error) and re-enable **Enforce HTTPS** once the certificate
+  re-provisions (can take up to an hour after DNS returns).
+
 ## Build Status
 
-All 22 Linear issues complete (COG-250 through COG-271). The full redesign sprint is done. See `BACKLOG.md` for details and `CHANGELOG.md` for version history.
+Redesign sprint (2026-03, COG-250–271), stewardship pass (2026-05-01),
+pitch-v1 design sprint (2026-05-02), and the finishing pass (2026-07) are
+all complete. See `BACKLOG.md` for open ideas and `CHANGELOG.md` for
+version history.
 
 ## Fork this site
 
@@ -112,7 +172,7 @@ This repo is readable enough to fork as a starting point for your own personal s
 5. **`_data/resume.yml`** — experience, skills, education.
 6. **`src/index.njk`** — hero copy and the h-card block.
 7. **`src/assets/img/seb-stamp.jpeg`** — replace with your own portrait (same filename or update references).
-8. **`src/assets/img/pixel/monogram.svg`** + **`src/assets/img/favicon.svg`** — your own mark.
+8. **`src/assets/img/favicon.svg`** + **`favicon.png`** + **`apple-touch-icon.png`** — your own mark.
 9. **`src/assets/css/tokens.css`** — palette tokens, both light and dark themes.
 
 Everything else (layout, microformats, the garden RSS importer, the POSSE pattern) can stay as-is. The `CNAME` file and `.github/workflows/webmention.yml` reference `sebthecanadian.ca` explicitly — change those before deploying, or delete them if you don't need webmentions or a custom domain. Self-host or adapt: the codebase is yours.

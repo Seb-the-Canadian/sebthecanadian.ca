@@ -1,4 +1,3 @@
-import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import yaml from "js-yaml";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -8,25 +7,6 @@ export default function (eleventyConfig) {
   // YAML data file support
   eleventyConfig.addDataExtension("yml,yaml", (contents) => {
     return yaml.load(contents);
-  });
-  // RSS/Atom feed
-  eleventyConfig.addPlugin(feedPlugin, {
-    type: "atom",
-    outputPath: "/feed.xml",
-    collection: {
-      name: "writing",
-      limit: 20,
-    },
-    metadata: {
-      language: "en",
-      title: "Seb (the Canadian)",
-      subtitle: "Writing from sebthecanadian.ca",
-      base: "https://sebthecanadian.ca/",
-      author: {
-        name: "Seb Lathangue",
-        email: "hello@cognitivearchitecture.ca",
-      },
-    },
   });
 
   // Passthrough copy
@@ -46,6 +26,47 @@ export default function (eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/writing/*.md").sort((a, b) => {
       return b.date - a.date;
     });
+  });
+
+  // feedEntries — native posts + garden posts, merged for the Atom feed
+  // (src/feed.njk). The garden IS the body of work; the feed should carry
+  // it. Garden entries link out to cognitivearchitecture.ca. Null-dated
+  // entries are skipped; newest first; capped at 20.
+  eleventyConfig.addCollection("feedEntries", function (collectionApi) {
+    const native = collectionApi
+      .getFilteredByGlob("src/writing/*.md")
+      .map((item) => ({
+        title: item.data.title,
+        url: `https://sebthecanadian.ca${item.url}`,
+        date: item.date,
+        summary: item.data.excerpt || "",
+        // templateContent is not available while collections build;
+        // pass the page object so feed.njk can read it lazily at render.
+        page: item,
+        external: false,
+      }));
+
+    let garden = [];
+    try {
+      garden = JSON.parse(
+        readFileSync(new URL("./_data/gardenPosts.json", import.meta.url), "utf-8")
+      ).map((p) => ({
+        title: p.title,
+        url: p.url,
+        date: p.date ? new Date(p.date) : null,
+        summary: p.excerpt || "",
+        page: null,
+        external: true,
+      }));
+    } catch {
+      /* no garden snapshot — native-only feed */
+    }
+
+    return [...native, ...garden]
+      .filter((e) => e.date && !isNaN(new Date(e.date).getTime()))
+      .map((e) => ({ ...e, rfc3339: new Date(e.date).toISOString() }))
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 20);
   });
 
   // tagList — union of tags across the writing collection
@@ -87,7 +108,12 @@ export default function (eleventyConfig) {
     const d = input instanceof Date ? input : new Date(input);
     if (isNaN(d.getTime())) return "";
     const months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
-    return `${String(d.getUTCDate())} ${months[d.getUTCMonth()]}`;
+    const base = `${String(d.getUTCDate())} ${months[d.getUTCMonth()]}`;
+    // Year suffix for non-current years, so old entries can't masquerade
+    // as fresh ("23 feb" → "23 feb '25" once the year rolls over).
+    const year = d.getUTCFullYear();
+    const nowYear = new Date().getUTCFullYear();
+    return year === nowYear ? base : `${base} '${String(year).slice(-2)}`;
   });
 
   // Extract hostname from a URL string (falls back to original input on failure)

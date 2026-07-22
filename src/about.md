@@ -30,7 +30,7 @@ If you want the formal version — titles, dates, credentials — the [resume](/
 - **SSG:** [Eleventy](https://www.11ty.dev/) (11ty) 3.x
 - **Templating:** Nunjucks
 - **Styling:** Vanilla CSS with custom properties — no Tailwind, no preprocessor
-- **Fonts:** IBM Plex Mono (headings + code) + system font stack (body)
+- **Fonts:** IBM Plex Mono, self-hosted — the whole site is monospace, body included
 - **Content:** Markdown + YAML front matter + JSON data files
 - **JS:** Progressive enhancement only — zero JS in the critical path
 

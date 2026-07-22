@@ -89,7 +89,7 @@ footer nav a:visited {
 }
 
 .build-stamp {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   color: var(--muted);
   margin-top: var(--space-xs);
@@ -98,7 +98,7 @@ footer nav a:visited {
 
 /* Page-level updated / last-tended signal */
 .meta-updated {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   margin-top: calc(-1 * var(--space-sm));
@@ -145,7 +145,7 @@ footer nav a:visited {
 /* Status Badge */
 .badge {
   display: inline-block;
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   font-weight: 600;
   text-transform: uppercase;
@@ -162,7 +162,9 @@ footer nav a:visited {
 }
 
 .badge--beta {
-  color: var(--amber);
+  /* State carried by the amber border + tint; text stays --ink for AA
+     (light-mode amber on parchment is only 3.3:1 — fails as text). */
+  color: var(--ink);
   border-color: var(--amber);
   background: color-mix(in oklab, var(--amber) 10%, transparent);
 }
@@ -196,49 +198,6 @@ footer nav a:visited {
   image-rendering: pixelated;
 }
 
-/* Hero */
-.hero {
-  margin-bottom: var(--space-2xl);
-}
-
-.hero h1 {
-  font-size: var(--text-2xl);
-}
-
-.hero .tagline {
-  font-family: var(--mono);
-  font-size: var(--text-lg);
-  color: var(--muted);
-  margin-bottom: var(--space-lg);
-}
-
-/* Profile Links */
-.profile-links {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-}
-
-.profile-links a {
-  font-family: var(--font-code);
-  font-size: var(--text-sm);
-}
-
-/* Garden Section (featured) */
-.garden-feature {
-  border-radius: var(--radius);
-  padding: var(--space-lg);
-  background: var(--wash);
-  margin-bottom: var(--space-2xl);
-}
-
-.garden-feature h2 {
-  margin-top: 0;
-  color: var(--moss);
-}
-
 /* Resume Sections */
 .resume-section {
   margin-bottom: var(--space-2xl);
@@ -266,7 +225,7 @@ footer nav a:visited {
 }
 
 .resume-entry .dates {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   color: var(--muted);
 }
@@ -348,93 +307,7 @@ footer nav a:visited {
   color: var(--muted);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
-  padding: 0.25rem 0.5rem;
-  font-family: var(--font-code);
-  font-size: var(--text-sm);
-  color: var(--muted);
-  cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.theme-toggle:hover {
-  color: var(--moss);
-  border-color: var(--moss);
-}
-
-/* ── Terminal cursor blink on hero heading ───────────────────────────────── */
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.hero h1::after {
-  content: "█";
-  color: var(--moss);
-  margin-left: 0.1em;
-  animation: cursor-blink 1.2s step-end infinite;
-  font-weight: 400;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero h1::after {
-    animation: none;
-    opacity: 0.5;
-  }
-}
-
-/* ── "Live" pulse dot on Now nav link ───────────────────────────────────── */
-@keyframes live-pulse {
-  0%, 100% { opacity: 1;   transform: scale(1);   }
-  50%       { opacity: 0.3; transform: scale(0.7); }
-}
-
-nav[aria-label="Primary"] a[href="/now/"]::after {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: var(--moss);
-  border-radius: 50%;
-  margin-left: 0.4em;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-  animation: live-pulse 2.5s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  nav[aria-label="Primary"] a[href="/now/"]::after {
-    animation: none;
-  }
-}
-
-/* ── Garden last-active signal ───────────────────────────────────────────── */
-.garden-activity {
-  display: flex;
-  align-items: center;
-  gap: 0.45em;
-  font-family: var(--font-code);
-  font-size: var(--text-xs);
-  color: var(--muted);
-  margin-top: var(--space-md);
-  margin-bottom: 0;
-}
-
-.garden-activity-dot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background: var(--moss);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.garden-activity time,
+/* ── Dotted-underline hint on "last updated" timestamps ─────────────────── */
 .meta-updated time {
   text-decoration: underline dotted var(--rule);
   text-underline-offset: 0.25em;
@@ -504,7 +377,7 @@ nav[aria-label="Primary"] a[href="/now/"]::after {
 }
 
 kbd {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   background: var(--code-bg);
   border: 1px solid var(--rule);
@@ -520,20 +393,22 @@ kbd {
   margin-bottom: 0;
 }
 
-/* ── Buttons (non-toggle) ───────────────────────────────────────────────── */
-.button {
+/* ── Buttons (shared with the JS-injected theme toggle) ─────────────────── */
+.button,
+.theme-toggle {
   background: none;
   border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   padding: 0.25rem 0.5rem;
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.button:hover {
+.button:hover,
+.theme-toggle:hover {
   color: var(--moss);
   border-color: var(--moss);
 }
@@ -552,7 +427,7 @@ kbd {
 }
 
 .h-entry .post-meta {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   margin-bottom: 0;
@@ -572,7 +447,7 @@ kbd {
 }
 
 .h-entry .post-syndication {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   border-top: 1px solid var(--rule);
@@ -584,32 +459,13 @@ kbd {
   border-top: 1px solid var(--rule);
   padding-top: var(--space-md);
   margin-top: var(--space-xl);
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
 }
 
 .h-entry .post-footer .p-author .p-name {
   color: var(--ink);
-}
-
-/* ── Tag index on /writing/ ──────────────────────────────────────────────── */
-.tag-index {
-  font-family: var(--font-code);
-  font-size: var(--text-sm);
-  color: var(--muted);
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-xl);
-}
-
-.tag-index .p-category {
-  color: var(--muted);
-  text-decoration: none;
-  margin-right: var(--space-xs);
-}
-
-.tag-index .p-category:hover {
-  color: var(--moss);
 }
 
 /* ── Writing — Day 03 follow-up polish ──────────────────────────────────── */
@@ -631,7 +487,7 @@ kbd {
 
 /* ── Footer kbd hint ─────────────────────────────────────────────────────── */
 .kbd-hint {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: var(--space-sm);
@@ -648,7 +504,7 @@ kbd {
 
 /* ── Footer last-updated line ────────────────────────────────────────────── */
 .footer-meta {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-xs);
   color: var(--muted);
   margin-bottom: var(--space-sm);
@@ -678,7 +534,7 @@ kbd {
 }
 
 .webmention {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   padding: var(--space-xs) 0;
@@ -717,7 +573,7 @@ kbd {
 }
 
 .post-webmention-prompt {
-  font-family: var(--font-code);
+  font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
   margin-top: var(--space-md);
