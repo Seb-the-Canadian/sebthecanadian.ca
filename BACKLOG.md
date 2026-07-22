@@ -50,6 +50,14 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 - [ ] Pull-line emphasis style — a bolded, single-sentence emphasis
       treatment inside body copy (distinct from the eyebrow-label idea
       above), for one standout line per section
+- [ ] Full-bleed dark "punctuation block" section — one saturated
+      forest-at-night-toned section within an otherwise light page, for a
+      single high-impact testimonial/webmention highlight, confirmed via
+      screenshot as a real (not just inferred) pattern on both Campfire
+      and Grafica
+- [ ] Contextual button contrast — confirm the button component already
+      flips fill/text color correctly against every section background it
+      might sit on, light or dark, rather than assuming one fixed skin
 - [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly
       into visitor-facing home page copy, not just an internal doc
 
