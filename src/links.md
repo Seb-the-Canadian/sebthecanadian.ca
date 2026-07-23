@@ -5,9 +5,9 @@ description: "People and projects worth following."
 permalink: /links/
 ---
 
-# Links
-
-A blogroll — people, projects, and corners of the web worth following.
+{% set mastheadLabel = "links/" %}
+{% set mastheadLede %}A blogroll &mdash; people, projects, and corners of the web worth following.{% endset %}
+{% include "masthead.njk" %}
 
 ## IndieWeb
 

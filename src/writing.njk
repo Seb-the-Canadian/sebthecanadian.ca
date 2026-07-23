@@ -4,9 +4,9 @@ title: Writing
 description: "Posts from the digital garden, with native posts published occasionally on this site."
 permalink: /writing/
 ---
-<h1>Writing</h1>
-
-<p class="lede">Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.</p>
+{% set mastheadLabel = "writing/" %}
+{% set mastheadLede %}Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.{% endset %}
+{% include "masthead.njk" %}
 
 {%- set syndicatedUrls = [] %}
 {%- for post in collections.writing %}

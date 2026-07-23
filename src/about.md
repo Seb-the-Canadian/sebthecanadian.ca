@@ -5,7 +5,8 @@ description: "About Seb Lathangue and how this site is built."
 permalink: /about/
 ---
 
-# About
+{% set mastheadLabel = "about/" %}
+{% include "masthead.njk" %}
 
 <figure class="about-portrait">
   <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />

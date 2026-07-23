@@ -1,0 +1,18 @@
+{#-
+  masthead.njk — page title block (design-v3 Phase 1).
+  Usage:  {% set mastheadLabel = "writing/" %}{% include "masthead.njk" %}
+  Reads: mastheadLabel (eyebrow text, required), title (page front
+  matter), mastheadLede (optional lede paragraph, HTML allowed).
+  The S·L stamp is the pitch's Move 05 "section stamp": two characters
+  of ink at the start of each page title block.
+-#}
+<header class="masthead">
+  <p class="masthead__meta">
+    <span class="masthead__stamp" aria-hidden="true">S&middot;L</span>
+    <span class="eyebrow">{{ mastheadLabel }}</span>
+  </p>
+  <h1 class="masthead__title">{{ title }}</h1>
+  {%- if mastheadLede %}
+  <p class="lede">{{ mastheadLede | safe }}</p>
+  {%- endif %}
+</header>

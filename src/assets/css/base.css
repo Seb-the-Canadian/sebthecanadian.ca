@@ -44,8 +44,9 @@ h1 {
 }
 
 h2 {
-  font-size: var(--text-2xl);
+  font-size: 1.35rem;            /* was var(--text-2xl) = 1.5rem; pitch specimen value */
   font-weight: 600;
+  color: var(--moss);            /* pitch type specimen: "H2 · 1.35rem · 600 · moss" */
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-md);
 }

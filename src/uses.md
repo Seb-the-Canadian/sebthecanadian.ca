@@ -5,9 +5,9 @@ description: "Tools, hardware, and software I use."
 permalink: /uses/
 ---
 
-# Uses
-
-Tools, hardware, and software that I use regularly. Updated periodically.
+{% set mastheadLabel = "uses/" %}
+{% set mastheadLede %}Tools, hardware, and software that I use regularly. Updated periodically.{% endset %}
+{% include "masthead.njk" %}
 
 ## Knowledge Work
 
