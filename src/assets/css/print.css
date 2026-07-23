@@ -25,6 +25,7 @@
   .kbd-hint,
   .footer-meta,
   .build-stamp,
+  .masthead__meta,
   .no-print {
     display: none !important;
   }
@@ -75,7 +76,7 @@
     margin: 1.5cm 2cm;
   }
 
-  /* Print-only flourish on the resume — the maple-leaf mark on hard copies. */
+  /* Print-only flourish on the resume — the conifer mark on hard copies. */
   .h-resume::after {
     content: "";
     display: block;

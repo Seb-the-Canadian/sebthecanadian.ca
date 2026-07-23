@@ -830,3 +830,20 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 .masthead__title {
   margin-bottom: var(--space-sm);
 }
+
+/* ── Resume — ruled section headers + tabular dates (design-v3 Phase 3) ───
+   The pitch's resume screen spec: small uppercase ruled headers instead of
+   the site-wide moss h2 (this selector's higher specificity overrides it),
+   and column-aligned dates. (--moss-2 was never adopted; --link is the
+   closest shipped token.) */
+.resume-section h2 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--link);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: var(--space-xs);
+}
+.resume-entry .dates {
+  font-variant-numeric: tabular-nums;
+}
