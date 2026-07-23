@@ -698,6 +698,20 @@ kbd {
   font-size: 13px;
   line-height: 1.55;
 }
+
+/* Garden panel — the pitch's /writing/ spec called for this to visually
+   outweigh the plain native-posts list below it (border + tint vs. plain
+   rows); it shipped as an identically-styled .index-table until now. */
+.garden-panel {
+  border: 1px solid var(--moss);
+  background: var(--wash);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md) var(--space-lg);
+}
+.garden-panel .index-row:last-child {
+  border-bottom: 0;
+}
+
 .index-row {
   display: grid;
   grid-template-columns: 10ch 1fr auto;
