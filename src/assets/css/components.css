@@ -593,6 +593,55 @@ kbd {
   margin-inline: 0.4ch;
 }
 
+/* ── Diegetic motion (pitch Interactions, rebuilt post-cleanup 2026-07) ──
+   The pitch approved exactly two animations: a terminal cursor-blink on
+   the page's "h1 moment" and a live-pulse dot on the freshness signal.
+   Their original hosts (.hero h1, the /now/ nav link) left the DOM in the
+   pitch-v1 sprint; these are the same signatures on their successors. */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.identity .p-name::after {
+  content: "█";
+  color: var(--moss);
+  margin-left: 0.1em;
+  animation: cursor-blink 1.2s step-end infinite;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity .p-name::after {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+.live-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 0.6ch;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  background: var(--moss);
+  border-radius: 50%;
+  animation: live-pulse 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+}
+
 .index-table {
   display: block;
   margin-block: var(--space-xl) 0;

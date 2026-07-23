@@ -22,7 +22,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <strong>Currently:</strong> {{ now.currently | safe }}
     </p>
     <p class="post-meta">
-      <time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
+      <span class="live-dot" aria-hidden="true"></span><time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
     </p>
   </section>
 
