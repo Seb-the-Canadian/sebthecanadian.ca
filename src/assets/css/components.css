@@ -699,16 +699,42 @@ kbd {
   line-height: 1.55;
 }
 
-/* Garden panel — the pitch's /writing/ spec called for this to visually
-   outweigh the plain native-posts list below it (border + tint vs. plain
-   rows); it shipped as an identically-styled .index-table until now. */
-.garden-panel {
-  border: 1px solid var(--moss);
-  background: var(--wash);
-  border-radius: var(--radius-sm);
+/* ── Night panel — the garden's own weather (design-v3 Phase 2, D1) ──────
+   The pitch's /writing/ spec wanted the garden to visually outweigh the
+   plain native-posts list below it; v3 makes that weight a scoped
+   forest-at-night block. It re-declares the theme tokens locally, so every
+   child component (index rows, pills, links) restyles itself with zero
+   markup changes and zero new colour pairs to audit — the pairs ARE the
+   shipped dark theme. Token values are copied verbatim from tokens.css's
+   dark block; if that block changes, change these to match. NOT a hero,
+   NOT for non-garden content — see the BACKLOG Part D reversal note. */
+.panel--night {
+  --bg: #0f1a14;
+  --ink: #e8e4dc;
+  --muted: #a8a195;
+  --moss: #6bb896;
+  --amber: #d9b24a;
+  --rule: #2a3a30;
+  --link: #8eba9e;
+  --visited: #b89c84;
+  --code-bg: #162018;
+  --wash: color-mix(in oklab, var(--moss) 7%, transparent);
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
   padding: var(--space-md) var(--space-lg);
 }
-.garden-panel .index-row:last-child {
+/* Deepen one step when the page itself is dark, mirroring tokens.css's two
+   dark triggers (OS media query + forced html[data-theme]) exactly, so the
+   panel reads as the same night block in all four theme combinations. */
+@media (prefers-color-scheme: dark) {
+  .panel--night { --bg: #0a120e; border-color: #6bb896; }
+}
+html[data-theme="light"] .panel--night { --bg: #0f1a14; border-color: #2a3a30; }
+html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
+
+.panel--night .index-row:last-child {
   border-bottom: 0;
 }
 

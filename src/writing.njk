@@ -20,7 +20,7 @@ permalink: /writing/
 
   {%- if gardenPosts.length %}
   <h2>From the Garden</h2>
-  <section class="index-table garden-panel" aria-label="From the Garden">
+  <section class="index-table garden-panel panel--night" aria-label="From the Garden">
     {%- set gardenShown = 0 %}
     {%- for gp in gardenPosts %}
       {%- if gp.url not in syndicatedUrls and gardenShown < 12 %}

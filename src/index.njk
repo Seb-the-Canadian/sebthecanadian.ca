@@ -38,8 +38,12 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | shortDate }}</time>
     </article>
     {%- endif %}
+  </section>
 
-    {%- if gardenPosts.length > 0 %}
+  {%- if gardenPosts.length > 0 %}
+  {#- The garden gets its own weather: a scoped forest-at-night block
+      (design-v3 Phase 2, D1). Bounded punctuation, not a hero. -#}
+  <div class="index-table garden-panel panel--night" role="group" aria-label="From the garden">
     {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
     <article class="index-row h-entry">
       <span class="index-row__label">garden/</span>
@@ -57,8 +61,10 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       </span>
       <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
     </div>
-    {%- endif %}
+  </div>
+  {%- endif %}
 
+  <section class="index-table" aria-label="Index continued">
     {%- for project in projects %}
       {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
     <div class="index-row">
