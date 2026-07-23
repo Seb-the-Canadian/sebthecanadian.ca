@@ -6,7 +6,7 @@ permalink: /writing/
 ---
 <h1>Writing</h1>
 
-<p>Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.</p>
+<p class="lede">Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.</p>
 
 {%- set syndicatedUrls = [] %}
 {%- for post in collections.writing %}
@@ -20,7 +20,7 @@ permalink: /writing/
 
   {%- if gardenPosts.length %}
   <h2>From the Garden</h2>
-  <section class="index-table" aria-label="From the Garden">
+  <section class="index-table garden-panel" aria-label="From the Garden">
     {%- set gardenShown = 0 %}
     {%- for gp in gardenPosts %}
       {%- if gp.url not in syndicatedUrls and gardenShown < 12 %}

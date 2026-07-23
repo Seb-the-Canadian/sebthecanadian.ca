@@ -129,7 +129,8 @@ img {
 /* Blockquotes */
 blockquote {
   border-left: 3px solid var(--moss);
-  padding-left: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--wash);
   color: var(--muted);
   margin: var(--space-lg) 0;
   font-style: italic;

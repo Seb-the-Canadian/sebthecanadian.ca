@@ -54,8 +54,8 @@ sebthecanadian.ca/
 │       ├── fonts/             # IBM Plex Mono WOFF2 (self-hosted)
 │       ├── img/
 │       │   ├── seb-stamp.jpeg # Woodcut portrait (resume, u-photo)
-│       │   ├── favicon.svg    # Maple-leaf favicon (SVG)
-│       │   ├── favicon.png    # Maple-leaf favicon (32x32 PNG fallback)
+│       │   ├── favicon.svg    # Pixel-conifer favicon (SVG, theme-aware)
+│       │   ├── favicon.png    # Pixel-conifer favicon (32x32 PNG fallback)
 │       │   └── pixel/         # Pixel art: 404 illustration, dividers, textures
 │       └── js/
 │           └── theme-toggle.js # Dark/light/system toggle

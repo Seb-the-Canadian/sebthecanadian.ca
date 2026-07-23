@@ -12,6 +12,14 @@
 > Colophon into About), and the home is a terminal-style index table.
 > Where this document and the built site disagree, the site is correct.
 > See `docs/pitch-v1-migration-plan.md` and CHANGELOG 2026-05-02.
+>
+> **Identity-system rule (resolved 2026-07, design-v2):** the woodcut
+> stamp is the human-scale mark (About, Resume); the pixel dialect is the
+> system-scale mark — a pixel conifer at the favicon/touch-icon/OG mark,
+> pixel portrait on 404. The interim maple leaf (PR #16) and the original
+> "pixel portrait as favicon" spec are both superseded: tree, not
+> portrait, at system scale. See `docs/design-fusion-plan.md` Move 05
+> and `docs/implementation-plan-design-v2.md`.
 
 ---
 

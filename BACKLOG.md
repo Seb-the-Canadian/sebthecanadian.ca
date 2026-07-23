@@ -15,6 +15,28 @@ _None currently tracked._
 
 ---
 
+## Done — Design v2 (2026-07-23)
+
+Execution of `docs/implementation-plan-design-v2.md` (the PR #17 fusion
+plan reconciled to post-#18 main). Details in CHANGELOG 2026-07-23.
+
+- [x] PR #17's four design docs landed (BACKLOG conflict resolved, paths
+      fixed, fusion-plan task list marked superseded)
+- [x] Cursor-blink + live-pulse rebuilt against the current DOM
+      (`.identity .p-name::after`, `.live-dot` on the Now timestamp),
+      reduced-motion-safe — the pitch's two approved animations restored
+- [x] Woodcut portrait on About at human scale (pitch Move 05; the
+      "promote woodcut to home + about" idea closed for About — home
+      deliberately stays woodcut-free)
+- [x] Favicon story resolved: pixel-conifer mark (theme-aware SVG + PNG +
+      touch icon + og-default) replaces the interim maple leaf; rule
+      documented in `DESIGN_BRIEF.md`'s annotation block
+- [x] schema.org JSON-LD, blockquote wash, `.lede`/`.pull-line`,
+      identity-line weight, `.eyebrow` trial (see the design-review Idea
+      sections below for per-item notes)
+
+---
+
 ## Done — Finishing Pass (2026-07-14)
 
 Six-phase pass making the site self-tending: daily rebuild cron,
@@ -147,8 +169,7 @@ Candidates for future work beyond the current sprint. No commitment implied.
 ### Pitch v1 Follow-ups
 
 - [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
-- [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
-- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted)
+- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted; explicitly parked as optional in design-v2)
 - [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
 - [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
 - [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
@@ -166,6 +187,106 @@ Candidates for future work beyond the current sprint. No commitment implied.
 ### Future POSSE Enhancements
 
 - [ ] Bluesky automation via Bridgy Fed or AT Protocol GitHub Action
+
+---
+
+## Idea — From yepsen.net design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-yepsen.md`](docs/design-reference-yepsen.md).
+
+- [x] Eyebrow labels — trialed 2026-07-23 (design-v2) on the home Now
+      heading, in `--moss` not `--amber` (amber text fails contrast, see
+      Pitch v1 Follow-ups); wider rollout to writing/projects still open
+- [x] Post template: lede paragraph style — shipped 2026-07-23 as opt-in
+      `.lede` class (documented in `POSSE_POST_TEMPLATE.md`)
+- [x] Post template: styled `blockquote` — shipped 2026-07-23 (`--wash`
+      background added to the existing moss accent border)
+- [ ] Featured pull-quote pattern — one oversized quote among smaller ones,
+      for surfacing a standout webmention or project testimonial
+- [x] `schema.org` JSON-LD — shipped 2026-07-23 (`Person` on home/about,
+      `Article` on posts, `CollectionPage` on `/writing/`; tag pages
+      deliberately emit nothing)
+
+---
+
+## Idea — From neilwengerd.com design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-neil-wengerd.md`](docs/design-reference-neil-wengerd.md).
+
+- Declined (2026-07-23, design-v2 — `docs/design-fusion-plan.md` Part D):
+  braver metaphor-driven section/nav copy. The approved pitch's Principle
+  C is "fewer doors, honest signs" — literal labels are the point.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): numbered process
+  cards; no current page for them to attach to. Revisit only if a
+  process/methodology page is ever built.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): plain-text
+  client/collaborator list; same reason — no such page exists.
+- [x] Pull-line emphasis style — shipped 2026-07-23 as opt-in
+      `.pull-line` class, one live application in About (documented in
+      `POSSE_POST_TEMPLATE.md`)
+- Declined (2026-07-23, design-v2 — fusion plan Part D): full-bleed dark
+  "punctuation block" section. Nearly the exact "dark hero" strawman the
+  pitch's Backout section names; skip.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): contextual
+  button contrast; no mixed-background sections exist for it to govern.
+- [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly
+      into visitor-facing home page copy, not just an internal doc —
+      owner-voice edit, pairs with the Now-block rewrite on the
+      Owner TODOs list
+
+---
+
+## Idea — From henry.codes design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-henry-codes.md`](docs/design-reference-henry-codes.md).
+
+- Declined (2026-07-23, design-v2 — `docs/design-fusion-plan.md` Part D):
+  "echo" ghost-text behind project titles. Maximalist decoration in
+  tension with "dense, legible, quiet."
+- [ ] Category axis alongside tags on writing posts (e.g. "journal" vs.
+      "resource") — distinct from topic tags, only if `/writing/` grows
+      enough to need two taxonomies instead of one
+- [ ] "You are here" as the footer breadcrumb label, if/when one exists —
+      friendlier than a generic Home / Section / Page trail
+- [ ] Visibly-disabled (not deleted) social link pattern — a modifier
+      class for an account still linked but no longer endorsed/active,
+      instead of silently removing it or leaving it looking current
+- [ ] Fathom (or similar privacy-respecting analytics) named as the
+      default option if analytics are ever wanted, instead of reaching
+      for Google Analytics by default
+
+---
+
+## Idea — From gwern.net design review (2026-07-23)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-gwern.md`](docs/design-reference-gwern.md).
+
+- [ ] Epigraph convention — a `.epigraph` class + markdown pattern for a
+      short, distinctly-styled quote opening a section, usable selectively
+      on native posts that earn it
+- [ ] Admonition/callout box — bordered, titled alert box (e.g. for a
+      "syndicated from the garden" or "draft" notice on writing posts),
+      more legible than the current plain-text treatment
+- [ ] `.abstract` as a sibling to `.lede` for genuinely long-form posts —
+      a one-paragraph summary set apart before the content starts;
+      revisit whether `.lede` should grow this variant rather than adding
+      an unrelated new class
+- [ ] Auto-generated Table of Contents for long pages (About, or any
+      future long native post) — Eleventy can build this from existing
+      markdown headers, no new dependency
+- [ ] Seasonal CSS easter egg (e.g. a Halloween/Christmas palette swap on
+      specific dates) — pure fun, zero structural risk, no design need
+      driving it
+- Declined (2026-07-23): the full popup/hover-preview annotation engine,
+  per-domain link-icon infrastructure at Gwern's scale, and independent
+  dark/reader/extracts-mode toggles — each is a substantial bespoke JS
+  system built for a much larger, more cross-referenced site; wildly
+  disproportionate to this site's size and "no new JS dependencies"
+  commitment. See `docs/design-reference-gwern.md`'s "What NOT to copy."
 
 ---
 

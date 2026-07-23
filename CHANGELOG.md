@@ -4,6 +4,44 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-07-23 — Design v2 (Move 05 closed · repairs · filtered borrows)
+
+Execution of the PR #17 design-review thread, reconciled to post-#18
+main via `docs/implementation-plan-design-v2.md`. Finishes the last
+unshipped move of the approved pitch and adopts the external patterns
+that survived the compatibility filter; six incompatible patterns are
+recorded as declined in BACKLOG, not silently dropped.
+
+### Added
+- **Pixel-conifer identity mark** — favicon (theme-aware SVG +32px PNG),
+  apple-touch-icon, and the og-default card mark, replacing the interim
+  maple leaf. Drawn on the 404 page's 12-cell pixel dialect; the Move 05
+  rule (woodcut = human scale, pixel = system scale, tree not portrait)
+  is now written into `DESIGN_BRIEF.md`.
+- **Woodcut portrait on About** — human-scale (140px, floats left),
+  mirroring the resume pattern. Home stays woodcut-free by design.
+- **schema.org JSON-LD** — `Person` (home/about), `Article` (posts),
+  `CollectionPage` (/writing/), from existing data only; tag pages emit
+  nothing. Machine-second layer beside untouched microformats.
+- **Editorial classes** — opt-in `.lede` and `.pull-line` (one live
+  application in About), documented in `POSSE_POST_TEMPLATE.md`;
+  `.eyebrow` trialed on the home Now heading in moss (amber text uses
+  remain barred by the recorded contrast note).
+- **Design docs** — PR #17's three design-reference reviews + fusion
+  plan landed under `docs/`, task list superseded by the reconciled
+  implementation plan.
+
+### Restored
+- **The pitch's two approved animations**, lost when their hosts left
+  the DOM in the pitch-v1 sprint and garbage-collected in #18:
+  cursor-blink on the identity name, live-pulse dot on the Now
+  timestamp. Both honor `prefers-reduced-motion`.
+
+### Changed
+- Blockquotes gain a `--wash` background atop the moss accent border.
+- `.identity .p-name` set at 1.25rem/600 — the front door's one
+  deliberate typographic decision.
+
 ## 2026-07-14 — Finishing Pass (durability · correctness · freshness · cleanup)
 
 Six-phase pass closing the gap between "designed" and "finished" after two

@@ -1,8 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <!--
-    Favicon — stylized maple leaf, moss on transparent.
-    Seven-point silhouette: top tip, two upper lobes, two side lobes,
-    two lower lobes, plus a narrow stem. Reads cleanly at 16px+.
+    Favicon — pixel conifer, moss on transparent.
+    Drawn on the site's 12-cell pixel grid (the same dialect as the 404
+    pixel art): three offset canopy tiers over a two-cell trunk. The
+    system-scale mark of the identity system (pitch Move 05, resolved
+    2026-07: tree, not portrait). Reads cleanly at 16px because it is
+    a pixel grid. Dark-mode tabs get the dark-theme moss.
   -->
-  <path fill="#3f7a5f" d="M12 2 L14 6 L17 4 L15 9 L22 10 L16 13 L19 18 L13 15 L13 22 L11 22 L11 15 L5 18 L8 13 L2 10 L9 9 L7 4 L10 6 Z"/>
+  <style>
+    g { fill: #3f7a5f; }
+    @media (prefers-color-scheme: dark) {
+      g { fill: #6bb896; }
+    }
+  </style>
+  <g>
+    <rect x="10" y="2" width="4" height="2"/>
+    <rect x="8" y="4" width="8" height="2"/>
+    <rect x="6" y="6" width="12" height="2"/>
+    <rect x="8" y="8" width="8" height="2"/>
+    <rect x="6" y="10" width="12" height="2"/>
+    <rect x="4" y="12" width="16" height="2"/>
+    <rect x="2" y="14" width="20" height="2"/>
+    <rect x="10" y="16" width="4" height="4"/>
+  </g>
 </svg>

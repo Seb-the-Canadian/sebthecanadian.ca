@@ -246,6 +246,24 @@ footer nav a:visited {
   margin-bottom: var(--space-lg);
 }
 
+/* About — woodcut at human scale (pitch Move 05; deliberately not a banner) */
+.about-portrait {
+  width: 140px;
+  margin: 0 0 var(--space-lg);
+}
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+@media (min-width: 640px) {
+  .about-portrait {
+    float: left;
+    margin-inline-end: var(--space-lg);
+  }
+}
+
 .resume-portrait {
   flex-shrink: 0;
   width: 140px;
@@ -588,9 +606,89 @@ kbd {
   margin-block-end: var(--space-md);
   color: var(--ink);
 }
+/* The front door's one deliberate typographic decision (design-v2 C4) */
+.identity .p-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
 .identity__sep {
   color: var(--muted);
   margin-inline: 0.4ch;
+}
+
+/* ── Diegetic motion (pitch Interactions, rebuilt post-cleanup 2026-07) ──
+   The pitch approved exactly two animations: a terminal cursor-blink on
+   the page's "h1 moment" and a live-pulse dot on the freshness signal.
+   Their original hosts (.hero h1, the /now/ nav link) left the DOM in the
+   pitch-v1 sprint; these are the same signatures on their successors. */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.identity .p-name::after {
+  content: "█";
+  color: var(--moss);
+  margin-left: 0.1em;
+  animation: cursor-blink 1.2s step-end infinite;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity .p-name::after {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+.live-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 0.6ch;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  background: var(--moss);
+  border-radius: 50%;
+  animation: live-pulse 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+}
+
+/* ── Editorial utilities (design-v2 C3 + eyebrow trial) ──────────────────
+   Opt-in, hand-authored classes — no build-time transforms. Documented
+   in POSSE_POST_TEMPLATE.md. */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  /* moss, not amber: amber text on light bg is 3.33:1 (BACKLOG contrast
+     note forbids new amber text uses); moss measures ~4.5:1 both modes */
+  color: var(--moss);
+}
+
+.lede {
+  font-size: var(--text-lg);
+  color: var(--muted);
+  margin-block-end: var(--space-lg);
+}
+
+.pull-line {
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .index-table {
@@ -600,6 +698,20 @@ kbd {
   font-size: 13px;
   line-height: 1.55;
 }
+
+/* Garden panel — the pitch's /writing/ spec called for this to visually
+   outweigh the plain native-posts list below it (border + tint vs. plain
+   rows); it shipped as an identically-styled .index-table until now. */
+.garden-panel {
+  border: 1px solid var(--moss);
+  background: var(--wash);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md) var(--space-lg);
+}
+.garden-panel .index-row:last-child {
+  border-bottom: 0;
+}
+
 .index-row {
   display: grid;
   grid-template-columns: 10ch 1fr auto;
