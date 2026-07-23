@@ -169,6 +169,76 @@ Candidates for future work beyond the current sprint. No commitment implied.
 
 ---
 
+## Idea — From yepsen.net design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-yepsen.md`](docs/design-reference-yepsen.md).
+
+- [ ] Eyebrow labels — small uppercase `--mono`/`--amber` micro-label above
+      section headings (home, writing, projects) as a wayfinding device
+- [ ] Post template: lede paragraph style — larger, `--ink-soft` intro
+      paragraph distinct from body copy, between title and content
+- [ ] Post template: styled `blockquote` — left accent border (`--moss` or
+      `--amber`) + `--wash` background, instead of default browser styling
+- [ ] Featured pull-quote pattern — one oversized quote among smaller ones,
+      for surfacing a standout webmention or project testimonial
+- [ ] `schema.org` JSON-LD (`Person` on home, `Article` on posts,
+      `CollectionPage` on `/writing/`) alongside existing h-card/h-entry
+      microformats — machine-second layer, doesn't conflict with IndieWeb
+
+---
+
+## Idea — From neilwengerd.com design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-neil-wengerd.md`](docs/design-reference-neil-wengerd.md).
+
+- [ ] Braver, metaphor-driven section/nav copy — let the Data Druid framing
+      shape actual labels (not just tokens/visuals), the way Campfire's
+      section titles ("Who Campfire is for," "Ways to Sit Around the Fire")
+      carry its fire metaphor throughout
+- [ ] Numbered process cards — large muted numeral + short label + one
+      sentence, for a "how a project/post gets made" style section
+- [ ] Plain-text client/collaborator list — stacked text names, no logo
+      wall, for listing past collaborators/orgs without an asset pipeline
+- [ ] Pull-line emphasis style — a bolded, single-sentence emphasis
+      treatment inside body copy (distinct from the eyebrow-label idea
+      above), for one standout line per section
+- [ ] Full-bleed dark "punctuation block" section — one saturated
+      forest-at-night-toned section within an otherwise light page, for a
+      single high-impact testimonial/webmention highlight, confirmed via
+      screenshot as a real (not just inferred) pattern on both Campfire
+      and Grafica
+- [ ] Contextual button contrast — confirm the button component already
+      flips fill/text color correctly against every section background it
+      might sit on, light or dark, rather than assuming one fixed skin
+- [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly
+      into visitor-facing home page copy, not just an internal doc
+
+---
+
+## Idea — From henry.codes design review (2026-07-22)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-henry-codes.md`](docs/design-reference-henry-codes.md).
+
+- [ ] "Echo" ghost-text behind project titles — large, muted,
+      `aria-hidden` repeated project name flanking the real title/logo,
+      for project rows that don't have a hero image yet
+- [ ] Category axis alongside tags on writing posts (e.g. "journal" vs.
+      "resource") — distinct from topic tags, only if `/writing/` grows
+      enough to need two taxonomies instead of one
+- [ ] "You are here" as the footer breadcrumb label, if/when one exists —
+      friendlier than a generic Home / Section / Page trail
+- [ ] Visibly-disabled (not deleted) social link pattern — a modifier
+      class for an account still linked but no longer endorsed/active,
+      instead of silently removing it or leaving it looking current
+- [ ] Fathom (or similar privacy-respecting analytics) named as the
+      default option if analytics are ever wanted, instead of reaching
+      for Google Analytics by default
+
+---
+
 ## Process Notes
 
 - Design changes should honour the principles in the colophon: minimal, durable, portable.
