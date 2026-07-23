@@ -15,6 +15,28 @@ _None currently tracked._
 
 ---
 
+## Done — Design v2 (2026-07-23)
+
+Execution of `docs/implementation-plan-design-v2.md` (the PR #17 fusion
+plan reconciled to post-#18 main). Details in CHANGELOG 2026-07-23.
+
+- [x] PR #17's four design docs landed (BACKLOG conflict resolved, paths
+      fixed, fusion-plan task list marked superseded)
+- [x] Cursor-blink + live-pulse rebuilt against the current DOM
+      (`.identity .p-name::after`, `.live-dot` on the Now timestamp),
+      reduced-motion-safe — the pitch's two approved animations restored
+- [x] Woodcut portrait on About at human scale (pitch Move 05; the
+      "promote woodcut to home + about" idea closed for About — home
+      deliberately stays woodcut-free)
+- [x] Favicon story resolved: pixel-conifer mark (theme-aware SVG + PNG +
+      touch icon + og-default) replaces the interim maple leaf; rule
+      documented in `DESIGN_BRIEF.md`'s annotation block
+- [x] schema.org JSON-LD, blockquote wash, `.lede`/`.pull-line`,
+      identity-line weight, `.eyebrow` trial (see the design-review Idea
+      sections below for per-item notes)
+
+---
+
 ## Done — Finishing Pass (2026-07-14)
 
 Six-phase pass making the site self-tending: daily rebuild cron,
@@ -147,8 +169,7 @@ Candidates for future work beyond the current sprint. No commitment implied.
 ### Pitch v1 Follow-ups
 
 - [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
-- [ ] Promote woodcut visibility to home + about (pitch P5 implies; Day 04 stuck to resume-only swap)
-- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted)
+- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted; explicitly parked as optional in design-v2)
 - [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
 - [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
 - [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
@@ -174,17 +195,18 @@ Candidates for future work beyond the current sprint. No commitment implied.
 Outside-reference review, not a scheduled redesign. Full writeup:
 [`docs/design-reference-yepsen.md`](docs/design-reference-yepsen.md).
 
-- [ ] Eyebrow labels — small uppercase `--mono`/`--amber` micro-label above
-      section headings (home, writing, projects) as a wayfinding device
-- [ ] Post template: lede paragraph style — larger, `--ink-soft` intro
-      paragraph distinct from body copy, between title and content
-- [ ] Post template: styled `blockquote` — left accent border (`--moss` or
-      `--amber`) + `--wash` background, instead of default browser styling
+- [x] Eyebrow labels — trialed 2026-07-23 (design-v2) on the home Now
+      heading, in `--moss` not `--amber` (amber text fails contrast, see
+      Pitch v1 Follow-ups); wider rollout to writing/projects still open
+- [x] Post template: lede paragraph style — shipped 2026-07-23 as opt-in
+      `.lede` class (documented in `POSSE_POST_TEMPLATE.md`)
+- [x] Post template: styled `blockquote` — shipped 2026-07-23 (`--wash`
+      background added to the existing moss accent border)
 - [ ] Featured pull-quote pattern — one oversized quote among smaller ones,
       for surfacing a standout webmention or project testimonial
-- [ ] `schema.org` JSON-LD (`Person` on home, `Article` on posts,
-      `CollectionPage` on `/writing/`) alongside existing h-card/h-entry
-      microformats — machine-second layer, doesn't conflict with IndieWeb
+- [x] `schema.org` JSON-LD — shipped 2026-07-23 (`Person` on home/about,
+      `Article` on posts, `CollectionPage` on `/writing/`; tag pages
+      deliberately emit nothing)
 
 ---
 
@@ -193,27 +215,26 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 Outside-reference review, not a scheduled redesign. Full writeup:
 [`docs/design-reference-neil-wengerd.md`](docs/design-reference-neil-wengerd.md).
 
-- [ ] Braver, metaphor-driven section/nav copy — let the Data Druid framing
-      shape actual labels (not just tokens/visuals), the way Campfire's
-      section titles ("Who Campfire is for," "Ways to Sit Around the Fire")
-      carry its fire metaphor throughout
-- [ ] Numbered process cards — large muted numeral + short label + one
-      sentence, for a "how a project/post gets made" style section
-- [ ] Plain-text client/collaborator list — stacked text names, no logo
-      wall, for listing past collaborators/orgs without an asset pipeline
-- [ ] Pull-line emphasis style — a bolded, single-sentence emphasis
-      treatment inside body copy (distinct from the eyebrow-label idea
-      above), for one standout line per section
-- [ ] Full-bleed dark "punctuation block" section — one saturated
-      forest-at-night-toned section within an otherwise light page, for a
-      single high-impact testimonial/webmention highlight, confirmed via
-      screenshot as a real (not just inferred) pattern on both Campfire
-      and Grafica
-- [ ] Contextual button contrast — confirm the button component already
-      flips fill/text color correctly against every section background it
-      might sit on, light or dark, rather than assuming one fixed skin
+- Declined (2026-07-23, design-v2 — `docs/design-fusion-plan.md` Part D):
+  braver metaphor-driven section/nav copy. The approved pitch's Principle
+  C is "fewer doors, honest signs" — literal labels are the point.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): numbered process
+  cards; no current page for them to attach to. Revisit only if a
+  process/methodology page is ever built.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): plain-text
+  client/collaborator list; same reason — no such page exists.
+- [x] Pull-line emphasis style — shipped 2026-07-23 as opt-in
+      `.pull-line` class, one live application in About (documented in
+      `POSSE_POST_TEMPLATE.md`)
+- Declined (2026-07-23, design-v2 — fusion plan Part D): full-bleed dark
+  "punctuation block" section. Nearly the exact "dark hero" strawman the
+  pitch's Backout section names; skip.
+- Declined (2026-07-23, design-v2 — fusion plan Part D): contextual
+  button contrast; no mixed-background sections exist for it to govern.
 - [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly
-      into visitor-facing home page copy, not just an internal doc
+      into visitor-facing home page copy, not just an internal doc —
+      owner-voice edit, pairs with the Now-block rewrite on the
+      Owner TODOs list
 
 ---
 
@@ -222,9 +243,9 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 Outside-reference review, not a scheduled redesign. Full writeup:
 [`docs/design-reference-henry-codes.md`](docs/design-reference-henry-codes.md).
 
-- [ ] "Echo" ghost-text behind project titles — large, muted,
-      `aria-hidden` repeated project name flanking the real title/logo,
-      for project rows that don't have a hero image yet
+- Declined (2026-07-23, design-v2 — `docs/design-fusion-plan.md` Part D):
+  "echo" ghost-text behind project titles. Maximalist decoration in
+  tension with "dense, legible, quiet."
 - [ ] Category axis alongside tags on writing posts (e.g. "journal" vs.
       "resource") — distinct from topic tags, only if `/writing/` grows
       enough to need two taxonomies instead of one
