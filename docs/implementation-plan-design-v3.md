@@ -245,7 +245,7 @@ quoted so the edit is unambiguous:
 |------|---------|------|
 | `src/writing.njk` | `<h1>Writing</h1>` + the `.lede` p below it | `{% set mastheadLabel = "writing/" %}{% set mastheadLede %}Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.{% endset %}{% include "masthead.njk" %}` |
 | `src/projects.njk` | `<h1>Projects</h1>` | masthead, label `projects/`, lede: move the existing CivCitDev intro sentence up as `mastheadLede` (delete the now-empty first `.section` wrapper if nothing else remains in it) |
-| `src/about.md` | `# About` | masthead include via a raw-HTML block, label `about/` (markdown files can include with `{% include %}` since Nunjucks processes .md here — verify; if not, inline the masthead HTML directly, same markup as 1a) |
+| `src/about.md` | `# About` | masthead include, label `about/` — `{% include %}` works in .md (verified: `markdownTemplateEngine: "njk"`, eleventy.config.js:179; about.md already uses Nunjucks filters in its body) |
 | `src/uses.md` | `# Uses` (or current h1) | masthead, label `uses/`, lede = existing intro line "Tools, hardware, and software that I use regularly. Updated periodically." |
 | `src/links.md` | `# Links` (or current h1) | masthead, label `links/`, lede = existing intro "A blogroll — people, projects, and corners of the web worth following." |
 | `src/resume.njk` | keep the existing `.resume-header` (portrait + identity is already a stronger masthead); add only `<p class="masthead__meta"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span><span class="eyebrow">resume/</span></p>` above it |
@@ -283,7 +283,9 @@ shipped dark theme:
    Scoped forest-at-night block for garden content only. Re-declares the
    theme tokens locally: in light mode the panel is the dark theme in
    miniature; in dark mode it deepens one step and keeps a moss edge.
-   NOT a hero, NOT for non-garden content — see BACKLOG reversal note. */
+   NOT a hero, NOT for non-garden content — see BACKLOG reversal note.
+   Token values are copied verbatim from tokens.css's dark block
+   (lines 85–98) — if that block ever changes, change this to match. */
 .panel--night {
   --bg: #0f1a14;
   --ink: #e8e4dc;
@@ -292,28 +294,26 @@ shipped dark theme:
   --amber: #d9b24a;
   --rule: #2a3a30;
   --link: #8eba9e;
-  --visited: #a89bb0;
-  --code-bg: #182720;
-  --wash: color-mix(in oklab, var(--moss) 8%, transparent);
+  --visited: #b89c84;
+  --code-bg: #162018;
+  --wash: color-mix(in oklab, var(--moss) 7%, transparent);
   background: var(--bg);
   color: var(--ink);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-md) var(--space-lg);
 }
+/* Deepen one step when the page itself is dark. The site has TWO dark
+   triggers (verified in tokens.css + theme-toggle.js): the OS preference
+   via media query, and a forced `html[data-theme]` attribute from the JS
+   toggle, which wins by specificity/order. Mirror all three cases exactly
+   as tokens.css does: */
 @media (prefers-color-scheme: dark) {
-  .panel--night {
-    --bg: #0a120e;             /* one step deeper than the page */
-    border-color: var(--moss);
-  }
+  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 }
+html[data-theme="light"] .panel--night { --bg: #0f1a14; border-color: #2a3a30; }
+html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 ```
-
-Check `tokens.css` for the dark-mode `--visited` and `--code-bg` values
-and mirror them exactly (the values above are from the light-mode block's
-dark counterparts — verify against `tokens.css` ~lines 88–100 before
-committing; the panel must be *identical* to the real dark theme, not an
-approximation).
 
 ### 2b. Apply
 
@@ -337,12 +337,11 @@ approximation).
 
 - The panel never contains an `<h1>` and never appears above the
   identity line / masthead — it is punctuation, not a hero.
-- If theme-toggle JS exists beyond `prefers-color-scheme` (check
-  `src/assets/js/` — a `theme-toggle` button is referenced in CSS), the
-  panel's token override must also win under the toggle's mechanism
-  (e.g. `[data-theme="dark"] .panel--night` if the toggle stamps a
-  `data-theme` attribute — replicate the `@media` override for that
-  selector). Verify by toggling, not by assumption.
+- Theme-toggle interaction (verified): `theme-toggle.js` stamps
+  `data-theme` on `<html>`; the three-case CSS in 2a handles OS-dark,
+  forced-dark, and forced-light-while-OS-dark. Test all four
+  combinations (OS light/dark × toggle light/dark) before committing —
+  the panel must read as the same night block in every one.
 
 **Acceptance (Phase 2):**
 - /writing/: garden panel renders dark-on-parchment in light mode, deeper
@@ -386,10 +385,12 @@ never adopted; `--link` is the closest shipped token):
 ### 3b. Print pass
 
 Open print preview on `/resume/` (or `npx playwright` PDF if headless):
-confirm the new headers render at Letter and A4, `print.css` still hides
-`.kbd-hint`/`.footer-meta`/`.build-stamp`/`.masthead__stamp` (add
-`.masthead__meta` to print.css's hide list — the stamp/eyebrow is site
-chrome, not resume content), and the Download PDF button stays `no-print`.
+confirm the new headers render at Letter and A4, and add
+`.masthead__meta` to the existing hide list in `src/assets/css/print.css`
+(the `display: none !important` block at ~lines 21–29 that already lists
+`header nav, footer nav, .skip-link, .theme-toggle, .kbd-hint,
+.footer-meta, .build-stamp, .no-print`) — the stamp/eyebrow is site
+chrome, not resume content. The Download PDF button stays `no-print`.
 
 **Acceptance:** headers uppercase/ruled in both themes; dates align in
 columns; print preview clean at both paper sizes.
@@ -423,18 +424,31 @@ CSS (components.css):
 .wordmark__site { text-transform: lowercase; }
 ```
 
-### 4b. ⌂ on 404
+### 4b. Home glyph on 404 — `~/`, not ⌂ (font-verified adaptation)
 
-In `src/404.md`, the back-to-home link gains the glyph:
-`<a href="/">⌂ back home</a>` (adjust to the file's existing link text —
-prepend the glyph, keep the wording). No nav change: the primary nav's
-"Home" item stays a word, not a glyph (four honest signs; the glyph is
-for terminal moments like 404, per "nav · 404 · crumbs" — there are no
-crumbs, and the nav already says Home).
+The pitch's identity table specifies `⌂` (U+2302) as the home glyph, but
+**IBM Plex Mono does not contain that codepoint** (verified against the
+shipped WOFF2's cmap; `·` U+00B7 and `←` U+2190 are present, `⌂` and `⌘`
+are not). A glyph that renders in a fallback font would break the
+one-family rule on the one page it appears. Adaptation: use `~/` — the
+terminal's own home symbol, pure ASCII, arguably more on-voice than ⌂.
+Record this substitution in the Phase 7 BACKLOG/brief notes as a
+font-constrained amendment to the pitch's identity table.
+
+In `src/404.md`, the current closing line is:
+`Try starting from the [home page](/) or check the [writing](/writing/) section.`
+Change the first link to: `[~/ home](/)` (keep the rest of the sentence).
+
+No nav change: the primary nav's "Home" item stays a word, not a glyph
+(four honest signs; the glyph is for terminal moments like 404 — there
+are no crumbs, and the nav already says Home).
 
 **Acceptance:** footer carries the wordmark on every page at 11px muted;
-404 link shows ⌂; print hides nothing new (footer already hidden in print
-— verify).
+404's home link reads `~/ home` in Plex Mono (no fallback-font glyph);
+**the wordmark prints** — deliberately, the pitch assigns the wordmark to
+"footer · print · cli" (print.css hides `footer nav`/`.kbd-hint`/
+`.footer-meta`/`.build-stamp` but not the whole footer — leave the
+wordmark line printable).
 
 **Commit:** `design(v3): footer wordmark + 404 home glyph — pitch identity table, rows 3 and 5`
 
@@ -498,10 +512,10 @@ Run it; confirm the output is <100 KB and visually matches
 
 ### 5b. Wire-up — `src/_includes/base.njk` + `src/_includes/post.njk`
 
-base.njk already uses an `ogImage or '/assets/img/og-default.png'`
-pattern (verify the exact line via `grep -n ogImage src/_includes/base.njk`).
-Add to **`src/_includes/post.njk`'s front matter** (top of file, it has
-`layout: base.njk` only):
+base.njk already uses the `ogImage or '/assets/img/og-default.png'`
+pattern — verified at lines 30 (og:image) and 40 (twitter:image); no
+base.njk edit needed. Add to **`src/_includes/post.njk`'s front matter**
+(top of file — verified it currently has `layout: base.njk` only):
 
 ```yaml
 ---
@@ -530,11 +544,11 @@ Sweep the site so no class ships unapplied (v2's core process failure):
    Links (Phase 1 mastheads). Confirm with
    `grep -rc 'class="lede"' _site/ | grep -v ':0'` → 5+ pages.
 2. `.eyebrow` — applied on: home Now + every masthead (Phase 1). The two
-   section h2s that carry label-like text get it too:
-   `src/writing.njk`'s `<h2>From the Garden</h2>` →
-   `<h2 class="eyebrow">From the Garden</h2>` and the native-posts h2
-   (`Also published natively here` or current wording) likewise —
-   inside the night panel the eyebrow renders night-moss automatically.
+   section h2s that carry label-like text get it too (both verified):
+   `src/writing.njk:22` `<h2>From the Garden</h2>` →
+   `<h2 class="eyebrow">From the Garden</h2>`, and `src/writing.njk:55`
+   `<h2>Also published natively here</h2>` likewise — inside the night
+   panel the eyebrow renders night-moss automatically.
 3. `.pull-line` — one application exists (About). Do not add more without
    content that earns it; one is correct.
 4. Dead-check everything: for each of
@@ -566,7 +580,9 @@ Sweep the site so no class ships unapplied (v2's core process failure):
    og-writing, application pass. Note the v2→v3 diagnosis in one line.
 3. **DESIGN_BRIEF.md annotation block:** append one line: "Design v3
    (2026-07): title-block stamp system, garden night-panel (scoped
-   Part D reversal), pitch resume/footer/OG specs completed."
+   Part D reversal), pitch resume/footer/OG specs completed; home glyph
+   shipped as `~/` — Plex Mono has no U+2302 ⌂ (font-constrained
+   amendment to the pitch identity table)."
 4. **This file:** update Status to "Executed" with the commit list.
 
 **Commit:** `docs(v3): governance close — Part D reversal recorded, backlog/changelog/brief reconciled`
