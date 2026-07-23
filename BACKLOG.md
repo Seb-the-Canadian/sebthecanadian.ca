@@ -260,6 +260,36 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 
 ---
 
+## Idea — From gwern.net design review (2026-07-23)
+
+Outside-reference review, not a scheduled redesign. Full writeup:
+[`docs/design-reference-gwern.md`](docs/design-reference-gwern.md).
+
+- [ ] Epigraph convention — a `.epigraph` class + markdown pattern for a
+      short, distinctly-styled quote opening a section, usable selectively
+      on native posts that earn it
+- [ ] Admonition/callout box — bordered, titled alert box (e.g. for a
+      "syndicated from the garden" or "draft" notice on writing posts),
+      more legible than the current plain-text treatment
+- [ ] `.abstract` as a sibling to `.lede` for genuinely long-form posts —
+      a one-paragraph summary set apart before the content starts;
+      revisit whether `.lede` should grow this variant rather than adding
+      an unrelated new class
+- [ ] Auto-generated Table of Contents for long pages (About, or any
+      future long native post) — Eleventy can build this from existing
+      markdown headers, no new dependency
+- [ ] Seasonal CSS easter egg (e.g. a Halloween/Christmas palette swap on
+      specific dates) — pure fun, zero structural risk, no design need
+      driving it
+- Declined (2026-07-23): the full popup/hover-preview annotation engine,
+  per-domain link-icon infrastructure at Gwern's scale, and independent
+  dark/reader/extracts-mode toggles — each is a substantial bespoke JS
+  system built for a much larger, more cross-referenced site; wildly
+  disproportionate to this site's size and "no new JS dependencies"
+  commitment. See `docs/design-reference-gwern.md`'s "What NOT to copy."
+
+---
+
 ## Process Notes
 
 - Design changes should honour the principles in the colophon: minimal, durable, portable.
