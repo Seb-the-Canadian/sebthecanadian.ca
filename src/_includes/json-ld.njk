@@ -1,0 +1,66 @@
+{#-
+  json-ld.njk — schema.org structured data, one block per page.
+
+  Switch: posts chain post.njk -> base.njk, and page front matter wins the
+  data cascade, so base.njk sees layout == "post.njk" for native posts.
+  Everything else is matched on exact page.url. Tag pages under
+  /writing/tags/ (layout: base.njk) deliberately fall through: no block.
+
+  Escaping: the object is built as a Nunjucks dict and serialized once with
+  `dump` (JSON.stringify), so quotes/unicode in titles are handled and keys
+  whose value is undefined (dateModified, description, keywords) are dropped
+  automatically. `replace("</", "<\\/")` prevents a literal "</script>" in
+  any field from terminating the script element. `safe` is required because
+  autoescape would otherwise turn the JSON quotes into &quot;.
+-#}
+{%- set jsonld = false -%}
+{%- if layout == "post.njk" -%}
+  {%- if tags and tags.length -%}{%- set ldKeywords = tags | join(", ") -%}{%- endif -%}
+  {%- if updated -%}{%- set ldModified = updated | isoDate -%}{%- endif -%}
+  {%- set jsonld = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "url": site.url + page.url,
+    "datePublished": page.date | isoDate,
+    "dateModified": ldModified,
+    "description": description or excerpt,
+    "keywords": ldKeywords,
+    "author": {
+      "@type": "Person",
+      "name": site.author,
+      "url": site.url + "/"
+    }
+  } -%}
+{%- elif page.url == "/" or page.url == "/about/" -%}
+  {%- set sameAs = [] -%}
+  {%- for profile in profiles -%}
+    {%- set sameAs = (sameAs.push(profile.url), sameAs) -%}
+  {%- endfor -%}
+  {%- set jsonld = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": site.author,
+    "url": site.url + "/",
+    "email": site.email,
+    "jobTitle": resume.experience[0].title,
+    "address": resume.location,
+    "sameAs": sameAs
+  } -%}
+{%- elif page.url == "/writing/" -%}
+  {%- set jsonld = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": title,
+    "url": site.url + page.url,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": site.author,
+      "url": site.url + "/"
+    }
+  } -%}
+{%- endif -%}
+{%- if jsonld %}
+  <script type="application/ld+json">{{ jsonld | dump | replace("</", "<\\/") | safe }}</script>
+{%- endif %}

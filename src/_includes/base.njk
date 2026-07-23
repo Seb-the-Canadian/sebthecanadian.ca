@@ -19,6 +19,7 @@
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {% include "json-ld.njk" %}
 
   {#- Open Graph — courtesy metadata for humans sharing links -#}
   <meta property="og:title" content="{{ pageTitle }}" />
