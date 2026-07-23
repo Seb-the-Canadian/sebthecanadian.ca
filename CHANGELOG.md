@@ -4,6 +4,52 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-07-23 — Design v3 (one voice, many rooms)
+
+Answer to Seb's verdict on design-v2 — "too simple and repetitive." The
+diagnosis: v2 shipped the pitch's *subtractive* half (nav collapse,
+monospace, palette, index-table home) but skipped its *compositional* half,
+shipped utility classes with no call sites, and propagated the home page's
+index-table to every page — repetition by construction. v3 keeps the voice
+absolutely and gives every page its own composition. Execution of
+`docs/implementation-plan-design-v3.md`, one commit per phase.
+
+### Added
+- **Title-block system** — a new `masthead.njk`: the pitch's Move 05 `S·L`
+  section stamp (built as a text span, not an asset), an eyebrow label, and
+  the page `h1`, above every page. The single biggest antidote to
+  "repetitive" — most pages previously opened with a bare `<h1>`.
+- **The garden gets its own weather** — garden sections on `/writing/` and
+  the home page render as a scoped `.panel--night` forest-at-night block in
+  both themes: diegetic (the garden *is* the forest at night), bounded
+  punctuation, never a hero. It re-declares the shipped dark-theme tokens
+  locally, so every child restyles with zero new contrast pairs to audit.
+- **Resume finish** — ruled uppercase section headers + tabular-num dates,
+  the pitch's resume spec, unshipped until now.
+- **Footer wordmark** — the pitch's mono wordmark ("S·L © … · seb the
+  canadian"), printable per the pitch's footer·print·cli assignment.
+- **Per-post OG card** — `og-writing.png` in the site's pixel dialect
+  (conifer + wordmark), with a committed generator `scripts/generate-og.py`.
+
+### Changed
+- **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type
+  specimen), a second colour voice on every content page. The resume's
+  section headers override this with their own ruled-label treatment.
+- **404 home link** — now `~/ home`. The pitch's identity table specified
+  ⌂ (U+2302), but IBM Plex Mono has no such glyph; `~/` is the terminal's
+  own home symbol, pure ASCII, and stays in-family.
+- **Application pass** — every shipped class is grep-verified to render on a
+  real page, closing v2's dead-class failure; the two `/writing/` section
+  headings adopt `.eyebrow`.
+
+### Notes
+- Two scoped deviations from the plan, both recorded: the `.masthead` rule
+  neutralizes the global `header` layout rule (it is a nested header), and
+  resume headers ship at 0.7rem not the plan's 0.6rem (a 9.6px header sits
+  below the sub-12px floor the BACKLOG flags; accessibility is a hard
+  constraint).
+- Owner-gated copy (Now-block voice, philosophy-in-home-copy) untouched.
+
 ## 2026-07-23 — Design v2 (Move 05 closed · repairs · filtered borrows)
 
 Execution of the PR #17 design-review thread, reconciled to post-#18
