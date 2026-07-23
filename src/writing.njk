@@ -19,7 +19,7 @@ permalink: /writing/
   <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
 
   {%- if gardenPosts.length %}
-  <h2>From the Garden</h2>
+  <h2 class="eyebrow">From the Garden</h2>
   <section class="index-table garden-panel panel--night" aria-label="From the Garden">
     {%- set gardenShown = 0 %}
     {%- for gp in gardenPosts %}
@@ -52,7 +52,7 @@ permalink: /writing/
   {%- endif %}
 
   {%- if collections.writing.length %}
-  <h2>Also published natively here</h2>
+  <h2 class="eyebrow">Also published natively here</h2>
   <ul class="native-posts">
     {%- for post in collections.writing %}
     <li class="h-entry">
