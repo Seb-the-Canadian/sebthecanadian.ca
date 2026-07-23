@@ -847,3 +847,15 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 .resume-entry .dates {
   font-variant-numeric: tabular-nums;
 }
+
+/* ── Footer wordmark (design-v3 Phase 4) ─────────────────────────────────
+   Pitch identity table row 3: "S·L / seb the canadian — wordmark / mono —
+   footer · print · cli". At the pitch's label spec: 11px, tracking +0.15.
+   Deliberately printable (print.css hides footer nav/meta, not this line). */
+.wordmark {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+.wordmark__site { text-transform: lowercase; }
