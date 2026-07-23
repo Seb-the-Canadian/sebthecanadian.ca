@@ -7,6 +7,10 @@ permalink: /about/
 
 # About
 
+<figure class="about-portrait">
+  <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />
+</figure>
+
 I'm Seb Lathangue. I live in Toronto. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called [CivCitDev](/projects/) on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.
 
 This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.

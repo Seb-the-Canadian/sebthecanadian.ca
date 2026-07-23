@@ -246,6 +246,24 @@ footer nav a:visited {
   margin-bottom: var(--space-lg);
 }
 
+/* About — woodcut at human scale (pitch Move 05; deliberately not a banner) */
+.about-portrait {
+  width: 140px;
+  margin: 0 0 var(--space-lg);
+}
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+@media (min-width: 640px) {
+  .about-portrait {
+    float: left;
+    margin-inline-end: var(--space-lg);
+  }
+}
+
 .resume-portrait {
   flex-shrink: 0;
   width: 140px;
