@@ -57,3 +57,18 @@ The full text is rendered on the writing page, not just an excerpt.
 - **Native posts** (`syndicated: false`): Listed by title + date on the writing page ("Also published natively here"); full content renders on the post's own page via `post.njk`.
 - Both types appear in the h-feed and RSS/Atom output.
 - `dt-published` set from `date` field.
+
+## Editorial classes (opt-in, hand-authored)
+
+Two utility classes exist for native-post prose (added 2026-07, design-v2
+C3 — see `docs/design-fusion-plan.md`). Both are manual: add them in the
+markdown where a paragraph or sentence earns the emphasis, never by
+default.
+
+- `.lede` — intro paragraph between title and body: larger, muted.
+  `<p class="lede">One-paragraph framing of the piece.</p>`
+- `.pull-line` — a single standout sentence inside body copy: weight 600,
+  full-strength ink. `<span class="pull-line">The sentence.</span>`
+
+Blockquotes need no class — `blockquote` picks up the moss accent border
+and wash background automatically.

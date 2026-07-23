@@ -19,7 +19,7 @@ This site is a stable front door. The primary body of my writing lives in the ga
 
 ## How I approach the work
 
-I didn't set out to work in data governance. I set out to work with information; in libraries, then in research, then in learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it. That's the problem I find interesting. Turns out there's a job for it.
+I didn't set out to work in data governance. I set out to work with information; in libraries, then in research, then in learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it. <span class="pull-line">That's the problem I find interesting. Turns out there's a job for it.</span>
 
 My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
 
