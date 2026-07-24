@@ -859,3 +859,86 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
   color: var(--muted);
 }
 .wordmark__site { text-transform: lowercase; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   Ornament layer (design-v3 Phase 8) — the pitch's visual devices:
+   corner-bracket frames, numbered section tags, bg-alt framed panels,
+   the portrait "stamp", and the revived pixel divider.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Corner-bracket ornaments — the pitch's "field notebook" frame ─────── */
+.frame { position: relative; }
+.corner {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--moss);
+  pointer-events: none;
+}
+.corner.tl { top: 7px; left: 7px; border-right: 0; border-bottom: 0; }
+.corner.tr { top: 7px; right: 7px; border-left: 0; border-bottom: 0; }
+.corner.bl { bottom: 7px; left: 7px; border-right: 0; border-top: 0; }
+.corner.br { bottom: 7px; right: 7px; border-left: 0; border-top: 0; }
+
+/* ── Framed panel — bg-alt card treatment (pitch .diag / .thesis) ─────── */
+.panel--alt {
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  position: relative;
+}
+.panel--alt > :last-child { margin-bottom: 0; }
+
+/* ── Numbered section tag — the pitch's "NUM / LABEL" pair ─────────────── */
+.section-tag {
+  display: flex;
+  gap: 1ch;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: var(--space-sm);   /* pixel dividers carry the major separation */
+  margin-bottom: var(--space-sm);
+}
+.section-tag .num { color: var(--moss); }
+.section-tag.is-first { margin-top: 0; }
+
+/* ── Portrait stamp — framed woodcut with a field-note caption (pitch) ─── */
+.stamp {
+  position: relative;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  padding: 0.55rem;
+}
+.stamp img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  filter: saturate(0.85);
+}
+.stamp::after {
+  content: "SL · 2026";
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.42rem;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+/* ── Pixel moss divider — revived, theme-tracking via mask-image ───────── */
+.pixel-divider {
+  border: 0;
+  height: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin: var(--space-xl) auto;
+  background-color: var(--moss);
+  -webkit-mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
+  mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
+}

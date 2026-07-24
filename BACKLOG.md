@@ -37,6 +37,11 @@ Details in CHANGELOG 2026-07-23 (Design v3).
 - [x] Phase 6 — application pass: every shipped class grep-verified to
       render on a real page (the design-v2 process failure this closes)
 - [x] Phase 7 — governance close (this record + CHANGELOG + DESIGN_BRIEF)
+- [x] Phase 8 — ornament layer (owner asked for more of the pitch's visual
+      devices): corner-bracket frames, numbered section tags, `.panel--alt`
+      bg-alt panels, framed portrait `.stamp`, revived pixel moss-divider,
+      paper-grain texture, amber link-hover. Revives the DESIGN_BRIEF's
+      "pixel-art layer" that pitch-v1's subtractive pass had dropped.
 
 Two owner-gated items deliberately untouched: the Now-block voice rewrite
 and the philosophy-line-in-home-copy (both on Owner TODOs / the neilwengerd
@@ -200,7 +205,7 @@ Candidates for future work beyond the current sprint. No commitment implied.
 - [x] Generate `og-writing.png` (1200×630) for `/writing/<slug>/` `og:image` — shipped 2026-07-23 (design-v3 Phase 5) in the pixel dialect (conifer + wordmark) via committed `scripts/generate-og.py`
 - [x] Section stamp at page title blocks — shipped 2026-07-23 (design-v3 Phase 1) as the pitch's Move 05 `S·L` "two characters of ink", built as a text span in `masthead.njk` rather than the removed `monogram.svg` asset. (A decorative inline monogram *within* section bodies remains parked — resurrect `monogram.svg` from git history if ever wanted.)
 - [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
-- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
+- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains. **Exception (2026-07-23, design-v3 Phase 8):** amber link-hover shipped as a conscious transient-state trade-off (underline retained, resting state AA). Swap to a darkened amber if low-vision feedback surfaces or strictness is preferred.
 - [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
 
 ### IndieWeb & Microformats

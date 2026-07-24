@@ -36,7 +36,9 @@
 :root {
   /* Colors — Light Mode */
   --bg: #f5f2eb;
+  --bg-alt: #ebe7db;          /* second parchment shade for framed panels (pitch) */
   --ink: #15201a;
+  --ink-soft: #3a453d;        /* softened ink for card/lede body (pitch) */
   --muted: #595249;
   --moss: #3f7a5f;
   --amber: #b07a0f;
@@ -86,7 +88,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0f1a14;
+    --bg-alt: #121e19;
     --ink: #e8e4dc;
+    --ink-soft: #c3bdaf;
     --muted: #a8a195;
     --moss: #6bb896;
     --amber: #d9b24a;
@@ -101,7 +105,9 @@
 /* Theme override classes (for JS toggle) */
 html[data-theme="light"] {
   --bg: #f5f2eb;
+  --bg-alt: #ebe7db;
   --ink: #15201a;
+  --ink-soft: #3a453d;
   --muted: #595249;
   --moss: #3f7a5f;
   --amber: #b07a0f;
@@ -114,7 +120,9 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
   --bg: #0f1a14;
+  --bg-alt: #121e19;
   --ink: #e8e4dc;
+  --ink-soft: #c3bdaf;
   --muted: #a8a195;
   --moss: #6bb896;
   --amber: #d9b24a;

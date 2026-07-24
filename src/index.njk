@@ -17,8 +17,9 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     <span class="p-country-name sr-only">Canada</span>
   </p>
 
-  <section id="now" class="home-now">
-    <h2 class="eyebrow">Now</h2>
+  <section id="now" class="home-now panel--alt frame">
+    {% include "corners.njk" %}
+    <h2 class="section-tag is-first"><span class="num">01</span> Now</h2>
     <p>
       <strong>Currently:</strong> {{ now.currently | safe }}
     </p>
@@ -27,64 +28,82 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </p>
   </section>
 
-  <section class="index-table" aria-label="Index">
-    {%- set latestPost = collections.writing | first %}
-    {%- if latestPost %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">writing/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>
-      </span>
-      <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | shortDate }}</time>
-    </article>
+  <hr class="pixel-divider" />
+
+  <section aria-label="Writing">
+    <h2 class="section-tag"><span class="num">02</span> Writing</h2>
+    <div class="index-table">
+      {%- set latestPost = collections.writing | first %}
+      {%- if latestPost %}
+      <article class="index-row h-entry">
+        <span class="index-row__label">writing/</span>
+        <span class="index-row__desc">
+          <a class="u-url p-name" href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>
+        </span>
+        <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | shortDate }}</time>
+      </article>
+      {%- endif %}
+    </div>
+
+    {%- if gardenPosts.length > 0 %}
+    {#- The garden gets its own weather: a scoped forest-at-night block
+        (design-v3 Phase 2, D1), now with the field-notebook corner frame. -#}
+    <div class="index-table garden-panel panel--night frame" role="group" aria-label="From the garden">
+      {% include "corners.njk" %}
+      {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
+      <article class="index-row h-entry">
+        <span class="index-row__label">garden/</span>
+        <span class="index-row__desc">
+          <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
+          {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
+        </span>
+        <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
+      </article>
+      {% endif %}{%- endfor %}
+      <div class="index-row">
+        <span class="index-row__label">garden/</span>
+        <span class="index-row__desc">
+          <a href="https://cognitivearchitecture.ca/">more in the garden &rarr;</a>
+        </span>
+        <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
+      </div>
+    </div>
     {%- endif %}
   </section>
 
-  {%- if gardenPosts.length > 0 %}
-  {#- The garden gets its own weather: a scoped forest-at-night block
-      (design-v3 Phase 2, D1). Bounded punctuation, not a hero. -#}
-  <div class="index-table garden-panel panel--night" role="group" aria-label="From the garden">
-    {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
-        {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
-      </span>
-      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
-    </article>
-    {% endif %}{%- endfor %}
-    <div class="index-row">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a href="https://cognitivearchitecture.ca/">more in the garden &rarr;</a>
-      </span>
-      <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
-    </div>
-  </div>
-  {%- endif %}
+  <hr class="pixel-divider" />
 
-  <section class="index-table" aria-label="Index continued">
-    {%- for project in projects %}
-      {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
-    <div class="index-row">
-      <span class="index-row__label">project/</span>
-      <span class="index-row__desc">
-        <a href="{{ project.url }}">{{ project.name }}</a>
-        <span class="index-pill index-pill--active">active</span>
-      </span>
-      <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+  <section aria-label="Building">
+    <h2 class="section-tag"><span class="num">03</span> Building</h2>
+    <div class="index-table">
+      {%- for project in projects %}
+        {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
+      <div class="index-row">
+        <span class="index-row__label">project/</span>
+        <span class="index-row__desc">
+          <a href="{{ project.url }}">{{ project.name }}</a>
+          <span class="index-pill index-pill--active">active</span>
+        </span>
+        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+      </div>
+        {%- endif %}
+      {%- endfor %}
     </div>
-      {%- endif %}
-    {%- endfor %}
+  </section>
 
-    <div class="index-row">
-      <span class="index-row__label">contact/</span>
-      <span class="index-row__desc">
-        <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
-        {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
-      </span>
-      <span class="index-row__meta">end of front door</span>
+  <hr class="pixel-divider" />
+
+  <section aria-label="Contact">
+    <h2 class="section-tag"><span class="num">04</span> Contact</h2>
+    <div class="index-table">
+      <div class="index-row">
+        <span class="index-row__label">contact/</span>
+        <span class="index-row__desc">
+          <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+          {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
+        </span>
+        <span class="index-row__meta">end of front door</span>
+      </div>
     </div>
   </section>
 </div>

@@ -8,7 +8,8 @@ permalink: /about/
 {% set mastheadLabel = "about/" %}
 {% include "masthead.njk" %}
 
-<figure class="about-portrait">
+<figure class="about-portrait stamp frame">
+  {% include "corners.njk" %}
   <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />
 </figure>
 

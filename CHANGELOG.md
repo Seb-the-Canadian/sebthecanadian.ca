@@ -30,6 +30,15 @@ absolutely and gives every page its own composition. Execution of
   canadian"), printable per the pitch's footer·print·cli assignment.
 - **Per-post OG card** — `og-writing.png` in the site's pixel dialect
   (conifer + wordmark), with a committed generator `scripts/generate-og.py`.
+- **Ornament layer (Phase 8)** — the pitch's visual devices, adopted at the
+  owner's request for more visible design: corner-bracket "field notebook"
+  frames (`corners.njk` + `.frame`/`.corner`) on the Now panel, the garden
+  night-block, and project cards; the woodcut portrait as a framed `.stamp`
+  with an `SL · 2026` caption; numbered section tags (`01 Now … 04 Contact`)
+  on the home page; the revived pixel moss-divider between home sections; new
+  `--bg-alt`/`--ink-soft` tokens + a `.panel--alt` framed-panel treatment; a
+  fine paper-grain texture layered behind the forest-floor pattern; and amber
+  link-hover (the pitch's `a:hover`).
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type
@@ -49,6 +58,11 @@ absolutely and gives every page its own composition. Execution of
   below the sub-12px floor the BACKLOG flags; accessibility is a hard
   constraint).
 - Owner-gated copy (Now-block voice, philosophy-in-home-copy) untouched.
+- Amber link-hover is a conscious accessibility trade-off: amber on
+  parchment is ~3.3:1 (below AA for text), but it is a transient hover state
+  with the underline retained, and the resting link colour is AA. Flagged on
+  the BACKLOG contrast watch-list; swap to a darkened amber if strictness is
+  preferred.
 
 ## 2026-07-23 — Design v2 (Move 05 closed · repairs · filtered borrows)
 
