@@ -57,6 +57,18 @@ absolutely and gives every page its own composition. Execution of
   "page rendered" line were three different formats before. Fluid type and
   gutters via `clamp()` (body, h1–h3, page padding, section rhythm) so the
   layout scales continuously instead of snapping at breakpoints.
+- **Structure + voice (Phase 11)** — the home page now opens with a short
+  philosophy lede (assembled from the owner's own About + résumé prose). The
+  **About and Résumé pages merge**: `/about/` absorbs the full résumé
+  (experience / skills / credentials / education) via a shared
+  `resume-body.njk` include, so the two pages render from one source; primary
+  nav becomes **Home · Writing · Projects · About** and the print-optimized
+  `/resume/` leaves the nav, reached instead by a "Printable résumé" link on
+  About (and a footer link). The **garden gets one coherent "portal"
+  identity** — the same label + `cognitivearchitecture.ca ↗` affordance on
+  both the home and `/writing/` night-panels, with a one-line framing on home
+  about why the writing lives off-site — so the external door reads as the
+  same place everywhere.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

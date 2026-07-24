@@ -421,6 +421,7 @@ kbd {
 /* ── Buttons (shared with the JS-injected theme toggle) ─────────────────── */
 .button,
 .theme-toggle {
+  display: inline-block;
   background: none;
   border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
@@ -428,9 +429,11 @@ kbd {
   font-family: var(--text);
   font-size: var(--text-sm);
   color: var(--muted);
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
+a.button:visited { color: var(--muted); }
 
 .button:hover,
 .theme-toggle:hover {
@@ -932,4 +935,59 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
   background-color: var(--moss);
   -webkit-mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
   mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
+}
+
+/* ── Home lede — a short philosophy block on the front door (design-v3 P11).
+   Assembled from the owner's own About + résumé prose; edit freely. */
+.home-lede {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-block: var(--space-md) var(--space-xl);
+}
+
+/* ── Garden portal — one coherent identity for the off-site garden, used
+   the same way on home + /writing/ (design-v3 P11). Lives inside the
+   night panel, so it inherits the forest-at-night tokens. */
+.garden-portal {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1ch;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--rule);
+}
+.garden-portal__link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--link);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.garden-portal__link:hover {
+  color: var(--moss);
+  text-decoration: underline;
+}
+.garden-portal__note {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Résumé page nav (back-to-About + print) + the About print link ────── */
+.resume-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+}
+.resume-printlink {
+  margin-block: var(--space-lg) var(--space-2xl);
 }

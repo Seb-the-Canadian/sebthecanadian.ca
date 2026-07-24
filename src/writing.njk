@@ -19,9 +19,12 @@ permalink: /writing/
   <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
 
   {%- if gardenPosts.length %}
-  <h2 class="eyebrow">From the Garden</h2>
   <section class="index-table garden-panel panel--night frame" aria-label="From the Garden">
     {% include "corners.njk" %}
+    <p class="garden-portal">
+      <span class="eyebrow">from the garden</span>
+      <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
+    </p>
     {%- set gardenShown = 0 %}
     {%- for gp in gardenPosts %}
       {%- if gp.url not in syndicatedUrls and gardenShown < 12 %}

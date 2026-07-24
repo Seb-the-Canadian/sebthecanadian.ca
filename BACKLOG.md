@@ -53,6 +53,12 @@ Details in CHANGELOG 2026-07-23 (Design v3).
       devices; terminal cursor-blink removed; all displayed dates unified to
       one `humanDate` format ("24 Jul 2026"); fluid `clamp()` type + gutters
       for continuous scaling across screen sizes.
+- [x] Phase 11 — structure + voice: home philosophy lede (from the owner's
+      own prose — partially addresses the "philosophy in home copy" idea
+      below; owner can edit); About absorbs the résumé via a shared
+      `resume-body.njk` include, nav → Home/Writing/Projects/About with a
+      print-only `/resume/` linked not navigated; one coherent garden-portal
+      identity across home + `/writing/`.
 
 Two owner-gated items deliberately untouched: the Now-block voice rewrite
 and the philosophy-line-in-home-copy (both on Owner TODOs / the neilwengerd

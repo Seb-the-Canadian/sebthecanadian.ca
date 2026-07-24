@@ -17,6 +17,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     <span class="p-country-name sr-only">Canada</span>
   </p>
 
+  <p class="home-lede p-note">I work on knowledge architecture and data governance &mdash; the structures that make information findable, legible, and trustworthy inside organizations &mdash; and run a civic-technology program, <a href="https://civcitdev.ca">CivCitDev</a>, on the side. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
+
   <section id="now" class="home-now panel--alt frame">
     {% include "corners.njk" %}
     <h2 class="section-tag is-first"><span class="num">01</span> Now</h2>
@@ -50,6 +52,11 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
         (design-v3 Phase 2, D1), now with the field-notebook corner frame. -#}
     <div class="index-table garden-panel panel--night frame" role="group" aria-label="From the garden">
       {% include "corners.njk" %}
+      <p class="garden-portal">
+        <span class="eyebrow">the garden</span>
+        <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
+      </p>
+      <p class="garden-portal__note">The main body of my writing lives here &mdash; a digital garden, tended in the open and gathered back to this site.</p>
       {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
       <article class="index-row h-entry">
         <span class="index-row__label">garden/</span>

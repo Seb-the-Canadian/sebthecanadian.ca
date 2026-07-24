@@ -25,18 +25,26 @@ I didn't set out to work in data governance. I set out to work with information;
 
 My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
 
-If you want the formal version — titles, dates, credentials — the [resume](/resume/) is the place.
+What follows is the formal version — titles, dates, and what each role actually involved.
+
+## The work, formally
+
+<div class="h-resume">
+{% include "resume-body.njk" %}
+</div>
+
+<p class="resume-printlink"><a class="button" href="/resume/">Printable résumé / PDF &rarr;</a></p>
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, writing (syndicated from the garden), a resume, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, writing (syndicated from the garden), this about-and-résumé page, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
 
 ### Stack
 
 - **SSG:** [Eleventy](https://www.11ty.dev/) (11ty) 3.x
 - **Templating:** Nunjucks
 - **Styling:** Vanilla CSS with custom properties — no Tailwind, no preprocessor
-- **Fonts:** IBM Plex Mono, self-hosted — the whole site is monospace, body included
+- **Fonts:** Atkinson Hyperlegible (body & UI), Fraunces (display titles), IBM Plex Mono (code + data/terminal devices) — all self-hosted
 - **Content:** Markdown + YAML front matter + JSON data files
 - **JS:** Progressive enhancement only — zero JS in the critical path
 

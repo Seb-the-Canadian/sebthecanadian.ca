@@ -33,9 +33,9 @@ sebthecanadian.ca/
 │   ├── index.njk              # Homepage (h-card, hero, Now block, featured project, latest writing, profiles)
 │   ├── projects.njk           # Projects page (cards from data)
 │   ├── writing.njk            # POSSE syndication hub (h-feed)
-│   ├── resume.njk             # Data-driven resume (h-resume)
+│   ├── resume.njk             # Printable résumé (h-resume) — linked from About, not in primary nav
 │   ├── now.njk                # /now/ → /#now redirect (Now block lives on home)
-│   ├── about.md               # About page (bio + how this site is built)
+│   ├── about.md               # Combined About + résumé (bio, philosophy, résumé, colophon)
 │   ├── colophon.njk           # Redirect stub → /about/
 │   ├── uses.md                # /uses page
 │   ├── links.md               # Blogroll
@@ -46,8 +46,11 @@ sebthecanadian.ca/
 │   ├── _includes/
 │   │   ├── base.njk           # Base HTML layout
 │   │   ├── nav.njk            # Primary navigation
-│   │   ├── footer.njk         # Footer with colophon row
+│   │   ├── footer.njk         # Footer with colophon row + wordmark
+│   │   ├── masthead.njk       # Page title block (S·L stamp + eyebrow + h1 + lede)
+│   │   ├── corners.njk        # Corner-bracket ornaments for framed blocks
 │   │   ├── project-card.njk   # Reusable project card
+│   │   ├── resume-body.njk    # Shared résumé sections (used by /about/ + /resume/)
 │   │   └── post.njk           # h-entry layout for native posts
 │   └── assets/
 │       ├── css/               # tokens, base, components, utilities, print
