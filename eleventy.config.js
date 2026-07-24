@@ -103,6 +103,17 @@ export default function (eleventyConfig) {
     return new Date(dateObj).toISOString().split("T")[0];
   });
 
+  // humanDate — the single canonical DISPLAY format for every absolute date
+  // on the site ("24 Jul 2026"). Compact enough for the index rows, explicit
+  // enough for post/footer stamps; UTC to avoid timezone drift. Machine dates
+  // (datetime attrs, feed, sitemap) still use isoDate/isoDateShort.
+  eleventyConfig.addFilter("humanDate", (input) => {
+    const d = input instanceof Date ? input : new Date(input);
+    if (isNaN(d.getTime())) return "";
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return `${d.getUTCDate()} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+  });
+
   // Short date for index-table rows: "23 feb" (lowercase, no year, no padding)
   eleventyConfig.addFilter("shortDate", (input) => {
     const d = input instanceof Date ? input : new Date(input);

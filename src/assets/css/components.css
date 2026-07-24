@@ -14,12 +14,12 @@ nav[aria-label="Primary"] ul {
 nav[aria-label="Primary"] a {
   text-decoration: none;
   color: var(--ink);
-  font-family: var(--mono);
+  font-family: var(--text);
   font-size: var(--text-sm);
   font-weight: 400;
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
 }
 
 nav[aria-label="Primary"] a:visited {
@@ -424,12 +424,12 @@ kbd {
   background: none;
   border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
-  padding: 0.25rem 0.5rem;
-  font-family: var(--mono);
+  padding: 0.3rem 0.6rem;
+  font-family: var(--text);
   font-size: var(--text-sm);
   color: var(--muted);
   cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
 
 .button:hover,
@@ -624,31 +624,9 @@ kbd {
   margin-inline: 0.4ch;
 }
 
-/* ── Diegetic motion (pitch Interactions, rebuilt post-cleanup 2026-07) ──
-   The pitch approved exactly two animations: a terminal cursor-blink on
-   the page's "h1 moment" and a live-pulse dot on the freshness signal.
-   Their original hosts (.hero h1, the /now/ nav link) left the DOM in the
-   pitch-v1 sprint; these are the same signatures on their successors. */
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.identity .p-name::after {
-  content: "█";
-  color: var(--moss);
-  margin-left: 0.1em;
-  animation: cursor-blink 1.2s step-end infinite;
-  font-weight: 400;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .identity .p-name::after {
-    animation: none;
-    opacity: 0.5;
-  }
-}
-
+/* ── Diegetic motion — a single live-pulse dot on the freshness signal.
+   (The terminal cursor-blink after the name was dropped 2026-07 per owner
+   request — moving away from the terminal register.) */
 @keyframes live-pulse {
   0%, 100% { opacity: 1;   transform: scale(1);   }
   50%       { opacity: 0.3; transform: scale(0.7); }

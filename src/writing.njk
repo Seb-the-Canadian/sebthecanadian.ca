@@ -33,7 +33,7 @@ permalink: /writing/
         {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
       </span>
       {%- if gp.date %}
-      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
+      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | humanDate }}</time>
       {%- else %}
       <span class="index-row__meta"></span>
       {%- endif %}
@@ -58,7 +58,7 @@ permalink: /writing/
     {%- for post in collections.writing %}
     <li class="h-entry">
       <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
-      <time class="dt-published" datetime="{{ post.date | isoDate }}"> &middot; {{ post.date | isoDateShort }}</time>
+      <time class="dt-published" datetime="{{ post.date | isoDate }}"> &middot; {{ post.date | humanDate }}</time>
     </li>
     {%- endfor %}
   </ul>

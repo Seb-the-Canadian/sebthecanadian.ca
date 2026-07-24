@@ -40,7 +40,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
         <span class="index-row__desc">
           <a class="u-url p-name" href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>
         </span>
-        <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | shortDate }}</time>
+        <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | humanDate }}</time>
       </article>
       {%- endif %}
     </div>
@@ -57,7 +57,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
           <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
           {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
         </span>
-        <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
+        <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | humanDate }}</time>
       </article>
       {% endif %}{%- endfor %}
       <div class="index-row">

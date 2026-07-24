@@ -17,7 +17,7 @@ permalink: /about/
 
 This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
-<p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | readableDate }}</time></p>
+<p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | humanDate }}</time></p>
 
 ## How I approach the work
 

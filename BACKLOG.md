@@ -48,6 +48,11 @@ Details in CHANGELOG 2026-07-23 (Design v3).
       transitions; softer radii; subtle panel gradients; more generous
       line-height; calmer terminal labels. A deliberate step away from the
       all-mono "indie" signal while keeping the hand-built character.
+- [x] Phase 10 — type system + dates + fluid scaling: Atkinson Hyperlegible
+      body/UI text, Fraunces display, mono kept for code + data/terminal
+      devices; terminal cursor-blink removed; all displayed dates unified to
+      one `humanDate` format ("24 Jul 2026"); fluid `clamp()` type + gutters
+      for continuous scaling across screen sizes.
 
 Two owner-gated items deliberately untouched: the Now-block voice rewrite
 and the philosophy-line-in-home-copy (both on Owner TODOs / the neilwengerd

@@ -47,6 +47,16 @@ absolutely and gives every page its own composition. Execution of
   transitions (`--shadow`/`--shadow-sm`/`--ease` tokens); softer, consistent
   corner radii; a subtle top-lit gradient on framed panels; more generous
   line-height; and calmer terminal labels (larger, less letter-spacing).
+- **Type system, dates, fluid scaling (Phase 10)** — three deliberate
+  families: self-hosted **Atkinson Hyperlegible** (Braille Institute, maximal
+  legibility) for body & UI text, **Fraunces** for display titles, and IBM
+  Plex Mono kept only for code and the data/terminal devices (index rows, the
+  `S·L` stamp, the wordmark). The terminal cursor-blink after the name is
+  **removed**. Every displayed date now uses one canonical format via a new
+  `humanDate` filter ("24 Jul 2026") — index rows, post/footer stamps, and the
+  "page rendered" line were three different formats before. Fluid type and
+  gutters via `clamp()` (body, h1–h3, page padding, section rhythm) so the
+  layout scales continuously instead of snapping at breakpoints.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

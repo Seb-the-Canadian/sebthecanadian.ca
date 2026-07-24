@@ -44,6 +44,30 @@
   font-display: swap;
 }
 
+/* Self-hosted Atkinson Hyperlegible — the body/UI text face. Designed by
+   the Braille Institute for maximum legibility (disambiguated letterforms). */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Colors — Light Mode */
   --bg: #f5f2eb;
@@ -65,6 +89,7 @@
   /* Typography */
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
   --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --text: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* Depth + motion (polish pass) */
   --shadow-sm: 0 1px 2px rgba(26, 32, 26, 0.05);
@@ -92,7 +117,8 @@
 
   /* Layout */
   --maxw: 68ch;
-  --pad: 1.25rem;
+  --pad: clamp(1.1rem, 0.6rem + 2.4vw, 2.25rem);   /* fluid page gutter */
+  --flow: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);      /* fluid section rhythm */
   --radius: 10px;
   --radius-sm: 6px;
   --radius-lg: 14px;
