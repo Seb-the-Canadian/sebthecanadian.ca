@@ -39,6 +39,14 @@ absolutely and gives every page its own composition. Execution of
   `--bg-alt`/`--ink-soft` tokens + a `.panel--alt` framed-panel treatment; a
   fine paper-grain texture layered behind the forest-floor pattern; and amber
   link-hover (the pitch's `a:hover`).
+- **Polish pass (Phase 9)** — refine the execution toward "polished but still
+  hand-coded," at the owner's request. Self-hosted **Fraunces** (a warm
+  old-style serif, variable, 67 KB) becomes the display face for the h1–h3
+  heading tier; IBM Plex Mono stays for body, labels, code, and every
+  terminal device. Soft layered shadows + a hover lift on cards + eased
+  transitions (`--shadow`/`--shadow-sm`/`--ease` tokens); softer, consistent
+  corner radii; a subtle top-lit gradient on framed panels; more generous
+  line-height; and calmer terminal labels (larger, less letter-spacing).
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

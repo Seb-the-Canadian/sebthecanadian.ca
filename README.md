@@ -16,7 +16,7 @@ Personal site for Seb Lathangue — civic technology, knowledge architecture, an
 | Templating | Nunjucks |
 | Styling | Vanilla CSS with custom properties (no Tailwind, no preprocessor) |
 | Content | Markdown + YAML front matter |
-| Fonts | IBM Plex Mono (self-hosted WOFF2) — the site is fully monospace, body included |
+| Fonts | IBM Plex Mono for body, labels, code, and terminal devices + Fraunces (variable serif) for display titles — both self-hosted WOFF2 |
 | JS | Progressive enhancement only — zero JS in critical path |
 | Deployment | GitHub Actions → GitHub Pages |
 | DNS | Cloudflare (DNS-only records) |

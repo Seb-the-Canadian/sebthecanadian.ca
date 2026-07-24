@@ -42,6 +42,12 @@ Details in CHANGELOG 2026-07-23 (Design v3).
       bg-alt panels, framed portrait `.stamp`, revived pixel moss-divider,
       paper-grain texture, amber link-hover. Revives the DESIGN_BRIEF's
       "pixel-art layer" that pitch-v1's subtractive pass had dropped.
+- [x] Phase 9 — polish pass (owner: "more polish but still hand-coded"):
+      self-hosted Fraunces display serif for the h1–h3 tier (mono stays for
+      body/labels/code/terminal devices); soft shadows + hover lift + eased
+      transitions; softer radii; subtle panel gradients; more generous
+      line-height; calmer terminal labels. A deliberate step away from the
+      all-mono "indie" signal while keeping the hand-built character.
 
 Two owner-gated items deliberately untouched: the Now-block voice rewrite
 and the philosophy-line-in-home-copy (both on Owner TODOs / the neilwengerd

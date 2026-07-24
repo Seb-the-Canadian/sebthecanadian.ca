@@ -112,11 +112,18 @@ footer nav a:visited {
   padding: var(--space-lg);
   background: var(--surface);
   margin-bottom: var(--space-lg);
-  transition: border-color 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .card:hover {
   border-color: var(--moss);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover { transform: none; }
 }
 
 .card h3 {
@@ -673,7 +680,7 @@ kbd {
   font-family: var(--mono);
   font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   /* moss, not amber: amber text on light bg is 3.33:1 (BACKLOG contrast
      note forbids new amber text uses); moss measures ~4.5:1 both modes */
@@ -724,6 +731,7 @@ kbd {
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow);
 }
 /* Deepen one step when the page itself is dark, mirroring tokens.css's two
    dark triggers (OS media query + forced html[data-theme]) exactly, so the
@@ -751,8 +759,8 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 }
 .index-row__label {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .index-row__desc {
@@ -778,9 +786,9 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
   margin-inline-start: 0.5ch;
   padding-inline: 0.4ch;
   border: 1px solid var(--rule);
-  border-radius: 2px;
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  border-radius: 3px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -837,6 +845,7 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
    and column-aligned dates. (--moss-2 was never adopted; --link is the
    closest shipped token.) */
 .resume-section h2 {
+  font-family: var(--mono);          /* stays a mono label, not the display serif */
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -882,11 +891,13 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 
 /* ── Framed panel — bg-alt card treatment (pitch .diag / .thesis) ─────── */
 .panel--alt {
-  background: var(--bg-alt);
+  /* Subtle top-lit gradient instead of a flat fill (refined surfaces) */
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
   border: 1px solid var(--rule);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   padding: var(--space-lg);
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 .panel--alt > :last-child { margin-bottom: 0; }
 
@@ -912,7 +923,9 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
   position: relative;
   background: var(--bg-alt);
   border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
   padding: 0.55rem;
+  box-shadow: var(--shadow-sm);
 }
 .stamp img {
   display: block;
