@@ -69,6 +69,14 @@ absolutely and gives every page its own composition. Execution of
   both the home and `/writing/` night-panels, with a one-line framing on home
   about why the writing lives off-site — so the external door reads as the
   same place everywhere.
+- **Home declutter (Phase 12)** — the front door had accumulated three
+  overlapping separator systems (numbered `01–04` section tags, a pixel
+  divider between every section, and corner frames on two blocks). Reduced to
+  one: quiet eyebrow labels (Now / Writing / Projects / Elsewhere), generous
+  whitespace, a single pixel divider under the lede, and just two
+  distinguished blocks — the Now panel and the garden night-panel. The
+  ornament vocabulary (corners, dividers) stays on the interior pages where it
+  isn't competing with itself.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

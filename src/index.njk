@@ -19,9 +19,10 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
 
   <p class="home-lede p-note">I work on knowledge architecture and data governance &mdash; the structures that make information findable, legible, and trustworthy inside organizations &mdash; and run a civic-technology program, <a href="https://civcitdev.ca">CivCitDev</a>, on the side. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
 
-  <section id="now" class="home-now panel--alt frame">
-    {% include "corners.njk" %}
-    <h2 class="section-tag is-first"><span class="num">01</span> Now</h2>
+  <hr class="pixel-divider" />
+
+  <section id="now" class="home-block home-now panel--alt" aria-label="Now">
+    <h2 class="eyebrow">Now</h2>
     <p>
       <strong>Currently:</strong> {{ now.currently | safe }}
     </p>
@@ -30,10 +31,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </p>
   </section>
 
-  <hr class="pixel-divider" />
-
-  <section aria-label="Writing">
-    <h2 class="section-tag"><span class="num">02</span> Writing</h2>
+  <section class="home-block" aria-label="Writing">
+    <h2 class="eyebrow">Writing</h2>
     <div class="index-table">
       {%- set latestPost = collections.writing | first %}
       {%- if latestPost %}
@@ -48,10 +47,9 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </div>
 
     {%- if gardenPosts.length > 0 %}
-    {#- The garden gets its own weather: a scoped forest-at-night block
-        (design-v3 Phase 2, D1), now with the field-notebook corner frame. -#}
-    <div class="index-table garden-panel panel--night frame" role="group" aria-label="From the garden">
-      {% include "corners.njk" %}
+    {#- The garden's one distinct block on the home page — the night panel
+        carries its own weather (design-v3 Phase 2) + the portal identity. -#}
+    <div class="index-table garden-panel panel--night" role="group" aria-label="From the garden">
       <p class="garden-portal">
         <span class="eyebrow">the garden</span>
         <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
@@ -70,7 +68,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <div class="index-row">
         <span class="index-row__label">garden/</span>
         <span class="index-row__desc">
-          <a href="https://cognitivearchitecture.ca/">more in the garden &rarr;</a>
+          <a href="https://cognitivearchitecture.ca/" rel="external">more in the garden &rarr;</a>
         </span>
         <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
       </div>
@@ -78,10 +76,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     {%- endif %}
   </section>
 
-  <hr class="pixel-divider" />
-
-  <section aria-label="Building">
-    <h2 class="section-tag"><span class="num">03</span> Building</h2>
+  <section class="home-block" aria-label="Projects">
+    <h2 class="eyebrow">Projects</h2>
     <div class="index-table">
       {%- for project in projects %}
         {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
@@ -98,10 +94,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </div>
   </section>
 
-  <hr class="pixel-divider" />
-
-  <section aria-label="Contact">
-    <h2 class="section-tag"><span class="num">04</span> Contact</h2>
+  <section class="home-block" aria-label="Elsewhere">
+    <h2 class="eyebrow">Elsewhere</h2>
     <div class="index-table">
       <div class="index-row">
         <span class="index-row__label">contact/</span>
@@ -109,7 +103,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
           <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
           {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
         </span>
-        <span class="index-row__meta">end of front door</span>
+        <span class="index-row__meta"></span>
       </div>
     </div>
   </section>

@@ -882,22 +882,17 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
 }
 .panel--alt > :last-child { margin-bottom: 0; }
 
-/* ── Numbered section tag — the pitch's "NUM / LABEL" pair ─────────────── */
-.section-tag {
-  display: flex;
-  gap: 1ch;
-  align-items: baseline;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: var(--space-sm);   /* pixel dividers carry the major separation */
+/* ── Home sections — one quiet, consistent rhythm (design-v3 P12 cleanup).
+   The numbered section tags + per-section pixel dividers + corner frames
+   were doing three separators' worth of work; replaced by a single eyebrow
+   label per block and generous whitespace, so the front door reads clean. */
+.home-block {
+  margin-top: var(--flow);
+}
+.home-block > h2 {
+  margin-top: 0;
   margin-bottom: var(--space-sm);
 }
-.section-tag .num { color: var(--moss); }
-.section-tag.is-first { margin-top: 0; }
 
 /* ── Portrait stamp — framed woodcut with a field-note caption (pitch) ─── */
 .stamp {
