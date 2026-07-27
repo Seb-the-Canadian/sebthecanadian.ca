@@ -76,7 +76,10 @@ absolutely and gives every page its own composition. Execution of
   whitespace, a single pixel divider under the lede, and just two
   distinguished blocks — the Now panel and the garden night-panel. The
   ornament vocabulary (corners, dividers) stays on the interior pages where it
-  isn't competing with itself.
+  isn't competing with itself. The home's "Writing" block (a lone native-post
+  row under a Writing heading) was then removed and the garden promoted to its
+  own standalone block — the garden is the writing presence on the front door;
+  native posts live on `/writing/`.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

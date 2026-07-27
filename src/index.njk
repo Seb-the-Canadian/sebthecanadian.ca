@@ -31,25 +31,11 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </p>
   </section>
 
-  <section class="home-block" aria-label="Writing">
-    <h2 class="eyebrow">Writing</h2>
-    <div class="index-table">
-      {%- set latestPost = collections.writing | first %}
-      {%- if latestPost %}
-      <article class="index-row h-entry">
-        <span class="index-row__label">writing/</span>
-        <span class="index-row__desc">
-          <a class="u-url p-name" href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>
-        </span>
-        <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | humanDate }}</time>
-      </article>
-      {%- endif %}
-    </div>
-
-    {%- if gardenPosts.length > 0 %}
-    {#- The garden's one distinct block on the home page — the night panel
-        carries its own weather (design-v3 Phase 2) + the portal identity. -#}
-    <div class="index-table garden-panel panel--night" role="group" aria-label="From the garden">
+  {%- if gardenPosts.length > 0 %}
+  {#- The garden as its own standalone block — the night panel carries its
+      own weather (design-v3 Phase 2) and self-labels via the portal. -#}
+  <section class="home-block" aria-label="From the garden">
+    <div class="index-table garden-panel panel--night">
       <p class="garden-portal">
         <span class="eyebrow">the garden</span>
         <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
@@ -73,8 +59,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
         <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
       </div>
     </div>
-    {%- endif %}
   </section>
+  {%- endif %}
 
   <section class="home-block" aria-label="Projects">
     <h2 class="eyebrow">Projects</h2>
