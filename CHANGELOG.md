@@ -79,7 +79,12 @@ absolutely and gives every page its own composition. Execution of
   isn't competing with itself. The home's "Writing" block (a lone native-post
   row under a Writing heading) was then removed and the garden promoted to its
   own standalone block — the garden is the writing presence on the front door;
-  native posts live on `/writing/`.
+  native posts live on `/writing/`. Finally, the content cards were unified to
+  one look: project cards, the Now panel, and the garden panel now share the
+  same hairline border, radius, padding, and soft shadow, with the same warm
+  top-lit gradient on the light cards and the garden as the dark variant;
+  corner-brackets dropped from project cards (they stay on the portrait
+  stamps, which are image frames, not content cards).
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

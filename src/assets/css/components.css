@@ -107,10 +107,12 @@ footer nav a:visited {
 
 /* Card */
 .card {
+  /* One shared content-card look (matches .panel--alt): warm top-lit
+     bg-alt, hairline border, soft shadow, consistent radius + padding. */
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
-  background: var(--surface);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
   margin-bottom: var(--space-lg);
   box-shadow: var(--shadow-sm);
   transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
@@ -711,8 +713,8 @@ a.button:visited { color: var(--muted); }
   color: var(--ink);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: var(--space-md) var(--space-lg);
-  box-shadow: var(--shadow);
+  padding: var(--space-lg);            /* match the shared card geometry */
+  box-shadow: var(--shadow-sm);        /* match the shared card shadow */
 }
 /* Deepen one step when the page itself is dark, mirroring tokens.css's two
    dark triggers (OS media query + forced html[data-theme]) exactly, so the
