@@ -114,13 +114,13 @@ footer nav a:visited {
   padding: var(--space-lg);
   background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
   margin-bottom: var(--space-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--card-shadow);
   transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .card:hover {
   border-color: var(--moss);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), 0 10px 26px -8px var(--glow), 0 28px 56px -14px var(--glow);
   transform: translateY(-2px);
 }
 
@@ -689,43 +689,19 @@ a.button:visited { color: var(--muted); }
   line-height: 1.55;
 }
 
-/* ── Night panel — the garden's own weather (design-v3 Phase 2, D1) ──────
-   The pitch's /writing/ spec wanted the garden to visually outweigh the
-   plain native-posts list below it; v3 makes that weight a scoped
-   forest-at-night block. It re-declares the theme tokens locally, so every
-   child component (index rows, pills, links) restyles itself with zero
-   markup changes and zero new colour pairs to audit — the pairs ARE the
-   shipped dark theme. Token values are copied verbatim from tokens.css's
-   dark block; if that block changes, change these to match. NOT a hero,
-   NOT for non-garden content — see the BACKLOG Part D reversal note. */
-.panel--night {
-  --bg: #0f1a14;
-  --ink: #e8e4dc;
-  --muted: #a8a195;
-  --moss: #6bb896;
-  --amber: #d9b24a;
-  --rule: #2a3a30;
-  --link: #8eba9e;
-  --visited: #b89c84;
-  --code-bg: #162018;
-  --wash: color-mix(in oklab, var(--moss) 7%, transparent);
-  background: var(--bg);
-  color: var(--ink);
+/* ── Garden panel — the same content card as .card / .panel--alt. The
+   garden was a scoped forest-at-night block (design-v3 Phase 2, D1); the
+   owner later asked every card to share one look with the lavender/lichen
+   under-glow, so the garden's dark treatment was retired and its identity
+   now rides on the .garden-portal label + the "garden/" rows, not chrome. */
+.garden-panel {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: var(--space-lg);            /* match the shared card geometry */
-  box-shadow: var(--shadow-sm);        /* match the shared card shadow */
+  padding: var(--space-lg);
+  box-shadow: var(--card-shadow);
 }
-/* Deepen one step when the page itself is dark, mirroring tokens.css's two
-   dark triggers (OS media query + forced html[data-theme]) exactly, so the
-   panel reads as the same night block in all four theme combinations. */
-@media (prefers-color-scheme: dark) {
-  .panel--night { --bg: #0a120e; border-color: #6bb896; }
-}
-html[data-theme="light"] .panel--night { --bg: #0f1a14; border-color: #2a3a30; }
-html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
-
-.panel--night .index-row:last-child {
+.garden-panel .index-row:last-child {
   border-bottom: 0;
 }
 
@@ -880,7 +856,7 @@ html[data-theme="dark"]  .panel--night { --bg: #0a120e; border-color: #6bb896; }
   border-radius: var(--radius);
   padding: var(--space-lg);
   position: relative;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--card-shadow);
 }
 .panel--alt > :last-child { margin-bottom: 0; }
 

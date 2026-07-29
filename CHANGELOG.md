@@ -84,7 +84,12 @@ absolutely and gives every page its own composition. Execution of
   same hairline border, radius, padding, and soft shadow, with the same warm
   top-lit gradient on the light cards and the garden as the dark variant;
   corner-brackets dropped from project cards (they stay on the portrait
-  stamps, which are image frames, not content cards).
+  stamps, which are image frames, not content cards). Then, so the cards read
+  identical in dark mode too, the garden's dark "night" treatment was retired
+  entirely (its identity now rides on the `.garden-portal` label, not a dark
+  background) and every card gained a shared **under-glow** — a soft lavender
+  cast in light mode, lichen green in dark — via one `--glow` / `--card-shadow`
+  token pair, so all content cards glow the same way in both themes.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type
