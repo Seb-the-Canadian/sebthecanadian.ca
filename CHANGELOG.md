@@ -101,6 +101,12 @@ absolutely and gives every page its own composition. Execution of
   teal/seafoam (the old light `#3f7a5f` actually failed AA on cards at 4.08).
   Retuned to a warmer, deeper natural green — light moss `#3a6330`, dark moss
   `#7aa85f` (fern), with matching links — every pairing now measures ≥5:1.
+- **Real portraits** — the woodcut placeholder is replaced by two owner-supplied
+  images, each given a treatment fit for its medium: the **résumé** leads with a
+  photographic headshot set (rounded frame + soft shadow, stacked above the
+  identity) for a professional-but-human read; **About** uses an updated
+  pixel-art portrait, clipped to a clean circle. The woodcut-era `.stamp`/corner
+  chrome (and `corners.njk`, `seb-stamp.jpeg`) are retired as now-unused.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

@@ -48,7 +48,6 @@ sebthecanadian.ca/
 │   │   ├── nav.njk            # Primary navigation
 │   │   ├── footer.njk         # Footer with colophon row + wordmark
 │   │   ├── masthead.njk       # Page title block (S·L stamp + eyebrow + h1 + lede)
-│   │   ├── corners.njk        # Corner-bracket ornaments for framed blocks
 │   │   ├── project-card.njk   # Reusable project card
 │   │   ├── resume-body.njk    # Shared résumé sections (used by /about/ + /resume/)
 │   │   └── post.njk           # h-entry layout for native posts

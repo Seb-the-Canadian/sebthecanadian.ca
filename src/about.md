@@ -8,9 +8,8 @@ permalink: /about/
 {% set mastheadLabel = "about/" %}
 {% include "masthead.njk" %}
 
-<figure class="about-portrait stamp frame">
-  {% include "corners.njk" %}
-  <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />
+<figure class="about-portrait">
+  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
 <p class="lede">I'm Seb Lathangue. I live in Toronto. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called <a href="/projects/">CivCitDev</a> on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
