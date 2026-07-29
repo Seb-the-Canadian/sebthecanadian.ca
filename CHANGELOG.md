@@ -90,6 +90,13 @@ absolutely and gives every page its own composition. Execution of
   background) and every card gained a shared **under-glow** — a soft lavender
   cast in light mode, lichen green in dark — via one `--glow` / `--card-shadow`
   token pair, so all content cards glow the same way in both themes.
+- **Cleaner editorial backgrounds** — the speckled pixel `forest-floor`
+  texture is gone (asset deleted); the page now carries only a whisper of
+  fine paper grain. Dark mode moves off the saturated `#0f1a14` forest green
+  to a **neutral charcoal** (`#16171a`, with a matching card shade and neutral
+  borders) — the forest identity now lives entirely in the accents (moss,
+  lichen glow), not the background. `theme-color` meta + the "forest at night"
+  doc references updated to match.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type

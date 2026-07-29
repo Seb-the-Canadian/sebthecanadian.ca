@@ -1,6 +1,7 @@
 /* ==========================================================================
    Design Tokens — Data Druid
-   Forest palette, warm parchment light mode, "forest at night" dark mode.
+   Warm parchment light mode, neutral-charcoal dark mode. The forest identity
+   lives in the accents (moss, lichen glow), not the background.
    ========================================================================== */
 
 /* Self-hosted IBM Plex Mono */
@@ -135,20 +136,20 @@
   --leading-normal: 1.6;
 }
 
-/* Dark Mode — "Forest at Night" */
+/* Dark Mode — neutral charcoal (forest identity carried by the accents) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1a14;
-    --bg-alt: #121e19;
+    --bg: #16171a;
+    --bg-alt: #1d1e21;
     --ink: #e8e4dc;
     --ink-soft: #c3bdaf;
     --muted: #a8a195;
     --moss: #6bb896;
     --amber: #d9b24a;
-    --rule: #2a3a30;
+    --rule: #2c2d31;
     --link: #8eba9e;
     --visited: #b89c84;
-    --code-bg: #162018;
+    --code-bg: #1e1f22;
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
@@ -173,17 +174,17 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --bg: #0f1a14;
-  --bg-alt: #121e19;
+  --bg: #16171a;
+  --bg-alt: #1d1e21;
   --ink: #e8e4dc;
   --ink-soft: #c3bdaf;
   --muted: #a8a195;
   --moss: #6bb896;
   --amber: #d9b24a;
-  --rule: #2a3a30;
+  --rule: #2c2d31;
   --link: #8eba9e;
   --visited: #b89c84;
-  --code-bg: #162018;
+  --code-bg: #1e1f22;
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);

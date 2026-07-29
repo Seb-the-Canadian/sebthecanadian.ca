@@ -56,7 +56,7 @@ What follows is the formal version — titles, dates, and what each role actuall
 
 ### Design approach
 
-- **Data Druid** aesthetic: forest palette, pixel-art accents, warm parchment light mode, "forest at night" dark mode.
+- **Data Druid** aesthetic: forest palette in the accents (moss, lichen glow), warm parchment light mode, neutral-charcoal dark mode.
 - Semantic HTML with microformats: `h-card`, `h-entry`, `h-feed`, `h-resume`.
 - Webmention discovery for IndieWeb interoperability.
 - Accessible: skip links, focus-visible styles, WCAG AA contrast.

@@ -922,7 +922,7 @@ a.button:visited { color: var(--muted); }
 
 /* ── Garden portal — one coherent identity for the off-site garden, used
    the same way on home + /writing/ (design-v3 P11). Lives inside the
-   night panel, so it inherits the forest-at-night tokens. */
+   garden card, so it inherits the normal theme tokens. */
 .garden-portal {
   display: flex;
   align-items: baseline;
