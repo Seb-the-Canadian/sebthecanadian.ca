@@ -97,9 +97,11 @@
   --ease: cubic-bezier(0.2, 0.65, 0.25, 1);
 
   /* Card under-glow — soft lavender in light, lichen green in dark. One
-     shared card shadow so every content card glows the same way. */
-  --glow: rgba(150, 120, 205, 0.32);
-  --card-shadow: var(--shadow-sm), 0 6px 18px -8px var(--glow), 0 20px 46px -14px var(--glow);
+     shared card shadow so every content card glows the same way. The glow
+     bleeds past the card edge (small negative spread) so it reads on light
+     parchment, not just on dark where a colour naturally emits. */
+  --glow: rgba(124, 86, 214, 0.5);
+  --card-shadow: var(--shadow-sm), 0 10px 26px -5px var(--glow), 0 3px 10px -2px var(--glow);
 
   /* Type Scale */
   --text-xs: 0.75rem;
@@ -150,7 +152,7 @@
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
-    --glow: rgba(150, 190, 120, 0.30);   /* lichen green under-glow (dark) */
+    --glow: rgba(150, 200, 120, 0.42);   /* lichen green under-glow (dark) */
   }
 }
 
@@ -185,5 +187,5 @@ html[data-theme="dark"] {
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
-  --glow: rgba(150, 190, 120, 0.30);   /* lichen green under-glow (dark) */
+  --glow: rgba(150, 200, 120, 0.42);   /* lichen green under-glow (dark) */
 }
