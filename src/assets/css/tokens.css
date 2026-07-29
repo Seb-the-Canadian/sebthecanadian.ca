@@ -76,10 +76,10 @@
   --ink: #15201a;
   --ink-soft: #3a453d;        /* softened ink for card/lede body (pitch) */
   --muted: #595249;
-  --moss: #3f7a5f;
+  --moss: #3a6330;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2a6b4a;
+  --link: #2f6a34;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
@@ -144,10 +144,10 @@
     --ink: #e8e4dc;
     --ink-soft: #c3bdaf;
     --muted: #a8a195;
-    --moss: #6bb896;
+    --moss: #7aa85f;
     --amber: #d9b24a;
     --rule: #2c2d31;
-    --link: #8eba9e;
+    --link: #93b877;
     --visited: #b89c84;
     --code-bg: #1e1f22;
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
@@ -164,10 +164,10 @@ html[data-theme="light"] {
   --ink: #15201a;
   --ink-soft: #3a453d;
   --muted: #595249;
-  --moss: #3f7a5f;
+  --moss: #3a6330;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2a6b4a;
+  --link: #2f6a34;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
@@ -179,10 +179,10 @@ html[data-theme="dark"] {
   --ink: #e8e4dc;
   --ink-soft: #c3bdaf;
   --muted: #a8a195;
-  --moss: #6bb896;
+  --moss: #7aa85f;
   --amber: #d9b24a;
   --rule: #2c2d31;
-  --link: #8eba9e;
+  --link: #93b877;
   --visited: #b89c84;
   --code-bg: #1e1f22;
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);

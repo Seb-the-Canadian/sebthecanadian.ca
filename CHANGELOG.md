@@ -97,6 +97,10 @@ absolutely and gives every page its own composition. Execution of
   borders) — the forest identity now lives entirely in the accents (moss,
   lichen glow), not the background. `theme-color` meta + the "forest at night"
   doc references updated to match.
+- **Natural forest green accents** — the `--moss`/`--link` greens were too
+  teal/seafoam (the old light `#3f7a5f` actually failed AA on cards at 4.08).
+  Retuned to a warmer, deeper natural green — light moss `#3a6330`, dark moss
+  `#7aa85f` (fern), with matching links — every pairing now measures ≥5:1.
 
 ### Changed
 - **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type
