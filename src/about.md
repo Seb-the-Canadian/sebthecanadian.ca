@@ -5,17 +5,18 @@ description: "About Seb Lathangue and how this site is built."
 permalink: /about/
 ---
 
-# About
+{% set mastheadLabel = "about/" %}
+{% include "masthead.njk" %}
 
 <figure class="about-portrait">
-  <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />
+  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
 <p class="lede">I'm Seb Lathangue. I live in Toronto. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called <a href="/projects/">CivCitDev</a> on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
 
 This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
-<p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | readableDate }}</time></p>
+<p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | humanDate }}</time></p>
 
 ## How I approach the work
 
@@ -23,18 +24,26 @@ I didn't set out to work in data governance. I set out to work with information;
 
 My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
 
-If you want the formal version — titles, dates, credentials — the [resume](/resume/) is the place.
+What follows is the formal version — titles, dates, and what each role actually involved.
+
+## The work, formally
+
+<div class="h-resume">
+{% include "resume-body.njk" %}
+</div>
+
+<p class="resume-printlink"><a class="button" href="/resume/">Printable résumé / PDF &rarr;</a></p>
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, writing (syndicated from the garden), a resume, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, writing (syndicated from the garden), this about-and-résumé page, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
 
 ### Stack
 
 - **SSG:** [Eleventy](https://www.11ty.dev/) (11ty) 3.x
 - **Templating:** Nunjucks
 - **Styling:** Vanilla CSS with custom properties — no Tailwind, no preprocessor
-- **Fonts:** IBM Plex Mono, self-hosted — the whole site is monospace, body included
+- **Fonts:** Atkinson Hyperlegible (body & UI), Fraunces (display titles), IBM Plex Mono (code + data/terminal devices) — all self-hosted
 - **Content:** Markdown + YAML front matter + JSON data files
 - **JS:** Progressive enhancement only — zero JS in the critical path
 
@@ -46,7 +55,7 @@ If you want the formal version — titles, dates, credentials — the [resume](/
 
 ### Design approach
 
-- **Data Druid** aesthetic: forest palette, pixel-art accents, warm parchment light mode, "forest at night" dark mode.
+- **Data Druid** aesthetic: forest palette in the accents (moss, lichen glow), warm parchment light mode, neutral-charcoal dark mode.
 - Semantic HTML with microformats: `h-card`, `h-entry`, `h-feed`, `h-resume`.
 - Webmention discovery for IndieWeb interoperability.
 - Accessible: skip links, focus-visible styles, WCAG AA contrast.

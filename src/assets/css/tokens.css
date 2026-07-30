@@ -1,6 +1,8 @@
 /* ==========================================================================
    Design Tokens — Data Druid
-   Forest palette, warm parchment light mode, "forest at night" dark mode.
+   Warm parchment light + neutral-charcoal dark. Duotone accent, each matching
+   its card under-glow: lavender/violet in light mode, forest green in dark.
+   (--moss / --link are legacy token names; in light mode they resolve violet.)
    ========================================================================== */
 
 /* Self-hosted IBM Plex Mono */
@@ -33,15 +35,52 @@
   font-display: swap;
 }
 
+/* Self-hosted Fraunces — a warm old-style serif for display titles.
+   Variable (optical size + weight); one file covers the whole range. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Self-hosted Atkinson Hyperlegible — the body/UI text face. Designed by
+   the Braille Institute for maximum legibility (disambiguated letterforms). */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/assets/fonts/AtkinsonHyperlegible-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Colors — Light Mode */
   --bg: #f5f2eb;
+  --bg-alt: #ebe7db;          /* second parchment shade for framed panels (pitch) */
   --ink: #15201a;
+  --ink-soft: #3a453d;        /* softened ink for card/lede body (pitch) */
   --muted: #595249;
-  --moss: #3f7a5f;
+  --moss: #5b3fa3;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2a6b4a;
+  --link: #513592;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
@@ -51,6 +90,21 @@
 
   /* Typography */
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --text: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Depth + motion (polish pass) */
+  --shadow-sm: 0 1px 2px rgba(26, 32, 26, 0.05);
+  --shadow: 0 1px 2px rgba(26, 32, 26, 0.05), 0 10px 28px rgba(26, 32, 26, 0.08);
+  --ease: cubic-bezier(0.2, 0.65, 0.25, 1);
+
+  /* Card under-glow — soft lavender in light, lichen green in dark. One
+     shared card shadow so every content card glows the same way. The glow
+     bleeds past the card edge (small negative spread) so it reads on light
+     parchment, not just on dark where a colour naturally emits. */
+  --glow: var(--glow-l, rgba(124, 86, 214, 0.9));
+  --season: var(--season-l, var(--moss));
+  --card-shadow: var(--shadow-sm), 0 12px 30px -5px var(--glow), 0 3px 12px -2px var(--glow);
 
   /* Type Scale */
   --text-xs: 0.75rem;
@@ -73,54 +127,107 @@
 
   /* Layout */
   --maxw: 68ch;
-  --pad: 1.25rem;
-  --radius: 8px;
-  --radius-sm: 4px;
+  --pad: clamp(1.1rem, 0.6rem + 2.4vw, 2.25rem);   /* fluid page gutter */
+  --flow: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);      /* fluid section rhythm */
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
 
   /* Line Height */
   --leading-tight: 1.2;
   --leading-normal: 1.6;
 }
 
-/* Dark Mode — "Forest at Night" */
+/* Dark Mode — neutral charcoal (forest identity carried by the accents) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1a14;
+    --bg: #16171a;
+    --bg-alt: #1d1e21;
     --ink: #e8e4dc;
+    --ink-soft: #c3bdaf;
     --muted: #a8a195;
-    --moss: #6bb896;
+    --moss: #6f9d52;
     --amber: #d9b24a;
-    --rule: #2a3a30;
-    --link: #8eba9e;
+    --rule: #2c2d31;
+    --link: #85ab63;
     --visited: #b89c84;
-    --code-bg: #162018;
+    --code-bg: #1e1f22;
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
+    --glow: var(--glow-d, rgba(150, 200, 120, 0.74));   /* lichen green under-glow (dark) */
+    --season: var(--season-d, var(--moss));
   }
 }
 
 /* Theme override classes (for JS toggle) */
 html[data-theme="light"] {
   --bg: #f5f2eb;
+  --bg-alt: #ebe7db;
   --ink: #15201a;
+  --ink-soft: #3a453d;
   --muted: #595249;
-  --moss: #3f7a5f;
+  --moss: #5b3fa3;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2a6b4a;
+  --link: #513592;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
+  --glow: var(--glow-l, rgba(124, 86, 214, 0.9));
+  --season: var(--season-l, var(--moss));
 }
 
 html[data-theme="dark"] {
-  --bg: #0f1a14;
+  --bg: #16171a;
+  --bg-alt: #1d1e21;
   --ink: #e8e4dc;
+  --ink-soft: #c3bdaf;
   --muted: #a8a195;
-  --moss: #6bb896;
+  --moss: #6f9d52;
   --amber: #d9b24a;
-  --rule: #2a3a30;
-  --link: #8eba9e;
+  --rule: #2c2d31;
+  --link: #85ab63;
   --visited: #b89c84;
-  --code-bg: #162018;
+  --code-bg: #1e1f22;
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
+  --glow: var(--glow-d, rgba(150, 200, 120, 0.74));   /* lichen green under-glow (dark) */
+  --season: var(--season-d, var(--moss));
+}
+
+/* ── Seasonal detail ──────────────────────────────────────────────────────
+   Three things shift by season (data-season on <html>, set at build time —
+   the daily cron keeps it current), each in its mode's family so the change
+   reads as weather, not a theme swap:
+     · --glow-l / --glow-d — the card under-glow (light / dark)
+     · --season-l / --season-d — a solid seasonal accent, used by the "Now"
+       pulse and text selection
+   The mode blocks above pick which of each pair is live.
+   Glow alphas run high (≈0.9 light, ≈0.74 dark) so the seasonal weather is
+   deliberate, not a whisper; the large shadow blur keeps it soft. */
+html[data-season="winter"] {
+  --glow-l: rgba(100, 108, 220, 0.9);    /* periwinkle / frost */
+  --glow-d: rgba(120, 196, 178, 0.74);   /* cool blue-green */
+  --season-l: #5a60cc;
+  --season-d: #78c4b2;
+}
+html[data-season="spring"] {
+  --glow-l: rgba(154, 100, 216, 0.9);    /* lilac */
+  --glow-d: rgba(146, 210, 108, 0.74);   /* fresh new-growth green */
+  --season-l: #8a52cc;
+  --season-d: #86ca5c;
+}
+html[data-season="summer"] {
+  --glow-l: rgba(142, 76, 206, 0.9);     /* full violet */
+  --glow-d: rgba(172, 206, 98, 0.74);    /* lush golden-green */
+  --season-l: #7e3fc0;
+  --season-d: #a2c452;
+}
+html[data-season="autumn"] {
+  --glow-l: rgba(122, 82, 180, 0.9);     /* dusky plum */
+  --glow-d: rgba(196, 190, 96, 0.74);    /* amber-touched green */
+  --season-l: #6f47a6;
+  --season-d: #bab24e;
 }

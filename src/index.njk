@@ -5,6 +5,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
 ---
 <div class="h-card">
   <p class="identity">
+    <span class="masthead__stamp" aria-hidden="true">S&middot;L</span>
     <strong class="p-name">Seb Lathangue</strong>
     <span class="identity__sep">—</span>
     <span class="p-category">civic tech</span>
@@ -16,7 +17,11 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     <span class="p-country-name sr-only">Canada</span>
   </p>
 
-  <section id="now" class="home-now">
+  <p class="home-lede p-note">I work on knowledge architecture and data governance &mdash; the structures that make information findable, legible, and trustworthy inside organizations &mdash; and run a civic-technology program, <a href="https://civcitdev.ca">CivCitDev</a>, on the side. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
+
+  <hr class="home-rule" />
+
+  <section id="now" class="home-block home-now panel--alt" aria-label="Now">
     <h2 class="eyebrow">Now</h2>
     <p>
       <strong>Currently:</strong> {{ now.currently | safe }}
@@ -26,58 +31,66 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </p>
   </section>
 
-  <section class="index-table" aria-label="Index">
-    {%- set latestPost = collections.writing | first %}
-    {%- if latestPost %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">writing/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ latestPost.url }}">{{ latestPost.data.title }}</a>
-      </span>
-      <time class="index-row__meta dt-published" datetime="{{ latestPost.date | isoDate }}">{{ latestPost.date | shortDate }}</time>
-    </article>
-    {%- endif %}
-
-    {%- if gardenPosts.length > 0 %}
-    {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
-        {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
-      </span>
-      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | shortDate }}</time>
-    </article>
-    {% endif %}{%- endfor %}
-    <div class="index-row">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a href="https://cognitivearchitecture.ca/">more in the garden &rarr;</a>
-      </span>
-      <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
+  {%- if gardenPosts.length > 0 %}
+  {#- The garden as its own standalone block — the night panel carries its
+      own weather (design-v3 Phase 2) and self-labels via the portal. -#}
+  <section class="home-block" aria-label="From the garden">
+    <div class="index-table garden-panel">
+      <p class="garden-portal">
+        <span class="eyebrow">the garden</span>
+        <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
+      </p>
+      <p class="garden-portal__note">The main body of my writing lives here &mdash; a digital garden, tended in the open and gathered back to this site.</p>
+      {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
+      <article class="index-row h-entry">
+        <span class="index-row__label">garden/</span>
+        <span class="index-row__desc">
+          <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
+          {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
+        </span>
+        <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | humanDate }}</time>
+      </article>
+      {% endif %}{%- endfor %}
+      <div class="index-row">
+        <span class="index-row__label">garden/</span>
+        <span class="index-row__desc">
+          <a href="https://cognitivearchitecture.ca/" rel="external">more in the garden &rarr;</a>
+        </span>
+        <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
+      </div>
     </div>
-    {%- endif %}
+  </section>
+  {%- endif %}
 
-    {%- for project in projects %}
-      {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
-    <div class="index-row">
-      <span class="index-row__label">project/</span>
-      <span class="index-row__desc">
-        <a href="{{ project.url }}">{{ project.name }}</a>
-        <span class="index-pill index-pill--active">active</span>
-      </span>
-      <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+  <section class="home-block" aria-label="Projects">
+    <h2 class="eyebrow">Projects</h2>
+    <div class="index-table">
+      {%- for project in projects %}
+        {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
+      <div class="index-row">
+        <span class="index-row__label">project/</span>
+        <span class="index-row__desc">
+          <a href="{{ project.url }}">{{ project.name }}</a>
+          <span class="index-pill index-pill--active">active</span>
+        </span>
+        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+      </div>
+        {%- endif %}
+      {%- endfor %}
     </div>
-      {%- endif %}
-    {%- endfor %}
+  </section>
 
-    <div class="index-row">
-      <span class="index-row__label">contact/</span>
-      <span class="index-row__desc">
-        <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
-        {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
-      </span>
-      <span class="index-row__meta">end of front door</span>
+  <section class="home-block" aria-label="Elsewhere">
+    <h2 class="eyebrow">Elsewhere</h2>
+    <div class="index-table">
+      <div class="index-row">
+        <span class="index-row__label">contact/</span>
+        <span class="index-row__desc">
+          <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+          {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
+        </span>
+        <span class="index-row__meta"></span>
+      </div>
     </div>
   </section>
 </div>

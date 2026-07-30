@@ -4,6 +4,139 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-07-23 — Design v3 (one voice, many rooms)
+
+Answer to Seb's verdict on design-v2 — "too simple and repetitive." The
+diagnosis: v2 shipped the pitch's *subtractive* half (nav collapse,
+monospace, palette, index-table home) but skipped its *compositional* half,
+shipped utility classes with no call sites, and propagated the home page's
+index-table to every page — repetition by construction. v3 keeps the voice
+absolutely and gives every page its own composition. Execution of
+`docs/implementation-plan-design-v3.md`, one commit per phase.
+
+### Added
+- **Title-block system** — a new `masthead.njk`: the pitch's Move 05 `S·L`
+  section stamp (built as a text span, not an asset), an eyebrow label, and
+  the page `h1`, above every page. The single biggest antidote to
+  "repetitive" — most pages previously opened with a bare `<h1>`.
+- **The garden gets its own weather** — garden sections on `/writing/` and
+  the home page render as a scoped `.panel--night` forest-at-night block in
+  both themes: diegetic (the garden *is* the forest at night), bounded
+  punctuation, never a hero. It re-declares the shipped dark-theme tokens
+  locally, so every child restyles with zero new contrast pairs to audit.
+- **Resume finish** — ruled uppercase section headers + tabular-num dates,
+  the pitch's resume spec, unshipped until now.
+- **Footer wordmark** — the pitch's mono wordmark ("S·L © … · seb the
+  canadian"), printable per the pitch's footer·print·cli assignment.
+- **Per-post OG card** — `og-writing.png` in the site's pixel dialect
+  (conifer + wordmark), with a committed generator `scripts/generate-og.py`.
+- **Ornament layer (Phase 8)** — the pitch's visual devices, adopted at the
+  owner's request for more visible design: corner-bracket "field notebook"
+  frames (`corners.njk` + `.frame`/`.corner`) on the Now panel, the garden
+  night-block, and project cards; the woodcut portrait as a framed `.stamp`
+  with an `SL · 2026` caption; numbered section tags (`01 Now … 04 Contact`)
+  on the home page; the revived pixel moss-divider between home sections; new
+  `--bg-alt`/`--ink-soft` tokens + a `.panel--alt` framed-panel treatment; a
+  fine paper-grain texture layered behind the forest-floor pattern; and amber
+  link-hover (the pitch's `a:hover`).
+- **Polish pass (Phase 9)** — refine the execution toward "polished but still
+  hand-coded," at the owner's request. Self-hosted **Fraunces** (a warm
+  old-style serif, variable, 67 KB) becomes the display face for the h1–h3
+  heading tier; IBM Plex Mono stays for body, labels, code, and every
+  terminal device. Soft layered shadows + a hover lift on cards + eased
+  transitions (`--shadow`/`--shadow-sm`/`--ease` tokens); softer, consistent
+  corner radii; a subtle top-lit gradient on framed panels; more generous
+  line-height; and calmer terminal labels (larger, less letter-spacing).
+- **Type system, dates, fluid scaling (Phase 10)** — three deliberate
+  families: self-hosted **Atkinson Hyperlegible** (Braille Institute, maximal
+  legibility) for body & UI text, **Fraunces** for display titles, and IBM
+  Plex Mono kept only for code and the data/terminal devices (index rows, the
+  `S·L` stamp, the wordmark). The terminal cursor-blink after the name is
+  **removed**. Every displayed date now uses one canonical format via a new
+  `humanDate` filter ("24 Jul 2026") — index rows, post/footer stamps, and the
+  "page rendered" line were three different formats before. Fluid type and
+  gutters via `clamp()` (body, h1–h3, page padding, section rhythm) so the
+  layout scales continuously instead of snapping at breakpoints.
+- **Structure + voice (Phase 11)** — the home page now opens with a short
+  philosophy lede (assembled from the owner's own About + résumé prose). The
+  **About and Résumé pages merge**: `/about/` absorbs the full résumé
+  (experience / skills / credentials / education) via a shared
+  `resume-body.njk` include, so the two pages render from one source; primary
+  nav becomes **Home · Writing · Projects · About** and the print-optimized
+  `/resume/` leaves the nav, reached instead by a "Printable résumé" link on
+  About (and a footer link). The **garden gets one coherent "portal"
+  identity** — the same label + `cognitivearchitecture.ca ↗` affordance on
+  both the home and `/writing/` night-panels, with a one-line framing on home
+  about why the writing lives off-site — so the external door reads as the
+  same place everywhere.
+- **Home declutter (Phase 12)** — the front door had accumulated three
+  overlapping separator systems (numbered `01–04` section tags, a pixel
+  divider between every section, and corner frames on two blocks). Reduced to
+  one: quiet eyebrow labels (Now / Writing / Projects / Elsewhere), generous
+  whitespace, a single pixel divider under the lede, and just two
+  distinguished blocks — the Now panel and the garden night-panel. The
+  ornament vocabulary (corners, dividers) stays on the interior pages where it
+  isn't competing with itself. The home's "Writing" block (a lone native-post
+  row under a Writing heading) was then removed and the garden promoted to its
+  own standalone block — the garden is the writing presence on the front door;
+  native posts live on `/writing/`. Finally, the content cards were unified to
+  one look: project cards, the Now panel, and the garden panel now share the
+  same hairline border, radius, padding, and soft shadow, with the same warm
+  top-lit gradient on the light cards and the garden as the dark variant;
+  corner-brackets dropped from project cards (they stay on the portrait
+  stamps, which are image frames, not content cards). Then, so the cards read
+  identical in dark mode too, the garden's dark "night" treatment was retired
+  entirely (its identity now rides on the `.garden-portal` label, not a dark
+  background) and every card gained a shared **under-glow** — a soft lavender
+  cast in light mode, lichen green in dark — via one `--glow` / `--card-shadow`
+  token pair, so all content cards glow the same way in both themes.
+- **Cleaner editorial backgrounds** — the speckled pixel `forest-floor`
+  texture is gone (asset deleted); the page now carries only a whisper of
+  fine paper grain. Dark mode moves off the saturated `#0f1a14` forest green
+  to a **neutral charcoal** (`#16171a`, with a matching card shade and neutral
+  borders) — the forest identity now lives entirely in the accents (moss,
+  lichen glow), not the background. `theme-color` meta + the "forest at night"
+  doc references updated to match.
+- **Natural forest green accents** — the `--moss`/`--link` greens were too
+  teal/seafoam (the old light `#3f7a5f` actually failed AA on cards at 4.08).
+  Retuned to a warmer, deeper natural green — light moss `#3a6330`, dark moss
+  `#7aa85f` (fern), with matching links — every pairing now measures ≥5:1.
+- **Duotone accent** — each mode's highlight now matches its card under-glow:
+  light mode shifted from green to a deep lavender/violet (`#5b3fa3`, matching
+  the lavender glow), dark mode keeps a slightly darker fern green (`#6f9d52`,
+  matching the lichen glow). Every accent pairing measures ≥6:1. (The
+  `--moss`/`--link` token names are now legacy — in light they resolve violet.)
+- **Real portraits** — the woodcut placeholder is replaced by two owner-supplied
+  images, each given a treatment fit for its medium: the **résumé** leads with a
+  photographic headshot set (rounded frame + soft shadow, stacked above the
+  identity) for a professional-but-human read; **About** uses an updated
+  pixel-art portrait, clipped to a clean circle. The woodcut-era `.stamp`/corner
+  chrome (and `corners.njk`, `seb-stamp.jpeg`) are retired as now-unused.
+
+### Changed
+- **Moss H2s site-wide** — `h2` is now 1.35rem / 600 / `--moss` (pitch type
+  specimen), a second colour voice on every content page. The resume's
+  section headers override this with their own ruled-label treatment.
+- **404 home link** — now `~/ home`. The pitch's identity table specified
+  ⌂ (U+2302), but IBM Plex Mono has no such glyph; `~/` is the terminal's
+  own home symbol, pure ASCII, and stays in-family.
+- **Application pass** — every shipped class is grep-verified to render on a
+  real page, closing v2's dead-class failure; the two `/writing/` section
+  headings adopt `.eyebrow`.
+
+### Notes
+- Two scoped deviations from the plan, both recorded: the `.masthead` rule
+  neutralizes the global `header` layout rule (it is a nested header), and
+  resume headers ship at 0.7rem not the plan's 0.6rem (a 9.6px header sits
+  below the sub-12px floor the BACKLOG flags; accessibility is a hard
+  constraint).
+- Owner-gated copy (Now-block voice, philosophy-in-home-copy) untouched.
+- Amber link-hover is a conscious accessibility trade-off: amber on
+  parchment is ~3.3:1 (below AA for text), but it is a transient hover state
+  with the underline retained, and the resting link colour is AA. Flagged on
+  the BACKLOG contrast watch-list; swap to a darkened amber if strictness is
+  preferred.
+
 ## 2026-07-23 — Design v2 (Move 05 closed · repairs · filtered borrows)
 
 Execution of the PR #17 design-review thread, reconciled to post-#18

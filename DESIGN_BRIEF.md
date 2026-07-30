@@ -20,6 +20,16 @@
 > "pixel portrait as favicon" spec are both superseded: tree, not
 > portrait, at system scale. See `docs/design-fusion-plan.md` Move 05
 > and `docs/implementation-plan-design-v2.md`.
+>
+> **Design v3 (2026-07):** title-block stamp system (the `S·L` section
+> stamp at every page title block), site-wide moss H2s, and the garden
+> night-panel — a scoped, diegetic reversal of the fusion plan's Part D
+> "dark block" refusal (the garden *is* the forest at night; it is
+> bounded punctuation, never a hero). Completes the pitch's resume,
+> footer-wordmark, and per-post-OG specs. The pitch identity table's home
+> glyph ships as `~/` — Plex Mono has no U+2302 ⌂ (font-constrained
+> amendment). See `docs/implementation-plan-design-v3.md` and CHANGELOG
+> 2026-07-23 (Design v3).
 
 ---
 

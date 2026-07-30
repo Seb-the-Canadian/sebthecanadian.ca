@@ -1,0 +1,76 @@
+{#-
+  resume-body.njk — the h-resume sections (summary → experience → skills →
+  credentials → education), shared by the standalone /resume/ print page and
+  the combined /about/ page. Reads the `resume` global (_data/resume.yml).
+  Section headings stay .resume-section h2 (small ruled mono labels), so they
+  read as subsections wherever this is embedded.
+-#}
+{%- if resume.summary %}
+<section class="resume-section">
+  <h2>Summary</h2>
+  <div class="resume-about p-summary">
+    {%- for para in resume.summary | paragraphs %}
+    <p>{{ para | trim }}</p>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- if resume.experience and resume.experience.length > 0 %}
+<section class="resume-section">
+  <h2>Experience</h2>
+  {%- for role in resume.experience %}
+  <div class="resume-entry p-experience h-event">
+    <h3 class="p-name">{{ role.title }}</h3>
+    <p class="org p-location">
+      {%- if role.url %}<a href="{{ role.url }}">{{ role.organization }}</a>{% else %}{{ role.organization }}{% endif %}
+      <span class="dates">
+        &middot;
+        <time class="dt-start" datetime="{{ role.start }}">{{ role.start }}</time>&ndash;{% if role.end %}<time class="dt-end" datetime="{{ role.end }}">{{ role.end }}</time>{% else %}<span>Present</span>{% endif %}
+      </span>
+    </p>
+    <div class="p-summary">
+      {%- for para in role.description | paragraphs %}
+      <p>{{ para | trim }}</p>
+      {%- endfor %}
+    </div>
+  </div>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- if resume.skills %}
+<section class="resume-section">
+  <h2>Skills</h2>
+  <div class="resume-about">
+    {%- for group in resume.skills %}
+    <p><strong>{{ group.category }}:</strong> <span class="p-skill">{{ group.items | join(" · ") }}</span></p>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- if resume.credentials %}
+<section class="resume-section">
+  <h2>Credentials</h2>
+  <div class="resume-about p-note">
+    {%- for para in resume.credentials | paragraphs %}
+    <p>{{ para | trim }}</p>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+{%- if resume.education and resume.education.length > 0 %}
+<section class="resume-section">
+  <h2>Education</h2>
+  {%- for edu in resume.education %}
+  <div class="resume-entry p-education h-event">
+    <h3 class="p-name">{{ edu.credential }}</h3>
+    <p class="org">
+      {{ edu.institution }}{%- if edu.notes %} <span class="dates">&middot; {{ edu.notes }}</span>{%- endif %}
+    </p>
+  </div>
+  {%- endfor %}
+</section>
+{%- endif %}

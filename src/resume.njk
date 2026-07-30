@@ -1,13 +1,14 @@
 ---
 layout: base.njk
-title: Resume
-description: "Resume for Seb Lathangue — civic technology, knowledge architecture."
+title: Résumé
+description: "Résumé for Seb Lathangue — data governance, information architecture."
 permalink: /resume/
 ---
 <article class="h-resume h-card">
+  <p class="masthead__meta"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span><span class="eyebrow">résumé/</span></p>
   <header class="resume-header">
-    <figure class="resume-portrait">
-      <img class="u-photo" src="/assets/img/seb-stamp.jpeg" alt="Woodcut portrait of Seb Lathangue" />
+    <figure class="resume-photo">
+      <img class="u-photo" src="/assets/img/seb-headshot.jpg" alt="Photograph of Seb Lathangue" />
     </figure>
     <div class="resume-identity">
       <h1 class="p-name">{{ resume.name }}</h1>
@@ -25,75 +26,10 @@ permalink: /resume/
     </div>
   </header>
 
-  {%- if resume.summary %}
-  <section class="resume-section">
-    <h2>Summary</h2>
-    <div class="resume-about p-summary">
-      {%- for para in resume.summary | paragraphs %}
-      <p>{{ para | trim }}</p>
-      {%- endfor %}
-    </div>
-  </section>
-  {%- endif %}
+  <p class="resume-nav no-print">
+    <a href="/about/">&larr; Back to About</a>
+    <button class="button button--print" type="button" onclick="window.print()">Download PDF</button>
+  </p>
 
-  <button class="button button--print no-print" type="button" onclick="window.print()">Download PDF</button>
-
-  {%- if resume.experience and resume.experience.length > 0 %}
-  <section class="resume-section">
-    <h2>Experience</h2>
-    {%- for role in resume.experience %}
-    <div class="resume-entry p-experience h-event">
-      <h3 class="p-name">{{ role.title }}</h3>
-      <p class="org p-location">
-        {%- if role.url %}<a href="{{ role.url }}">{{ role.organization }}</a>{% else %}{{ role.organization }}{% endif %}
-        <span class="dates">
-          &middot;
-          <time class="dt-start" datetime="{{ role.start }}">{{ role.start }}</time>&ndash;{% if role.end %}<time class="dt-end" datetime="{{ role.end }}">{{ role.end }}</time>{% else %}<span>Present</span>{% endif %}
-        </span>
-      </p>
-      <div class="p-summary">
-        {%- for para in role.description | paragraphs %}
-        <p>{{ para | trim }}</p>
-        {%- endfor %}
-      </div>
-    </div>
-    {%- endfor %}
-  </section>
-  {%- endif %}
-
-  {%- if resume.skills %}
-  <section class="resume-section">
-    <h2>Skills</h2>
-    <div class="resume-about">
-      {%- for group in resume.skills %}
-      <p><strong>{{ group.category }}:</strong> <span class="p-skill">{{ group.items | join(" · ") }}</span></p>
-      {%- endfor %}
-    </div>
-  </section>
-  {%- endif %}
-
-  {%- if resume.credentials %}
-  <section class="resume-section">
-    <h2>Credentials</h2>
-    <div class="resume-about p-note">
-      {%- for para in resume.credentials | paragraphs %}
-      <p>{{ para | trim }}</p>
-      {%- endfor %}
-    </div>
-  </section>
-  {%- endif %}
-
-  {%- if resume.education and resume.education.length > 0 %}
-  <section class="resume-section">
-    <h2>Education</h2>
-    {%- for edu in resume.education %}
-    <div class="resume-entry p-education h-event">
-      <h3 class="p-name">{{ edu.credential }}</h3>
-      <p class="org">
-        {{ edu.institution }}{%- if edu.notes %} <span class="dates">&middot; {{ edu.notes }}</span>{%- endif %}
-      </p>
-    </div>
-    {%- endfor %}
-  </section>
-  {%- endif %}
+  {% include "resume-body.njk" %}
 </article>

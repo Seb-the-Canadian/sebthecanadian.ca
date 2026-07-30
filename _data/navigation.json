@@ -3,10 +3,10 @@
     { "label": "Home",     "url": "/" },
     { "label": "Writing",  "url": "/writing/" },
     { "label": "Projects", "url": "/projects/" },
-    { "label": "Resume",   "url": "/resume/" }
+    { "label": "About",    "url": "/about/" }
   ],
   "colophon": [
-    { "label": "About",   "url": "/about/" },
+    { "label": "Résumé",  "url": "/resume/" },
     { "label": "Uses",    "url": "/uses/" },
     { "label": "Links",   "url": "/links/" },
     { "label": "Garden",  "url": "https://cognitivearchitecture.ca/", "external": true },

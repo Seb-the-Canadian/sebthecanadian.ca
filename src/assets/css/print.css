@@ -25,6 +25,8 @@
   .kbd-hint,
   .footer-meta,
   .build-stamp,
+  .masthead__meta,
+  .heading-anchor,
   .no-print {
     display: none !important;
   }
@@ -44,6 +46,12 @@
     content: " (" attr(href) ")";
     font-size: 0.8em;
     color: #555 !important;
+  }
+
+  /* Keep the headshot a modest header photo in print, not a banner. */
+  .resume-photo {
+    max-width: 130px;
+    margin-bottom: 0.5rem;
   }
 
   .resume-entry {
@@ -75,7 +83,7 @@
     margin: 1.5cm 2cm;
   }
 
-  /* Print-only flourish on the resume — the maple-leaf mark on hard copies. */
+  /* Print-only flourish on the resume — the conifer mark on hard copies. */
   .h-resume::after {
     content: "";
     display: block;

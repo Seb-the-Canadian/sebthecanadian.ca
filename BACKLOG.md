@@ -15,6 +15,57 @@ _None currently tracked._
 
 ---
 
+## Done — Design v3 (2026-07-23)
+
+"One voice, many rooms" — the pitch's *compositional* half that design-v2
+skipped, after Seb's "too simple and repetitive" verdict. Execution of
+[`docs/implementation-plan-design-v3.md`](docs/implementation-plan-design-v3.md).
+Details in CHANGELOG 2026-07-23 (Design v3).
+
+- [x] Phase 1 — title-block system: `masthead.njk` with the pitch's `S·L`
+      section stamp (text, not an asset) + eyebrow, on every page; moss H2s
+      site-wide (pitch type specimen)
+- [x] Phase 2 — the garden gets its own weather: scoped `.panel--night`
+      forest-at-night block on `/writing/` + the home garden rows (D1 — the
+      Part D reversal recorded under the neilwengerd Idea section below)
+- [x] Phase 3 — resume ruled uppercase section headers + tabular-num dates
+      (pitch resume spec, unshipped until now)
+- [x] Phase 4 — footer mono wordmark; 404 `~/` home glyph (Plex Mono has no
+      U+2302 ⌂ — font-constrained amendment to the pitch identity table)
+- [x] Phase 5 — per-post OG card `og-writing.png` in the pixel dialect +
+      committed generator `scripts/generate-og.py`
+- [x] Phase 6 — application pass: every shipped class grep-verified to
+      render on a real page (the design-v2 process failure this closes)
+- [x] Phase 7 — governance close (this record + CHANGELOG + DESIGN_BRIEF)
+- [x] Phase 8 — ornament layer (owner asked for more of the pitch's visual
+      devices): corner-bracket frames, numbered section tags, `.panel--alt`
+      bg-alt panels, framed portrait `.stamp`, revived pixel moss-divider,
+      paper-grain texture, amber link-hover. Revives the DESIGN_BRIEF's
+      "pixel-art layer" that pitch-v1's subtractive pass had dropped.
+- [x] Phase 9 — polish pass (owner: "more polish but still hand-coded"):
+      self-hosted Fraunces display serif for the h1–h3 tier (mono stays for
+      body/labels/code/terminal devices); soft shadows + hover lift + eased
+      transitions; softer radii; subtle panel gradients; more generous
+      line-height; calmer terminal labels. A deliberate step away from the
+      all-mono "indie" signal while keeping the hand-built character.
+- [x] Phase 10 — type system + dates + fluid scaling: Atkinson Hyperlegible
+      body/UI text, Fraunces display, mono kept for code + data/terminal
+      devices; terminal cursor-blink removed; all displayed dates unified to
+      one `humanDate` format ("24 Jul 2026"); fluid `clamp()` type + gutters
+      for continuous scaling across screen sizes.
+- [x] Phase 11 — structure + voice: home philosophy lede (from the owner's
+      own prose — partially addresses the "philosophy in home copy" idea
+      below; owner can edit); About absorbs the résumé via a shared
+      `resume-body.njk` include, nav → Home/Writing/Projects/About with a
+      print-only `/resume/` linked not navigated; one coherent garden-portal
+      identity across home + `/writing/`.
+
+Two owner-gated items deliberately untouched: the Now-block voice rewrite
+and the philosophy-line-in-home-copy (both on Owner TODOs / the neilwengerd
+Idea section).
+
+---
+
 ## Done — Design v2 (2026-07-23)
 
 Execution of `docs/implementation-plan-design-v2.md` (the PR #17 fusion
@@ -168,10 +219,10 @@ Candidates for future work beyond the current sprint. No commitment implied.
 
 ### Pitch v1 Follow-ups
 
-- [ ] Generate `og-writing.png` (1200×630 from pixel portrait) for `/writing/<slug>/` `og:image` (currently falls back to `og-default.png`)
-- [ ] Inline monogram at section starts (pitch P5 detail — `monogram.svg` asset removed 2026-07 as orphan; resurrect from git history if ever wanted; explicitly parked as optional in design-v2)
+- [x] Generate `og-writing.png` (1200×630) for `/writing/<slug>/` `og:image` — shipped 2026-07-23 (design-v3 Phase 5) in the pixel dialect (conifer + wordmark) via committed `scripts/generate-og.py`
+- [x] Section stamp at page title blocks — shipped 2026-07-23 (design-v3 Phase 1) as the pitch's Move 05 `S·L` "two characters of ink", built as a text span in `masthead.njk` rather than the removed `monogram.svg` asset. (A decorative inline monogram *within* section bodies remains parked — resurrect `monogram.svg` from git history if ever wanted.)
 - [ ] Revisit `--rule` border contrast (measured 2026-07: light 1.35:1, dark 1.48:1 vs WCAG 1.4.11's 3:1 strict; conscious soft fail — spacing redundancy carries the structure) if low-vision feedback surfaces
-- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains
+- [ ] Revisit `--amber` as text on `--bg` light (3.33:1) before any new text use — `.badge--beta` was switched to `--ink` text 2026-07, so no active text use remains. **Exception (2026-07-23, design-v3 Phase 8):** amber link-hover shipped as a conscious transient-state trade-off (underline retained, resting state AA). Swap to a darkened amber if low-vision feedback surfaces or strictness is preferred.
 - [ ] Revisit `kbd` moss-on-code-bg contrast (3.9:1 at 12px, borderline AA) alongside the sub-12px terminal text sizes (9–11px pills/labels) if low-vision feedback surfaces
 
 ### IndieWeb & Microformats
@@ -196,8 +247,9 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 [`docs/design-reference-yepsen.md`](docs/design-reference-yepsen.md).
 
 - [x] Eyebrow labels — trialed 2026-07-23 (design-v2) on the home Now
-      heading, in `--moss` not `--amber` (amber text fails contrast, see
-      Pitch v1 Follow-ups); wider rollout to writing/projects still open
+      heading in `--moss` not `--amber` (amber text fails contrast, see
+      Pitch v1 Follow-ups); rolled out 2026-07-23 (design-v3) to every
+      masthead eyebrow + the two `/writing/` section labels
 - [x] Post template: lede paragraph style — shipped 2026-07-23 as opt-in
       `.lede` class (documented in `POSSE_POST_TEMPLATE.md`)
 - [x] Post template: styled `blockquote` — shipped 2026-07-23 (`--wash`
@@ -226,9 +278,13 @@ Outside-reference review, not a scheduled redesign. Full writeup:
 - [x] Pull-line emphasis style — shipped 2026-07-23 as opt-in
       `.pull-line` class, one live application in About (documented in
       `POSSE_POST_TEMPLATE.md`)
-- Declined (2026-07-23, design-v2 — fusion plan Part D): full-bleed dark
-  "punctuation block" section. Nearly the exact "dark hero" strawman the
-  pitch's Backout section names; skip.
+- Reversed 2026-07-23 (design-v3, owner feedback "too simple and
+  repetitive"): the dark "punctuation block" ships as the scoped
+  `.panel--night` garden treatment — diegetic (the garden *is* the forest
+  at night), bounded, never a hero. The design-v2 "dark hero" reading
+  misjudged it: a hero is a landing moment; this is a mid-page shift that
+  returns to parchment after. Every colour pair inside is the already-AA
+  shipped dark theme. Other Part D refusals stand.
 - Declined (2026-07-23, design-v2 — fusion plan Part D): contextual
   button contrast; no mixed-background sections exist for it to govern.
 - [ ] Work a line or two of `DESIGN_PRINCIPLES.md`'s philosophy directly

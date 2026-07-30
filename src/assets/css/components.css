@@ -14,12 +14,12 @@ nav[aria-label="Primary"] ul {
 nav[aria-label="Primary"] a {
   text-decoration: none;
   color: var(--ink);
-  font-family: var(--mono);
+  font-family: var(--text);
   font-size: var(--text-sm);
   font-weight: 400;
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
 }
 
 nav[aria-label="Primary"] a:visited {
@@ -107,16 +107,25 @@ footer nav a:visited {
 
 /* Card */
 .card {
+  /* One shared content-card look (matches .panel--alt): warm top-lit
+     bg-alt, hairline border, soft shadow, consistent radius + padding. */
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
-  background: var(--surface);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
   margin-bottom: var(--space-lg);
-  transition: border-color 0.15s ease;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .card:hover {
   border-color: var(--moss);
+  box-shadow: var(--shadow), 0 10px 26px -8px var(--glow), 0 28px 56px -14px var(--glow);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover { transform: none; }
 }
 
 .card h3 {
@@ -241,21 +250,22 @@ footer nav a:visited {
 
 .resume-header {
   display: flex;
-  align-items: center;
-  gap: var(--space-lg);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
 
-/* About — woodcut at human scale (pitch Move 05; deliberately not a banner) */
+/* About — the pixel portrait, clipped to its drawn circle */
 .about-portrait {
-  width: 140px;
+  width: 170px;
   margin: 0 0 var(--space-lg);
 }
 .about-portrait img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
 }
 @media (min-width: 640px) {
   .about-portrait {
@@ -264,21 +274,22 @@ footer nav a:visited {
   }
 }
 
-.resume-portrait {
-  flex-shrink: 0;
-  width: 140px;
+/* Résumé — the headshot photo (professional but human), stacked above the
+   identity block: a clean rounded frame with a soft shadow. */
+.resume-photo {
+  width: 100%;
+  max-width: 420px;
   margin: 0;
 }
-
-.resume-portrait img {
+.resume-photo img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
 .resume-identity {
-  flex: 1;
   min-width: 0;
 }
 
@@ -294,18 +305,6 @@ footer nav a:visited {
 .resume-identity .resume-contact,
 .resume-identity .resume-profiles {
   margin-bottom: var(--space-xs);
-}
-
-@media (max-width: 600px) {
-  .resume-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-md);
-  }
-
-  .resume-portrait {
-    width: 120px;
-  }
 }
 
 .resume-about p,
@@ -414,16 +413,19 @@ kbd {
 /* ── Buttons (shared with the JS-injected theme toggle) ─────────────────── */
 .button,
 .theme-toggle {
+  display: inline-block;
   background: none;
   border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
-  padding: 0.25rem 0.5rem;
-  font-family: var(--mono);
+  padding: 0.3rem 0.6rem;
+  font-family: var(--text);
   font-size: var(--text-sm);
   color: var(--muted);
+  text-decoration: none;
   cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
 }
+a.button:visited { color: var(--muted); }
 
 .button:hover,
 .theme-toggle:hover {
@@ -617,31 +619,9 @@ kbd {
   margin-inline: 0.4ch;
 }
 
-/* ── Diegetic motion (pitch Interactions, rebuilt post-cleanup 2026-07) ──
-   The pitch approved exactly two animations: a terminal cursor-blink on
-   the page's "h1 moment" and a live-pulse dot on the freshness signal.
-   Their original hosts (.hero h1, the /now/ nav link) left the DOM in the
-   pitch-v1 sprint; these are the same signatures on their successors. */
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.identity .p-name::after {
-  content: "█";
-  color: var(--moss);
-  margin-left: 0.1em;
-  animation: cursor-blink 1.2s step-end infinite;
-  font-weight: 400;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .identity .p-name::after {
-    animation: none;
-    opacity: 0.5;
-  }
-}
-
+/* ── Diegetic motion — a single live-pulse dot on the freshness signal.
+   (The terminal cursor-blink after the name was dropped 2026-07 per owner
+   request — moving away from the terminal register.) */
 @keyframes live-pulse {
   0%, 100% { opacity: 1;   transform: scale(1);   }
   50%       { opacity: 0.3; transform: scale(0.7); }
@@ -655,7 +635,7 @@ kbd {
   vertical-align: middle;
   position: relative;
   top: -1px;
-  background: var(--moss);
+  background: var(--season, var(--moss));
   border-radius: 50%;
   animation: live-pulse 2.5s ease-in-out infinite;
 }
@@ -666,6 +646,66 @@ kbd {
   }
 }
 
+/* ── Heading anchors ─────────────────────────────────────────────────────
+   A "#" that fades in on heading hover; clicking copies the section's deep
+   link (see heading-anchors.js). Uses the mode accent, so it inherits the
+   seasonal shift like everything else. */
+.heading-anchor {
+  margin-left: 0.5ch;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--moss);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 0.5;
+}
+.heading-anchor:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+.heading-anchor.is-copied {
+  opacity: 1;
+}
+.heading-anchor.is-copied::after {
+  content: " copied";
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .heading-anchor { transition: none; }
+}
+
+/* ── Pull-quote ──────────────────────────────────────────────────────────
+   Hand-authored editorial flourish via the {% pullquote %} shortcode — a
+   display-serif line pulled from the body, with an optional citation. */
+.pullquote {
+  margin: var(--flow) 0;
+  padding: 0 0 0 var(--space-lg);
+  border: 0;
+  border-left: 2px solid var(--moss);
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 1.1rem + 1.1vw, 1.85rem);
+  line-height: 1.32;
+  font-style: italic;
+  color: var(--ink);
+}
+.pullquote__cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-style: normal;
+  color: var(--muted);
+}
+.pullquote__cite::before { content: "— "; }
+
 /* ── Editorial utilities (design-v2 C3 + eyebrow trial) ──────────────────
    Opt-in, hand-authored classes — no build-time transforms. Documented
    in POSSE_POST_TEMPLATE.md. */
@@ -673,7 +713,7 @@ kbd {
   font-family: var(--mono);
   font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   /* moss, not amber: amber text on light bg is 3.33:1 (BACKLOG contrast
      note forbids new amber text uses); moss measures ~4.5:1 both modes */
@@ -699,14 +739,17 @@ kbd {
   line-height: 1.55;
 }
 
-/* Garden panel — the pitch's /writing/ spec called for this to visually
-   outweigh the plain native-posts list below it (border + tint vs. plain
-   rows); it shipped as an identically-styled .index-table until now. */
+/* ── Garden panel — the same content card as .card / .panel--alt. The
+   garden was a scoped forest-at-night block (design-v3 Phase 2, D1); the
+   owner later asked every card to share one look with the lavender/lichen
+   under-glow, so the garden's dark treatment was retired and its identity
+   now rides on the .garden-portal label + the "garden/" rows, not chrome. */
 .garden-panel {
-  border: 1px solid var(--moss);
-  background: var(--wash);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: var(--card-shadow);
 }
 .garden-panel .index-row:last-child {
   border-bottom: 0;
@@ -725,8 +768,8 @@ kbd {
 }
 .index-row__label {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .index-row__desc {
@@ -752,9 +795,9 @@ kbd {
   margin-inline-start: 0.5ch;
   padding-inline: 0.4ch;
   border: 1px solid var(--rule);
-  border-radius: 2px;
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  border-radius: 3px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -773,4 +816,159 @@ kbd {
     text-align: left;
     font-size: 10px;
   }
+}
+
+/* ── Masthead — shared page title block (design-v3 Phase 1) ──────────────
+   The pitch's Move 05 section stamp ("two characters of ink") plus the
+   eyebrow, above every page h1. Home keeps its identity-line variant.
+   The layout resets undo the global `header, main, footer` rule
+   (base.css) that would otherwise re-pad/-center this nested header. */
+.masthead {
+  max-width: none;
+  padding: 0;
+  margin: 0 0 var(--space-xl);
+}
+.masthead__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 1ch;
+  margin-block-end: var(--space-xs);
+}
+.masthead__stamp {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--moss);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 0 0.5ch;
+  user-select: none;
+}
+.masthead__title {
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Resume — ruled section headers + tabular dates (design-v3 Phase 3) ───
+   The pitch's resume screen spec: small uppercase ruled headers instead of
+   the site-wide moss h2 (this selector's higher specificity overrides it),
+   and column-aligned dates. (--moss-2 was never adopted; --link is the
+   closest shipped token.) */
+.resume-section h2 {
+  font-family: var(--mono);          /* stays a mono label, not the display serif */
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--link);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: var(--space-xs);
+}
+.resume-entry .dates {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Footer wordmark (design-v3 Phase 4) ─────────────────────────────────
+   Pitch identity table row 3: "S·L / seb the canadian — wordmark / mono —
+   footer · print · cli". At the pitch's label spec: 11px, tracking +0.15.
+   Deliberately printable (print.css hides footer nav/meta, not this line). */
+.wordmark {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+.wordmark__site { text-transform: lowercase; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   Ornament layer (design-v3) — bg-alt framed panels + the pixel divider.
+   (Corner-bracket frames, numbered section tags, and the portrait "stamp"
+   were retired as the design moved cleaner/editorial.)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Framed panel — bg-alt card treatment (pitch .diag / .thesis) ─────── */
+.panel--alt {
+  /* Subtle top-lit gradient instead of a flat fill (refined surfaces) */
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  position: relative;
+  box-shadow: var(--card-shadow);
+}
+.panel--alt > :last-child { margin-bottom: 0; }
+
+/* ── Home sections — one quiet, consistent rhythm (design-v3 P12 cleanup).
+   The numbered section tags + per-section pixel dividers + corner frames
+   were doing three separators' worth of work; replaced by a single eyebrow
+   label per block and generous whitespace, so the front door reads clean. */
+.home-block {
+  margin-top: var(--flow);
+}
+.home-block > h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
+/* ── Home rule — a quiet centered hairline under the intro lede ──────────── */
+.home-rule {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  max-width: 320px;
+  margin: var(--space-xl) auto;
+  background: var(--rule);
+}
+
+/* ── Home lede — a short philosophy block on the front door (design-v3 P11).
+   Assembled from the owner's own About + résumé prose; edit freely. */
+.home-lede {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-block: var(--space-md) var(--space-xl);
+}
+
+/* ── Garden portal — one coherent identity for the off-site garden, used
+   the same way on home + /writing/ (design-v3 P11). Lives inside the
+   garden card, so it inherits the normal theme tokens. */
+.garden-portal {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1ch;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--rule);
+}
+.garden-portal__link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--link);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.garden-portal__link:hover {
+  color: var(--moss);
+  text-decoration: underline;
+}
+.garden-portal__note {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Résumé page nav (back-to-About + print) + the About print link ────── */
+.resume-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+}
+.resume-printlink {
+  margin-block: var(--space-lg) var(--space-2xl);
 }

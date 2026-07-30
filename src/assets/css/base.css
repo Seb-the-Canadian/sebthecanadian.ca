@@ -17,14 +17,29 @@ html {
   color-scheme: light dark;
 }
 
+/* Seasonal text selection — the highlight takes the season's accent (see the
+   data-season blocks in tokens.css). A small, deliberate detail you meet only
+   when you select text. */
+::selection {
+  background: color-mix(in oklab, var(--season, var(--moss)) 26%, transparent);
+}
+::-moz-selection {
+  background: color-mix(in oklab, var(--season, var(--moss)) 26%, transparent);
+}
+
 body {
-  background: var(--bg);
-  background-image: url('/assets/img/pixel/textures/forest-floor.svg');
+  /* A whisper of paper grain only — no pixel dot pattern. Fine grayscale
+     noise, soft-light, kept faint so it reads as paper, not speckle. It's a
+     background layer, so it never washes over text. */
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='0.6'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 64px 64px;
+  background-size: 160px 160px;
+  background-blend-mode: soft-light;
   color: var(--ink);
-  font-family: var(--mono);
-  font-size: 15.5px;
+  font-family: var(--text);
+  font-size: clamp(16px, 0.98rem + 0.35vw, 18px);   /* fluid body size */
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,26 +47,38 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--mono);
   line-height: var(--leading-tight);
+}
+
+/* Display serif (Fraunces) for the title/heading tier — the polish-pass
+   move away from the all-mono look. Mono stays for label-tier headings,
+   body, code, and every terminal device (overridden per-component). */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.011em;
+}
+h4, h5, h6 {
+  font-family: var(--mono);
   letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: var(--text-4xl);
-  font-weight: 700;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 2.9rem);   /* fluid display title */
+  font-weight: 600;
   margin-bottom: var(--space-lg);
 }
 
 h2 {
-  font-size: var(--text-2xl);
+  font-size: clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem);   /* fluid; pitch specimen ~1.35rem */
   font-weight: 600;
+  color: var(--moss);            /* pitch type specimen: "H2 · 1.35rem · 600 · moss" */
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-md);
 }
 
 h3 {
-  font-size: var(--text-xl);
+  font-size: clamp(1.12rem, 1.03rem + 0.45vw, 1.35rem);   /* fluid */
   font-weight: 600;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-sm);
@@ -74,7 +101,7 @@ a {
   color: var(--link);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.16em;
-  transition: color 0.15s ease;
+  transition: color 0.2s var(--ease);
 }
 
 a:visited {
@@ -82,6 +109,7 @@ a:visited {
 }
 
 a:hover {
+  color: var(--amber);              /* pitch a:hover — warm amber on hover */
   text-decoration-thickness: 0.14em;
 }
 
@@ -161,6 +189,6 @@ footer {
 }
 
 main {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-2xl);
+  padding-top: var(--flow);
+  padding-bottom: var(--flow);
 }
