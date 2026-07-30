@@ -848,16 +848,14 @@ a.button:visited { color: var(--muted); }
   margin-bottom: var(--space-sm);
 }
 
-/* ── Pixel moss divider — revived, theme-tracking via mask-image ───────── */
-.pixel-divider {
+/* ── Home rule — a quiet centered hairline under the intro lede ──────────── */
+.home-rule {
   border: 0;
-  height: 8px;
+  height: 1px;
   width: 100%;
   max-width: 320px;
   margin: var(--space-xl) auto;
-  background-color: var(--moss);
-  -webkit-mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
-  mask: url("/assets/img/pixel/dividers/moss-divider.svg") no-repeat center / contain;
+  background: var(--rule);
 }
 
 /* ── Home lede — a short philosophy block on the front door (design-v3 P11).

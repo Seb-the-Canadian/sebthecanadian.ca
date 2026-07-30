@@ -47,6 +47,12 @@
     color: #555 !important;
   }
 
+  /* Keep the headshot a modest header photo in print, not a banner. */
+  .resume-photo {
+    max-width: 130px;
+    margin-bottom: 0.5rem;
+  }
+
   .resume-entry {
     page-break-inside: avoid;
   }
