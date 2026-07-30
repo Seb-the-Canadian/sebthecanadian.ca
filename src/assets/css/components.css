@@ -619,6 +619,41 @@ a.button:visited { color: var(--muted); }
   margin-inline: 0.4ch;
 }
 
+/* ── Home hero — the arrival moment (design-v4). The front door earns a real
+   landing: the conifer mark, the name in the display serif at scale, and one
+   warm line, with air around them, before the directory rows below. This
+   supersedes the mono .identity line's utilitarian register while keeping
+   every h-card microformat (p-name, p-category, p-locality, u-url) intact. */
+.home-hero {
+  margin-block: var(--space-lg);
+}
+.home-hero__mark {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--space-md);
+}
+.home-hero__name {
+  margin-bottom: var(--space-sm);
+}
+.home-hero__line {
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 1.05rem + 1.3vw, 2rem);
+  line-height: 1.28;
+  letter-spacing: -0.011em;
+  color: var(--ink-soft);
+  max-width: 24ch;
+  margin-bottom: var(--space-md);
+}
+.home-hero__meta {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
 /* ── Diegetic motion — a single live-pulse dot on the freshness signal.
    (The terminal cursor-blink after the name was dropped 2026-07 per owner
    request — moving away from the terminal register.) */
@@ -971,4 +1006,24 @@ h3:hover > .heading-anchor,
 }
 .resume-printlink {
   margin-block: var(--space-lg) var(--space-2xl);
+}
+
+/* ── Résumé callout — the About page is narrative-first (design-v4); the full
+   CV moved back to /resume/. This is the quiet hand-off to it: a framed panel
+   where the embedded résumé used to sit, so About stays a portrait, not a
+   twin of the CV. */
+.resume-callout {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: var(--card-shadow);
+  margin-block: var(--space-xl);
+}
+.resume-callout__note {
+  color: var(--ink-soft);
+  margin-bottom: var(--space-md);
+}
+.resume-callout > :last-child {
+  margin-bottom: 0;
 }

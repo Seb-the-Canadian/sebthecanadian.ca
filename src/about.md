@@ -24,15 +24,10 @@ I didn't set out to work in data governance. I set out to work with information;
 
 My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
 
-What follows is the formal version — titles, dates, and what each role actually involved.
-
-## The work, formally
-
-<div class="h-resume">
-{% include "resume-body.njk" %}
-</div>
-
-<p class="resume-printlink"><a class="button" href="/resume/">Printable résumé / PDF &rarr;</a></p>
+<aside class="resume-callout">
+  <p class="resume-callout__note">The formal version — titles, dates, and what each role actually involved — lives on the résumé.</p>
+  <p><a class="button" href="/resume/">Read the résumé &middot; print to PDF &rarr;</a></p>
+</aside>
 
 ## How this site is built
 
