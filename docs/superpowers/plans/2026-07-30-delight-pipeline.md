@@ -18,12 +18,15 @@ footnotes · view-source welcome · copy-email toast.
 
 Chosen for being self-contained, perceptible without new content, and on-voice.
 
-1. **Seasonal under-glow (both modes).** `data-season` is set on `<html>` at
+1. **Seasonal weather (both modes).** `data-season` is set on `<html>` at
    build time (`season` global in `eleventy.config.js`; Toronto meteorological
-   seasons). `tokens.css` maps each season to a `--glow-l` / `--glow-d` pair,
-   and each mode picks its own — violet family in light, green family in dark —
-   so the shift reads as weather, not a theme change. The daily cron keeps it
-   tracking the real calendar.
+   seasons). `tokens.css` maps each season to a `--glow-l` / `--glow-d` pair
+   (the card under-glow) and a `--season-l` / `--season-d` solid accent; each
+   mode picks its own — violet family in light, green family in dark — so the
+   shift reads as weather, not a theme change. Three surfaces move with it:
+   the **card under-glow** (run deliberately strong, ≈0.9 light / 0.74 dark,
+   kept soft by the wide shadow blur), the **"Now" pulse dot**, and **text
+   selection** (`::selection`). The daily cron keeps it tracking the calendar.
 2. **Season-aware console / view-source easter egg.** `console-hello.js`
    refreshed to the pixel-conifer dialect and current palette, and it reads
    `data-season` to greet in-season. The HTML-source comment in `base.njk`

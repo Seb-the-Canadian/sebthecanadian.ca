@@ -17,6 +17,16 @@ html {
   color-scheme: light dark;
 }
 
+/* Seasonal text selection — the highlight takes the season's accent (see the
+   data-season blocks in tokens.css). A small, deliberate detail you meet only
+   when you select text. */
+::selection {
+  background: color-mix(in oklab, var(--season, var(--moss)) 26%, transparent);
+}
+::-moz-selection {
+  background: color-mix(in oklab, var(--season, var(--moss)) 26%, transparent);
+}
+
 body {
   /* A whisper of paper grain only — no pixel dot pattern. Fine grayscale
      noise, soft-light, kept faint so it reads as paper, not speckle. It's a
