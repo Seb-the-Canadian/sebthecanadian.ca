@@ -1,7 +1,8 @@
 /* ==========================================================================
    Design Tokens — Data Druid
-   Warm parchment light mode, neutral-charcoal dark mode. The forest identity
-   lives in the accents (moss, lichen glow), not the background.
+   Warm parchment light + neutral-charcoal dark. Duotone accent, each matching
+   its card under-glow: lavender/violet in light mode, forest green in dark.
+   (--moss / --link are legacy token names; in light mode they resolve violet.)
    ========================================================================== */
 
 /* Self-hosted IBM Plex Mono */
@@ -76,10 +77,10 @@
   --ink: #15201a;
   --ink-soft: #3a453d;        /* softened ink for card/lede body (pitch) */
   --muted: #595249;
-  --moss: #3a6330;
+  --moss: #5b3fa3;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2f6a34;
+  --link: #513592;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
@@ -144,10 +145,10 @@
     --ink: #e8e4dc;
     --ink-soft: #c3bdaf;
     --muted: #a8a195;
-    --moss: #7aa85f;
+    --moss: #6f9d52;
     --amber: #d9b24a;
     --rule: #2c2d31;
-    --link: #93b877;
+    --link: #85ab63;
     --visited: #b89c84;
     --code-bg: #1e1f22;
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
@@ -164,10 +165,10 @@ html[data-theme="light"] {
   --ink: #15201a;
   --ink-soft: #3a453d;
   --muted: #595249;
-  --moss: #3a6330;
+  --moss: #5b3fa3;
   --amber: #b07a0f;
   --rule: #d4cfc5;
-  --link: #2f6a34;
+  --link: #513592;
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
@@ -179,10 +180,10 @@ html[data-theme="dark"] {
   --ink: #e8e4dc;
   --ink-soft: #c3bdaf;
   --muted: #a8a195;
-  --moss: #7aa85f;
+  --moss: #6f9d52;
   --amber: #d9b24a;
   --rule: #2c2d31;
-  --link: #93b877;
+  --link: #85ab63;
   --visited: #b89c84;
   --code-bg: #1e1f22;
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);

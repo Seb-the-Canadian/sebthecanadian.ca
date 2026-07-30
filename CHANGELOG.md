@@ -101,6 +101,11 @@ absolutely and gives every page its own composition. Execution of
   teal/seafoam (the old light `#3f7a5f` actually failed AA on cards at 4.08).
   Retuned to a warmer, deeper natural green — light moss `#3a6330`, dark moss
   `#7aa85f` (fern), with matching links — every pairing now measures ≥5:1.
+- **Duotone accent** — each mode's highlight now matches its card under-glow:
+  light mode shifted from green to a deep lavender/violet (`#5b3fa3`, matching
+  the lavender glow), dark mode keeps a slightly darker fern green (`#6f9d52`,
+  matching the lichen glow). Every accent pairing measures ≥6:1. (The
+  `--moss`/`--link` token names are now legacy — in light they resolve violet.)
 - **Real portraits** — the woodcut placeholder is replaced by two owner-supplied
   images, each given a treatment fit for its medium: the **résumé** leads with a
   photographic headshot set (rounded frame + soft shadow, stacked above the
