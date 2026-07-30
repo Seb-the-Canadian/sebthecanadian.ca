@@ -78,6 +78,26 @@ export default function (eleventyConfig) {
     return [...tags].sort();
   });
 
+  // season — the Toronto meteorological season at build time. Drives the
+  // seasonal under-glow (tokens.css) and the console easter egg. Recomputed
+  // on every build, so the daily cron keeps the site's ambient colour tracking
+  // the real calendar. Northern hemisphere: Dec–Feb winter, etc.
+  eleventyConfig.addGlobalData("season", () => {
+    const m = new Date().getUTCMonth(); // 0 = Jan … 11 = Dec
+    if (m === 11 || m <= 1) return "winter";
+    if (m <= 4) return "spring";
+    if (m <= 7) return "summer";
+    return "autumn";
+  });
+
+  // Pull-quote — hand-authored editorial flourish for posts. Renders a display
+  // blockquote with an optional citation. Usage in a post:
+  //   {% pullquote "source" %}The line worth pulling out.{% endpullquote %}
+  eleventyConfig.addPairedShortcode("pullquote", (content, cite) => {
+    const c = cite ? `<cite class="pullquote__cite">${cite}</cite>` : "";
+    return `<blockquote class="pullquote">${content.trim()}${c}</blockquote>`;
+  });
+
   // Slug filter (lowercase ASCII slugs for tag permalinks)
   eleventyConfig.addFilter("slug", (input) => {
     return String(input)

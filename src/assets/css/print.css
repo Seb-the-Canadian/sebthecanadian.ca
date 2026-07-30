@@ -26,6 +26,7 @@
   .footer-meta,
   .build-stamp,
   .masthead__meta,
+  .heading-anchor,
   .no-print {
     display: none !important;
   }

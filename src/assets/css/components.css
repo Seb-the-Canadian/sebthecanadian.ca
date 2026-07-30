@@ -646,6 +646,66 @@ a.button:visited { color: var(--muted); }
   }
 }
 
+/* ── Heading anchors ─────────────────────────────────────────────────────
+   A "#" that fades in on heading hover; clicking copies the section's deep
+   link (see heading-anchors.js). Uses the mode accent, so it inherits the
+   seasonal shift like everything else. */
+.heading-anchor {
+  margin-left: 0.5ch;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--moss);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 0.5;
+}
+.heading-anchor:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+.heading-anchor.is-copied {
+  opacity: 1;
+}
+.heading-anchor.is-copied::after {
+  content: " copied";
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .heading-anchor { transition: none; }
+}
+
+/* ── Pull-quote ──────────────────────────────────────────────────────────
+   Hand-authored editorial flourish via the {% pullquote %} shortcode — a
+   display-serif line pulled from the body, with an optional citation. */
+.pullquote {
+  margin: var(--flow) 0;
+  padding: 0 0 0 var(--space-lg);
+  border: 0;
+  border-left: 2px solid var(--moss);
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 1.1rem + 1.1vw, 1.85rem);
+  line-height: 1.32;
+  font-style: italic;
+  color: var(--ink);
+}
+.pullquote__cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-style: normal;
+  color: var(--muted);
+}
+.pullquote__cite::before { content: "— "; }
+
 /* ── Editorial utilities (design-v2 C3 + eyebrow trial) ──────────────────
    Opt-in, hand-authored classes — no build-time transforms. Documented
    in POSSE_POST_TEMPLATE.md. */

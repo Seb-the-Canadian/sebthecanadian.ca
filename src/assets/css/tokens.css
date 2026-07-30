@@ -102,7 +102,7 @@
      shared card shadow so every content card glows the same way. The glow
      bleeds past the card edge (small negative spread) so it reads on light
      parchment, not just on dark where a colour naturally emits. */
-  --glow: rgba(124, 86, 214, 0.5);
+  --glow: var(--glow-l, rgba(124, 86, 214, 0.5));
   --card-shadow: var(--shadow-sm), 0 10px 26px -5px var(--glow), 0 3px 10px -2px var(--glow);
 
   /* Type Scale */
@@ -154,7 +154,7 @@
     --wash: color-mix(in oklab, var(--moss) 7%, transparent);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
-    --glow: rgba(150, 200, 120, 0.42);   /* lichen green under-glow (dark) */
+    --glow: var(--glow-d, rgba(150, 200, 120, 0.42));   /* lichen green under-glow (dark) */
   }
 }
 
@@ -172,6 +172,7 @@ html[data-theme="light"] {
   --visited: #5e4b3e;
   --code-bg: #ebe7df;
   --wash: color-mix(in oklab, var(--moss) 6%, transparent);
+  --glow: var(--glow-l, rgba(124, 86, 214, 0.5));
 }
 
 html[data-theme="dark"] {
@@ -189,5 +190,28 @@ html[data-theme="dark"] {
   --wash: color-mix(in oklab, var(--moss) 7%, transparent);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4);
-  --glow: rgba(150, 200, 120, 0.42);   /* lichen green under-glow (dark) */
+  --glow: var(--glow-d, rgba(150, 200, 120, 0.42));   /* lichen green under-glow (dark) */
+}
+
+/* ── Seasonal under-glow ──────────────────────────────────────────────────
+   The card glow shifts subtly by season (data-season on <html>, set at build
+   time — the daily cron keeps it current). Season sets BOTH candidate glows
+   (--glow-l for light, --glow-d for dark); the mode above picks which one.
+   Every value stays in its mode's family — violet in light, green in dark —
+   so the shift reads as weather, not a theme change. */
+html[data-season="winter"] {
+  --glow-l: rgba(100, 108, 220, 0.5);    /* periwinkle / frost */
+  --glow-d: rgba(120, 196, 178, 0.42);   /* cool blue-green */
+}
+html[data-season="spring"] {
+  --glow-l: rgba(154, 100, 216, 0.5);    /* lilac */
+  --glow-d: rgba(146, 210, 108, 0.42);   /* fresh new-growth green */
+}
+html[data-season="summer"] {
+  --glow-l: rgba(142, 76, 206, 0.5);     /* full violet */
+  --glow-d: rgba(172, 206, 98, 0.42);    /* lush golden-green */
+}
+html[data-season="autumn"] {
+  --glow-l: rgba(122, 82, 180, 0.5);     /* dusky plum */
+  --glow-d: rgba(196, 190, 96, 0.42);    /* amber-touched green */
 }
