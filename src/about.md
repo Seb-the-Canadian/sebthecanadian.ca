@@ -12,7 +12,7 @@ permalink: /about/
   <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
-<p class="lede">I'm Seb Lathangue. I live in Toronto. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called <a href="/projects/">CivCitDev</a> on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
+<p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called <a href="/projects/">CivCitDev</a> on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
 
 This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
