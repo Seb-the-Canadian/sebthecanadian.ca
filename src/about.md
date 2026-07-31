@@ -20,9 +20,13 @@ This site is a stable front door. The primary body of my writing lives in the ga
 
 ## How I approach the work
 
-I didn't set out to work in data governance. I set out to work with information; in libraries, then in research, then in learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it. <span class="pull-line">That's the problem I find interesting. Turns out there's a job for it.</span>
+Before any of this had a name, I was hand-coding interview transcripts for a graduate study on how the media frames homelessness — deciding, line by line, which words belonged under which category, then defending the codebook when two coders disagreed. It looked like clerical work. It wasn't: every category was an argument about what the data meant, and who got to decide.
 
-My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
+I didn't set out to work in data governance. I set out to work with information — in libraries, then research, then a lecture hall of 300 sociology undergrads, then learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it.
+
+Each stop turned out to be the same problem in different clothing. At Phreesia I was the translation layer between engineering and hospital IT departments — 100+ tickets closed a week, and a refusal to close the ones I'd only understood on the surface. At Meridian I've built a low-code governance program that grew from 50 builders to 150, and a self-serve knowledge hub that reaches 2,000-plus employees. Different rooms, same instinct: find where the confusion actually lives, and fix that.
+
+A few things I've come to believe about the work: the governed path has to be the easier path, or people won't take it. Symptoms lie — diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting. Turns out there's a job for it.</span>
 
 <aside class="resume-callout">
   <p class="resume-callout__note">The formal version — titles, dates, and what each role actually involved — lives on the résumé.</p>
