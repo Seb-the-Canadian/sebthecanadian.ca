@@ -12,7 +12,7 @@ permalink: /about/
   <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
-<p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run a civic-technology program called <a href="/projects/">CivCitDev</a> on the side. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
+<p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run <a href="/projects/">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
 
 This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
@@ -20,23 +20,22 @@ This site is a stable front door. The primary body of my writing lives in the ga
 
 ## How I approach the work
 
-I didn't set out to work in data governance. I set out to work with information; in libraries, then in research, then in learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it. <span class="pull-line">That's the problem I find interesting. Turns out there's a job for it.</span>
+Before any of this had a name, I was hand-coding interview transcripts for a graduate study on how the media frames homelessness — deciding, line by line, which words belonged under which category, then defending the codebook when two coders disagreed. It looked like clerical work. It wasn't: every category was an argument about what the data meant, and who got to decide.
 
-My background is genuinely unusual for this field: sociology and library science on the academic side, learning design and change management in practice, and now information architecture and data governance at the enterprise level. The through line, which I can see clearly in hindsight and not at all in the moment, is translation. Getting complex systems and the people who use them to actually understand each other.
+I didn't set out to work in data governance. I set out to work with information — in libraries, then research, then a lecture hall of 300 sociology undergrads, then learning design. The governance piece came later, when I got deep enough into enterprise data work to realize the core problem usually isn't technical. It's that nobody can agree on what anything means, or who's accountable for it.
 
-What follows is the formal version — titles, dates, and what each role actually involved.
+Each stop turned out to be the same problem in different clothing. At Phreesia I was the translation layer between engineering and hospital IT departments — 100+ tickets closed a week, and a refusal to close the ones I'd only understood on the surface. At Meridian I've built a low-code governance program that grew from 50 builders to 150, and a self-serve knowledge hub that reaches 2,000-plus employees. Different rooms, same instinct: find where the confusion actually lives, and fix that.
 
-## The work, formally
+A few things I've come to believe about the work: the governed path has to be the easier path, or people won't take it. Symptoms lie — diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting &mdash; and the one I've built a career solving.</span>
 
-<div class="h-resume">
-{% include "resume-body.njk" %}
-</div>
-
-<p class="resume-printlink"><a class="button" href="/resume/">Printable résumé / PDF &rarr;</a></p>
+<aside class="resume-callout">
+  <p class="resume-callout__note">The formal version — titles, dates, and what each role actually involved — lives on the résumé.</p>
+  <p><a class="button" href="/resume/">Read the résumé &middot; print to PDF &rarr;</a></p>
+</aside>
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, writing (syndicated from the garden), this about-and-résumé page, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, writing (syndicated from the garden), this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
 
 ### Stack
 
