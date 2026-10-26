@@ -4,6 +4,18 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-26 — A lavender sprig for light mode
+
+### Changed
+- **The mark is now duotone, like the accent.** In light mode the pixel
+  conifer becomes a lavender sprig: three spikes on the same 12-cell grid,
+  with violet florets, lilac highlights and the conifer's forest-green
+  stems. Dark mode keeps the conifer in fern. `favicon.svg` holds both and
+  switches with the browser's colour scheme. The PNG favicon, the touch icon
+  and both OG cards, which serve both modes, now carry the sprig, drawn with
+  whole-pixel cells and a margin. `scripts/generate-og.py` draws the sprig;
+  `docs/brand.md` records the rule.
+
 ## 2026-10-26 — Pen + pixel, and the first case study
 
 ### Added
