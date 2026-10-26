@@ -4,6 +4,14 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-26 — Case studies on the home page
+
+### Changed
+- The home page's Projects index now lists case studies first (a
+  `study/` row per page tagged `case-study`, marked "practice piece"),
+  so the front page leads to them. Before, they were reachable only from the
+  Projects page.
+
 ## 2026-10-26 — A lavender sprig for light mode
 
 ### Changed

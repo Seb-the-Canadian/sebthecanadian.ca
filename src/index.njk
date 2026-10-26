@@ -65,6 +65,16 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
   <section class="home-block" aria-label="Projects">
     <h2 class="eyebrow">Projects</h2>
     <div class="index-table">
+      {#- Case studies (pages tagged case-study) lead: they live on this site. -#}
+      {%- for study in collections["case-study"] %}
+      <div class="index-row">
+        <span class="index-row__label">study/</span>
+        <span class="index-row__desc">
+          <a href="{{ study.url }}">{{ study.data.title }}</a>
+        </span>
+        <span class="index-row__meta">practice piece</span>
+      </div>
+      {%- endfor %}
       {%- for project in projects %}
         {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
       <div class="index-row">
