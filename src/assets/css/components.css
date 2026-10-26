@@ -972,3 +972,13 @@ h3:hover > .heading-anchor,
 .resume-printlink {
   margin-block: var(--space-lg) var(--space-2xl);
 }
+
+/* ── Case-study practice note (required by scripts/portfolio-check.js) ── */
+.clearance-note {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--rule);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  max-width: 62ch;
+}

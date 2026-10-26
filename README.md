@@ -21,9 +21,15 @@ Personal site for Seb Lathangue — civic technology, knowledge architecture, an
 | Deployment | GitHub Actions → GitHub Pages |
 | DNS | Cloudflare (DNS-only records) |
 
+## Case studies
+
+Case studies are practice pieces: a method told through an invented example,
+with nothing specific to any employer. The build won't publish one without a
+current clearance record. See `docs/portfolio-clearance.md`.
+
 ## Design Direction: Data Druid
 
-Caves of Qud meets iOS — pixel texture and retro-organic elements layered onto a clean, modern shell. Forest palette (`#3f7a5f` primary, `#b07a0f` amber accent), warm parchment light mode, "forest at night" dark mode. See `DESIGN_BRIEF.md` for the full spec.
+Warm parchment and forest accents, hand-built and slowly tended: one voice, many rooms. Parchment light mode and neutral charcoal dark mode, a duotone moss accent (violet in light, fern in dark) with amber, Fraunces / Atkinson Hyperlegible / IBM Plex Mono, and pixel marks at system scale. The current rules are in `docs/brand.md`; `DESIGN_BRIEF.md` is the original 2026-03 contract, kept as history.
 
 ## Project Structure
 

@@ -136,6 +136,16 @@
   /* Line Height */
   --leading-tight: 1.2;
   --leading-normal: 1.6;
+
+  /* Pen + pixel marks — meaning inside figures carried by mark, not hue
+     (docs/pen-and-pixel.md). Drawn in softened ink, so they follow the mode.
+     Inside figures only, never as page or card backgrounds, and always
+     beside a word that names them. */
+  --mark: var(--ink-soft);
+  --mark-solid: linear-gradient(var(--mark), var(--mark));                                        /* recorded, data */
+  --mark-ruled: repeating-linear-gradient(0deg, var(--mark) 0 1.5px, transparent 1.5px 4px);      /* documented */
+  --mark-hatch: repeating-linear-gradient(45deg, var(--mark) 0 1.5px, transparent 1.5px 4.5px);   /* human judgement */
+  --mark-dither: conic-gradient(var(--mark) 25%, transparent 0 50%, var(--mark) 0 75%, transparent 0) 0 0 / 4px 4px; /* machine, AI */
 }
 
 /* Dark Mode — neutral charcoal (forest identity carried by the accents) */

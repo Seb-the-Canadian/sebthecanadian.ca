@@ -1,0 +1,42 @@
+/* case-study-marks.css — pen + pixel for case studies (docs/pen-and-pixel.md),
+   plus the no-JavaScript and phone fixes. Loaded LAST, after the story's own
+   stylesheet, so these win over equally specific story rules. */
+
+/* ── Pen + pixel: marks in a strip at the left edge, text never on texture ── */
+.story .pair .cell, .story .chip.ai, .story .chip.ink, .story .cl{
+  --mkw: 8px; --mkbg: var(--st-surface);
+  padding-left: calc(var(--mkw) + 6px);
+}
+.story .pair .cell:first-of-type{ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-solid); }
+.story .pair .cell:last-of-type{ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-dither); }
+.story .ttpage .pair .cell{ --mkbg: var(--recorded-soft); color: var(--fg); }
+.story .pairfull .cell{ padding-left: 6px; background: none; }
+.story .chip.ai{ --mkbg: var(--bg); color: var(--fg); border: 1px solid var(--mark);
+  background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-dither); }
+.story .chip.ink{ --mkbg: var(--bg); color: var(--fg); border: 1.5px solid var(--fg);
+  background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-hatch); }
+.story .cl{ --mkw: 6px; --mkbg: var(--bg); color: var(--fg); border: 1px solid var(--mark); }
+.story .cl.doc, .story .cl.inf, .story .cl.unr{ color: var(--fg); }
+.story .cl:not(.doc):not(.inf):not(.unr){ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-solid); }
+.story .cl.doc{ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-ruled); }
+.story .cl.inf{ border-style: solid; background: linear-gradient(90deg, transparent 0 var(--mkw), var(--mkbg) var(--mkw)), var(--mark-hatch); }
+.story .cl.unr{ padding-left: 6px; background: transparent; border: 1px dashed var(--held); }
+
+/* Amber marks a state; in light mode it never colours text. */
+.story .tttrail .gap, .story .halfkey, .story .srows .half{ color: var(--fg); }
+
+/* Your clicks: "before" recedes, the answer carries moss. */
+.story .tc .bar.before{ background: var(--muted); }
+
+/* ── Without JavaScript: show every figure in its finished state ────────── */
+html:not(.story-js) .story .dim{ opacity: 1; }
+html:not(.story-js) .story .tag{ opacity: 1; }
+
+/* ── Claims register on phones: one claim per block, nothing squeezed ──── */
+@media (max-width: 560px){
+  .story .reg, .story .reg tbody, .story .reg tr, .story .reg td{ display: block; width: auto; }
+  .story .reg thead{ display: none; }
+  .story .reg tr{ padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .story .reg td{ border: 0; padding: 3px 12px; white-space: normal; }
+  .story .reg td:first-child{ width: auto; white-space: nowrap; }
+}

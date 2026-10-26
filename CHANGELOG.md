@@ -4,6 +4,60 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-26 — A lavender sprig for light mode
+
+### Changed
+- **The mark is now duotone, like the accent.** In light mode the pixel
+  conifer becomes a lavender sprig: three spikes on the same 12-cell grid,
+  with violet florets, lilac highlights and the conifer's forest-green
+  stems. Dark mode keeps the conifer in fern. `favicon.svg` holds both and
+  switches with the browser's colour scheme. The PNG favicon, the touch icon
+  and both OG cards, which serve both modes, now carry the sprig, drawn with
+  whole-pixel cells and a margin. `scripts/generate-og.py` draws the sprig;
+  `docs/brand.md` records the rule.
+
+## 2026-10-26 — Pen + pixel, and the first case study
+
+### Added
+- **`docs/brand.md`** — the current brand rules on one page (colour, type,
+  identity marks, surfaces, figures, behaviour, pre-ship checks), with
+  precedence over the older design docs. README's design summary and the
+  original brief now point to it.
+- **Pen + pixel** (`docs/pen-and-pixel.md`). Colour on this site is weather,
+  so figures carry meaning with marks instead: solid for recorded data, pixel
+  dither for machines and AI, pen hatching for human judgement, ruled lines
+  for documented sources. Four `--mark-*` tokens in `tokens.css`, drawn in
+  `--ink-soft`. Inside figures only, always beside a word.
+- **Case studies.** A `case-study.njk` layout and a scoped stylesheet
+  (`case-study.css`, `case-study-marks.css`, `case-study.js`) bring Portfolio
+  Pudding scrollytelling stories into the site on its own tokens and
+  self-hosted fonts. Figures stay readable without JavaScript, and the claims
+  register stacks on phones. `scripts/story-to-case-study.py` converts a story.
+- **First case study:** "One front door for data and AI"
+  (`/projects/front-door/`), listed under a new "Case studies" heading on the
+  Projects page. It won't build until its clearance record is answered and
+  stamped.
+
+### Changed
+- `base.njk` takes an optional `pageStyles` list for page-specific stylesheets.
+- `heading-anchors.js` leaves case-study headings alone (they have their own
+  section nav).
+
+## 2026-10-26 — Portfolio clearance gate
+
+### Added
+- **Case-study publishing gate.** `scripts/portfolio-check.js` runs at the
+  start of every build. Each case study (anything under `src/projects/`, or
+  tagged `case-study`) must carry a complete clearance record, show the
+  practice-piece note, contain no blocked term, and be unchanged since it was
+  last reviewed and stamped. No two case studies may share an invented
+  organization or sector. The rule it enforces, and how to publish a case
+  study, are in `docs/portfolio-clearance.md`.
+- **Hashed term list** (`portfolio/terms.json`). Terms are stored as hashes, so
+  the list doesn't publish the names it guards.
+- **`clearance-note.njk`**, the practice-piece note every case study shows, and
+  `npm run check:portfolio` to run the check on its own.
+
 ## 2026-07-23 — Design v3 (one voice, many rooms)
 
 Answer to Seb's verdict on design-v2 — "too simple and repetitive." The

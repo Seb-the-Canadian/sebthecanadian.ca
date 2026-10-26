@@ -1,0 +1,622 @@
+---
+layout: case-study.njk
+title: One front door for data and AI
+description: "A practice piece: one way I've brought separate data and AI guidance together behind one front door, shown through an invented transit agency."
+tags: case-study
+pageStyles:
+  - /assets/css/case-study.css
+  - /assets/css/case-studies/front-door.css
+  - /assets/css/case-study-marks.css
+clearance:
+  tier: open
+  organization: "Fernlow Regional Transit"
+  sector: "public transit"
+  invented:
+    - "Fernlow Regional Transit, the organization"
+    - "both old sites, their menus and sections"
+    - "the question categories, pages and roles"
+    - "every figure"
+  selfTest:            # answered by Seb on 2026-10-26: "cleared"
+    unethical: "no"    # could it be seen as unethical, dishonest or discriminatory?
+    culture: "no"      # could it conflict with my employer's culture or code?
+    reputation: "no"   # could it harm my employer's reputation?
+    publicHarm: "no"   # could it harm me or my employer if made public?
+    consequences: "no" # could publishing it lead to consequences?
+    negativeImpact: "no" # could it hurt my employer, its customers, colleagues or community?
+    policy: "no"       # could it breach a policy or the code?
+    recognizable: "no" # would a colleague learn a real system, decision, defect, person or event from it?
+  reviewed: 2026-10-26
+  contentHash: a453d9f1f5ffd413
+---
+{% raw %}
+<header class="wrap hero">
+  <div>
+    <p class="eyebrow"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span> Practice piece · Information architecture</p>
+    <h1 style="margin-top:14px">One front door, organized around <em>the questions people bring</em></h1>
+    <p class="dek">One way I've brought separate data and AI guidance together behind one front door, with the two disciplines side by side instead of blended. Shown through an invented transit agency.</p>
+    <p class="tldr" data-aud="gen"><b>In short</b>When guidance lives on two sites, people have to guess which one holds the answer. This piece shows one way I've merged them: map everything, sort it by the questions people bring, and pair the two disciplines instead of blending them. It's an approach that has worked for me, not the only way to do it. The organization in it is invented.</p>
+    <div class="aud-row"><span>Reading as</span><div class="aud-toggle" role="group" aria-label="Choose how this story is written"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></div>
+    <dl class="meta">
+      <dt>Approach</dt><dd>Current-state map, crosswalk, paired architecture</dd>
+      <dt>Example</dt><dd>Fernlow Regional Transit, an invented transit agency</dd>
+      <dt>Practised in</dt><dd>Enterprise intranet and knowledge-hub work</dd>
+    </dl>
+  </div>
+  <figure class="hero-fig">
+    <div class="panel tt" id="tt">
+      <div class="panel-head"><span class="lab">Try it · find the guidance</span><span class="chip">invented menus</span></div>
+      <p class="ttask">Find the rules for using AI with rider data. <span>There's a data part and an AI part. Try the old sites first, then the front door.</span></p>
+      <p class="ttpro" data-aud="pro">Shaped like a two-attempt tree test, menus only. The menus are invented, so your clicks illustrate the idea; they aren't usability data.</p>
+      <div class="ttmode" role="group" aria-label="Which version of the site">
+        <button type="button" data-mode="before" aria-pressed="true">Before · two sites</button><button type="button" data-mode="after" aria-pressed="false">After · one front door</button>
+      </div>
+      <nav class="ttcrumbs" aria-label="Where you are in the menus"></nav>
+      <div class="ttbody">
+        <ul class="ttlist" aria-label="Menu"></ul>
+        <div class="ttpage" hidden>
+          <p class="ph in1">Rider data</p>
+          <span class="pl lab in1">One place, both halves</span>
+          <div class="pair"><span class="cell in1">✓ Data rules</span><i class="link in3"></i><span class="cell in2">✓ AI rules</span></div>
+          <p class="pm in4">One place to look. Data and AI side by side, not blended.</p>
+        </div>
+      </div>
+      <div class="tttray"><span data-piece="data">data rules</span><span data-piece="ai">AI rules</span><span class="ttclicks">0 clicks</span><button type="button" class="ttreset" hidden>Start again</button></div>
+      <div class="ttmsg" tabindex="-1"></div>
+      <p class="sr" role="status" data-ttsr></p>
+      <div class="ttcompare" hidden>
+        <div class="tc"><span>Before</span><span class="track"><i class="bar before"></i><i class="tick" data-tick="before"></i></span><b data-n="before"></b></div>
+        <div class="tc"><span>After</span><span class="track"><i class="bar after"></i><i class="tick" data-tick="after"></i></span><b data-n="after"></b></div>
+        <p class="tckey">Bars are your clicks in these invented menus, not usability data. <i class="tickmark" aria-hidden="true"></i>marks the shortest possible route.</p>
+        <p class="tckey" data-aud="pro" data-backtracks></p>
+      </div>
+    </div>
+    <p class="caption">Fernlow Regional Transit and its menus are invented. Nothing you click leaves this page.</p>
+  </figure>
+</header>
+
+<nav class="secnav" aria-label="Sections">
+  <ul>
+    <li><a href="#crosswalk">The crosswalk</a></li>
+    <li><a href="#structure">The structure</a></li>
+    <li><a href="#onward">Where it sends you</a></li>
+    <li><a href="#claims">What it can claim</a></li>
+    <li class="nav-aud"><div class="aud-toggle" role="group" aria-label="Reading as"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></li>
+  </ul>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</nav>
+
+<div class="story-main">
+<!-- CROSSWALK -->
+<section class="wrap chapter" id="crosswalk" aria-labelledby="h-cw">
+  <div class="lens-intro">
+    <p class="eyebrow">The crosswalk</p>
+    <h2 id="h-cw">I map everything before merging anything</h2>
+    <p>A starting point I've often met: data guidance and AI guidance on two sites, each structured its own way.</p>
+    <div class="why"><span class="lab">Why it matters · an illustrative example</span><p>Someone at Fernlow needs the rule for using AI with rider data. They check the data office's site, then the AI group's site, then ask a colleague. One front door means one place to start.</p></div>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-cw-0"><div class="step-in">
+        <p class="kicker">Two sites</p>
+        <h3>People have to know which site holds the answer</h3>
+        <p>At Fernlow, the data office's site is organized by team. The AI group's site is a tools list and an FAQ.</p>
+        <p><span class="cl inf">inferred</span>In my experience, a split like this also hides how closely data rules and AI rules depend on each other.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-cw-1"><div class="step-in">
+        <p class="kicker">Current state</p>
+        <h3>Every page and section, mapped</h3>
+        <p>Before changing anything, I map every page and section on both sites as they stand.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-cw-2"><div class="step-in">
+        <p class="kicker">The crosswalk</p>
+        <h3>One shared set of categories, written as questions</h3>
+        <p>Every piece of content on both sites is mapped to the same categories. I write them as the questions people bring: where do I start, what are the rules, is my use safe, how do I learn it, where's the data, and who can help.</p>
+        <p data-aud="gen">A crosswalk is a table that maps every old page to its place in the new structure.</p>
+        <p data-aud="pro">In crosswalk terms, the dashed lines are one-to-many splits and the shaded categories are many-to-one merges.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-cw-3"><div class="step-in">
+        <p class="kicker">The merge plan</p>
+        <h3>I decide what to merge once I know what exists</h3>
+        <p>Mapping first is how I make every merge a decision, so nothing is lost or duplicated by accident when the two sites come together.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0,1">
+          <span class="lab">Current state · invented sections</span>
+          <div class="oldsites s0"></div>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip flag tag" data-on="0">Which site has the answer?</span>
+            <span class="chip ink tag" data-on="1">every page and section mapped</span>
+          </div>
+          <p class="caption tag" data-on="0"><span class="halfkey">half</span> where each half of the find-it answer lived</p>
+        </div>
+        <div class="sec dim" data-on="2,3">
+          <span class="lab">Crosswalk · the same sections, mapped to the shared categories</span>
+          <svg class="cm s2" viewBox="0 0 360 320" width="100%" role="group" aria-label="Crossmap from the invented old sections to six shared categories written as questions. Each box can be focused to trace its links."></svg>
+          <div class="cmkey"><span><i class="k-split"></i>one section split across categories</span><span><i class="k-many"></i>a category gathering several sections</span><span class="dim" data-on="3"><i class="k-merge"></i>gathers from both sites: a merge decision</span></div>
+          <p class="caption">Left: the invented sections from above. Right: the shared categories, written as questions. Hover, focus or tap a box to trace it.</p>
+          <ul class="sr cmlist"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="wrap chapter" id="structure" aria-labelledby="h-st">
+  <div class="lens-intro">
+    <p class="eyebrow">The structure</p>
+    <h2 id="h-st">Data and AI, side by side</h2>
+    <p>The structure I reached for here puts one homepage above paired data and AI pages. It's one shape among several; a single merged taxonomy is another. Pairs keep two distinct disciplines distinct.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-st-0"><div class="step-in">
+        <p class="kicker">The homepage</p>
+        <h3>Quick links for the questions people bring</h3>
+        <p>One homepage, with a quick link for each question and a short list of what's new.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-st-1"><div class="step-in">
+        <p class="kicker">Pairs</p>
+        <h3>Connected, and kept distinct</h3>
+        <p>Rules, safe use and skills each get a data page and an AI page side by side. <span class="cl inf">inferred</span>The pairing shows how the two connect without merging two distinct disciplines.</p>
+        <p>Learning paths can sit underneath, drawing on both.</p>
+        <p data-aud="pro">In IA terms: two parallel hierarchies, cross-linked level by level, instead of one merged taxonomy.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-st-2"><div class="step-in">
+        <p class="kicker">Guardrails with skills</p>
+        <h3>I put the guardrails next to the skills</h3>
+        <p>A page that teaches a skill links to its safe-use page at the same level, so the guardrails arrive with the skill instead of after it.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-st-3"><div class="step-in">
+        <p class="kicker">Reference lists</p>
+        <h3>Spreadsheets become governed lists</h3>
+        <p>Reference content, such as the list of data domains<span class="gloss" data-aud="gen"> (the major subject areas of an organization's data, such as riders, routes or fares)</span>, moves out of spreadsheets into a list with an owner for every row, so it can be governed and searched.</p>
+      </div></div>
+      <div class="step" data-step="4" id="s-st-4"><div class="step-in">
+        <p class="kicker">Design review</p>
+        <h3>Comparing approaches with AI</h3>
+        <p>When I compare design approaches with AI, I keep what the evidence shows separate from what I recommend.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0,1,2">
+          <div class="panel-head"><span class="lab">Front door · invented example</span><span class="chip">schematic</span></div>
+          <div class="home">
+            <p class="ttl">Home</p>
+            <div class="chips dim" data-on="0"><span class="chip blue">where do I start?</span><span class="chip blue">what are the rules?</span><span class="chip blue">is my use safe?</span><span class="chip blue">how do I learn it?</span><span class="chip blue">where's the data?</span><span class="chip blue">who can help?</span></div>
+            <div class="dim" data-on="0" style="margin-top:10px"><span class="lab">what's new</span><i class="updates" aria-hidden="true"></i></div>
+            <div class="pairs dim" data-on="1,2" style="margin-top:10px">
+              <div class="pair"><span class="lab">Data</span><i></i><span class="lab">AI</span></div>
+              <p class="pair-head">Rules <span class="foundhere">you found it here</span></p>
+              <div class="pair"><span class="cell">Data rules</span><i class="link"></i><span class="cell">AI rules</span></div>
+              <p class="pair-head">Safe use</p>
+              <div class="pair"><span class="cell">Data safeguards</span><i class="link"></i><span class="cell">AI safeguards</span></div>
+              <p class="pair-head">Skills <span class="built tag" data-on="2">links to safe use</span></p>
+              <div class="pair"><span class="cell">Data skills</span><i class="link"></i><span class="cell">AI skills</span></div>
+              <div class="pairfull"><span class="cell">Learning paths <small>data and AI</small></span></div>
+            </div>
+          </div>
+        </div>
+        
+          <div class="panel-head"><span class="lab">Reference list · spreadsheet to list</span><span class="chip">schematic</span></div>
+          <div class="s2l">
+            <div class="sheet" aria-hidden="true">
+              <div class="r"><span></span><span>A</span><span>B</span><span>C</span></div>
+              <div class="r"><span>1</span><i></i><i></i><i></i></div>
+              <div class="r"><span>2</span><i></i><span></span><i></i></div>
+              <div class="r"><span>3</span><i></i><i></i><span></span></div>
+              <div class="r"><span>4</span><i></i><i></i><i></i></div>
+            </div>
+            <span class="arrowtxt" aria-hidden="true">→</span>
+            <div class="slist" aria-hidden="true">
+              <div class="r"><span>Domain</span><span>Owner</span><span>About</span></div>
+              <div class="r"><i></i><i></i><i></i></div>
+              <div class="r"><i></i><i></i><i></i></div>
+              <div class="r"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="chips" style="margin-top:8px"><span class="chip blue">governed</span><span class="chip blue">searchable</span></div>
+        </div>
+        <div class="sec dim" data-on="4">
+          <span class="lab">Design review</span>
+          <div class="drev">
+            <div class="dcol"><span class="chip ai">AI comparison of approaches</span><span class="arrowtxt">→</span><span class="chip">what the evidence shows</span></div>
+            <i class="ddiv" aria-hidden="true"></i>
+            <div class="mine"><span class="chip ink">what I recommend</span><small>my call, kept separate</small></div>
+          </div>
+          <p class="caption">AI fed the evidence. The recommendation stayed with me.</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- WHERE IT SENDS YOU -->
+<section class="wrap chapter" id="onward" aria-labelledby="h-on">
+  <div class="lens-intro">
+    <p class="eyebrow">Where it sends you</p>
+    <h2 id="h-on">A front door that points onward</h2>
+    <p>I want a front door to send people onward: to the right owner, the right page for their role and the right next step.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-on-0"><div class="step-in">
+        <p class="kicker">Link to the source</p>
+        <h3>Owners keep their own content</h3>
+        <p>The front door links to guidance its owners maintain instead of copying it, so each owner keeps their own content current.</p>
+        <p data-aud="pro">The single-source principle: one canonical owner for each piece of guidance, linked rather than copied.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-on-1"><div class="step-in">
+        <p class="kicker">Role-based next steps</p>
+        <h3>Start from your role</h3>
+        <p>Each role gets one page that points to what applies to it, and everyone gets a “start here”.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-on-2"><div class="step-in">
+        <p class="kicker">From principle to action</p>
+        <h3>Every principle ends in a next step</h3>
+        <p>A page that states a principle ends with what it means for you, what to do, and who to ask, so nobody reaches a dead end at "be responsible".</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0">
+          <span class="lab">Link, don't copy</span>
+          <div class="flowline"><span class="hubbox" style="grid-row:auto">Front door</span><span class="arrowtxt">links to →</span><span class="owner">the owner's own guidance <small>maintained by that owner</small></span></div>
+          <p class="struck">copied guidance kept on the front door</p>
+        </div>
+        <div class="sec dim" data-on="1">
+          <span class="lab">By role</span>
+          <div class="roles">
+            <div class="r"><span class="chip ink">Everyone</span><span class="arrowtxt">→</span><span class="chip">“Start here” orientation</span></div>
+            <div class="r"><span class="chip ink">Data stewards</span><span class="arrowtxt">→</span><span class="chip">Steward page</span></div>
+            <div class="r"><span class="chip ink">People building with AI</span><span class="arrowtxt">→</span><span class="chip">Builder page</span></div>
+          </div>
+        </div>
+        <div class="sec dim" data-on="2">
+          <span class="lab">From principle to action · schematic</span>
+          <div class="strip">
+            <div class="st"><b></b>The principle</div>
+            <div class="st"><b></b>What it means for you</div>
+            <div class="st"><b></b>What to do</div>
+            <div class="st"><b></b>Who to ask</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="wrap outcome" id="outcome" aria-labelledby="oc-h">
+  <p class="eyebrow">What this approach gives</p>
+  <h2 id="oc-h" style="margin-top:8px">One starting point instead of several</h2>
+  <div class="oc-grid">
+    <div>
+      <h3>One place to start</h3>
+      <p>Every question has one first stop, and the two disciplines stay side by side there.</p>
+    </div>
+    <div>
+      <h3>Owners keep their content</h3>
+      <p>The front door links to what owners maintain, so nothing drifts out of date in two places.</p>
+    </div>
+    <div>
+      <h3>A check you can repeat</h3>
+      <p>The find-it task at the top is cheap to run with real menus before and after any merge.</p>
+    </div>
+  </div>
+  <p class="reflect">Consolidation isn't the goal in itself. <span>In my experience, a single front door works when it's organized around the questions people actually arrive with.</span></p>
+</section>
+
+<section class="wrap claims" id="claims" aria-labelledby="h-claims">
+  <p class="eyebrow">What it can claim</p>
+  <h2 id="h-claims" style="margin-top:8px">What this story can support, and what it can't yet</h2>
+  <p>I graded these myself. Every claim is about this approach or this page, so you can check most of them from here.</p>
+  <details class="claimsbox"><summary>Claims register · 5 claims, and how well each is supported</summary>
+  <dl class="legend">
+    <div><dt><span class="cl">observed</span></dt><dd>Visible on this page.</dd></div>
+    <div><dt><span class="cl doc">document-supported</span></dt><dd>Established by a public source, linked.</dd></div>
+    <div><dt><span class="cl inf">inferred</span></dt><dd>My professional judgement, not tested here.</dd></div>
+    <div><dt><span class="cl unr">unresolved</span></dt><dd>Not determinable from the available record.</dd></div>
+  </dl>
+  <div class="regwrap">
+    <table class="reg">
+      <caption class="sr">Claims register</caption>
+      <thead><tr><th scope="col">Evidence</th><th scope="col">Claim</th><th scope="col">What supports it</th></tr></thead>
+      <tbody>
+        <tr data-ref="tt"><td><span class="cl">observed</span></td><td>In these invented menus, finding both halves takes at least seven clicks across the two old sites and two from the front door.</td><td>The find-it test on this page.</td></tr>
+        <tr data-ref="tt"><td><span class="cl doc">document-supported</span></td><td>A tree test measures how findable things are using the navigation alone, without visual design or search.</td><td><a href="https://measuringu.com/?p=8429">MeasuringU, “Tree Testing”</a>.</td></tr>
+        <tr data-ref="s-cw-3"><td><span class="cl inf">inferred</span></td><td>In my practice, mapping every page before merging prevents accidental loss and duplication.</td><td>My practice.</td></tr>
+        <tr data-ref="s-st-1"><td><span class="cl inf">inferred</span></td><td>Paired data and AI pages connect the two disciplines without blending them.</td><td>My practice.</td></tr>
+        <tr data-ref="outcome"><td><span class="cl inf">inferred</span></td><td>In my experience, a single front door works when it's organized around the questions people arrive with.</td><td>My practice.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </details>
+
+  <div class="credit" id="credit">
+    <div>
+      <h3>Mine</h3>
+      <p>The approach, the invented example, the writing and the interactive pieces.</p>
+    </div>
+    <div>
+      <h3>Where I've practised it</h3>
+      <p>I've used this approach in enterprise intranet and knowledge-hub work.</p>
+    </div>
+    <div class="wide">
+      <h3>AI</h3>
+      <p>I build pages like this with AI assistants and check everything they produce.</p>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/case-study.js"></script>
+<script>
+(function(){
+  "use strict";
+  // One invented skeleton of the two old sites. It drives the find-it test, the current-state sketch and the crossmap.
+  const CATS=["Where do I start?","What are the rules?","Is my use safe?","How do I learn it?","Where's the data?","Who can help?"];
+  const OLD=[
+    {site:"Data office site",desc:"a page for each team",sections:[
+      {label:"About the data office",to:[0,5],kids:[{label:"Our teams"},{label:"Contact us"}]},
+      {label:"Policies",to:[1,2],kids:[{label:"Handling rider data",piece:"data"},{label:"Retention schedule"},{label:"Sharing data outside"}]},
+      {label:"Training",to:[3],kids:[{label:"Courses"},{label:"Glossary"}]},
+      {label:"Data catalogue",to:[4],kids:[{label:"Search the catalogue"},{label:"Request access"}]},
+      {label:"Newsletter",to:[0]}
+    ]},
+    {site:"AI group site",desc:"a tools list and an FAQ",sections:[
+      {label:"Start here",to:[0,3],kids:[{label:"What is AI?"},{label:"First steps"}]},
+      {label:"Approved tools",to:[1],kids:[{label:"Tool list"},{label:"Request a tool"}]},
+      {label:"Use-case gallery",to:[2,3],kids:[{label:"Examples"},{label:"Submit an example"}]},
+      {label:"FAQ",to:[1,2,5],kids:[{label:"Can I use AI with rider data?",piece:"ai"},{label:"Which tools are approved?"},{label:"Who reviews AI use?"}]},
+      {label:"Contact the group",to:[5]}
+    ]}
+  ];
+  const PAIR_LEAF="Rider data · data and AI";
+  const TREE={
+    before:{label:"Start",kids:OLD.map(x=>({label:x.site,kids:x.sections}))},
+    after:{label:"Home",kids:[
+      {label:"Where do I start?",kids:[{label:"New here? Start with this"},{label:"What's changed lately"}]},
+      {label:"What are the rules?",kids:[{label:PAIR_LEAF,piece:"both"},{label:"Keeping data"},{label:"Sharing data outside"}]},
+      {label:"How do I learn it?",kids:[{label:"Data skills"},{label:"AI skills"},{label:"Learning paths"}]},
+      {label:"Who can help?",kids:[{label:"Data office"},{label:"AI group"},{label:"Ask a question"}]}
+    ]}
+  };
+  const SHORTEST={before:7,after:2};
+
+  // ---------- Find-it tree test ----------
+  const tt=document.getElementById("tt");
+  const crumbs=tt.querySelector(".ttcrumbs"), list=tt.querySelector(".ttlist"), page=tt.querySelector(".ttpage");
+  const msgEl=tt.querySelector(".ttmsg"), clk=tt.querySelector(".ttclicks"), resetBtn=tt.querySelector(".ttreset");
+  const sr=tt.querySelector("[data-ttsr]"), cmp=tt.querySelector(".ttcompare");
+  const fresh=()=>({path:[],clicks:0,back:0,got:new Set(),tried:new Set(),found:{},done:false,opened:false,msg:"",order:[]});
+  const ST={before:fresh(),after:fresh()};
+  let mode="before";
+  const S=()=>ST[mode];
+  const say=t=>{sr.textContent="";setTimeout(()=>{sr.textContent=t;},30);};
+  function node(){let n=TREE[mode];S().path.forEach(i=>{n=n.kids[i];});return n;}
+  function trailTo(label){let n=TREE[mode];const out=[];S().path.forEach(i=>{n=n.kids[i];out.push(n.label);});out.push(label);return out;}
+
+  function render(focus){
+    const st=S();
+    tt.querySelectorAll("[data-mode]").forEach(b=>{
+      b.setAttribute("aria-pressed",String(b.dataset.mode===mode));
+      let ok=b.querySelector(".ok");
+      if(ST[b.dataset.mode].done&&!ok){ok=document.createElement("span");ok.className="ok";ok.textContent="✓";ok.setAttribute("aria-label","done");b.appendChild(ok);}
+      if(!ST[b.dataset.mode].done&&ok) ok.remove();
+    });
+    // breadcrumbs
+    crumbs.textContent="";
+    let n=TREE[mode];
+    const trail=[n].concat(st.path.map(i=>(n=n.kids[i])));
+    if(st.opened) trail.push({label:PAIR_LEAF});
+    trail.forEach((t,i)=>{
+      if(i) crumbs.appendChild(document.createTextNode(" › "));
+      if(i<trail.length-1&&!st.done){const b=document.createElement("button");b.type="button";b.textContent=t.label;b.dataset.up=i;crumbs.appendChild(b);}
+      else {const b=document.createElement("b");b.textContent=t.label;crumbs.appendChild(b);}
+    });
+    // menu or opened page
+    list.textContent="";
+    list.hidden=st.opened; page.hidden=!st.opened;
+    if(!st.opened){
+      node().kids.forEach((k,i)=>{
+        const li=document.createElement("li"), b=document.createElement("button");
+        b.type="button";b.dataset.i=i;
+        const key=st.path.concat(i).join(".");
+        const isFound=k.piece&&(k.piece==="both"?st.got.size===2:st.got.has(k.piece));
+        if(isFound) b.classList.add("found");
+        else if(!k.kids&&st.tried.has(key)) b.classList.add("nope");
+        if(st.done) b.setAttribute("aria-disabled","true");
+        const l=document.createElement("span");l.textContent=k.label;b.appendChild(l);
+        if(k.kids){const g=document.createElement("span");g.className="go";g.setAttribute("aria-hidden","true");g.textContent="›";b.appendChild(g);}
+        else if(isFound){const g=document.createElement("span");g.className="x";g.textContent="✓ found";b.appendChild(g);}
+        else if(st.tried.has(key)){const g=document.createElement("span");g.className="x";g.textContent="✕ not here";b.appendChild(g);}
+        li.appendChild(b);list.appendChild(li);
+      });
+    }
+    clk.textContent=st.clicks+(st.clicks===1?" click":" clicks");
+    tt.querySelectorAll("[data-piece]").forEach(p=>p.classList.toggle("got",st.got.has(p.dataset.piece)));
+    resetBtn.hidden=!(st.clicks>0);
+    renderMsg();
+    renderCompare();
+    if(typeof focus==="number"){const f=list.querySelectorAll("button")[focus];if(f)f.focus({preventScroll:true});}
+    else if(focus==="list"){const f=list.querySelector("button:not([aria-disabled='true'])");if(f)f.focus({preventScroll:true});}
+    else if(focus==="msg"){const f=msgEl.querySelector("button")||msgEl;f.focus({preventScroll:true});}
+  }
+
+  function renderMsg(){
+    const st=S();
+    msgEl.textContent="";
+    if(!st.done){msgEl.textContent=st.msg;return;}
+    const p=document.createElement("p");
+    if(mode==="before"){
+      p.textContent="Found both, in "+st.clicks+" clicks across two sites.";
+      msgEl.appendChild(p);
+      const tr=document.createElement("div");tr.className="tttrail";tr.setAttribute("aria-label","Your two routes");
+      st.order.forEach((k,i)=>{
+        if(i){const g=document.createElement("span");g.className="gap";g.textContent="no link between them in these menus";tr.appendChild(g);}
+        const r=document.createElement("span");r.textContent=st.found[k].join(" › ");tr.appendChild(r);
+      });
+      msgEl.appendChild(tr);
+      if(!ST.after.done){const b=document.createElement("button");b.type="button";b.className="ttnext";b.dataset.go="after";b.textContent="Try the front door →";msgEl.appendChild(b);}
+    } else {
+      p.textContent="Found both, in "+st.clicks+" clicks, in one place.";
+      msgEl.appendChild(p);
+      if(!ST.before.done){const b=document.createElement("button");b.type="button";b.className="ttnext";b.dataset.go="before";b.textContent="Now try the old sites →";msgEl.appendChild(b);}
+    }
+  }
+
+  let shownCompare=false;
+  function renderCompare(){
+    const both=ST.before.done&&ST.after.done;
+    cmp.hidden=!both;
+    if(!both){shownCompare=false;return;}
+    const mx=Math.max(ST.before.clicks,ST.after.clicks,SHORTEST.before);
+    ["before","after"].forEach((m,i)=>{
+      const bar=cmp.querySelector(".bar."+m), w=(100*ST[m].clicks/mx)+"%";
+      cmp.querySelector('[data-tick="'+m+'"]').style.left=(100*SHORTEST[m]/mx)+"%";
+      cmp.querySelector('[data-n="'+m+'"]').textContent=ST[m].clicks+(ST[m].clicks===1?" click":" clicks");
+      if(!shownCompare){bar.style.width="0";void bar.offsetWidth;setTimeout(()=>{bar.style.width=w;},Pudding.reduce?0:60+i*150);}
+      else bar.style.width=w;
+    });
+    cmp.querySelector("[data-backtracks]").textContent="Backtracks: "+ST.before.back+" before, "+ST.after.back+" after. In these menus the split forces at least one.";
+    shownCompare=true;
+  }
+
+  function complete(){
+    const st=S();
+    st.done=true;
+    if(mode==="after") document.documentElement.classList.add("ff-found");
+    render("msg");
+    const both=ST.before.done&&ST.after.done;
+    say((mode==="before"?"Found both, in "+st.clicks+" clicks across two sites. These menus had no link between the two routes.":"Found both, in "+st.clicks+" clicks, in one place: data and AI side by side.")+(both?" Before: "+ST.before.clicks+" clicks. After: "+ST.after.clicks+".":""));
+  }
+
+  function announceMenu(){
+    if(S().opened) return;
+    const n=node(), k=n.kids.length;
+    say(n.label+": "+k+(k===1?" option.":" options."));
+  }
+
+  tt.addEventListener("click",e=>{
+    const mb=e.target.closest("[data-mode]");
+    if(mb){ if(mb.dataset.mode!==mode){mode=mb.dataset.mode;render(S().done?"msg":"list");if(S().done){const m=tt.querySelector(".ttmsg");say(m?m.textContent.trim():"Already found both.");}else announceMenu();} return; }
+    const nx=e.target.closest(".ttnext");
+    if(nx){ mode=nx.dataset.go; render("list"); announceMenu(); return; }
+    if(e.target.closest(".ttreset")){
+      ST[mode]=fresh();
+      if(mode==="after") document.documentElement.classList.remove("ff-found");
+      render("list"); say("Started again. "+TREE[mode].label+": "+TREE[mode].kids.length+" options."); return;
+    }
+    const st=S(); if(st.done) return;
+    const up=e.target.closest("[data-up]");
+    if(up){ st.clicks++; st.back++; st.path=st.path.slice(0,+up.dataset.up); st.msg=""; render("list"); announceMenu(); return; }
+    const b=e.target.closest(".ttlist button"); if(!b||b.getAttribute("aria-disabled")==="true") return;
+    const i=+b.dataset.i, k=node().kids[i], tkey=st.path.concat(i).join(".");
+    if(!k.kids&&st.tried.has(tkey)){ st.msg=k.piece?"You already have that part.":"✕ Not here. You tried this one already."; render(i); say(st.msg); return; }
+    st.clicks++;
+    if(k.kids){ st.path.push(i); st.msg=""; render("list"); announceMenu(); return; }
+    st.tried.add(st.path.concat(i).join("."));
+    if(k.piece){
+      const pieces=k.piece==="both"?["data","ai"]:[k.piece];
+      let isNew=false;
+      pieces.forEach(p=>{ if(!st.got.has(p)){ st.got.add(p); st.found[p]=trailTo(k.label); st.order.push(p); isNew=true; } });
+      if(st.got.size===2){ if(k.piece==="both") st.opened=true; complete(); return; }
+      st.msg=isNew?("That's the "+(k.piece==="data"?"data":"AI")+" part. The other part is somewhere else."):"You already have that part.";
+    } else st.msg="✕ Not here.";
+    render(i); say(st.msg);
+    const row=list.querySelectorAll("button")[i]; if(row) Pudding.changed(row);
+  });
+  render();
+
+  // ---------- Current-state sketch: the same sections, mapped at step 1 ----------
+  const sketch=document.querySelector(".oldsites");
+  OLD.forEach(site=>{
+    const card=document.createElement("div");card.className="site";
+    const h=document.createElement("p");h.className="sname";h.textContent=site.site;card.appendChild(h);
+    const ul=document.createElement("ul");ul.className="srows";
+    site.sections.forEach((sec,i)=>{
+      const li=document.createElement("li");
+      const t=document.createElement("span");t.textContent=sec.label;li.appendChild(t);
+      const mk=document.createElement("span");mk.className="mk";
+      if((sec.kids||[]).some(k=>k.piece)){const h2=document.createElement("span");h2.className="half";h2.textContent="half";h2.setAttribute("aria-label","half the answer");mk.appendChild(h2);}
+      const ck=document.createElement("span");ck.className="ck";ck.textContent="✓";ck.setAttribute("aria-hidden","true");ck.style.setProperty("--i",i);mk.appendChild(ck);
+      li.appendChild(mk);ul.appendChild(li);
+    });
+    card.appendChild(ul);
+    const d=document.createElement("p");d.className="sdesc";d.textContent=site.desc;card.appendChild(d);
+    sketch.appendChild(card);
+  });
+
+  // ---------- Crossmap: the same invented sections -> the shared question categories ----------
+  const ns="http://www.w3.org/2000/svg", svg=document.querySelector("svg.cm");
+  const el=(t,a,txt,parent)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;(parent||svg).appendChild(e);return e;};
+  const W=138,H=22,LX=0,RX=222;
+  const SRC=[]; OLD.forEach(site=>site.sections.forEach(sec=>SRC.push({label:sec.label,site:site.site,to:sec.to})));
+  const into=CATS.map(()=>[]), sitesInto=CATS.map(()=>new Set());
+  SRC.forEach(r=>r.to.forEach(t=>{into[t].push(r.label);sitesInto[t].add(r.site);}));
+  const ty=i=>14+i*44;
+  const lines=el("g",{});
+  let y=0, si=0; const srcY=[];
+  OLD.forEach(site=>{
+    el("text",{x:LX,y:y+12,class:"grp"},site.site.toUpperCase()); y+=18;
+    site.sections.forEach(()=>{srcY[si++]=y; y+=28;});
+  });
+  SRC.forEach((r,i)=>{
+    const sy=srcY[i]+H/2;
+    r.to.forEach(t=>{
+      const tyc=ty(t)+H/2;
+      el("path",{d:`M${LX+W} ${sy} C${LX+W+46} ${sy} ${RX-46} ${tyc} ${RX} ${tyc}`,class:"ln"+(r.to.length>1?" split":"")+(sitesInto[t].size>1?" merge":""),"data-s":i,"data-t":t},null,lines);
+    });
+    const g=el("g",{class:"node src","data-s":i,tabindex:"0",role:"button","aria-pressed":"false","aria-label":r.label+", "+r.site.toLowerCase()+": maps to "+r.to.map(t=>CATS[t]).join(", ")});
+    el("rect",{x:LX,y:srcY[i],width:W,height:H,rx:4},null,g);
+    el("text",{x:LX+8,y:srcY[i]+15},r.label,g);
+  });
+  CATS.forEach((t,i)=>{
+    const g=el("g",{class:"node tgt"+(into[i].length>1?" many":"")+(sitesInto[i].size>1?" cross":""),"data-t":i,tabindex:"0",role:"button","aria-pressed":"false","aria-label":t+": gathers "+into[i].join(", ")+(sitesInto[i].size>1?", from both sites":"")});
+    el("rect",{x:RX,y:ty(i),width:W,height:H,rx:4},null,g);
+    el("text",{x:RX+8,y:ty(i)+15},t,g);
+  });
+  const cml=document.querySelector(".cmlist");
+  SRC.forEach(r=>{const li=document.createElement("li");li.textContent=r.site+", "+r.label+" → "+r.to.map(t=>CATS[t]).join(", ");cml.appendChild(li);});
+
+  // Tracing: hover or focus shows a box's links; tap or Enter pins it.
+  function keyOf(nd){return nd.dataset.s!=null?"s"+nd.dataset.s:"t"+nd.dataset.t;}
+  function trace(sv,key){
+    sv.classList.add("tracing");
+    const kind=key[0], idx=key.slice(1);
+    sv.querySelectorAll(".ln").forEach(l=>l.classList.toggle("hi",(kind==="s"?l.dataset.s:l.dataset.t)===idx));
+    const hs=new Set(),ht=new Set();
+    sv.querySelectorAll(".ln.hi").forEach(l=>{hs.add(l.dataset.s);ht.add(l.dataset.t);});
+    sv.querySelectorAll(".node").forEach(nd=>nd.classList.toggle("hi",nd.dataset.s!=null?hs.has(nd.dataset.s):ht.has(nd.dataset.t)));
+  }
+  function untrace(sv){sv.classList.remove("tracing");sv.querySelectorAll(".hi").forEach(x=>x.classList.remove("hi"));}
+  let LOCK=null; // one pin, shared by the sticky figure and every phone copy
+  function settle(sv){ if(LOCK) trace(sv,LOCK); else untrace(sv); }
+  function applyLock(){
+    document.querySelectorAll("svg.cm").forEach(sv=>{
+      if(LOCK) sv.dataset.lock=LOCK; else delete sv.dataset.lock;
+      sv.querySelectorAll(".node").forEach(x=>x.setAttribute("aria-pressed",String(LOCK!==null&&keyOf(x)===LOCK)));
+      settle(sv);
+    });
+  }
+  document.addEventListener("pudding:layout",applyLock);
+  const nodeFrom=t=>t&&t.closest?t.closest(".cm .node"):null;
+  document.addEventListener("pointerover",e=>{const nd=nodeFrom(e.target);if(nd)trace(nd.ownerSVGElement,keyOf(nd));});
+  document.addEventListener("pointerout",e=>{const nd=nodeFrom(e.target);if(!nd||nd.contains(e.relatedTarget))return;settle(nd.ownerSVGElement);});
+  document.addEventListener("focusin",e=>{const nd=nodeFrom(e.target);if(nd)trace(nd.ownerSVGElement,keyOf(nd));});
+  document.addEventListener("focusout",e=>{const nd=nodeFrom(e.target);if(nd)settle(nd.ownerSVGElement);});
+  function pin(nd){
+    const k=keyOf(nd);
+    LOCK=(LOCK===k)?null:k;
+    applyLock();
+  }
+  document.addEventListener("click",e=>{const nd=nodeFrom(e.target);if(nd)pin(nd);});
+  document.addEventListener("keydown",e=>{const nd=nodeFrom(e.target);if(nd&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pin(nd);}});
+
+  function setStepClass(elm,n){ if(!elm) return; ["s0","s1","s2","s3"].forEach(c=>elm.classList.remove(c)); elm.classList.add("s"+n); }
+  Pudding.onStep("crosswalk",(n,root)=>{ setStepClass(root.querySelector("svg.cm"),n); setStepClass(root.querySelector(".oldsites"),n); });
+})();
+</script>
+{% endraw %}
