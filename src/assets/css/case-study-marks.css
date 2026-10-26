@@ -28,9 +28,34 @@
 /* Your clicks: "before" recedes, the answer carries moss. */
 .story .tc .bar.before{ background: var(--muted); }
 
+/* use-case-life: amber stays on borders and tints; the word beside it wears ink. */
+.story .chip.flag, .story .ghost, .story .v-review, .story .review, .story .lvlbar span.maybe,
+.story .mk.unsure, .story .swout .chg, .story .pill.rev, .story .swapnote.changed,
+.story .rc-id span, .story .rlink span{ color: var(--fg); }
+.story .c-ghost{ color: var(--fg) !important; }
+.story .review.none{ color: var(--muted); }
+.story .seg input[value="unsure"]:checked+label{ background: var(--held-soft); color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--held); }
+.story .gnum{ background: var(--held-soft); color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--held); }
+.story .tl .bandt, .story .gm text{ fill: var(--fg); }
+.story .gapline.g1 .m1 circle, .story .gapline.g2 .m2 circle, .story .gapline.g3 .m3 circle,
+.story .gapline.g4 .m4 circle, .story .gapline.g0 .gm circle{ fill: var(--held-soft); stroke-width: 2.5; }
+.story .gapline.g1 .m1 text, .story .gapline.g2 .m2 text, .story .gapline.g3 .m3 text,
+.story .gapline.g4 .m4 text, .story .gapline.g0 .gm text{ fill: var(--fg); }
+/* Hero chart: two series, told apart by line style and direct labels. */
+.story .tl .tick{ stroke-dasharray: 6 4; }
+
 /* ── Without JavaScript: show every figure in its finished state ────────── */
 html:not(.story-js) .story .dim{ opacity: 1; }
 html:not(.story-js) .story .tag{ opacity: 1; }
+/* Script-built forms get a static copy of their default answers; controls that need the script step aside. */
+.story .nojs-q{ display: none; }
+html:not(.story-js) .story .nojs-q{ display: block; list-style: none; margin: 0; padding: 0; font-size: .88rem; }
+html:not(.story-js) .story .nojs-q li{ display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+html:not(.story-js) .story .seg2, html:not(.story-js) .story .swaphint, html:not(.story-js) .story .swapnote,
+html:not(.story-js) .story .reassess .rreset{ display: none; }
+/* use-case-life hides a card's detail until its step; without the script, show it. */
+html:not(.story-js) .story #between .graphic .mini.dim{ display: block; }
+html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 
 /* ── Claims register on phones: one claim per block, nothing squeezed ──── */
 @media (max-width: 560px){

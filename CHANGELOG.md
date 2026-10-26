@@ -25,6 +25,17 @@ Format:
   (`/projects/front-door/`), listed under a new "Case studies" heading on the
   Projects page. It won't build until its clearance record is answered and
   stamped.
+- **Second case study:** "A use case has a life" (`/projects/use-case-life/`),
+  a Responsible AI intake practice piece set at an invented college. It also
+  waits on its self-test and stamp. Its script-built panel, notice and
+  reassessment are pre-rendered in their default state so the page reads in
+  full without JavaScript.
+
+### Fixed
+- Case-study figures: amber stays on borders and tints and the word beside it
+  wears ink, so light-mode amber never colours text (it fails contrast).
+  Applies to shared flag chips and ghost labels, so the front-door page gains
+  it too.
 
 ### Changed
 - `base.njk` takes an optional `pageStyles` list for page-specific stylesheets.
