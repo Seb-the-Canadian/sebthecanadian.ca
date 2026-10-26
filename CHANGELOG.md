@@ -4,6 +4,21 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-26 — Portfolio clearance gate
+
+### Added
+- **Case-study publishing gate.** `scripts/portfolio-check.js` runs at the
+  start of every build. Each case study (anything under `src/projects/`, or
+  tagged `case-study`) must carry a complete clearance record, show the
+  practice-piece note, contain no blocked term, and be unchanged since it was
+  last reviewed and stamped. No two case studies may share an invented
+  organization or sector. The rule it enforces, and how to publish a case
+  study, are in `docs/portfolio-clearance.md`.
+- **Hashed term list** (`portfolio/terms.json`). Terms are stored as hashes, so
+  the list doesn't publish the names it guards.
+- **`clearance-note.njk`**, the practice-piece note every case study shows, and
+  `npm run check:portfolio` to run the check on its own.
+
 ## 2026-07-23 — Design v3 (one voice, many rooms)
 
 Answer to Seb's verdict on design-v2 — "too simple and repetitive." The
