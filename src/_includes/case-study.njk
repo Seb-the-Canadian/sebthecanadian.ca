@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+{#-
+  case-study.njk — layout for case studies (docs/portfolio-clearance.md).
+  A case study is a Portfolio Pudding scrollytelling page living inside the
+  site: its styles are scoped to .story (assets/css/case-study.css plus its
+  own file, both listed in the page's `pageStyles`), and it always ends with
+  the practice-piece note. The page's front matter carries its clearance
+  record; scripts/portfolio-check.js checks it at build time.
+-#}
+<script>try{if(localStorage.getItem("pudding-aud")==="pro")document.documentElement.setAttribute("data-aud","pro")}catch(e){}</script>
+<div class="story">
+{{ content | safe }}
+</div>
+<div class="story-note">
+{% include "clearance-note.njk" %}
+</div>

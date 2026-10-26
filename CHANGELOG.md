@@ -4,6 +4,29 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-26 — Pen + pixel, and the first case study
+
+### Added
+- **Pen + pixel** (`docs/pen-and-pixel.md`). Colour on this site is weather,
+  so figures carry meaning with marks instead: solid for recorded data, pixel
+  dither for machines and AI, pen hatching for human judgement, ruled lines
+  for documented sources. Four `--mark-*` tokens in `tokens.css`, drawn in
+  `--ink-soft`. Inside figures only, always beside a word.
+- **Case studies.** A `case-study.njk` layout and a scoped stylesheet
+  (`case-study.css`, `case-study-marks.css`, `case-study.js`) bring Portfolio
+  Pudding scrollytelling stories into the site on its own tokens and
+  self-hosted fonts. Figures stay readable without JavaScript, and the claims
+  register stacks on phones. `scripts/story-to-case-study.py` converts a story.
+- **First case study:** "One front door for data and AI"
+  (`/projects/front-door/`), listed under a new "Case studies" heading on the
+  Projects page. It won't build until its clearance record is answered and
+  stamped.
+
+### Changed
+- `base.njk` takes an optional `pageStyles` list for page-specific stylesheets.
+- `heading-anchors.js` leaves case-study headings alone (they have their own
+  section nav).
+
 ## 2026-10-26 — Portfolio clearance gate
 
 ### Added

@@ -88,6 +88,24 @@ Edit a stamped page, including its title or description, and the fingerprint no
 longer matches, so the build fails until the page is reviewed and stamped again.
 Whitespace-only edits don't count.
 
+## Bringing a story into the site
+
+Case studies are Portfolio Pudding stories living inside the site, at
+`src/projects/<slug>/index.njk` with `layout: case-study.njk`.
+
+1. Convert it: `python3 scripts/story-to-case-study.py story.html <slug> .`
+   rebuilds the shared stylesheet on the site's tokens (scoped to `.story`, so
+   nothing leaks onto the site's nav, type or footer) and writes the story's own
+   styles and body. Figures carry meaning with pen + pixel marks, not colour
+   (`docs/pen-and-pixel.md`).
+2. Make `src/projects/<slug>/index.njk`: front matter with `title`,
+   `description`, `tags: case-study`, the clearance record, and `pageStyles`
+   listing `/assets/css/case-study.css`, `/assets/css/case-studies/<slug>.css`
+   and `/assets/css/case-study-marks.css` (in that order; the marks load last).
+   Then the body between `{% raw %}` and `{% endraw %}`.
+3. Answer the self-test, stamp, build. The Projects page lists every page
+   tagged `case-study`.
+
 ## What the check does, and what it can't
 
 `scripts/portfolio-check.js` treats every file under `src/projects/`, plus

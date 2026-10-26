@@ -20,6 +20,8 @@
   Array.prototype.forEach.call(heads, function (h) {
     // Skip label-style headings (home-page section eyebrows) and masthead.
     if (h.classList.contains("eyebrow")) return;
+    // Case studies carry their own section nav; leave their headings alone.
+    if (h.closest(".story")) return;
 
     var id = h.id;
     if (!id) {

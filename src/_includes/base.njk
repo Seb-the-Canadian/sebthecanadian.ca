@@ -49,6 +49,9 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
   <link rel="stylesheet" href="/assets/css/utilities.css" />
+  {%- for href in pageStyles %}
+  <link rel="stylesheet" href="{{ href }}" />
+  {%- endfor %}
   <link rel="stylesheet" href="/assets/css/print.css" media="print" />
 </head>
 <body>
