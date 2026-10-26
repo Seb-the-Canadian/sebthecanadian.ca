@@ -4,6 +4,8 @@
 **Date:** 2026-03-09
 **Author:** Design Sprint Session (Phase 2 output)
 
+> **Current rules: `docs/brand.md`.** Everything below is history.
+>
 > **Historical note (2026-07):** This brief is preserved as the original
 > signed-off contract. The pitch-v1 sprint (May 2026, PRs #11–14) revised
 > parts of it: the body is now fully monospace (IBM Plex Mono, self-hosted —

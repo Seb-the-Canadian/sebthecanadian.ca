@@ -7,6 +7,10 @@ Format:
 ## 2026-10-26 — Pen + pixel, and the first case study
 
 ### Added
+- **`docs/brand.md`** — the current brand rules on one page (colour, type,
+  identity marks, surfaces, figures, behaviour, pre-ship checks), with
+  precedence over the older design docs. README's design summary and the
+  original brief now point to it.
 - **Pen + pixel** (`docs/pen-and-pixel.md`). Colour on this site is weather,
   so figures carry meaning with marks instead: solid for recorded data, pixel
   dither for machines and AI, pen hatching for human judgement, ruled lines
