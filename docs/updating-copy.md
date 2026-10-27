@@ -69,7 +69,7 @@ those.
 | Home | The Elsewhere links (Bluesky, GitHub, ORCID) | `_data/profiles.json` | These also become the `rel="me"` identity links in the page head |
 | About | Everything on the page | `src/about.md` | Markdown; the opening paragraph is HTML inside `<p class="lede">`. The "this page rendered" line is the build date, not an edit date |
 | Résumé | Everything: name, tagline, summary, experience, credentials, profile links | `_data/resume.yml` | YAML: indentation matters; multi-paragraph fields are split on blank lines. Keep the `|` after a field name when the text runs over several lines |
-| Résumé | The photo | `src/assets/img/seb-headshot.jpg` | 543 × 724 pixels; if you replace it with another size, change the `width` and `height` on the `<img>` in `src/resume.njk` to match |
+| Résumé | The photo | `src/assets/img/seb-headshot.jpg` | 1086 × 724 pixels (the two shots side by side are on purpose); if you replace it with another size, change the `width` and `height` on the `<img>` in `src/resume.njk` to match |
 | Projects | The intro paragraph | `src/projects.njk`, inside `{% set mastheadLede %} … {% endset %}` | |
 | Uses | Everything | `src/uses.md` | Markdown; the intro is in the `mastheadLede` block |
 | Links | Everything | `src/links.md` | Markdown; same shape as Uses |

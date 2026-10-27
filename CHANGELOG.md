@@ -44,8 +44,7 @@ Format:
   keeps the link colour and puts the amber in the underline (amber text on
   parchment is 3.3:1); the nav marks Projects current on case-study pages;
   footer links no longer open new tabs; the external-link arrow is hidden
-  from screen readers; images declare their size so text does not jump; the
-  résumé headshot file is cropped to one photo (it was a side-by-side pair);
+  from screen readers; images declare their size so text does not jump;
   the switch border is clearer and it stays right-aligned on phones.
 
 ## 2026-10-27 — "A use case has a life", in the case-study room's look
