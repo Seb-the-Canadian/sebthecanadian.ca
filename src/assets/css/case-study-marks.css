@@ -1,5 +1,4 @@
 /* case-study-marks.css — pen + pixel for case studies (docs/pen-and-pixel.md),
-   the brand layer (docs/brand.md: heading tier, card look, amber icons),
    plus the no-JavaScript and phone fixes. Loaded LAST, after the story's own
    stylesheet, so these win over equally specific story rules. */
 
@@ -48,33 +47,6 @@
 /* Hero chart: two series, told apart by line style and direct labels. */
 .story .tl .tick{ stroke-dasharray: 6 4; }
 
-/* ── Brand layer (docs/brand.md) ──────────────────────────────────────────── */
-/* The site's heading tier: Fraunces at 600, H2s in moss, the site's fluid sizes. */
-.story h1, .story h2, .story h3{ letter-spacing: -0.011em; line-height: var(--leading-tight); }
-.story .hero h1{ font-size: clamp(2rem, 1.5rem + 2.4vw, 2.9rem); font-weight: 600; }
-.story .lens-intro h2, .story .outcome h2, .story .claims h2{ font-size: clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem); font-weight: 600; color: var(--moss); }
-.story .step h3, .story .notice-lede h3, .story .oc-grid h3, .story .credit h3{ font-size: clamp(1.12rem, 1.03rem + 0.45vw, 1.35rem); font-weight: 600; }
-/* A chapter's eyebrow stays a quiet label above its H2, not lede-sized. */
-.story .lens-intro .eyebrow{ font-size: var(--s-1); }
-/* One card look: figure panels wear the site's card (components.css .card). */
-.story .panel{ border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-lg);
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
-  box-shadow: var(--card-shadow); }
-/* Amber means a state: always an icon beside the word. */
-.story .chip.flag::before, .story .ghost::before, .story .c-ghost::before, .story .pill.rev::before,
-.story .rc-id span::before, .story .rlink span::before, .story .lvlbar span.maybe::before,
-.story .seg input[value="unsure"]:checked+label::before, .story .halfkey::before, .story .srows .half::before{
-  content: ""; display: inline-block; flex: none; width: .5em; height: .5em; margin-right: .45em;
-  vertical-align: .08em; background: var(--held); transform: rotate(45deg); }
-.story .rc-id span{ white-space: nowrap; }
-/* front-door's trail gap draws its lines with both pseudo-elements: the icon rides on the left line's end. */
-.story .tttrail .gap::before{ border-top: 0; height: 10px;
-  background:
-    linear-gradient(to bottom right, transparent 50%, var(--held) 0) right 5px top 0 / 5px 5px no-repeat,
-    linear-gradient(to bottom left, transparent 50%, var(--held) 0) right 0 top 0 / 5px 5px no-repeat,
-    linear-gradient(to top right, transparent 50%, var(--held) 0) right 5px top 5px / 5px 5px no-repeat,
-    linear-gradient(to top left, transparent 50%, var(--held) 0) right 0 top 5px / 5px 5px no-repeat,
-    repeating-linear-gradient(90deg, var(--held) 0 4px, transparent 4px 8px) left center / calc(100% - 15px) 1.5px no-repeat; }
 /* Meaning by mark, not colour: a strip at the box's edge, beside the word that names it. */
 .story .gate .cost .c-self, .story .gate .cost .c-exp, .story .gate .cost .c-full{
   --mkw: 7px; color: var(--fg); border: 1px solid var(--mark); padding-left: calc(var(--mkw) + 6px);

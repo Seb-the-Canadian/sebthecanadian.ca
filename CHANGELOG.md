@@ -4,22 +4,22 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
-## 2026-10-27 — Case studies on the site's brand
+## 2026-10-27 — "A use case has a life", in the case-study room's look
+
+### Added
+- **Second case study, stamped:** "A use case has a life"
+  (`/projects/use-case-life/`), self-test answered by Seb, all "no". It uses
+  the same look as the live front-door page: heavy Fraunces headline, moss
+  chapter H2s at display size, flat framed figure panels.
 
 ### Changed
-- **Case studies follow `docs/brand.md`** (both pages, through the converter's
-  brand layer in `case-study-marks.css`):
-  - Headings use the site's tier: Fraunces at 600, H2s in moss at the site's
-    fluid size, H3s below them. Chapter eyebrows stay label-sized.
-  - Figure panels wear the one card look: top-lit gradient, hairline border
-    and the seasonal under-glow.
-  - Every amber state carries an icon beside its word.
-  - Meaning rides on marks, not colour, in the self-assessment gate (solid
-    for self-assessment, hatch for expert review), the said/worked-out
-    columns (solid and dither) and the architecture status chips (solid,
-    ruled, dashed). Numbered step markers are ink, with moss on the step
-    you're reading.
-- "A use case has a life" is **stamped**: self-test answered by Seb, all "no".
+- **Pen + pixel in this story's figures:** the self-assessment gate (solid for
+  self-assessment, hatch for expert review), the said/worked-out columns
+  (solid and dither) and the architecture status chips (solid, ruled, dashed)
+  carry meaning by mark instead of colour. Numbered step markers are ink, with
+  moss on the step you're reading.
+- `docs/brand.md` records the case-study room's own composition (heading scale
+  and flat panels), with the live front-door page as the reference.
 
 ## 2026-10-26 — A lavender sprig for light mode
 
