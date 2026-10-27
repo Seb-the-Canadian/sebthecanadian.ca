@@ -4,13 +4,23 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
-## 2026-10-26 — Case studies on the home page
+## 2026-10-26 — The home page leads with the work (with Design v4)
 
 ### Changed
-- The home page's Projects index now lists case studies first (a
-  `study/` row per page tagged `case-study`, marked "practice piece"),
-  so the front page leads to them. Before, they were reachable only from the
-  Projects page.
+- **Work first.** The home page now runs hero, lede, Projects, Now, the
+  garden, Elsewhere. Projects (case studies, then projects) moves above Now
+  and the garden, so the writing, which lives off-site, follows the work.
+- **Case studies on the home page.** The Projects index lists them first: a
+  `study/` row per page tagged `case-study`, marked "practice piece". Before,
+  they were reachable only from the Projects page.
+- **Design v4 (from #22).** The home page opens with an arrival hero (the
+  mark, the name in Fraunces as the `h1`, one line in the display face) in
+  place of the mono identity line; every h-card microformat is kept. About is
+  narrative-first, with a framed hand-off to `/resume/` instead of the
+  embedded CV.
+- **The mark is inline** (`mark.njk`) in the hero, so it follows the site's
+  theme toggle; an `<img>` of `favicon.svg` could only see the system
+  setting and would have shown the violet sprig on charcoal.
 
 ## 2026-10-26 — A lavender sprig for light mode
 

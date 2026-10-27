@@ -5,7 +5,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
 ---
 <div class="h-card">
   <header class="home-hero">
-    <img class="home-hero__mark" src="/assets/img/favicon.svg" alt="" width="44" height="44" />
+    {% set markClass = "home-hero__mark" %}{% include "mark.njk" %}
     <h1 class="home-hero__name p-name">Seb Lathangue</h1>
     <p class="home-hero__line">Translation is the job &mdash; getting complex systems and the people who use them to understand each&nbsp;other.</p>
     <p class="home-hero__meta">
@@ -22,6 +22,37 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
   <p class="home-lede p-note">I work on knowledge architecture and data governance inside organizations &mdash; and run <a href="https://civcitdev.ca">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
 
   <hr class="home-rule" />
+
+  {#- Order (2026-10-26): work first (case studies, then projects), then Now,
+      then the garden. Writing lives off-site and follows the work. -#}
+
+  <section class="home-block" aria-label="Projects">
+    <h2 class="eyebrow">Projects</h2>
+    <div class="index-table">
+      {#- Case studies (pages tagged case-study) lead: they live on this site. -#}
+      {%- for study in collections["case-study"] %}
+      <div class="index-row">
+        <span class="index-row__label">study/</span>
+        <span class="index-row__desc">
+          <a href="{{ study.url }}">{{ study.data.title }}</a>
+        </span>
+        <span class="index-row__meta">practice piece</span>
+      </div>
+      {%- endfor %}
+      {%- for project in projects %}
+        {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
+      <div class="index-row">
+        <span class="index-row__label">project/</span>
+        <span class="index-row__desc">
+          <a href="{{ project.url }}">{{ project.name }}</a>
+          <span class="index-pill index-pill--active">active</span>
+        </span>
+        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+      </div>
+        {%- endif %}
+      {%- endfor %}
+    </div>
+  </section>
 
   <section id="now" class="home-block home-now panel--alt" aria-label="Now">
     <h2 class="eyebrow">Now</h2>
@@ -63,34 +94,6 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </div>
   </section>
   {%- endif %}
-
-  <section class="home-block" aria-label="Projects">
-    <h2 class="eyebrow">Projects</h2>
-    <div class="index-table">
-      {#- Case studies (pages tagged case-study) lead: they live on this site. -#}
-      {%- for study in collections["case-study"] %}
-      <div class="index-row">
-        <span class="index-row__label">study/</span>
-        <span class="index-row__desc">
-          <a href="{{ study.url }}">{{ study.data.title }}</a>
-        </span>
-        <span class="index-row__meta">practice piece</span>
-      </div>
-      {%- endfor %}
-      {%- for project in projects %}
-        {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
-      <div class="index-row">
-        <span class="index-row__label">project/</span>
-        <span class="index-row__desc">
-          <a href="{{ project.url }}">{{ project.name }}</a>
-          <span class="index-pill index-pill--active">active</span>
-        </span>
-        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
-      </div>
-        {%- endif %}
-      {%- endfor %}
-    </div>
-  </section>
 
   <section class="home-block" aria-label="Elsewhere">
     <h2 class="eyebrow">Elsewhere</h2>
