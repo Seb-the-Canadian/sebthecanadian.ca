@@ -12,6 +12,7 @@
 .story .tl .conn{stroke:var(--verified);stroke-width:1.2;stroke-dasharray:3 3}
 .story .tl .nolink{stroke:var(--held);stroke-width:1.5;stroke-dasharray:4 4;fill:none}
 .story .tl .gapt{fill:var(--held);font-size:10.5px}
+.story .tl .amk{fill:var(--held)}
 .story .gate{display:grid;grid-template-columns:96px minmax(0,1fr);gap:5px 10px;align-items:center;font-size:.8rem}
 .story .gate .cost{display:flex;gap:3px;min-width:0}
 .story .gate .cost span{font-family:var(--mono);font-size:.68rem;padding:3px 7px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

@@ -4,6 +4,23 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-27 — Case studies on the site's brand
+
+### Changed
+- **Case studies follow `docs/brand.md`** (both pages, through the converter's
+  brand layer in `case-study-marks.css`):
+  - Headings use the site's tier: Fraunces at 600, H2s in moss at the site's
+    fluid size, H3s below them. Chapter eyebrows stay label-sized.
+  - Figure panels wear the one card look: top-lit gradient, hairline border
+    and the seasonal under-glow.
+  - Every amber state carries an icon beside its word.
+  - Meaning rides on marks, not colour, in the self-assessment gate (solid
+    for self-assessment, hatch for expert review), the said/worked-out
+    columns (solid and dither) and the architecture status chips (solid,
+    ruled, dashed). Numbered step markers are ink, with moss on the step
+    you're reading.
+- "A use case has a life" is **stamped**: self-test answered by Seb, all "no".
+
 ## 2026-10-26 — Pen + pixel, and the first case study
 
 ### Added

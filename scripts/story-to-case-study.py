@@ -160,14 +160,57 @@ MARKS = """
 .story .c-ghost{ color: var(--fg) !important; }
 .story .review.none{ color: var(--muted); }
 .story .seg input[value="unsure"]:checked+label{ background: var(--held-soft); color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--held); }
-.story .gnum{ background: var(--held-soft); color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--held); }
+/* Numbered markers name a step, not a state: ink rings, moss on the step you're reading. */
+.story .gnum{ background: var(--bg); color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--fg); }
 .story .tl .bandt, .story .gm text{ fill: var(--fg); }
+.story .gm circle{ fill: var(--st-surface); stroke: var(--fg); }
+.story .gl-arc{ stroke: var(--muted); }
 .story .gapline.g1 .m1 circle, .story .gapline.g2 .m2 circle, .story .gapline.g3 .m3 circle,
-.story .gapline.g4 .m4 circle, .story .gapline.g0 .gm circle{ fill: var(--held-soft); stroke-width: 2.5; }
+.story .gapline.g4 .m4 circle, .story .gapline.g0 .gm circle{ fill: var(--recorded); stroke: var(--recorded); }
 .story .gapline.g1 .m1 text, .story .gapline.g2 .m2 text, .story .gapline.g3 .m3 text,
-.story .gapline.g4 .m4 text, .story .gapline.g0 .gm text{ fill: var(--fg); }
+.story .gapline.g4 .m4 text, .story .gapline.g0 .gm text{ fill: var(--bg); }
 /* Hero chart: two series, told apart by line style and direct labels. */
 .story .tl .tick{ stroke-dasharray: 6 4; }
+
+/* ── Brand layer (docs/brand.md) ──────────────────────────────────────────── */
+/* The site's heading tier: Fraunces at 600, H2s in moss, the site's fluid sizes. */
+.story h1, .story h2, .story h3{ letter-spacing: -0.011em; line-height: var(--leading-tight); }
+.story .hero h1{ font-size: clamp(2rem, 1.5rem + 2.4vw, 2.9rem); font-weight: 600; }
+.story .lens-intro h2, .story .outcome h2, .story .claims h2{ font-size: clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem); font-weight: 600; color: var(--moss); }
+.story .step h3, .story .notice-lede h3, .story .oc-grid h3, .story .credit h3{ font-size: clamp(1.12rem, 1.03rem + 0.45vw, 1.35rem); font-weight: 600; }
+/* A chapter's eyebrow stays a quiet label above its H2, not lede-sized. */
+.story .lens-intro .eyebrow{ font-size: var(--s-1); }
+/* One card look: figure panels wear the site's card (components.css .card). */
+.story .panel{ border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--space-lg);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  box-shadow: var(--card-shadow); }
+/* Amber means a state: always an icon beside the word. */
+.story .chip.flag::before, .story .ghost::before, .story .c-ghost::before, .story .pill.rev::before,
+.story .rc-id span::before, .story .rlink span::before, .story .lvlbar span.maybe::before,
+.story .seg input[value="unsure"]:checked+label::before, .story .halfkey::before, .story .srows .half::before{
+  content: ""; display: inline-block; flex: none; width: .5em; height: .5em; margin-right: .45em;
+  vertical-align: .08em; background: var(--held); transform: rotate(45deg); }
+.story .rc-id span{ white-space: nowrap; }
+/* front-door's trail gap draws its lines with both pseudo-elements: the icon rides on the left line's end. */
+.story .tttrail .gap::before{ border-top: 0; height: 10px;
+  background:
+    linear-gradient(to bottom right, transparent 50%, var(--held) 0) right 5px top 0 / 5px 5px no-repeat,
+    linear-gradient(to bottom left, transparent 50%, var(--held) 0) right 0 top 0 / 5px 5px no-repeat,
+    linear-gradient(to top right, transparent 50%, var(--held) 0) right 5px top 5px / 5px 5px no-repeat,
+    linear-gradient(to top left, transparent 50%, var(--held) 0) right 0 top 5px / 5px 5px no-repeat,
+    repeating-linear-gradient(90deg, var(--held) 0 4px, transparent 4px 8px) left center / calc(100% - 15px) 1.5px no-repeat; }
+/* Meaning by mark, not colour: a strip at the box's edge, beside the word that names it. */
+.story .gate .cost .c-self, .story .gate .cost .c-exp, .story .gate .cost .c-full{
+  --mkw: 7px; color: var(--fg); border: 1px solid var(--mark); padding-left: calc(var(--mkw) + 6px);
+  background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-hatch); }
+.story .gate .cost .c-self{ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-solid); }
+.story .result .col{ --mkw: 8px; padding-left: calc(var(--mkw) + 10px);
+  background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-dither); }
+.story .result .col.stated{ background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-solid); }
+.story .cstat span{ --mkw: 6px; color: var(--fg); border: 1px solid var(--mark); padding-left: calc(var(--mkw) + 6px);
+  background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-ruled); }
+.story .cstat span.v{ color: var(--fg); background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-solid); }
+.story .cstat span.p{ border-style: dashed; padding-left: 7px; background: var(--bg); }
 
 /* ── Without JavaScript: show every figure in its finished state ────────── */
 html:not(.story-js) .story .dim{ opacity: 1; }
@@ -194,6 +237,7 @@ html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 
 shared = ALIASES + "\n" + scope_rules(rename_vars(drop_colour_roots(substrate_css)))
 marks = ("/* case-study-marks.css — pen + pixel for case studies (docs/pen-and-pixel.md),\n"
+         "   the brand layer (docs/brand.md: heading tier, card look, amber icons),\n"
          "   plus the no-JavaScript and phone fixes. Loaded LAST, after the story's own\n"
          "   stylesheet, so these win over equally specific story rules. */\n" + MARKS)
 shared = ("/* case-study.css — the shared stylesheet for case studies (a Portfolio Pudding\n"

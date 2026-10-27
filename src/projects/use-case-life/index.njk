@@ -15,17 +15,17 @@ clearance:
     - "Wrenfield College, the organization"
     - "its principles, questions, rules, review paths and field names"
     - "every person, figure and date"
-  selfTest:            # answered by Seb; each must be "no" before stamping
-    unethical:         # could it be seen as unethical, dishonest or discriminatory?
-    culture:           # could it conflict with my employer's culture or code?
-    reputation:        # could it harm my employer's reputation?
-    publicHarm:        # could it harm me or my employer if made public?
-    consequences:      # could publishing it lead to consequences?
-    negativeImpact:    # could it hurt my employer, its customers, colleagues or community?
-    policy:            # could it breach a policy or the code?
-    recognizable:      # would a colleague learn a real system, decision, defect, person or event from it?
-  reviewed:            # set by --stamp
-  contentHash:         # set by --stamp
+  selfTest:            # answered by Seb, 2026-10-27: all "no"
+    unethical: "no"    # could it be seen as unethical, dishonest or discriminatory?
+    culture: "no"      # could it conflict with my employer's culture or code?
+    reputation: "no"   # could it harm my employer's reputation?
+    publicHarm: "no"   # could it harm me or my employer if made public?
+    consequences: "no" # could publishing it lead to consequences?
+    negativeImpact: "no" # could it hurt my employer, its customers, colleagues or community?
+    policy: "no"       # could it breach a policy or the code?
+    recognizable: "no" # would a colleague learn a real system, decision, defect, person or event from it?
+  reviewed: 2026-10-27
+  contentHash: 9ac278f7b0252a8f
 ---
 {% raw %}
 <header class="wrap hero">
@@ -50,7 +50,7 @@ clearance:
         <path class="uc" d="M24 180 C110 158 228 110 336 44"/>
         <path class="tick" d="M24 180 L336 156" style="fill:none"/>
         <text class="ink" x="330" y="34" text-anchor="end">requests</text>
-        <text class="bandt" x="326" y="118" text-anchor="end">backlog</text>
+        <path class="amk" d="M272 108 l5 5 l-5 5 l-5 -5 z" aria-hidden="true"/><text class="bandt" x="326" y="118" text-anchor="end">backlog</text>
         <text class="ink" x="330" y="148" text-anchor="end">one team's pace</text>
         <text x="340" y="198" text-anchor="end" class="lane">time →</text>
       </svg>
@@ -373,7 +373,7 @@ clearance:
           <g class="gm m1"><circle cx="228" cy="11" r="9"/><text x="228" y="15" text-anchor="middle">1</text></g>
         </svg>
         <div class="gapcard dim" data-on="0,1">
-          <h4><span class="gnum">1</span><span class="chip flag">identity</span>Same use case, new reference</h4>
+          <h4><span class="gnum">1</span><span class="chip">identity</span>Same use case, new reference</h4>
           <div class="mini reassess dim done" data-on="0">
             <div class="rgrid">
               <div class="rcard"><p class="rc-k">Your notice</p><p class="rc-ref" data-ra-ref="">REF-4478</p><p class="rc-sum" data-ra-sum="">Light review · privacy follow-up</p><p class="rc-id">use-case ID <span>none</span></p></div>
@@ -389,7 +389,7 @@ clearance:
           </div>
         </div>
         <div class="gapcard dim" data-on="0,1">
-          <h4><span class="gnum">2</span><span class="chip flag">decision</span>Recommendation, then decision</h4>
+          <h4><span class="gnum">2</span><span class="chip">decision</span>Recommendation, then decision</h4>
           <div class="mini flowline dim" data-on="1">
             <span class="chip">recommendation computed</span><span class="arrowtxt">→</span><span class="chip ink">reviewer decides</span><span class="arrowtxt">→</span><span class="chip blue">both kept with the use case</span>
           </div>
