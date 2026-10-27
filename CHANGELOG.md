@@ -6,6 +6,15 @@ Format:
 
 ## 2026-10-27 — Keyboard, theme switch, and the garden links come down
 
+### Added
+- **`docs/updating-copy.md`** — a step-by-step guide to changing the words
+  on the site by hand: where each piece of copy lives, editing, previewing
+  on a Mac, publishing, how GitHub Pages deploys and how to check it went
+  live. Linked from the README's runbook section.
+- **`docs/ux-audit-2026-10-27.md`** — the UI/UX audit behind this entry:
+  findings with severity, the Safari keyboard diagnosis, the decisions
+  taken, and what was left for later.
+
 ### Changed
 - **The garden is unlinked for now.** While the writing is relaunched, the
   home page's garden block, the Garden entries under Elsewhere and in the
