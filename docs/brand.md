@@ -58,7 +58,9 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 ## Identity marks
 
 - **`S·L` stamp** at the start of every page's title block (`masthead.njk`),
-  above an eyebrow and the `h1`.
+  above an eyebrow and the `h1`. The home page is the exception: it opens
+  with an arrival hero instead (the mark, the name in Fraunces as the `h1`,
+  one line in the display face).
 - **Moss H2s** site-wide (1.35rem, 600, `--moss`). The résumé keeps its own
   ruled section labels; case studies keep their own heading scale (Rooms,
   below).
@@ -66,10 +68,13 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 - **The mark is duotone, like the accent.** A lavender sprig in light mode
   (three spikes: violet `#5b3fa3` florets, lilac `#8a52cc` highlights,
   forest-green `#3d6b34` stems) and the pixel conifer in fern `#6f9d52` in
-  dark. Both sit on the same 12-cell pixel grid. `favicon.svg` switches with
-  the browser's colour scheme; images that serve both modes (the PNG
-  favicon, the touch icon, the OG cards) use the sprig. All of them come from
-  `scripts/generate-og.py`; regenerate rather than edit by hand.
+  dark. Both sit on the same 12-cell pixel grid. On a page the mark is drawn
+  inline (`mark.njk`), so it follows the site's theme toggle; never as
+  `<img src="favicon.svg">`, which can only see the system setting.
+  `favicon.svg` switches with the browser's colour scheme; images that serve
+  both modes (the PNG favicon, the touch icon, the OG cards) use the sprig.
+  The PNGs come from `scripts/generate-og.py`; regenerate rather than edit by
+  hand.
 - **Pixel dialect = system scale.** The mark, the 404 page, the About
   portrait, one pixel divider under the home lede. Pixel is an accent, never
   a texture.
@@ -86,6 +91,9 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   dark hero blocks.
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
+- **The home page leads with the work**: hero, lede, then Projects (case
+  studies first, then projects), then Now, then the garden, then Elsewhere.
+  Writing lives off-site and follows the work.
 
 ## Figures and data
 
