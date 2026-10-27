@@ -62,7 +62,8 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   with an arrival hero instead (the mark, the name in Fraunces as the `h1`,
   one line in the display face).
 - **Moss H2s** site-wide (1.35rem, 600, `--moss`). The résumé keeps its own
-  ruled section labels.
+  ruled section labels; case studies keep their own heading scale (Rooms,
+  below).
 - **Footer wordmark**: "S·L © Seb Lathangue · seb the canadian", in mono.
 - **The mark is duotone, like the accent.** A lavender sprig in light mode
   (three spikes: violet `#5b3fa3` florets, lilac `#8a52cc` highlights,
@@ -122,8 +123,14 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
 ## Rooms with their own rules
 
 - **Case studies** (`/projects/<slug>/`): Portfolio Pudding stories inside the
-  site, scoped to `.story`, on these tokens and fonts. How to bring one in and
-  publish it: `docs/portfolio-clearance.md`.
+  site, scoped to `.story`, on these tokens and fonts. Their composition is
+  their own, and the live front-door page is the reference: a heavy Fraunces
+  headline (800), chapter H2s in moss at display size (about 2.3rem, 700),
+  and figures in flat framed panels on `--bg-alt`, not the glowing card.
+  Figures follow pen + pixel like everywhere else. Bring a story in with the
+  converter, which keeps this look; never restyle the room toward the
+  site-wide heading tier or card. How to bring one in and publish it:
+  `docs/portfolio-clearance.md`.
 - **The garden** lives off-site (cognitivearchitecture.ca); on this site it is
   a portal with one consistent label.
 
