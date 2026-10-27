@@ -19,6 +19,9 @@
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {%- if noindex %}
+  <meta name="robots" content="noindex" />
+  {%- endif %}
   {% include "json-ld.njk" %}
 
   {#- Open Graph — courtesy metadata for humans sharing links -#}

@@ -4,6 +4,19 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-27 — Keyboard, theme switch, and the garden links come down
+
+### Changed
+- **The garden is unlinked for now.** While the writing is relaunched, the
+  home page's garden block, the Garden entries under Elsewhere and in the
+  footer, and the garden sentences on About, Uses and in the Now text are
+  gone. The Writing section leaves the nav, the `g w` chord, the keyboard
+  page, the 404 page and `llms.txt` with it. `/writing/` and its pages stay
+  at their addresses, marked `noindex` and left out of the sitemap until
+  the relaunch: `noindex: true` in each page's front matter, one line to
+  delete per page to bring them back. The garden fetch, the feed, the
+  résumé and the Cognitive Architecture project card are unchanged.
+
 ## 2026-10-26 — The home page leads with the work (with Design v4)
 
 ### Changed

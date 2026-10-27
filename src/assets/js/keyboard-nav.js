@@ -2,9 +2,8 @@
  * Keyboard Navigation — Data Druid shortcuts
  *
  * Chord navigation (g then key):
- *   g h → Home        g w → Writing
- *   g p → Projects    g r → Resume
- *   g n → Now
+ *   g h → Home        g p → Projects
+ *   g r → Resume      g n → Now
  *
  * ? → open shortcut help overlay
  * Esc → close overlay
@@ -17,7 +16,6 @@
 
   const routes = {
     h: "/",
-    w: "/writing/",
     p: "/projects/",
     r: "/resume/",
     n: "/#now",
@@ -25,7 +23,6 @@
 
   const chordItems = [
     { chord: "g → h", dest: "Home" },
-    { chord: "g → w", dest: "Writing" },
     { chord: "g → p", dest: "Projects" },
     { chord: "g → r", dest: "Resume" },
     { chord: "g → n", dest: "Now" },

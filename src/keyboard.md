@@ -14,7 +14,6 @@ The site supports vim-style chord shortcuts when JavaScript is enabled. Press th
 | Chord | Destination |
 |------:|:------------|
 | `g` &rarr; `h` | [Home](/) |
-| `g` &rarr; `w` | [Writing](/writing/) |
 | `g` &rarr; `p` | [Projects](/projects/) |
 | `g` &rarr; `r` | [Resume](/resume/) |
 | `g` &rarr; `n` | [Now](/#now) |

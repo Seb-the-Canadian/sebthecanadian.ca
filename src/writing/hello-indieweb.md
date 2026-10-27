@@ -7,6 +7,7 @@ tags:
   - indieweb
   - meta
 syndicated: false
+noindex: true
 ---
 
 First post on sebthecanadian.ca as I start adding IndieWeb conventions.
