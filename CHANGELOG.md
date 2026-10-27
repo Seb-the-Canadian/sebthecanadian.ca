@@ -4,13 +4,13 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
-## 2026-10-27 — "The sign-up was the demo", awaiting its self-test
+## 2026-10-27 — "The sign-up was the demo", stamped
 
 ### Added
-- **Third case study, not yet stamped:** "The sign-up was the demo"
+- **Third case study, stamped:** "The sign-up was the demo"
   (`/projects/sign-up/`), a practice piece on one way to start citizen
-  development, shown through the invented Brindle Lake Public Library. The
-  build gate stops it until Seb answers the self-test.
+  development, shown through the invented Brindle Lake Public Library.
+  Self-test answered by Seb, all "no".
 
 ### Changed
 - **Pen + pixel in this story's figures:** risk tags keep amber on the border
