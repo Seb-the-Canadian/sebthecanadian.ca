@@ -1,0 +1,576 @@
+---
+layout: case-study.njk
+title: The sign-up was the demo
+description: "A practice piece: one way I've found to start citizen development, by making the sign-up the first automation people use, shown through an invented library system."
+tags: case-study
+pageStyles:
+  - /assets/css/case-study.css
+  - /assets/css/case-studies/sign-up.css
+  - /assets/css/case-study-marks.css
+clearance:
+  tier: open
+  organization: "Brindle Lake Public Library"
+  sector: "public libraries"
+  invented:
+    - "Brindle Lake Public Library, the organization"
+    - "its staff, schedule, sessions and page names"
+    - "the risks and their owners"
+    - "the sign-up simulation and its schedule change"
+  selfTest:            # his answers; every one must be "no"
+    unethical:         # could it be seen as unethical, dishonest or discriminatory?
+    culture:           # could it conflict with my employer's culture or code?
+    reputation:        # could it harm my employer's reputation?
+    publicHarm:        # could it harm me or my employer if made public?
+    consequences:      # could publishing it lead to consequences?
+    negativeImpact:    # could it hurt my employer, its customers, colleagues or community?
+    policy:            # could it breach a policy or the code?
+    recognizable:      # would a colleague learn a real system, decision, defect, person or event from it?
+  reviewed:            # set by --stamp
+  contentHash:         # set by --stamp
+---
+{% raw %}
+<header class="wrap hero">
+  <div>
+    <p class="eyebrow"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span> Practice piece · Citizen development</p>
+    <h1 style="margin-top:14px">If you registered, you had <em>already used an automation</em></h1>
+    <p class="dek">One way I've found to start citizen development<span class="gloss" data-aud="gen"> (staff outside IT building their own apps and automations with no-code tools)</span>: make the sign-up the first automation people use, and organize support around what they are trying to do. Shown through an invented library system.</p>
+    <p class="tldr" data-aud="gen"><b>In short</b>Citizen development means people outside IT building their own tools. One approach that has worked for me: make the sign-up form for the first session an automation, then show people how it worked, so they can build their own.</p>
+    <div class="aud-row"><span>Reading as</span><div class="aud-toggle" role="group" aria-label="Choose how this story is written"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></div>
+    <dl class="meta">
+      <dt>Method</dt><dd>One way to start citizen development: let people use the pattern before they learn it</dd>
+      <dt>Example</dt><dd>Brindle Lake Public Library, an invented library system</dd>
+      <dt>Tools</dt><dd>A form tool, a no-code automation tool, an intranet, team chat, an AI assistant</dd>
+      <dt>Practised in</dt><dd>Enterprise training and enablement work</dd>
+      <dt>Invented</dt><dd>The library, its staff, schedule, sessions and risks. None of it describes a real program.</dd>
+    </dl>
+  </div>
+  <figure class="hero-fig">
+    <div class="panel">
+      <p class="lab">Try the sign-up · a simulation in your browser · <span class="fict">fictional schedule</span></p>
+      <form class="try-row" id="try-form" autocomplete="off">
+        <label for="try-name" class="sr">Your first name</label>
+        <input id="try-name" type="text" placeholder="Your first name (optional)" maxlength="40" autocomplete="off">
+        <button id="try-go" class="btn" type="submit">Register for a session</button>
+      </form>
+      <p class="try-hint">Registering runs the four steps a sign-up automation runs. Nothing you type leaves this page.</p>
+      <ol class="try-log" id="try-log">
+        <li data-k="0"><span class="tick" aria-hidden="true">○</span><span>Take the form response<span class="res"></span></span></li>
+        <li data-k="1"><span class="tick" aria-hidden="true">○</span><span>Check the calendar<span class="res"></span></span></li>
+        <li data-k="2"><span class="tick" aria-hidden="true">○</span><span>Route to a session<span class="res"></span></span></li>
+        <li data-k="3"><span class="tick" aria-hidden="true">○</span><span>Send a personalized confirmation<span class="res"></span></span></li>
+      </ol>
+      <div class="try-out" id="try-out">
+        <p class="try-final" id="try-final"></p>
+        <p class="try-after">This is a stand-in built for this page. In this approach, people run these four steps through a working automation before anyone explains what one is. <a href="#s-show-1">See where each word came from ↓</a></p>
+      </div>
+      <p class="sr" role="status" id="try-status"></p>
+    </div>
+    <p class="caption">In practice the sign-up is a form feeding a no-code automation. The first chapter shows what runs behind it.</p>
+  </figure>
+</header>
+
+<nav class="secnav" aria-label="Sections">
+  <ul>
+    <li><a href="#show">Show, don't tell</a></li>
+    <li><a href="#front-door">The front door</a></li>
+    <li><a href="#system">The system</a></li>
+    <li><a href="#collaboration">Human + AI</a></li>
+    <li><a href="#claims">What it can claim</a></li>
+    <li class="nav-aud"><div class="aud-toggle" role="group" aria-label="Reading as"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></li>
+  </ul>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</nav>
+
+<div class="story-main">
+<!-- SHOW, DON'T TELL -->
+<section class="wrap chapter" id="show" aria-labelledby="h-show">
+  <div class="lens-intro">
+    <p class="eyebrow">Show, don't tell</p>
+    <h2 id="h-show">The sign-up form was the first lesson</h2>
+    <p>Brindle Lake's first citizen developers use an automation before anyone explains what one is.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-show-0"><div class="step-in">
+        <p class="kicker">Registering</p>
+        <h3>An ordinary sign-up</h3>
+        <p>Staff fill in a sign-up form to join a first session. Each person gets a personalized confirmation.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-show-1"><div class="step-in">
+        <p class="kicker">Behind the form</p>
+        <h3>An automation does the work</h3>
+        <p>The flow<span class="gloss" data-aud="gen"> (a set of automated steps that runs when something happens)</span> takes each response, checks the calendar, routes the person to a session and sends the confirmation.</p>
+        <p data-aud="pro">In automation terms: a form-response trigger, a calendar lookup, a condition that picks the session, and an email action for the confirmation.</p>
+        <p class="if-reg">The panel traces your own registration. Tap any part of your confirmation to see which step wrote it.</p>
+        <p class="if-unreg">The panel shows an example. <button type="button" class="linkbtn" data-goto-try>Register at the top</button> and it traces your own sign-up instead.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-show-2"><div class="step-in">
+        <p class="kicker">Keeping it accurate</p>
+        <h3>When the schedule changes, so does the flow</h3>
+        <p>Whenever a session moves, the flow gets updated too, so each person still lands in the right one.</p>
+        <p class="if-reg">In the panel, your session moves, in a fictional schedule change, and the flow re-routes you.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-show-3"><div class="step-in">
+        <p class="kicker">The reveal</p>
+        <h3>The mechanism, shown in the session</h3>
+        <p>The session opens by taking the sign-up apart and showing how it worked.</p>
+        <p>The reveal comes first, before any slides, because everyone in the room has already used it.</p>
+      </div></div>
+      <div class="step" data-step="4" id="s-show-4"><div class="step-in">
+        <p class="kicker">The invitation</p>
+        <h3>Find the same pattern in your own job</h3>
+        <p>People see the pattern working, then see how it works. The last step is to look for the same opportunity in their own work.</p>
+        <p data-aud="gen">This is the moment someone goes from using a tool to building with it.</p>
+        <p data-aud="pro">In citizen development terms, this is where a user becomes a maker: someone who builds for their own team.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="flow">
+          <p class="lab trace-head"><span data-bind="head">A registration, step by step</span></p>
+          <div class="stage dim" data-on="0,1,3,4"><span class="who you">You</span><span class="t">Fill in the sign-up form<small class="trace" data-bind="t1"></small></span></div>
+          <div class="stage veil" data-on="1,2,3,4" data-row="name" tabindex="0" role="button" aria-label="Take the form response: show the words this step wrote"><span class="who flow">Flow</span><span class="t">Take the form response<small class="trace" data-bind="t2"></small></span></div>
+          <div class="stage veil has-tag" data-on="1,2,3,4" data-hl="2" data-row="slot" tabindex="0" role="button" aria-label="Check the calendar: show the words this step wrote"><span class="who flow">Flow</span><span class="t">Check the calendar<small class="trace" data-bind="t3"></small></span><span class="upd tag" data-on="2">updated</span></div>
+          <div class="stage veil has-tag" data-on="1,2,3,4" data-hl="2" data-row="slot" tabindex="0" role="button" aria-label="Route to a session: show the words this step wrote"><span class="who flow">Flow</span><span class="t">Route to a session<small class="trace" data-bind="t4"></small></span><span class="upd tag" data-on="2">updated</span></div>
+          <div class="stage veil" data-on="1,2,3,4" data-row="greet" tabindex="0" role="button" aria-label="Send a personalized confirmation: show the words this step wrote"><span class="who flow">Flow</span><span class="t">Send a personalized confirmation<small class="trace" data-bind="t5"></small></span></div>
+          <div class="stage dim" data-on="0,1,3,4"><span class="who you">You</span><span class="t">Get your confirmation<small class="trace" data-bind="t6"></small></span></div>
+        </div>
+        <div class="conf tag" data-on="1,2">
+          <p class="lab" data-bind="conflab">An example confirmation · tap a part to see where it came from</p>
+          <p class="conf-msg" data-conf></p>
+          <p class="conf-why" role="status" aria-live="polite"></p>
+          <div class="conf-foot"><span>Every word in a confirmation came from a step nobody saw. The main claims on this page are graded too: <a href="#claims">What it can claim ↓</a></span><span class="conf-prog" data-prog></span></div>
+        </div>
+        <p class="reveal tag" data-on="3,4" data-bind="reveal">Staff used it first, then saw inside.</p>
+        <div class="arc tag" data-on="4">
+          <span class="pill">Saw it working</span><span class="arrowtxt">→</span>
+          <span class="pill">Saw how it works</span><span class="arrowtxt">→</span>
+          <span class="pill strong">Find it in your own job</span>
+        </div>
+        <div class="pattern tag" data-on="4">
+          <p class="lab">The same pattern in other work · illustrative</p>
+          <div class="pex" role="group" aria-label="Choose an example">
+            <button type="button" data-ex="0" aria-pressed="true">The sign-up</button><button type="button" data-ex="1" aria-pressed="false">A leave request</button><button type="button" data-ex="2" aria-pressed="false">A supply order</button><button type="button" data-ex="3" aria-pressed="false">A room booking</button>
+          </div>
+          <ol class="pslots">
+            <li><b>Something arrives</b><span data-slot="0">a sign-up form</span></li>
+            <li><b>Check</b><span data-slot="1">the session calendar</span></li>
+            <li><b>Route</b><span data-slot="2">to an open session</span></li>
+            <li><b>Confirm</b><span data-slot="3">a personalized email</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FRONT DOOR -->
+<section class="wrap chapter" id="front-door" aria-labelledby="h-fd">
+  <div class="lens-intro">
+    <p class="eyebrow">The front door</p>
+    <h2 id="h-fd">Support organized around the next step</h2>
+    <p>In my experience, citizen developers get further when support answers what they are trying to do next.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-fd-0"><div class="step-in">
+        <p class="kicker">Starting point</p>
+        <h3>Tools without users</h3>
+        <p>Everyone on Brindle Lake's staff has a no-code automation tool in their office software. Almost nobody opens it, though branch staff have plenty of repetitive work. That gap is one place citizen development can start.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-fd-1"><div class="step-in">
+        <p class="kicker">The question</p>
+        <h3>From “where is the document?” to “what do I do next?”</h3>
+        <p>The staff intranet is organized like a filing cabinet. It helps people find files. It doesn't help them take the next step.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-fd-2"><div class="step-in">
+        <p class="kicker">The rebuild</p>
+        <h3>Four pages, each one a goal</h3>
+        <p>The rebuild swaps categories for pages named after goals: try your first flow, find a pattern, ask for help, and share what you built.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-fd-3"><div class="step-in">
+        <p class="kicker">Repository to task</p>
+        <h3>Built around the decisions people make</h3>
+        <p>The structure follows the decisions people are making. The owners' categories no longer decide where things live.</p>
+        <p data-aud="pro">In information architecture terms: task-based rather than topic-based navigation, with each page labelled by the goal a person arrives with.</p>
+      </div></div>
+      <div class="step" data-step="4" id="s-fd-4"><div class="step-in">
+        <p class="kicker">One step further</p>
+        <h3>Connect the build journey to its checks</h3>
+        <p>Each stage, from idea to launch, can point to the check it needs. A builder's one-page brief then travels with the build, so nobody writes the same story twice for each review.</p>
+        <p data-aud="gen">Citizen development needs checks too. This is one way to put them where the builder already is.</p>
+        <p data-aud="pro">This is one way to handle the governance side of citizen development: guardrails that travel with the maker, instead of gates each builder has to find on their own.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec">
+          <div class="ia">
+            <div class="ia-col dim" data-on="0,1,3">
+              <p class="lab">Before · by category</p>
+              <p class="ia-q">Where is the document?</p>
+              <div class="folders" aria-hidden="true">
+                <i class="folder" style="width:92%"></i><i class="folder" style="width:70%"></i><i class="folder" style="width:84%"></i>
+                <i class="folder" style="width:60%"></i><i class="folder" style="width:78%"></i><i class="folder" style="width:66%"></i>
+              </div>
+            </div>
+            <span class="ia-arrow dim" data-on="1,3" aria-hidden="true">→</span>
+            <div class="ia-col dim" data-on="1,2,3">
+              <p class="lab">After · by goal</p>
+              <p class="ia-q">What do I do next?</p>
+              <div class="pages">
+                <span class="page">Try your first flow</span>
+                <span class="page">Find a pattern</span>
+                <span class="page">Ask for help</span>
+                <span class="page">Share what you built</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sec journey dim" data-on="4">
+          <div class="jhead"><span class="lab">Build journey · <span class="govkey" aria-hidden="true">●</span> the check it needs</span><span class="prop">a pattern · illustrative</span></div>
+          <div class="jrow">
+            <div class="jst"><div class="bar"></div>Idea<div class="gov"></div></div>
+            <div class="jst"><div class="bar"></div>Design<div class="gov"></div></div>
+            <div class="jst"><div class="bar"></div>Build<div class="gov"></div></div>
+            <div class="jst"><div class="bar"></div>Review<div class="gov"></div></div>
+            <div class="jst"><div class="bar"></div>Launch<div class="gov"></div></div>
+          </div>
+          <div class="jnote"><span class="pill">one-page brief</span><span class="arrowtxt">→</span><span class="pill">every review</span></div>
+        </div>
+        <p class="caption">Folder bars and page names are illustrative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SYSTEM -->
+<section class="wrap chapter" id="system" aria-labelledby="h-sys">
+  <div class="lens-intro">
+    <p class="eyebrow">The system</p>
+    <h2 id="h-sys">A citizen development program, not a course</h2>
+    <p>The program runs as a loop, and each channel in it has one job.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-sys-0"><div class="step-in">
+        <p class="kicker">The loop</p>
+        <h3>Activate, learn, build, support, listen, adapt</h3>
+        <p>The program is built to cycle: what people say in one round shapes the next one.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-sys-1"><div class="step-in">
+        <p class="kicker">Start small</p>
+        <h3>A first goal you can reach</h3>
+        <p>The first round is a cohort small enough to support one person at a time. A small first target keeps early success within reach.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-sys-2"><div class="step-in">
+        <p class="kicker">One job per channel</p>
+        <h3>Guidance, community and people</h3>
+        <p>Intranet pages hold the guidance. A chat channel holds the community, for help, sharing builds and celebrating them. Weekly drop-in hours give people someone to ask.</p>
+        <p data-aud="pro">Each channel is the single home for one kind of support, so none of them has to do everything.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-sys-3"><div class="step-in">
+        <p class="kicker">Celebrate starts</p>
+        <h3>“No success is too small”</h3>
+        <p>I treat this as a design principle. It lowers the bar for a first build and makes early wins visible to everyone else.</p>
+      </div></div>
+      <div class="step" data-step="4" id="s-sys-4"><div class="step-in">
+        <p class="kicker">Before launch</p>
+        <h3>Risks named early</h3>
+        <p>I find it helps to name the risks before launch and give each one an owner. At Brindle Lake they might be branch shifts that clash with live sessions, part-time staff without access to the tool, and no agreed home for what people build<span class="gloss" data-aud="gen"> (a shared place where builds are stored and can be found)</span>.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0,1">
+          <span class="lab">The loop</span>
+          <svg class="loop" viewBox="0 0 340 214" width="100%" role="img" aria-label="A loop: activate, learn, build, support, listen, adapt, and back to activate. What people said fed the next round."></svg>
+        </div>
+        <div class="sec dim" data-on="2,3">
+          <span class="lab">Each question goes to the channel built for it · illustrative questions</span>
+          <div class="routes">
+            <span class="q">“Where do I start?”</span><i>→</i><span class="ch"><b>Intranet</b>guidance</span>
+            <span class="q">“Has anyone hit this error before?”</span><i>→</i><span class="ch"><b>Chat</b>community</span>
+            <span class="q">“Can someone look at my flow with me?”</span><i>→</i><span class="ch"><b>Drop-in</b>a person</span>
+            <span class="q tag" data-on="3">“I automated the holds list!”</span><i class="tag" data-on="3">→</i><span class="ch tag" data-on="3"><b>Chat</b>celebrated</span>
+          </div>
+        </div>
+        <div class="sec dim" data-on="4">
+          <span class="lab">Risks named before launch · invented for the example</span>
+          <div class="risk"><span class="x">risk</span><span>Shifts that clash with live sessions <span class="owned">owner named</span></span></div>
+          <div class="risk"><span class="x">risk</span><span>Part-time staff without access <span class="owned">owner named</span></span></div>
+          <div class="risk"><span class="x">risk</span><span>No agreed home for builds <span class="owned">owner named</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HUMAN + AI -->
+<section class="wrap chapter" id="collaboration" aria-labelledby="h-col">
+  <div class="lens-intro">
+    <p class="eyebrow">Human + AI</p>
+    <h2 id="h-col">AI keeps the record and helps grade the story</h2>
+    <p>In this approach, AI supports three parts: the record, the teaching and the look back.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-col-0"><div class="step-in">
+        <p class="kicker">Planning</p>
+        <h3>Meeting notes became the working record</h3>
+        <p>An AI note-taker captures the planning meetings. Once a person has checked them, those notes become the record for decisions, risks and follow-up tasks.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-col-1"><div class="step-in">
+        <p class="kicker">Teaching</p>
+        <h3>AI alongside automation</h3>
+        <p>I teach the AI assistant next to the automation tool, not as a separate course. It works as a self-paced aid people can ask while they build.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-col-2"><div class="step-in">
+        <p class="kicker">Looking back</p>
+        <h3>A look back that grades itself</h3>
+        <p>When I look back on a program, I use AI to rebuild its history from the sources. Interpretation stays separate from the source record, and anything I can't verify gets marked.</p>
+        <p>This page does the same: <a href="#claims">every claim is graded at the end ↓</a></p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel blocks">
+        <div class="blk dim" data-on="0">
+          <p class="lab">Planning record</p>
+          <div class="row"><span class="chip ai">AI meeting notes</span><span class="chip ink">checked by a person</span><span class="arrowtxt">→</span><span class="chip">decisions</span><span class="chip">risks</span><span class="chip">follow-up tasks</span></div>
+        </div>
+        <div class="blk dim" data-on="1">
+          <p class="lab">Teaching AI</p>
+          <div class="row"><span class="chip">Automation lesson</span><span class="arrowtxt">+</span><span class="chip ai">AI assistant as a self-paced aid</span></div>
+        </div>
+        <div class="blk dim" data-on="2">
+          <p class="lab">Looking back</p>
+          <div class="row"><span class="chip">source evidence</span><span class="chip ink">interpretation, kept separate</span><span class="chip flag">unverified, marked</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="wrap outcome" id="outcome" aria-labelledby="oc-h">
+  <p class="eyebrow">The approach · one way among several</p>
+  <h2 id="oc-h" style="margin-top:8px">Three moves that have worked for me</h2>
+  <div class="oc-grid">
+    <div>
+      <h3>Make the first example familiar</h3>
+      <p>Use something people have already done, like signing up, so the explanation lands on experience instead of theory.</p>
+    </div>
+    <div>
+      <h3>Name pages for goals</h3>
+      <p>Label support by the goal a person arrives with, not by the categories its owners use.</p>
+    </div>
+    <div>
+      <h3>Give each channel one job</h3>
+      <p>Guidance, community and a person to ask each get one home, so none of them has to do everything.</p>
+    </div>
+  </div>
+  <p class="reflect">In my practice, people adopt technology faster when the environment is organized around what they're trying to do, <span>and when the first example is something they've already experienced.</span></p>
+</section>
+
+<section class="wrap claims" id="claims" aria-labelledby="h-claims">
+  <p class="eyebrow">What it can claim</p>
+  <h2 id="h-claims" style="margin-top:8px">What this story can support, and what it can't yet</h2>
+  <p>I graded these myself. “Observed” means you can see it on this page. “Inferred” means my professional judgement, not tested here.</p>
+  <details class="claimsbox"><summary>Claims register · 8 claims, and how well each is supported</summary>
+  <dl class="legend">
+    <div><dt><span class="cl">observed</span></dt><dd>Visible on this page, such as the sign-up simulation.</dd></div>
+    <div><dt><span class="cl doc">document-supported</span></dt><dd>Established by a linked public source.</dd></div>
+    <div><dt><span class="cl inf">inferred</span></dt><dd>My practice: professional judgement, not tested here.</dd></div>
+    <div><dt><span class="cl unr">unresolved</span></dt><dd>Not determinable from the available record.</dd></div>
+  </dl>
+  <div class="regwrap">
+    <table class="reg">
+      <caption class="sr">Claims register</caption>
+      <thead><tr><th scope="col">Evidence</th><th scope="col">Claim</th><th scope="col">What supports it</th></tr></thead>
+      <tbody>
+        <tr data-ref="s-show-1"><td><span class="cl">observed</span></td><td>A sign-up automation runs four steps: take the response, check the calendar, route to a session, send a confirmation.</td><td>The simulation on this page.</td></tr>
+        <tr data-ref="s-show-2"><td><span class="cl">observed</span></td><td>When the schedule changes, the automation re-routes the registration.</td><td>The simulation, step three.</td></tr>
+        <tr data-ref="s-show-3"><td><span class="cl inf">inferred</span></td><td>In my experience, using an automation before it's explained helps the explanation land faster.</td><td>My practice.</td></tr>
+        <tr data-ref="s-fd-3"><td><span class="cl inf">inferred</span></td><td>In my experience, support pages named for goals help people take the next step better than category folders do.</td><td>My practice.</td></tr>
+        <tr data-ref="s-sys-2"><td><span class="cl inf">inferred</span></td><td>In my experience, giving each channel one job keeps any one channel from having to do everything.</td><td>My practice.</td></tr>
+        <tr data-ref="s-sys-3"><td><span class="cl inf">inferred</span></td><td>In my experience, celebrating first builds lowers the bar for the next person.</td><td>My practice.</td></tr>
+        <tr data-ref="s-sys-4"><td><span class="cl inf">inferred</span></td><td>In my experience, naming risks and owners before launch is cheaper than finding them after.</td><td>My practice.</td></tr>
+        <tr data-ref="outcome"><td><span class="cl inf">inferred</span></td><td>In my experience, people adopt technology faster when support is organized around their goals and the first example is one they've experienced.</td><td>My practice.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </details>
+
+  <div class="credit" id="credit">
+    <div>
+      <h3>Mine</h3>
+      <p>This approach to starting citizen development: the sign-up as the first lesson, pages named for goals, one job per channel, and a loop instead of a course.</p>
+    </div>
+    <div>
+      <h3>Invented</h3>
+      <p>Brindle Lake Public Library, its staff, schedule, sessions, page names and risks are invented to show the approach. None of it describes a real organization or program.</p>
+    </div>
+    <div class="wide">
+      <h3>AI</h3>
+      <p>AI helped me draft and check this page. I wrote the approach and graded the claims.</p>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/case-study.js"></script>
+<script>
+(function(){
+  // Fictional schedule: the first session is full, so the flow routes to the next open one.
+  // At step 2 of chapter 1 that session moves (a fictional change) and the flow re-routes.
+  const SCHED=[{t:"Tuesday, 10:00",full:true},{t:"Wednesday, 14:00"},{t:"Thursday, 11:00"}];
+  const SLOT=SCHED.find(x=>!x.full).t, MOVED="Thursday, 11:00";
+  const EXAMPLE="Sam";
+  let me=null;                      // {name} once the reader registers; nothing is stored
+  const seen=new Set();             // which parts of the confirmation the reader has traced
+
+  // ---- Chapter 1: the trace, the confirmation and the reveal, per figure (sticky or phone copy) ----
+  function stepOf(root){return +(root.dataset.n||0);}
+  function confParts(n){
+    const name=me?me.name:EXAMPLE;
+    return {name, slot:n>=2?MOVED:SLOT, old:n>=2?SLOT:null};
+  }
+  function renderRoot(root){
+    const n=stepOf(root), c=confParts(n);
+    const af=document.activeElement, refocus=(af&&root.contains(af)&&af.classList.contains("w"))?af.dataset.src:null;
+    const nm=me&&me.name;
+    const b=me?{
+      head:"Your registration, step by step",
+      t1:nm?"As "+nm:"Name left blank",
+      t2:nm?"Response from "+nm:"Response received",
+      t3:n>=2?SLOT+" moved · fictional":"Tuesday is full; "+SLOT+" is open",
+      t4:n>=2?"Re-routed to "+MOVED:"Routed to "+SLOT,
+      t5:n>=2?"Updated confirmation sent":"Confirmation sent",
+      t6:"That was yours."
+    }:{head:"A registration, step by step",t1:"",t2:"",t3:"",t4:"",t5:"",t6:""};
+    b.conflab=(me?(n>=2?"Your updated confirmation":"Your confirmation"):"An example confirmation")+" · tap a part to see where it came from";
+    b.reveal=me?(nm?nm+", you just did what Brindle Lake staff did: used it first, then saw inside.":"You just did what Brindle Lake staff did: used it first, then saw inside."):"Staff used it first, then saw inside.";
+    root.querySelectorAll("[data-bind]").forEach(el=>{if(el.dataset.bind in b) el.textContent=b[el.dataset.bind];});
+    const msg=root.querySelector("[data-conf]");
+    root.querySelectorAll(".stage.src-on").forEach(e=>e.classList.remove("src-on"));
+    const why0=root.querySelector(".conf-why"); if(why0) why0.textContent="";
+    if(msg){
+      msg.textContent="";
+      const w=(src,text)=>{const x=document.createElement("button");x.type="button";x.className="w";x.dataset.src=src;x.textContent=text;return x;};
+      const t=s=>document.createTextNode(s);
+      if(me&&!me.name){msg.append(w("greet","Thanks"),t("! You're booked into "));}
+      else {msg.append(w("greet","Thanks"),t(", "),w("name",c.name),t(". You're booked into "));}
+      if(c.old){const o=document.createElement("s");o.textContent=c.old;msg.append(o,t(" "));}
+      const nw=document.createElement("span");nw.className="nowrap";nw.append(w("slot",c.slot),t("."));msg.append(nw);
+    }
+    if(refocus){const nb=root.querySelector('.w[data-src="'+refocus+'"]');if(nb)nb.focus({preventScroll:true});}
+    renderProg(root);
+  }
+  function renderProg(root){
+    const pr=root.querySelector("[data-prog]"); if(!pr) return;
+    const total=(me&&!me.name)?2:3, k=[...seen].filter(x=>total===3||x!=="name").length;
+    pr.textContent=k>=total?"✓ all "+total+" traced":k+" of "+total+" traced";pr.classList.toggle("done",k>=total);
+  }
+  function renderAll(){document.querySelectorAll("#show .graphic, #show .m-fig > *").forEach(renderRoot);}
+  document.addEventListener("pudding:layout",renderAll);
+  Pudding.onStep("show",(n,root)=>{
+    root.dataset.n=n;
+    root.querySelectorAll(".stage[data-row]").forEach(r=>{r.tabIndex=(n===1||n===2)?0:-1;});
+    root.querySelectorAll("[data-hl]").forEach(e=>e.classList.toggle("hlon",e.dataset.hl.split(",").indexOf(String(n))>-1));
+    // Phones: from the reveal on, the six-row trace has been shown three times already
+    if(!root.classList.contains("graphic")&&n>=3){const f=root.querySelector(".flow");if(f)f.remove();}
+    renderRoot(root);
+  });
+
+  // Where did each word come from? Words light their step; steps light their words.
+  const ROWNAME={name:"Take the form response",slot:"Check the calendar, then Route to a session",greet:"Send a personalized confirmation"};
+  function trace(root,src,fromRow){
+    root.querySelectorAll(".src-on").forEach(e=>e.classList.remove("src-on"));
+    root.querySelectorAll('[data-row="'+src+'"],.w[data-src="'+src+'"]').forEach(e=>e.classList.add("src-on"));
+    const why=root.querySelector(".conf-why");
+    const words=[...root.querySelectorAll('.w[data-src="'+src+'"]')].map(e=>e.textContent).join(", ");
+    if(why) why.textContent=fromRow?(words?"This step wrote: “"+words+"”.":"This step wrote nothing you can see here."):"Came from: "+ROWNAME[src]+".";
+    seen.add(src);
+    root.querySelectorAll('.w[data-src="'+src+'"]').forEach(e=>Pudding.changed(e));
+    document.querySelectorAll("#show .graphic, #show .m-fig > *").forEach(renderProg);
+  }
+  document.addEventListener("click",e=>{
+    const w=e.target.closest(".w[data-src]");
+    if(w){trace(w.closest(".graphic, .m-fig > *"),w.dataset.src,false);return;}
+    const row=e.target.closest(".stage[data-row]");
+    if(row){trace(row.closest(".graphic, .m-fig > *"),row.dataset.row,true);return;}
+    if(e.target.closest("[data-goto-try]")){const f=document.getElementById("try-form");f.scrollIntoView({behavior:Pudding.reduce?"auto":"smooth",block:"center"});setTimeout(()=>document.getElementById("try-name").focus({preventScroll:true}),Pudding.reduce?0:450);return;}
+  });
+  document.addEventListener("keydown",e=>{
+    const row=e.target.closest&&e.target.closest(".stage[data-row]");
+    if(row&&(e.key==="Enter"||e.key===" ")){e.preventDefault();trace(row.closest(".graphic, .m-fig > *"),row.dataset.row,true);}
+  });
+
+  // ---- Chapter 1, step 4: the same pattern in other work (illustrative) ----
+  const EX=[
+    ["a sign-up form","the session calendar","to an open session","a personalized email"],
+    ["a leave request","the team calendar","to the manager","a decision back to the person"],
+    ["an order form","the budget list","to purchasing","an order number back"],
+    ["a booking request","room availability","to a free room","a booking confirmation"]
+  ];
+  document.addEventListener("click",e=>{
+    const b=e.target.closest(".pex button[data-ex]"); if(!b) return;
+    const card=b.closest(".pattern"), i=+b.dataset.ex;
+    card.querySelectorAll(".pex button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    card.querySelectorAll("[data-slot]").forEach((el,k)=>{
+      const go=()=>{el.textContent=EX[i][+el.dataset.slot];Pudding.changed(el.parentElement);};
+      if(Pudding.reduce) go(); else setTimeout(go,k*130);
+    });
+  });
+
+  // ---- Chapter 3: the loop, drawn as a loop ----
+  (function(){
+    const svg=document.querySelector("#system svg.loop"); if(!svg) return;
+    const ns="http://www.w3.org/2000/svg";
+    const el=(t,a,txt,p)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;(p||svg).appendChild(e);return e;};
+    const N=["Activate","Learn","Build","Support","Listen","Adapt"], cx=170, cy=107, rx=128, ry=80;
+    const pt=a=>[cx+rx*Math.cos(a),cy+ry*Math.sin(a)];
+    const ang=i=>-Math.PI/2+i*2*Math.PI/6;
+    for(let i=0;i<6;i++){
+      const a0=ang(i), a1=ang(i+1), back=i===5, d=[];
+      for(let k=0;k<=16;k++){const a=a0+(a1-a0)*k/16;const [x,y]=pt(a);d.push((k?"L":"M")+x.toFixed(1)+" "+y.toFixed(1));}
+      el("path",{d:d.join(" "),class:"seg"+(back?" back":"")});
+      const am=(a0+a1)/2, [mx,my]=pt(am), tx=-rx*Math.sin(am), ty=ry*Math.cos(am), rot=Math.atan2(ty,tx)*180/Math.PI;
+      el("path",{d:"M-4 -4 L4 0 L-4 4 Z",transform:`translate(${mx.toFixed(1)} ${my.toFixed(1)}) rotate(${rot.toFixed(1)})`,class:"chev"+(back?" back":"")});
+    }
+    N.forEach((name,i)=>{const [x,y]=pt(ang(i));const g=el("g",{class:"node n"+i});el("rect",{x:x-38,y:y-13,width:76,height:26,rx:13},null,g);el("text",{x,y:y+4.5,"text-anchor":"middle"},name,g);});
+    el("text",{x:cx,y:cy-2,"text-anchor":"middle",class:"ctr st0t"},"What people said");
+    el("text",{x:cx,y:cy+14,"text-anchor":"middle",class:"ctr st0t"},"fed the next round");
+    el("text",{x:cx,y:cy-2,"text-anchor":"middle",class:"ctr st1t"},"First round:");
+    el("text",{x:cx,y:cy+14,"text-anchor":"middle",class:"ctr st1t"},"a small first cohort");
+  })();
+  Pudding.onStep("system",(n,root)=>{const l=root.querySelector("svg.loop");if(l)l.setAttribute("class","loop st"+n);});
+
+
+  // ---- Hero: the sign-up simulation (runs locally, stores nothing) ----
+  const form=document.getElementById("try-form"), btn=document.getElementById("try-go"), input=document.getElementById("try-name"),
+        rows=[...document.querySelectorAll("#try-log li")], out=document.getElementById("try-out"),
+        fin=document.getElementById("try-final"), status=document.getElementById("try-status");
+  let running=false;
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    if(running) return; running=true; btn.setAttribute("aria-disabled","true");
+    const name=(input.value||"").trim().slice(0,40);
+    const RES=[name?" · from "+name:" · received", " · Tuesday is full; "+SLOT+" is open", " · "+SLOT, " · sent"];
+    rows.forEach(r=>{r.classList.remove("done");r.querySelector(".tick").textContent="○";r.querySelector(".res").textContent="";});
+    out.classList.remove("show","ran"); status.textContent="";
+    const tick=k=>{const r=rows[k];r.classList.add("done");r.querySelector(".tick").textContent="✓";r.querySelector(".res").textContent=RES[k];};
+    const finish=()=>{
+      fin.textContent=name?"Thanks, "+name+". You're booked into "+SLOT+".":"Thanks! You're booked into "+SLOT+".";
+      out.classList.add("ran"); void out.offsetWidth; out.classList.add("show");
+      me={name}; seen.clear(); document.documentElement.classList.add("registered"); renderAll();
+      status.textContent="Registered. Four steps ran: response taken, calendar checked, routed to "+SLOT+", confirmation sent.";
+      running=false; btn.removeAttribute("aria-disabled"); btn.textContent="Run it again";
+    };
+    if(Pudding.reduce){rows.forEach((r,k)=>tick(k));finish();return;}
+    rows.forEach((r,k)=>setTimeout(()=>tick(k),120+k*220));
+    setTimeout(finish,120+4*220);
+  });
+  renderAll();
+})();
+</script>
+{% endraw %}

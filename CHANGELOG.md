@@ -4,6 +4,21 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-27 — "The sign-up was the demo", awaiting its self-test
+
+### Added
+- **Third case study, not yet stamped:** "The sign-up was the demo"
+  (`/projects/sign-up/`), a practice piece on one way to start citizen
+  development, shown through the invented Brindle Lake Public Library. The
+  build gate stops it until Seb answers the self-test.
+
+### Changed
+- **Pen + pixel in this story's figures:** risk tags keep amber on the border
+  with an icon and the word, never as text colour; the check on each journey
+  stage is an ink mark, not a moss key; "unverified, marked" takes the dashed
+  outline of an unresolved claim. The sign-up's ticks are drawn in the body
+  face, since the mono face has no check mark.
+
 ## 2026-10-27 — "A use case has a life", in the case-study room's look
 
 ### Added

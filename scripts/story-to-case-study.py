@@ -185,6 +185,17 @@ MARKS = """
 .story .cstat span.v{ color: var(--fg); background: linear-gradient(90deg, transparent 0 var(--mkw), var(--bg) var(--mkw)), var(--mark-solid); }
 .story .cstat span.p{ border-style: dashed; padding-left: 7px; background: var(--bg); }
 
+/* sign-up: a risk is a state, so amber borders it and an icon and the word carry it;
+   the check on each journey stage is a mark, not a colour. */
+.story .risk .x{ color: var(--fg); background: var(--held-soft); box-shadow: inset 0 0 0 1px var(--held); }
+.story .risk .x::before{ content: "! "; font-weight: 700; }
+.story .jst .gov{ background: var(--fg); }
+.story .govkey{ color: var(--fg); }
+/* The mono face has no check mark; draw the ticks in the body face. */
+.story .try-log .tick{ font-family: var(--text); }
+/* "unverified, marked" is unresolved: a dashed outline, per the claim marks. */
+.story #collaboration .chip.flag{ background: transparent; border: 1px dashed var(--held); }
+
 /* ── Without JavaScript: show every figure in its finished state ────────── */
 html:not(.story-js) .story .dim{ opacity: 1; }
 html:not(.story-js) .story .tag{ opacity: 1; }
