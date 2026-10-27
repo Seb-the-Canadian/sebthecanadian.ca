@@ -9,7 +9,7 @@ permalink: /about/
 {% include "masthead.njk" %}
 
 <figure class="about-portrait">
-  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
+  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" width="886" height="886" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
 <p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run <a href="/projects/">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>

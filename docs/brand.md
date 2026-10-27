@@ -111,6 +111,10 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
 
 - **Works without JavaScript.** Scripts enhance; the theme falls back to
   `prefers-color-scheme`; every figure shows in its finished state.
+- **The theme switch has two states.** The site follows the system setting
+  until the visitor presses the switch; a press stores light or dark in that
+  browser, applied before first paint on later visits. There is no "system"
+  position to cycle back to.
 - **Reduced motion** is honoured; a **print** stylesheet exists and stays
   correct.
 - Phone width is a first-class layout, not a squeeze.

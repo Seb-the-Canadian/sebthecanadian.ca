@@ -15,7 +15,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <span class="identity__sep">·</span>
       <span class="p-locality">Toronto</span><span class="identity__sep">/</span><span class="p-region">ON</span>
     </p>
-    <a class="u-url u-uid sr-only" href="{{ site.url }}">{{ site.url }}</a>
+    <a class="u-url u-uid sr-only" href="{{ site.url }}" tabindex="-1">{{ site.url }}</a>
     <span class="p-country-name sr-only">Canada</span>
   </header>
 
@@ -48,7 +48,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
           <a href="{{ project.url }}">{{ project.name }}</a>
           <span class="index-pill index-pill--active">active</span>
         </span>
-        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+        <span class="index-row__meta">{{ project.url | hostname }} <span aria-hidden="true">&#8599;</span></span>
       </div>
         {%- endif %}
       {%- endfor %}

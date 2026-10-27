@@ -4,7 +4,7 @@
     <p class="colophon-row">
       {%- for item in navigation.colophon -%}
         {%- if loop.index0 > 0 %} &middot; {% endif -%}
-        <a href="{{ item.url }}"{% if item.external %} rel="external" target="_blank"{% endif %}>{{ item.label }}</a>
+        <a href="{{ item.url }}"{% if item.external %} rel="external"{% endif %}>{{ item.label }}</a>
       {%- endfor -%}
     </p>
   </nav>
