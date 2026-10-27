@@ -4,6 +4,23 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-27 — "A use case has a life", in the case-study room's look
+
+### Added
+- **Second case study, stamped:** "A use case has a life"
+  (`/projects/use-case-life/`), self-test answered by Seb, all "no". It uses
+  the same look as the live front-door page: heavy Fraunces headline, moss
+  chapter H2s at display size, flat framed figure panels.
+
+### Changed
+- **Pen + pixel in this story's figures:** the self-assessment gate (solid for
+  self-assessment, hatch for expert review), the said/worked-out columns
+  (solid and dither) and the architecture status chips (solid, ruled, dashed)
+  carry meaning by mark instead of colour. Numbered step markers are ink, with
+  moss on the step you're reading.
+- `docs/brand.md` records the case-study room's own composition (heading scale
+  and flat panels), with the live front-door page as the reference.
+
 ## 2026-10-26 — A lavender sprig for light mode
 
 ### Changed
@@ -37,6 +54,17 @@ Format:
   (`/projects/front-door/`), listed under a new "Case studies" heading on the
   Projects page. It won't build until its clearance record is answered and
   stamped.
+- **Second case study:** "A use case has a life" (`/projects/use-case-life/`),
+  a Responsible AI intake practice piece set at an invented college. It also
+  waits on its self-test and stamp. Its script-built panel, notice and
+  reassessment are pre-rendered in their default state so the page reads in
+  full without JavaScript.
+
+### Fixed
+- Case-study figures: amber stays on borders and tints and the word beside it
+  wears ink, so light-mode amber never colours text (it fails contrast).
+  Applies to shared flag chips and ghost labels, so the front-door page gains
+  it too.
 
 ### Changed
 - `base.njk` takes an optional `pageStyles` list for page-specific stylesheets.

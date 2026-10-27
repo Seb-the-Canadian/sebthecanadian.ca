@@ -1,0 +1,651 @@
+---
+layout: case-study.njk
+title: A use case has a life
+description: "A practice piece: one way I've designed a Responsible AI intake that people actually use, built to follow a use case past its first assessment, shown through an invented college."
+tags: case-study
+pageStyles:
+  - /assets/css/case-study.css
+  - /assets/css/case-studies/use-case-life.css
+  - /assets/css/case-study-marks.css
+clearance:
+  tier: open
+  organization: "Wrenfield College"
+  sector: "higher education"
+  invented:
+    - "Wrenfield College, the organization"
+    - "its principles, questions, rules, review paths and field names"
+    - "every person, figure and date"
+  selfTest:            # answered by Seb, 2026-10-27: all "no"
+    unethical: "no"    # could it be seen as unethical, dishonest or discriminatory?
+    culture: "no"      # could it conflict with my employer's culture or code?
+    reputation: "no"   # could it harm my employer's reputation?
+    publicHarm: "no"   # could it harm me or my employer if made public?
+    consequences: "no" # could publishing it lead to consequences?
+    negativeImpact: "no" # could it hurt my employer, its customers, colleagues or community?
+    policy: "no"       # could it breach a policy or the code?
+    recognizable: "no" # would a colleague learn a real system, decision, defect, person or event from it?
+  reviewed: 2026-10-27
+  contentHash: 9ac278f7b0252a8f
+---
+{% raw %}
+<header class="wrap hero">
+  <div>
+    <p class="eyebrow"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span> Practice piece · Responsible AI</p>
+    <h1 style="margin-top:14px">Interest in AI got <em>ahead of</em> the capacity to review it</h1>
+    <p class="dek">One way I design a Responsible AI intake that people outside technology can answer, cheap enough that people use it, and built to follow a use case past its first assessment. Shown through an invented college.</p>
+    <p class="tldr" data-aud="gen"><b>In short</b>Interest in AI use cases often grows faster than a central team can review them one at a time. My approach is a short self-assessment that the person responsible fills in themselves. Their answers decide which cases need an expert. It's an approach that has worked for me, not the only way to do it. The organization in it is invented.</p>
+    <div class="aud-row"><span>Reading as</span><div class="aud-toggle" role="group" aria-label="Choose how this story is written"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></div>
+    <dl class="meta">
+      <dt>Approach</dt><dd>Self-assessment intake, answer-driven review paths, a record that follows the use case</dd>
+      <dt>Example</dt><dd>Wrenfield College, an invented college</dd>
+      <dt>Practised in</dt><dd>Enterprise data governance work</dd>
+    </dl>
+  </div>
+  <figure class="hero-fig">
+    <div class="panel">
+      <svg class="tl" viewBox="0 0 360 214" width="100%" role="img" aria-label="Schematic chart. Over time, requests for AI use cases climb faster and faster, while one review team taking them one case at a time keeps a steady pace. The gap between the two lines is a growing backlog.">
+        <text x="16" y="16" class="lane">AI USE CASES OVER TIME</text>
+        <path class="gov" d="M24 32 V180 H340" style="fill:none"/>
+        <path class="band" d="M24 180 C110 158 228 110 336 44 L336 156 L24 180 Z"/>
+        <path class="uc" d="M24 180 C110 158 228 110 336 44"/>
+        <path class="tick" d="M24 180 L336 156" style="fill:none"/>
+        <text class="ink" x="330" y="34" text-anchor="end">requests</text>
+        <path class="amk" d="M272 108 l5 5 l-5 5 l-5 -5 z" aria-hidden="true"/><text class="bandt" x="326" y="118" text-anchor="end">backlog</text>
+        <text class="ink" x="330" y="148" text-anchor="end">one team's pace</text>
+        <text x="340" y="198" text-anchor="end" class="lane">time →</text>
+      </svg>
+    </div>
+    <p class="caption">Schematic, with an invented college. Requests climb faster than one team can review them one case at a time, and the gap becomes a backlog.</p>
+  </figure>
+</header>
+
+<nav class="secnav" aria-label="Sections">
+  <ul>
+    <li><a href="#why">Why it exists</a></li>
+    <li><a href="#intake">The intake</a></li>
+    <li><a href="#answers">Honest answers</a></li>
+    <li><a href="#architecture">By responsibility</a></li>
+    <li><a href="#between">Between assessments</a></li>
+    <li><a href="#claims">What it can claim</a></li>
+    <li class="nav-aud"><div class="aud-toggle" role="group" aria-label="Reading as"><button type="button" data-aud-set="gen" aria-pressed="true">New to the field</button><button type="button" data-aud-set="pro" aria-pressed="false">In the field</button></div></li>
+  </ul>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</nav>
+
+<div class="story-main">
+<!-- WHY IT EXISTS -->
+<section class="wrap chapter" id="why" aria-labelledby="h-why">
+  <div class="lens-intro">
+    <p class="eyebrow">Why it exists</p>
+    <h2 id="h-why">Make declaring cheap enough that people do it</h2>
+    <div class="minilife" role="img" aria-label="Where this chapter sits in a use case's life: requested, and waiting for review"><span class="ml-line"><span class="ml-s on"><i></i>requested</span><span class="ml-s"><i></i>intake</span><span class="ml-s"><i></i>assessed</span><span class="ml-s"><i></i>reassessed</span></span><span class="ml-label">requested, and waiting for review</span></div>
+    <p>Governance needs to find out what AI is in use, spot risk early, and send each use case to the right people.</p>
+    <div class="why"><span class="lab">Why it matters · an invented example</span><p>At Wrenfield, one department is offered an AI feature in its student-support tool. Another wants AI in a product it's building with a partner. A third wants to add it to something it built itself. All three requests land on the same small review team.</p></div>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-why-0"><div class="step-in">
+        <p class="kicker">Many directions</p>
+        <h3>Interest arrived from every direction at once</h3>
+        <p>At Wrenfield, teams were being offered AI in vendor tools, wanted to use it in products built with partners, and wanted to add it to things the college built itself.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-why-1"><div class="step-in">
+        <p class="kicker">The queue</p>
+        <h3>More requests than reviewers</h3>
+        <p>There was no version of a central team getting through that queue one case at a time. Interest grew faster than review capacity, which in my experience is common.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-why-2"><div class="step-in">
+        <p class="kicker">The cost of one gate</p>
+        <h3>A uniform gate filters out the small cases</h3>
+        <p><span class="cl inf">inferred</span>If declaring a small, low-risk piece of work costs as much as declaring a high-risk one, the small work stops being declared, or goes around the gate. The gate then only sees the cases people are still willing to bring to it.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-why-3"><div class="step-in">
+        <p class="kicker">The design question</p>
+        <h3>Which cases need an expert at all?</h3>
+        <p>The sponsor of a use case<span class="gloss" data-aud="gen"> (the person responsible for it)</span> completes the assessment themselves. Expert review happens only when their answers trigger it.</p>
+        <p>It is deliberately not an IT review, so anyone responsible for a use case can answer it.</p>
+        <p>Another way is expert review for every case. That can suit an organization with a handful of high-stakes use cases. It doesn't suit a queue that grows faster than the reviewers.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0,1">
+          <span class="lab">Where the requests came from</span>
+          <div class="flowline">
+            <span class="chip">vendor tools</span><span class="chip">products built with partners</span><span class="chip">the college's own builds</span>
+            <span class="arrowtxt">→</span><span class="chip ink">governance needs to see it</span>
+          </div>
+          <div class="note tag" data-on="1"><span class="chip flag">one review team</span><span>can't take them one case at a time</span></div>
+        </div>
+        <div class="sec dim" data-on="2">
+          <span class="lab">One gate for every case · illustrative</span>
+          <div class="gate">
+            <span></span><span class="axis">effort to declare →</span>
+            <span>Low-risk</span><span class="cost"><span class="c-ghost">not declared</span></span>
+            <span>Low-risk</span><span class="cost"><span class="c-ghost">not declared</span></span>
+            <span>Medium-risk</span><span class="cost"><span class="c-full">full review</span></span>
+            <span>High-risk</span><span class="cost"><span class="c-full">full review</span></span>
+          </div>
+          <div class="note"><span class="cl inf">inferred</span><span>Same cost for every case, so the small ones stop being declared.</span></div>
+        </div>
+        <div class="sec dim" data-on="3">
+          <span class="lab">Answers decide who needs an expert · illustrative</span>
+          <div class="gate">
+            <span></span><span class="axis">effort to declare →</span>
+            <span>Low-risk</span><span class="cost"><span class="c-self">self-assessment</span></span>
+            <span>Low-risk</span><span class="cost"><span class="c-self">self-assessment</span></span>
+            <span>Medium-risk</span><span class="cost"><span class="c-self">self-assessment</span></span>
+            <span>High-risk</span><span class="cost"><span class="c-self">self-assessment</span><span class="c-exp">expert review</span></span>
+          </div>
+          <div class="note"><span>Expert time goes where the answers point.</span><span class="cl inf">inferred</span><span>Cheap to declare, so small cases are more likely to be declared.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE INTAKE -->
+<section class="wrap chapter" id="intake" aria-labelledby="h-intake">
+  <div class="lens-intro">
+    <p class="eyebrow">The intake</p>
+    <h2 id="h-intake">An intake anyone responsible for a use case can answer</h2>
+    <div class="minilife" role="img" aria-label="Where this chapter sits in a use case's life: the intake and the assessment"><span class="ml-line"><span class="ml-s"><i></i>requested</span><span class="ml-s on"><i></i>intake</span><span class="ml-s on"><i></i>assessed</span><span class="ml-s"><i></i>reassessed</span></span><span class="ml-label">the intake and the assessment</span></div>
+    <p>One front door, one self-assessment, and an answer for every submission.</p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-in-0"><div class="step-in">
+        <p class="kicker">Principles</p>
+        <h3>Principles as everyday expectations</h3>
+        <p>I start from the organization's own principles, turn each one into an everyday expectation, and give people a single self-assessment as the way in.</p>
+        <p>Wrenfield's five, invented for this page: fairness, transparency, accountability, privacy and safety.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-in-1"><div class="step-in">
+        <p class="kicker">The assessment</p>
+        <h3>Questions about the work, not the technology</h3>
+        <p>Most questions are yes or no. They ask what the AI does, who uses it, what data it touches and what decisions it informs.</p>
+        <p>A privacy screen sits alongside the principles, so privacy can follow up whatever the review path.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-in-2"><div class="step-in">
+        <p class="kicker">Describing a use case</p>
+        <h3>A fill-in pattern and a worked example</h3>
+        <p>Guidance with a fill-in pattern and a worked example steers people towards plain-language descriptions that make human oversight, personal data and impact on people visible, and away from technical architecture.</p>
+        <p>I use an AI assistant to check that guidance reads clearly to someone outside technology.</p>
+      </div></div>
+      <div class="step" data-step="3" id="s-in-3"><div class="step-in">
+        <p class="kicker">Triage</p>
+        <h3>Every submission gets an answer</h3>
+        <p>A workflow gives each submission a reference number, applies the rules<span class="gloss" data-aud="gen"> (the logic that turns answers into a review path)</span>, and sends the submitter a notice: the review path, the reasoning and the next steps.</p>
+        <p>Expert review follows only when the answers call for it.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="flow">
+          <div class="stage dim" data-on="0"><span class="who sys">Front</span><span class="t">Principles, one self-assessment <span class="fict">(invented)</span>
+            <span class="chips"><span class="chip">fairness</span><span class="chip">transparency</span><span class="chip">accountability</span><span class="chip">privacy</span><span class="chip">safety</span></span></span></div>
+          <div class="stage dim" data-on="1"><span class="who you">Sponsor</span><span class="t">Answer mostly yes/no questions
+            <span class="chips"><span class="chip">what it does</span><span class="chip">who uses it</span><span class="chip">data it touches</span><span class="chip">decisions it informs</span><span class="chip">privacy screen</span></span></span></div>
+          <div class="stage dim" data-on="2"><span class="who you">Sponsor</span><span class="t">Describe it in plain language
+            <span class="chips"><span class="chip">human oversight</span><span class="chip">personal data</span><span class="chip">impact on people</span><span class="chip ai">clarity checked with AI</span></span></span></div>
+          <div class="stage dim" data-on="3"><span class="who sys">Flow</span><span class="t">Reference number, then rules</span></div>
+          <div class="stage dim" data-on="3"><span class="who sys">Notice</span><span class="t">Review path, reasoning and next steps</span></div>
+          <div class="stage cond dim" data-on="3"><span class="who you">Expert</span><span class="t">Review, only when answers trigger it</span></div>
+        </div>
+        <div class="nghost dim" data-on="3" aria-label="Outline of the notice: reference, review path, why, next steps">
+          <p class="lab">The notice · schematic</p>
+          <span>Reference</span><i></i><span>Review path</span><i></i><span>Why</span><i></i><span>Next steps</span><i></i>
+          <a href="#ans-notice">See one built from your answers ↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST ANSWERS -->
+<section class="wrap chapter" id="answers" aria-labelledby="h-ans">
+  <div class="lens-intro">
+    <p class="eyebrow">Honest answers</p>
+    <h2 id="h-ans">Designing for answers people can actually give</h2>
+    <div class="minilife" role="img" aria-label="Where this chapter sits in a use case's life: an assessment, as Wrenfield runs it"><span class="ml-line"><span class="ml-s"><i></i>requested</span><span class="ml-s"><i></i>intake</span><span class="ml-s on"><i></i>assessed</span><span class="ml-s"><i></i>reassessed</span></span><span class="ml-label">an assessment, as Wrenfield runs it</span></div>
+    <p>Three ideas I build into the assessment itself. The panel lets you try them.</p>
+    <p class="disclose"><b>Everything here is invented.</b> Wrenfield, its questions, field names, rules and review paths are made up for this page. Nothing you choose leaves this page.</p>
+  </div>
+  <div class="scrolly inline">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-ans-0"><div class="step-in">
+        <p class="kicker">Review paths</p>
+        <h3>The answers set the path, not the person</h3>
+        <p>Wrenfield's rules work out a review path from the answers: self-serve, light review or full review. On any path, answers can also send the use case to privacy. The submitter never picks their own path.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-ans-1"><div class="step-in">
+        <p class="kicker">Unsure</p>
+        <h3>“Unsure” is a signal that needs review</h3>
+        <p>An unsure answer isn't counted as a no. The system names the specific questions the submitter was unsure about, so reviewers have something concrete to follow up.</p>
+        <p>Set an answer the rules depend on to Unsure, such as whether it informs decisions about students, and the path becomes a range instead of a guess.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-ans-2"><div class="step-in">
+        <p class="kicker">Stated vs computed</p>
+        <h3>What people said, kept apart from what the system worked out</h3>
+        <p>I keep what the person said apart from what the system worked out, with a naming convention for fields, so the line between them stays visible in the record.</p>
+        <p data-aud="gen">In the panel, the left column is what the person said and the right column is what the system worked out.</p>
+        <p data-aud="pro">The panel shows the idea with <code>answer.*</code> and <code>derived.*</code> prefixes, invented for this page.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel" id="assess">
+        <div class="panel-head"><span class="lab">The pattern · invented questions</span></div>
+        <div id="toyForm" class="hlz" data-on="1" role="group" aria-label="Invented assessment questions"></div>
+        <ul class="nojs-q" aria-label="Invented questions, with this example's answers"><li>Is it already in use? <b>Yes</b></li><li>Does it inform decisions about students or applicants? <b>Yes</b></li><li>Does a person review its output before anyone acts on it? <b>Yes</b></li><li>Does it use personal information? <b>Unsure</b></li><li>Will students or the public interact with it directly? <b>No</b></li></ul>
+        <div class="rstrip hlz" data-on="0" id="rstrip">
+          <div class="rs-top"><span class="lab">Result</span><b class="rs-level" data-ltext="">Light review</b></div>
+          <div class="lvlbar" aria-hidden="true"><span data-l="self">Self-serve</span><span data-l="light" class="cur">Light</span><span data-l="full">Full</span></div>
+          <div class="rs-pills"><span class="pill rev" data-pill="priv">Privacy: follow-up</span><span class="pill flag" data-pill="exp">Expert review: triggered</span></div>
+        </div>
+        <p class="sr" role="status" id="rStatus"></p>
+        <p class="review hlz" data-on="1" id="reviewLine">Unsure on: Does it use personal information? Each one goes to a reviewer to follow up.</p>
+        <p class="retro" id="retroLine">You've just assessed something already running. That's an assessment after the fact.</p>
+        <div class="result">
+          <div class="col stated hlz" data-on="2"><p class="lab"><span data-aud="pro">answer</span><span data-aud="gen">what the person said</span></p><ul id="statedList"><li><span data-aud="pro">answer.already_in_use = </span><span data-aud="gen">Already in use: </span><span>yes</span></li><li><span data-aud="pro">answer.student_decisions = </span><span data-aud="gen">Informs decisions about students: </span><span>yes</span></li><li><span data-aud="pro">answer.human_review = </span><span data-aud="gen">A person reviews output first: </span><span>yes</span></li><li><span data-aud="pro">answer.personal_data = </span><span data-aud="gen">Uses personal information: </span><span class="v-review">unsure</span></li><li><span data-aud="pro">answer.public_facing = </span><span data-aud="gen">Students use it directly: </span><span>no</span></li></ul></div>
+          <div class="col hlz" data-on="2"><p class="lab"><span data-aud="pro">derived</span><span data-aud="gen">what the system worked out</span></p><ul id="compList"><li><span data-aud="pro">derived.review_path = </span><span data-aud="gen">Review path: </span><span class="v-flag">light review</span></li><li><span data-aud="pro">derived.privacy_routing = </span><span data-aud="gen">Privacy routing: </span><span class="v-review">follow-up</span></li><li><span data-aud="pro">derived.expert_review = </span><span data-aud="gen">Expert review: </span><span class="v-flag">triggered</span></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notice-out" id="ans-notice">
+    <div class="notice-lede"><p class="kicker">The notice</p><h3>What the submitter gets back</h3><p>This is the notice your answers above would send: a reference number, a review path, the reasons and the next steps. Change an answer and it rewrites itself.</p></div>
+    <div class="notice">
+          <p class="lab">The notice this would send · invented</p>
+          <div class="mail">
+            <p class="mh"><span>Subject</span><b id="nSubject">Your AI use case: Light review, expert review triggered</b></p>
+            <dl class="nd">
+              <dt>Reference</dt><dd id="nRef">REF-4478 (invented)</dd>
+              <dt>Review path</dt><dd id="nLevel">Light review</dd>
+              <dt>Why</dt><dd><ul id="nWhy"><li>It informs decisions about students or applicants.</li><li>You were unsure on 1 question.</li></ul></dd>
+              <dt>Privacy</dt><dd id="nPriv">Privacy will follow up on your unsure answer.</dd>
+              <dt>Next steps</dt><dd id="nNext">An expert reviewer will follow up on the points above.</dd>
+            </dl>
+            <p class="lim">Limits: this reflects the answers given. Where expert review is triggered, the reviewer decides what happens next.</p>
+          </div>
+        </div>
+  </div>
+</section>
+
+<!-- BY RESPONSIBILITY -->
+<section class="wrap chapter" id="architecture" aria-labelledby="h-arch">
+  <div class="lens-intro">
+    <p class="eyebrow">By responsibility</p>
+    <h2 id="h-arch">Documented by what each part is responsible for</h2>
+    <div class="minilife" role="img" aria-label="Where this chapter sits in a use case's life: inside one assessment"><span class="ml-line"><span class="ml-s"><i></i>requested</span><span class="ml-s"><i></i>intake</span><span class="ml-s on"><i></i>assessed</span><span class="ml-s"><i></i>reassessed</span></span><span class="ml-label">inside one assessment</span></div>
+    <p>I describe a service by what each part is responsible for, not by which platform it runs on, and label each part as verified, documented or planned.</p>
+    <p class="sr" role="status" id="swStatus"></p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-arch-0"><div class="step-in">
+        <p class="kicker">The swap test</p>
+        <h3>The meaning lives in the decision logic</h3>
+        <p><span class="cl inf">inferred</span>Replacing the workflow tool would barely change the service. Replacing the decision logic would make it a different service.</p>
+        <p data-aud="gen">In plain terms: the tool that moves the form around matters much less than the rules that decide the path.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-arch-1"><div class="step-in">
+        <p class="kicker">Authority</p>
+        <h3>Authority assigned per piece of information</h3>
+        <p>I map which part holds authority for each kind of information: the original response, the computed result, the governance record and the notice sent.</p>
+        <p>No single system gets labelled the source of truth for everything.</p>
+        <p data-aud="gen">For each kind of record, exactly one place holds the official copy.</p>
+      </div></div>
+      <div class="step" data-step="2" id="s-arch-2"><div class="step-in">
+        <p class="kicker">Status labels</p>
+        <h3>A record that says how sure it is</h3>
+        <p>Every claim in the architecture record carries a status: verified, documented or planned.</p>
+        <p>The record stays provisional until it's checked against the running system.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel">
+        <div class="sec dim" data-on="0">
+          <span class="lab">Swap test · invented · <span class="cl inf">inferred</span></span>
+          <div class="pipe">
+            <span class="pk">Your answers</span><span class="marks" data-swmarks="" role="img" aria-label="Your answers: Already in use, yes; Informs decisions about students, yes; A person reviews output first, yes; Uses personal information, unsure; Students use it directly, no"><span class="mk yes" title="Is it already in use? yes">Y</span><span class="mk yes" title="Does it inform decisions about students or applicants? yes">Y</span><span class="mk yes" title="Does a person review its output before anyone acts on it? yes">Y</span><span class="mk unsure" title="Does it use personal information? unsure">?</span><span class="mk no" title="Will students or the public interact with it directly? no">N</span></span>
+            <span class="ar" aria-hidden="true">↓</span>
+            <span class="pk">Workflow tool</span><span class="seg2"><button type="button" data-swap="tool" data-v="a">Tool A</button><button type="button" data-swap="tool" data-v="b">Tool B</button></span>
+            <span class="ar" aria-hidden="true">↓</span>
+            <span class="pk">Decision rules</span><span class="seg2"><button type="button" data-swap="rules" data-v="a">Current</button><button type="button" data-swap="rules" data-v="b">Alternative</button></span>
+            <span class="ar" aria-hidden="true">=</span>
+            <span class="pk">Review path</span><span class="swout" data-swapout="">Light review</span>
+          </div>
+          <p class="swapnote" data-swapnote="">The current setup. Swap the tool, then the rules.</p>
+          <p class="swaphint">Swap one part at a time. <a href="#assess">Edit your answers ↑</a></p>
+        </div>
+        <div class="sec dim" data-on="1">
+          <span class="lab">Authority by information type</span>
+          <div class="chips"><span class="chip">original response</span><span class="chip">computed result</span><span class="chip">governance record</span><span class="chip">notice sent</span></div>
+          <div class="flowline" style="margin-top:8px"><span class="arrowtxt">→</span><span class="chip ink">one authoritative home for each</span></div>
+          <p class="struck">one source of truth for everything</p>
+        </div>
+        <div class="sec dim" data-on="2">
+          <span class="lab">Architecture record · component status</span>
+          <div class="cstat"><span class="v">verified</span><span>documented</span><span class="p">planned</span></div>
+          <div class="chips" style="margin-top:6px"><span class="chip flag">provisional until checked against the running system</span></div>
+          <p class="selfref">This page does the same to itself. Its main claims are graded in <a href="#claims">What it can claim ↓</a></p>
+          <div class="chips"><span class="cl">observed</span><span class="cl doc">document-supported</span><span class="cl inf">inferred</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BETWEEN ASSESSMENTS -->
+<section class="wrap chapter" id="between" aria-labelledby="h-btw">
+  <div class="lens-intro">
+    <p class="eyebrow">Between assessments</p>
+    <h2 id="h-btw">A use case outlives its first assessment</h2>
+    <div class="minilife" role="img" aria-label="Where this chapter sits in a use case's life: after the notice, and between assessments"><span class="ml-line"><span class="ml-s"><i></i>requested</span><span class="ml-s"><i></i>intake</span><span class="ml-s on"><i></i>assessed</span><span class="ml-s on"><i></i>reassessed</span></span><span class="ml-label">after the notice, and between assessments</span></div>
+    <p>Two questions I ask of any intake before it launches. Both are about what it keeps once it has answered.</p>
+    <p class="sr" role="status" id="btwStatus"></p>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+      <div class="step" data-step="0" id="s-btw-0"><div class="step-in">
+        <p class="kicker">Identity</p>
+        <h3>Can it tell this is the same use case?</h3>
+        <p>A reference number names a submission, not the use case. Without a lasting ID that follows a use case through every assessment, a reassessment can't be linked back to the earlier one.</p>
+        <p>Without that link, an intake stays a queue of submissions instead of becoming an inventory. Try it with the notice you got above.</p>
+        <p data-aud="pro">What an inventory record adds: a persistent ID, plus the overview, data, logic and governance details that public AI registers publish for each system, kept up to date as it changes.</p>
+      </div></div>
+      <div class="step" data-step="1" id="s-btw-1"><div class="step-in">
+        <p class="kicker">Decisions</p>
+        <h3>Does it keep what the reviewer decided?</h3>
+        <p>The rules produce a recommendation. A person makes the decision. I record both with the use case, because an intake that keeps only its recommendation can't show whether its routing works.</p>
+      </div></div>
+    </div>
+    <div class="graphic">
+      <div class="panel gaps">
+        <svg class="gapline g1" viewBox="0 0 360 92" width="100%" role="img" aria-label="Two design questions placed on a use case's timeline: identity between assessments, and the review decision after the notice.">
+          <path class="gl-base" d="M14 52 H346"/>
+          <circle class="gl-pt" cx="40" cy="52" r="4"/><text x="40" y="78" text-anchor="middle">intake</text>
+          <circle class="gl-pt" cx="130" cy="52" r="5"/><text x="130" y="78" text-anchor="middle">assessed</text>
+          <circle class="gl-pt" cx="200" cy="52" r="4"/><text x="200" y="78" text-anchor="middle">notice</text>
+          <circle class="gl-pt" cx="318" cy="52" r="5"/><text x="318" y="78" text-anchor="middle">reassessed</text>
+          <path class="gl-arc" d="M140 48 Q228 -28 316 48"/>
+          <g class="gm m2"><circle cx="200" cy="32" r="9"/><text x="200" y="36" text-anchor="middle">2</text></g>
+          <g class="gm m1"><circle cx="228" cy="11" r="9"/><text x="228" y="15" text-anchor="middle">1</text></g>
+        </svg>
+        <div class="gapcard dim" data-on="0,1">
+          <h4><span class="gnum">1</span><span class="chip">identity</span>Same use case, new reference</h4>
+          <div class="mini reassess dim done" data-on="0">
+            <div class="rgrid">
+              <div class="rcard"><p class="rc-k">Your notice</p><p class="rc-ref" data-ra-ref="">REF-4478</p><p class="rc-sum" data-ra-sum="">Light review · privacy follow-up</p><p class="rc-id">use-case ID <span>none</span></p></div>
+              <div class="rlink" aria-hidden="true"><svg viewBox="0 0 40 22"><path class="rl-arc" d="M2 20 Q20 -6 38 20"/></svg><span>no link</span></div>
+              <div class="rcard b">
+                <div class="rb-empty"><button type="button" class="rbtn" data-reassess>Reassess it, a year later</button><p class="rc-k">your answers, plus one change</p></div>
+                <div class="rb-full"><p class="rc-k">A year later</p><p class="rc-ref" data-rb-ref="">REF-5509</p><p class="rc-sum" data-rb-sum="">Full review · privacy follow-up</p><p class="rc-chg" data-rb-change="">Since then (invented): nobody reviews its output first.</p><p class="rc-id">use-case ID <span>none</span></p></div>
+              </div>
+            </div>
+            <p class="rmsg" data-rmsg="">To you, it's the same use case. To the record, REF-4478 and REF-5509 are two unrelated submissions. Its path moved from light review to full review, and nothing here can connect the two.</p>
+            <p class="rmsg" data-aud="pro">An inventory record would carry one persistent ID across both.</p>
+            <button type="button" class="rreset" data-reassess-reset>Start over</button>
+          </div>
+        </div>
+        <div class="gapcard dim" data-on="0,1">
+          <h4><span class="gnum">2</span><span class="chip">decision</span>Recommendation, then decision</h4>
+          <div class="mini flowline dim" data-on="1">
+            <span class="chip">recommendation computed</span><span class="arrowtxt">→</span><span class="chip ink">reviewer decides</span><span class="arrowtxt">→</span><span class="chip blue">both kept with the use case</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="wrap outcome" id="outcome" aria-labelledby="oc-h">
+  <p class="eyebrow">What it's for</p>
+  <h2 id="oc-h" style="margin-top:8px">An intake people use, built to follow a use case through its life</h2>
+  <div class="oc-grid two">
+    <div>
+      <h3>Cheap to declare</h3>
+      <p>The person responsible answers for their own work, gets a notice straight away, and expert time goes where the answers point.</p>
+    </div>
+    <div>
+      <h3>Built for the second assessment</h3>
+      <p>A persistent use-case ID and a recorded review decision, so over time the intake becomes an inventory.</p>
+    </div>
+  </div>
+  <p class="reflect">An assessment is an event, but a use case has a life. <span>I design the intake to model both.</span></p>
+</section>
+
+<section class="wrap claims" id="claims" aria-labelledby="h-claims">
+  <p class="eyebrow">What it can claim</p>
+  <h2 id="h-claims" style="margin-top:8px">What this story can support, and what it can't yet</h2>
+  <p>I graded these myself. Each claim is either visible on this page, backed by a linked public source, or my professional judgement, which this page doesn't test.</p>
+  <details class="claimsbox"><summary>Claims register · 11 claims, and how well each is supported</summary>
+  <dl class="legend">
+    <div><dt><span class="cl">observed</span></dt><dd>Visible on this page. You can check it here.</dd></div>
+    <div><dt><span class="cl doc">document-supported</span></dt><dd>Established by a linked public source.</dd></div>
+    <div><dt><span class="cl inf">inferred</span></dt><dd>My practice: professional judgement, not tested here.</dd></div>
+  </dl>
+  <div class="regwrap">
+    <table class="reg">
+      <caption class="sr">Claims register</caption>
+      <thead><tr><th scope="col">Evidence</th><th scope="col">Claim</th><th scope="col">What supports it</th></tr></thead>
+      <tbody>
+        <tr data-ref="s-why-2"><td><span class="cl inf">inferred</span></td><td>In my practice, a gate that costs the same for every case filters out the small ones.</td><td>My practice. Not measured.</td></tr>
+        <tr data-ref="s-why-3"><td><span class="cl doc">document-supported</span></td><td>Self-completed questionnaires that compute an impact level are an established public-sector pattern.</td><td>Government of Canada, <a href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html">Algorithmic Impact Assessment tool</a>: a questionnaire whose score sets one of four impact levels.</td></tr>
+        <tr data-ref="s-why-3"><td><span class="cl inf">inferred</span></td><td>In my experience, letting answers decide who needs an expert saves expert time without letting risky cases through.</td><td>My practice. Testing it needs the review decisions recorded, which is one reason I design for that.</td></tr>
+        <tr data-ref="s-ans-0"><td><span class="cl">observed</span></td><td>In the panel, the answers set the review path. The submitter can't pick it.</td><td>The panel above.</td></tr>
+        <tr data-ref="s-ans-1"><td><span class="cl">observed</span></td><td>An unsure answer is tried both ways, so the path becomes a range and the question is named for follow-up.</td><td>The panel above.</td></tr>
+        <tr data-ref="s-ans-2"><td><span class="cl">observed</span></td><td>What the person said and what the system worked out are kept in separate columns.</td><td>The panel above.</td></tr>
+        <tr data-ref="s-arch-0"><td><span class="cl inf">inferred</span></td><td>In my practice, a service's meaning lives in its decision rules, not its workflow tool.</td><td>My practice. The swap demo illustrates the argument; it doesn't test it.</td></tr>
+        <tr data-ref="s-arch-1"><td><span class="cl inf">inferred</span></td><td>In my practice, one authoritative home for each kind of record has worked better than one source of truth for everything.</td><td>My practice.</td></tr>
+        <tr data-ref="s-btw-0"><td><span class="cl">observed</span></td><td>Without a persistent ID, the same use case assessed twice becomes two unrelated submissions.</td><td>The reassessment demo above.</td></tr>
+        <tr data-ref="s-btw-0"><td><span class="cl doc">document-supported</span></td><td>Public AI registers keep a record per tool and update it when the tool changes.</td><td>UK government, <a href="https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard/algorithmic-transparency-recording-standard-guidance-for-public-sector-bodies">Algorithmic Transparency Recording Standard guidance</a>: records are updated and republished when substantive details change.</td></tr>
+        <tr data-ref="s-btw-1"><td><span class="cl inf">inferred</span></td><td>In my practice, an intake that keeps only its recommendation can't show whether its routing works.</td><td>My practice.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </details>
+
+  <div class="credit" id="credit">
+    <div>
+      <h3>Mine</h3>
+      <p>The approach, the invented example, the writing and the interactive pieces.</p>
+    </div>
+    <div>
+      <h3>Where I've practised it</h3>
+      <p>I've used this approach in enterprise data governance work.</p>
+    </div>
+    <div class="wide">
+      <h3>AI</h3>
+      <p>I build pages like this with AI assistants and check everything they produce.</p>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/case-study.js"></script>
+<script>
+(function(){
+  const form=document.getElementById("toyForm");
+  // [field, question, short plain label, principle chips, default]
+  const qs=[
+    ["already_in_use","Is it already in use?","Already in use",["context"],"yes"],
+    ["student_decisions","Does it inform decisions about students or applicants?","Informs decisions about students",["fairness","accountability"],"yes"],
+    ["human_review","Does a person review its output before anyone acts on it?","A person reviews output first",["accountability"],"yes"],
+    ["personal_data","Does it use personal information?","Uses personal information",["privacy"],"unsure"],
+    ["public_facing","Will students or the public interact with it directly?","Students use it directly",["transparency"],"no"]
+  ];
+  const labels={};
+  qs.forEach(([key,label,short,cats,def],i)=>{
+    labels[key]=label;
+    const row=document.createElement("div");row.className="qrow";
+    const q=document.createElement("span");q.id="ql"+i;q.textContent=label;
+    const c=document.createElement("span");c.className="qchips";
+    cats.forEach(t=>{const s=document.createElement("span");s.textContent=t;c.appendChild(s);});
+    const seg=document.createElement("div");seg.className="seg";seg.setAttribute("role","radiogroup");seg.setAttribute("aria-labelledby","ql"+i);
+    ["yes","no","unsure"].forEach(v=>{
+      const id="q-"+key+"-"+v;
+      const inp=document.createElement("input");inp.type="radio";inp.name=key;inp.value=v;inp.id=id;if(v===def)inp.checked=true;
+      const lab=document.createElement("label");lab.htmlFor=id;lab.textContent=v[0].toUpperCase()+v.slice(1);
+      seg.appendChild(inp);seg.appendChild(lab);
+    });
+    row.appendChild(q);row.appendChild(seg);row.appendChild(c);form.appendChild(row);
+  });
+  const statedList=document.getElementById("statedList"), compList=document.getElementById("compList"),
+        reviewLine=document.getElementById("reviewLine"), retroLine=document.getElementById("retroLine"),
+        strip=document.getElementById("rstrip"), rStatus=document.getElementById("rStatus");
+  const mark=(window.Pudding&&Pudding.changed)||function(){};
+  const reduce=!!(window.Pudding&&Pudding.reduce);
+  function stagger(els){els.filter(Boolean).forEach((el,i)=>{if(reduce||!i)mark(el);else setTimeout(()=>mark(el),i*120);});}
+  function li(parent,proKey,genKey,v,cls){
+    const e=document.createElement("li");
+    const p=document.createElement("span");p.dataset.aud="pro";p.textContent=proKey+" = ";
+    const g=document.createElement("span");g.dataset.aud="gen";g.textContent=genKey+": ";
+    const b=document.createElement("span");b.textContent=v;if(cls)b.className=cls;
+    e.appendChild(p);e.appendChild(g);e.appendChild(b);parent.appendChild(e);
+  }
+  const LEVELS=["self","light","full"], NAMES={self:"Self-serve",light:"Light review",full:"Full review"}, cap=t=>NAMES[t]||t, low=t=>(NAMES[t]||t).toLowerCase();
+  // Invented rules for an invented college.
+  const RULES={
+    a:c=>(c.student_decisions==="yes"&&c.human_review==="no")?"full":(c.student_decisions==="yes"||c.public_facing==="yes")?"light":"self",
+    b:c=>c.student_decisions==="yes"?"full":(c.personal_data==="yes"||c.public_facing==="yes")?"light":"self"
+  };
+  // An unsure answer isn't counted as a no: try it both ways and keep the range of results.
+  function evaluate(a,rules){
+    let combos=[{}];
+    qs.forEach(([k])=>{const opts=a[k]==="unsure"?["yes","no"]:[a[k]];combos=[].concat.apply([],combos.map(c=>opts.map(o=>Object.assign({},c,{[k]:o}))));});
+    const idx=combos.map(c=>LEVELS.indexOf(RULES[rules](c)));
+    const lo=LEVELS[Math.min.apply(null,idx)], hi=LEVELS[Math.max.apply(null,idx)];
+    return {lo,hi,pending:lo!==hi};
+  }
+  const levelText=r=>r.pending?"Pending: "+cap(r.lo)+" to "+cap(r.hi):cap(r.lo);
+  const levelWords=r=>r.pending?"pending ("+low(r.lo)+" to "+low(r.hi)+")":low(r.lo);
+  function results(a){
+    const r=evaluate(a,"a");
+    const privacy=a.personal_data==="yes"?"routed":a.personal_data==="unsure"?"follow-up":"not needed";
+    const unsure=qs.filter(([k])=>a[k]==="unsure").map(([k])=>labels[k]);
+    const expert=(r.lo==="full"||unsure.length)?"triggered":"not triggered";
+    return {r,privacy,unsure,expert};
+  }
+  let ANS=null, RES=null, PREV=null;
+  const REF="REF-"+String(1000+Math.floor(Math.random()*9000));
+  function run(){
+    const a={};qs.forEach(([k])=>{const c=form.querySelector('input[name="'+k+'"]:checked');a[k]=c?c.value:"unsure";});
+    const R=results(a);
+    statedList.textContent="";compList.textContent="";
+    qs.forEach(([k,,short])=>li(statedList,"answer."+k,short,a[k],a[k]==="unsure"?"v-review":""));
+    li(compList,"derived.review_path","Review path",levelWords(R.r),R.r.pending?"v-review":"v-flag");
+    li(compList,"derived.privacy_routing","Privacy routing",R.privacy,R.privacy==="routed"?"v-flag":R.privacy==="follow-up"?"v-review":"v-none");
+    li(compList,"derived.expert_review","Expert review",R.expert,R.expert==="triggered"?"v-flag":"v-none");
+    // Result strip: three paths as structure, privacy separate from the path
+    strip.querySelector("[data-ltext]").textContent=levelText(R.r);
+    const lo=LEVELS.indexOf(R.r.lo), hi=LEVELS.indexOf(R.r.hi);
+    strip.querySelectorAll("[data-l]").forEach(seg=>{const i=LEVELS.indexOf(seg.dataset.l);
+      seg.classList.toggle("cur",!R.r.pending&&i===lo);seg.classList.toggle("maybe",R.r.pending&&i>=lo&&i<=hi);});
+    const pp=strip.querySelector('[data-pill="priv"]'), pe=strip.querySelector('[data-pill="exp"]');
+    pp.textContent="Privacy: "+R.privacy;pp.className="pill "+(R.privacy==="routed"?"flag":R.privacy==="follow-up"?"rev":"");
+    pe.textContent="Expert review: "+R.expert;pe.className="pill "+(R.expert==="triggered"?"flag":"");
+    reviewLine.textContent=R.unsure.length?"Unsure on: "+R.unsure.join(" · ")+" Each one goes to a reviewer to follow up.":"No unsure answers to follow up.";
+    reviewLine.classList.toggle("none",!R.unsure.length);
+    retroLine.textContent=a.already_in_use==="yes"?"You've just assessed something already running. That's an assessment after the fact."
+                         :a.already_in_use==="no"?"You've assessed it before it runs, which is the cheap case.":"";
+    renderNotice(a,R);
+    const now={level:levelText(R.r),privacy:R.privacy,expert:R.expert};
+    if(PREV){
+      const msgs=[], els=[];
+      if(PREV.level!==now.level){msgs.push("Review path: "+PREV.level+" → "+now.level);els.push(strip.querySelector("[data-ltext]"),document.getElementById("nLevel"));}
+      if(PREV.privacy!==now.privacy){msgs.push("Privacy: "+PREV.privacy+" → "+now.privacy);els.push(pp,document.getElementById("nPriv"));}
+      if(PREV.expert!==now.expert){msgs.push("Expert review: "+PREV.expert+" → "+now.expert);els.push(pe,document.getElementById("nNext"));}
+      if(els.length) els.splice(1,0,document.getElementById("nSubject"));
+      stagger(els);
+      rStatus.textContent=msgs.length?msgs.join(". ")+".":"Same result.";
+    }
+    PREV=now; ANS=a; RES=R;
+    renderSwap(); renderReassess();
+  }
+  // Notice, modeled on tools that turn answers into a report with its reasoning and limits
+  function renderNotice(a,R){
+    const p=R.r.pending;
+    document.getElementById("nSubject").textContent="Your AI use case: "+(p?"review path pending":cap(R.r.lo))+(R.expert==="triggered"?", expert review triggered":"");
+    document.getElementById("nRef").textContent=REF+" (invented)";
+    document.getElementById("nLevel").textContent=p?"Pending: between "+low(R.r.lo)+" and "+low(R.r.hi)+", depending on your unsure answers.":cap(R.r.lo);
+    const why=[];
+    if(a.student_decisions==="yes") why.push("It informs decisions about students or applicants.");
+    if(a.student_decisions==="yes"&&a.human_review==="no") why.push("No person reviews its output before it's acted on.");
+    if(a.public_facing==="yes") why.push("Students or the public interact with it directly.");
+    if(a.personal_data==="yes") why.push("It uses personal information.");
+    if(R.unsure.length) why.push("You were unsure on "+R.unsure.length+(R.unsure.length===1?" question.":" questions."));
+    if(!why.length) why.push("None of the answers raised a risk indicator.");
+    const ul=document.getElementById("nWhy"); ul.textContent=""; why.forEach(t=>{const li=document.createElement("li");li.textContent=t;ul.appendChild(li);});
+    document.getElementById("nPriv").textContent=R.privacy==="routed"?"Routed to privacy for review.":R.privacy==="follow-up"?"Privacy will follow up on your unsure answer.":"Not needed, based on your answers.";
+    document.getElementById("nNext").textContent=R.expert==="triggered"?"An expert reviewer will follow up on the points above.":"No expert review needed. Keep this notice with the use case's records.";
+  }
+  // Swap test: the same answers through a different tool, or through different rules
+  const SW={tool:"a",rules:"a"}; let swKey=null;
+  function renderSwap(announce){
+    if(!ANS) return;
+    const base=evaluate(ANS,"a"), now=evaluate(ANS,SW.rules), bt=levelText(base), nt=levelText(now);
+    document.querySelectorAll("[data-swap]").forEach(b=>b.setAttribute("aria-pressed",String(SW[b.dataset.swap]===b.dataset.v)));
+    document.querySelectorAll("[data-swmarks]").forEach(el=>{
+      el.textContent="";
+      qs.forEach(([k,label])=>{const m=document.createElement("span");m.className="mk "+ANS[k];m.textContent=ANS[k]==="yes"?"Y":ANS[k]==="no"?"N":"?";m.title=label+" "+ANS[k];el.appendChild(m);});
+      el.setAttribute("aria-label","Your answers: "+qs.map(([k,,short])=>short+", "+ANS[k]).join("; "));
+    });
+    const swapped=SW.tool==="b"||SW.rules==="b";
+    document.querySelectorAll("[data-swapout]").forEach(el=>{
+      el.textContent="";
+      if(nt!==bt){const o=document.createElement("s");o.textContent=bt;const n=document.createElement("span");n.className="chg";n.textContent=nt;el.appendChild(o);el.appendChild(document.createTextNode(" → "));el.appendChild(n);}
+      else{el.appendChild(document.createTextNode(nt));if(swapped){el.appendChild(document.createTextNode(" "));const ok=document.createElement("span");ok.className="ok";ok.textContent="unchanged ✓";el.appendChild(ok);}}
+    });
+    const note=SW.rules==="a"?(SW.tool==="a"?"The current setup. Swap the tool, then the rules.":"Different tool, same result. The tool only moves the answers around. (This illustration shows the argument; it doesn't test it.)"):
+               (nt===bt?"Different rules. For these answers the result happens to match, but other answers would differ.":"Different rules, different result. The rules are the service.");
+    document.querySelectorAll("[data-swapnote]").forEach(el=>{el.textContent=note;el.classList.toggle("changed",SW.rules==="b"&&nt!==bt);});
+    const key=SW.tool+SW.rules+nt;
+    if(swKey!==null&&key!==swKey){document.querySelectorAll("[data-swapout]").forEach(mark);if(announce)document.getElementById("swStatus").textContent="Review path: "+(nt!==bt?bt+" → "+nt:nt+", unchanged")+". "+note;}
+    swKey=key;
+  }
+  // Reassess: the same use case a year later gets a new reference and nothing links the two
+  let REA=null;
+  const CHANGES=[["public_facing","yes","Since then (invented): students use it directly."],["human_review","no","Since then (invented): nobody reviews its output first."],["personal_data","yes","Since then (invented): it uses personal information."],["student_decisions","yes","Since then (invented): it informs decisions about students."]];
+  function renderReassess(){
+    if(!ANS||!RES) return;
+    document.querySelectorAll("[data-ra-ref]").forEach(e=>{e.textContent=REF;});
+    document.querySelectorAll("[data-ra-sum]").forEach(e=>{e.textContent=levelText(RES.r)+" · privacy "+RES.privacy;});
+    document.querySelectorAll(".reassess").forEach(b=>b.classList.toggle("done",!!REA));
+    let msg="Your notice's reference names a submission, not the use case. See what the record makes of the same use case a year later.";
+    if(REA){
+      // The illustrative change: prefer one that moves the risk, since that's when the missing link matters most
+      const opts=CHANGES.filter(([k,v])=>ANS[k]!==v);
+      const ch=opts.find(([k,v])=>levelWords(results(Object.assign({},ANS,{[k]:v})).r)!==levelWords(RES.r))||opts[0]||CHANGES[0];
+      const RB=results(Object.assign({},ANS,{[ch[0]]:ch[1]}));
+      document.querySelectorAll("[data-rb-ref]").forEach(e=>{e.textContent=REA;});
+      document.querySelectorAll("[data-rb-sum]").forEach(e=>{e.textContent=levelText(RB.r)+" · privacy "+RB.privacy;});
+      document.querySelectorAll("[data-rb-change]").forEach(e=>{e.textContent=ch[2];});
+      const a1=levelWords(RES.r), b1=levelWords(RB.r);
+      msg="To you, it's the same use case. To the record, "+REF+" and "+REA+" are two unrelated submissions. "+
+          (a1!==b1?"Its path moved from "+a1+" to "+b1+", and nothing here can connect the two.":"Its path stayed "+a1+", and nothing here can connect the two either.");
+    }
+    document.querySelectorAll("[data-rmsg]").forEach(e=>{e.textContent=msg;});
+    return msg;
+  }
+  document.addEventListener("click",e=>{
+    const b=e.target.closest("[data-swap]");
+    if(b){SW[b.dataset.swap]=b.dataset.v;renderSwap(true);return;}
+    const r=e.target.closest("[data-reassess]");
+    if(r){
+      let n;do{n="REF-"+String(1000+Math.floor(Math.random()*9000));}while(n[4]===REF[4]);
+      REA=n;const msg=renderReassess();const box=r.closest(".reassess");
+      document.getElementById("btwStatus").textContent=msg;
+      if(box){stagger([box.querySelector(".rb-full"),box.querySelector("[data-rmsg]")]);const x=box.querySelector("[data-reassess-reset]");if(x)x.focus();}
+      return;
+    }
+    const z=e.target.closest("[data-reassess-reset]");
+    if(z){REA=null;renderReassess();document.getElementById("btwStatus").textContent="Reassessment cleared.";const box=z.closest(".reassess");if(box){const y=box.querySelector("[data-reassess]");if(y)y.focus();}}
+  });
+  document.addEventListener("pudding:layout",()=>{renderSwap();renderReassess();});
+  Pudding.onStep("intake",(n,root)=>{root.querySelectorAll(".nghost a").forEach(a=>{a.tabIndex=n===3?0:-1;});});
+  Pudding.onStep("between",(n,root)=>{const g=root.querySelector("svg.gapline");if(g)g.setAttribute("class","gapline g"+(n+1));});
+  form.addEventListener("change",run); run();
+})();
+</script>
+{% endraw %}
