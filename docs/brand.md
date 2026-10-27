@@ -62,9 +62,16 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 - **Moss H2s** site-wide (1.35rem, 600, `--moss`). The résumé keeps its own
   ruled section labels.
 - **Footer wordmark**: "S·L © Seb Lathangue · seb the canadian", in mono.
-- **Pixel dialect = system scale.** The pixel conifer (favicon, touch icon,
-  OG cards), the 404 page, the About portrait, one pixel divider under the
-  home lede. Pixel is an accent, never a texture.
+- **The mark is duotone, like the accent.** A lavender sprig in light mode
+  (three spikes: violet `#5b3fa3` florets, lilac `#8a52cc` highlights,
+  forest-green `#3d6b34` stems) and the pixel conifer in fern `#6f9d52` in
+  dark. Both sit on the same 12-cell pixel grid. `favicon.svg` switches with
+  the browser's colour scheme; images that serve both modes (the PNG
+  favicon, the touch icon, the OG cards) use the sprig. All of them come from
+  `scripts/generate-og.py`; regenerate rather than edit by hand.
+- **Pixel dialect = system scale.** The mark, the 404 page, the About
+  portrait, one pixel divider under the home lede. Pixel is an accent, never
+  a texture.
 - **Retired:** the woodcut stamp and corner frames, the speckled forest-floor
   background, the dark garden night panel, the maple leaf.
 
