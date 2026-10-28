@@ -1,0 +1,14 @@
+{#- One writing index row. Expects `post` (a collection item). The label is
+    the post's type (note, essay…), "post" when it has none. In-progress posts
+    carry the same pill as on the home page; otherwise the stage word leads
+    the date. -#}
+    <article class="index-row h-entry">
+      <span class="index-row__label">{{ post.data.type or "post" }}/</span>
+      <span class="index-row__desc">
+        <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
+        {%- if post.data.inProgress %}
+        <span class="index-pill index-pill--active">in progress</span>
+        {%- endif %}
+      </span>
+      <span class="index-row__meta">{% if post.data.stage %}{{ post.data.stage }} &middot; {% endif %}<time class="dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | humanDate }}</time></span>
+    </article>

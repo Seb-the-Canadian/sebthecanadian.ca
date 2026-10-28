@@ -2,13 +2,15 @@
 layout: post.njk
 title: "Hello, IndieWeb"
 date: 2026-01-13
+updated: 2026-10-28
 excerpt: "First post on sebthecanadian.ca — testing h-entry markup and webmentions."
 tags:
   - indieweb
   - meta
 syndicated: false
-noindex: true
 ---
+
+*Update, 28 Oct 2026: writing now starts here, on this site, rather than in the garden. The rest of this post is as I first wrote it.*
 
 First post on sebthecanadian.ca as I start adding IndieWeb conventions.
 

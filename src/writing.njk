@@ -1,29 +1,29 @@
 ---
 layout: base.njk
 title: Writing
-description: "Posts published natively on this site."
+description: "Notes and longer pieces, written and tended on this site."
 permalink: /writing/
-noindex: true
 ---
 {% set mastheadLabel = "writing/" %}
-{% set mastheadLede %}Posts published natively on this site.{% endset %}
+{% set mastheadLede %}Notes and longer pieces, written and tended here. Notes are short and often unfinished, so each one says how far along it is.{% endset %}
 {% include "masthead.njk" %}
 
 <section class="h-feed" aria-labelledby="writing-feed-heading">
   <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
 
   {%- if collections.writing.length %}
-  <h2 class="eyebrow">Published here</h2>
-  <ul class="native-posts">
+  <div class="index-table">
     {%- for post in collections.writing %}
-    <li class="h-entry">
-      <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
-      <time class="dt-published" datetime="{{ post.date | isoDate }}"> &middot; {{ post.date | humanDate }}</time>
-    </li>
+    {%- include "writing-row.njk" %}
     {%- endfor %}
-  </ul>
+  </div>
   {%- endif %}
 </section>
+
+<p class="writing-key">
+  <span class="eyebrow">How far along</span>
+  <span><strong>seedling</strong> a first pass &middot; <strong>budding</strong> reworked &middot; <strong>evergreen</strong> settled</span>
+</p>
 
 {%- if collections.tagList and collections.tagList.length %}
 <p class="tag-browse">

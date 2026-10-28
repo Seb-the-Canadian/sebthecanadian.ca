@@ -21,6 +21,7 @@
   const routes = {
     h: "/",
     p: "/projects/",
+    w: "/writing/",
     r: "/resume/",
     n: "/#now",
   };
@@ -28,6 +29,7 @@
   const chordItems = [
     { chord: "g → h", dest: "Home" },
     { chord: "g → p", dest: "Projects" },
+    { chord: "g → w", dest: "Writing" },
     { chord: "g → r", dest: "Resume" },
     { chord: "g → n", dest: "Now" },
   ];

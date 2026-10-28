@@ -28,6 +28,16 @@ export default function (eleventyConfig) {
     });
   });
 
+  // writingRecent — the home page's Writing block: the three newest posts,
+  // leaving out in-progress posts (they already have a row under Projects).
+  eleventyConfig.addCollection("writingRecent", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("src/writing/*.md")
+      .filter((item) => !item.data.inProgress)
+      .sort((a, b) => b.date - a.date)
+      .slice(0, 3);
+  });
+
   // feedEntries — native posts + garden posts, merged for the Atom feed
   // (src/feed.njk). The garden IS the body of work; the feed should carry
   // it. Garden entries link out to cognitivearchitecture.ca. Null-dated

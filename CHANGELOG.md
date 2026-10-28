@@ -4,6 +4,29 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-28 — Writing comes home
+
+### Added
+- **Notes from Drafts.** A Drafts action publishes a note straight to
+  `src/writing/` on `main` (`type: note`, `stage: seedling`). The first,
+  "Ambiguity is a kind of debt.", went out this way.
+- **A Writing block on the home page**, after Now: the three newest posts
+  that aren't in progress, with "All writing →".
+- **Type and stage on writing.** Index rows label each post by type
+  (`note/`, `post/`) and lead the date with its stage; post pages show both
+  in the meta line. A one-line key under the index explains the stages.
+
+### Changed
+- **Writing is back.** `/writing/` returns to the nav (between Projects and
+  About) and to search engines, with its tag pages; the `g w` chord is back.
+  The index now uses the home page's index rows instead of a plain list.
+- **Writing lives here now.** `brand.md`, the README and the copy runbook
+  no longer say writing lives off-site; the runbook's "Bringing the Writing
+  section back" became "Publishing a note". Garden posts stay in the feed,
+  linking out, for now.
+- **"Hello, IndieWeb"** keeps its January text, with a dated note that
+  writing now starts here.
+
 ## 2026-10-28 — A front door for "Down and Out, revisited"
 
 ### Added
