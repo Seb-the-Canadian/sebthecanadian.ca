@@ -6,15 +6,20 @@ ogImage: /assets/img/og-writing.png
   <header class="post-header">
     <h1 class="p-name">{{ title }}</h1>
     <p class="post-meta">
+      {%- if type %}<span class="post-type">{{ type }}</span> &middot; {% endif %}
+      {%- if stage %}<span class="post-stage">{{ stage }}</span> &middot; {% endif %}
       <time class="dt-published" datetime="{{ page.date | isoDate }}">{{ page.date | humanDate }}</time>
       {%- if updated %}
       &middot; <time class="dt-updated" datetime="{{ updated }}">updated {{ updated | humanDate }}</time>
       {%- endif %}
-      {%- if tags %}
+      {#- Tags, minus the one that just repeats the type ("note" on a note). -#}
+      {%- set tagCount = (tags | length) if tags else 0 %}
+      {%- set extraCount = tagCount - (1 if (type and tags and type in tags) else 0) %}
+      {%- if extraCount > 0 %}
       &middot;
-      {%- for tag in tags %}
-      <a class="p-category" href="/writing/tags/{{ tag }}/" rel="tag">#{{ tag }}</a>{% if not loop.last %} {% endif %}
-      {%- endfor %}
+      {%- for tag in tags %}{% if tag != type %}
+      <a class="p-category" href="/writing/tags/{{ tag }}/" rel="tag">#{{ tag }}</a>
+      {%- endif %}{% endfor %}
       {%- endif %}
     </p>
   </header>

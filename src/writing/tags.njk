@@ -8,7 +8,6 @@ eleventyComputed:
   title: "Posts tagged #{{ tag }}"
   description: "Native posts on sebthecanadian.ca tagged #{{ tag }}."
 permalink: /writing/tags/{{ tag | slug }}/
-noindex: true
 ---
 <p class="masthead__meta"><span class="masthead__stamp" aria-hidden="true">S&middot;L</span><span class="eyebrow">writing/tags/</span></p>
 <h1>Posts tagged <code>#{{ tag }}</code></h1>
@@ -28,13 +27,7 @@ noindex: true
   <div class="index-table">
     {%- for post in tagPosts %}
       {%- if tag in (post.data.tags or []) %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">writing/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
-      </span>
-      <time class="index-row__meta dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | humanDate }}</time>
-    </article>
+    {%- include "writing-row.njk" %}
       {%- endif %}
     {%- endfor %}
   </div>

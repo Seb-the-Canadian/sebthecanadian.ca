@@ -2,6 +2,7 @@
   "primary": [
     { "label": "Home",     "url": "/" },
     { "label": "Projects", "url": "/projects/" },
+    { "label": "Writing",  "url": "/writing/" },
     { "label": "About",    "url": "/about/" }
   ],
   "colophon": [

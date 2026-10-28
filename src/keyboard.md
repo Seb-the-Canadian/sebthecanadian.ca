@@ -15,6 +15,7 @@ The site supports vim-style chord shortcuts when JavaScript is enabled. Press th
 |------:|:------------|
 | `g` &rarr; `h` | [Home](/) |
 | `g` &rarr; `p` | [Projects](/projects/) |
+| `g` &rarr; `w` | [Writing](/writing/) |
 | `g` &rarr; `r` | [Resume](/resume/) |
 | `g` &rarr; `n` | [Now](/#now) |
 

@@ -75,7 +75,7 @@ those.
 | Links | Everything | `src/links.md` | Markdown; same shape as Uses |
 | Keyboard reference | Everything | `src/keyboard.md` | The chord table must match `src/assets/js/keyboard-nav.js`: add or remove chords in both |
 | 404 page | The text | `src/404.md` | |
-| Writing (unlinked since 2026-10-27) | The page intro; the posts | `src/writing.njk`; `src/writing/*.md` | See "Bringing the Writing section back" |
+| Writing | The page intro and the stage key; the posts | `src/writing.njk`; `src/writing/*.md` | New notes usually arrive from Drafts: see "Publishing a note" |
 | For machines | The crawler note and the hidden "for curious humans" file | `src/llms.txt`, `src/stranger.txt` | Plain text |
 
 Things that look like text but are generated: the footer's "Last updated"
@@ -239,21 +239,27 @@ git push
 Never rewrite history on `main`; a revert is a new commit and keeps the
 record straight.
 
-## Bringing the Writing section back
+## Publishing a note
 
-The Writing pages (`/writing/`, the posts, the tag pages) still exist but
-are unlinked and marked "don't index" while the writing is relaunched. To
-restore them:
+Notes go from Drafts straight to the site; no Terminal needed.
 
-1. Delete the line `noindex: true` from the front matter of
-   `src/writing.njk`, `src/writing/hello-indieweb.md` and
-   `src/writing/tags.njk`.
-2. Add `{ "label": "Writing", "url": "/writing/" }` back to the `primary`
-   list in `_data/navigation.json`, between Home and Projects.
-3. If you want the `g w` chord back, add `w: "/writing/"` to the `routes`
-   and a `{ chord: "g → w", dest: "Writing" }` row to `chordItems` in
-   `src/assets/js/keyboard-nav.js`, and the matching row in
-   `src/keyboard.md`.
-4. The garden block that used to sit on the home page and the Writing
-   page is in git history (the commit "Unlink the garden and the Writing
-   section for now", 2026-10-27) if you want it back as it was.
+1. In Drafts, run **New Draft with Template** and pick **Note**. Type the
+   title over `<|Title>` and the note over `<|Note>`.
+2. Leave a blank line between paragraphs. A single line break joins the
+   two lines into one paragraph.
+3. Run **Publish Note → sebthecanadian.ca** (in the PROMOTE group) and
+   confirm. It commits `src/writing/<slug>.md` to `main`, and the note is
+   live at `/writing/<slug>/` one to three minutes later.
+4. To change a published note, edit the same draft and run the action
+   again: it updates that note rather than making a new one.
+
+The action refuses a draft without a title and body, or with a template
+placeholder still in it, and warns before sending anything that mentions
+your employer. Each note's front matter carries `type: note` and
+`stage: seedling`; move a note on by editing `stage` to `budding` or
+`evergreen` in its file.
+
+If the action says GitHub refused it, the token has probably expired
+(28 Oct 2027): make a new fine-grained token for this repository with
+Contents: Read and write, then in Drafts open Settings → Credentials,
+forget "GitHub · sebthecanadian.ca", and run the action again.

@@ -36,9 +36,9 @@ Warm parchment and forest accents, hand-built and slowly tended: one voice, many
 ```
 sebthecanadian.ca/
 ├── src/
-│   ├── index.njk              # Homepage (h-card, hero, Projects, Now block, profiles)
+│   ├── index.njk              # Homepage (h-card, hero, Projects, Now, Writing, profiles)
 │   ├── projects.njk           # Projects page (cards from data)
-│   ├── writing.njk            # Writing hub (h-feed); unlinked since 2026-10-27, see docs/updating-copy.md
+│   ├── writing.njk            # Writing index (h-feed): index rows by type and stage, plus the stage key
 │   ├── resume.njk             # Printable résumé (h-resume) — linked from About, not in primary nav
 │   ├── now.njk                # /now/ → /#now redirect (Now block lives on home)
 │   ├── about.md               # Combined About + résumé (bio, philosophy, résumé, colophon)
@@ -46,7 +46,7 @@ sebthecanadian.ca/
 │   ├── uses.md                # /uses page
 │   ├── links.md               # Blogroll
 │   ├── 404.md                 # Custom 404
-│   ├── writing/               # Blog posts (markdown)
+│   ├── writing/               # Notes and posts (markdown); notes arrive from Drafts
 │   │   ├── hello-indieweb.md  # First native post
 │   │   └── tags.njk           # Tag archive pages (/writing/tags/<tag>/)
 │   ├── _includes/
@@ -100,12 +100,13 @@ npm run build                 # Garden sync + Eleventy build → _site/
 npm run garden-sync           # Fetch garden posts only (no build)
 ```
 
-## Writing (POSSE)
+## Writing
 
-The Writing section is unlinked while the writing is relaunched (since 2026-10-27): `/writing/` and its pages still build, with `noindex: true` in their front matter and no nav item. `docs/updating-copy.md` says how to bring them back.
+Writing starts here (since 2026-10-28), at `/writing/`, linked from the nav and from a Writing block on the home page.
 
-- **Posts** — Manual markdown files in `src/writing/` (native posts like "Hello, IndieWeb" use `syndicated: false`)
-- **Garden posts** — Still pulled from cognitivearchitecture.ca at build time via `scripts/garden-rss.js` for the Atom feed; the garden block on the home and writing pages is gone for now
+- **Notes** — published from Drafts by the "Publish Note → sebthecanadian.ca" action, which commits `src/writing/<slug>.md` to `main` with `type: note` and `stage: seedling`. `docs/updating-copy.md` → "Publishing a note".
+- **Other posts** — markdown files in `src/writing/` (native posts use `syndicated: false`).
+- **Garden posts** — still pulled from cognitivearchitecture.ca at build time via `scripts/garden-rss.js` for the Atom feed only, linking out, until they move here.
 
 See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 

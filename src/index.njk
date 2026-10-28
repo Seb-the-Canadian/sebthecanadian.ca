@@ -78,6 +78,18 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
     </p>
   </section>
 
+  {%- if collections.writingRecent.length %}
+  <section class="home-block" aria-label="Writing">
+    <h2 class="eyebrow">Writing</h2>
+    <div class="index-table">
+      {%- for post in collections.writingRecent %}
+      {%- include "writing-row.njk" %}
+      {%- endfor %}
+    </div>
+    <p class="home-more"><a href="/writing/">All writing &rarr;</a></p>
+  </section>
+  {%- endif %}
+
   <section class="home-block" aria-label="Elsewhere">
     <h2 class="eyebrow">Elsewhere</h2>
     <div class="index-table">

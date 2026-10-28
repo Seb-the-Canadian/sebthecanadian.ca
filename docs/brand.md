@@ -92,8 +92,9 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
 - **The home page leads with the work**: hero, lede, then Projects (case
-  studies first, then projects), then Now, then the garden, then Elsewhere.
-  Writing lives off-site and follows the work.
+  studies first, then projects), then Now, then Writing (the three newest
+  posts), then Elsewhere. Writing lives on this site, at `/writing/`, and
+  follows the work.
 
 ## Figures and data
 
@@ -131,8 +132,14 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   converter, which keeps this look; never restyle the room toward the
   site-wide heading tier or card. How to bring one in and publish it:
   `docs/portfolio-clearance.md`.
-- **The garden** lives off-site (cognitivearchitecture.ca); on this site it is
-  a portal with one consistent label.
+- **Writing** (`/writing/`): notes and longer pieces in the site's own look,
+  listed as index rows. The row label is the post's type (`note/`, `essay/`,
+  `post/` when it has none); the meta column gives the stage word, then the
+  date. Stages are words, never colour: seedling (a first pass), budding
+  (reworked), evergreen (settled), with the key under the index. A post page
+  shows type and stage in its meta line.
+- **The garden** (cognitivearchitecture.ca) is no longer where writing
+  starts. Its posts stay in the Atom feed, linking out, until they move here.
 
 ## Before shipping a visual change
 
