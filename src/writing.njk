@@ -1,61 +1,19 @@
 ---
 layout: base.njk
 title: Writing
-description: "Posts from the digital garden, with native posts published occasionally on this site."
+description: "Posts published natively on this site."
 permalink: /writing/
+noindex: true
 ---
 {% set mastheadLabel = "writing/" %}
-{% set mastheadLede %}Writing originates in the garden at <a href="https://cognitivearchitecture.ca/">cognitivearchitecture.ca</a>. Native posts here are rare &mdash; this page is a hub, not a destination.{% endset %}
+{% set mastheadLede %}Posts published natively on this site.{% endset %}
 {% include "masthead.njk" %}
-
-{%- set syndicatedUrls = [] %}
-{%- for post in collections.writing %}
-  {%- if post.data.syndicated and post.data.gardenUrl %}
-    {%- set syndicatedUrls = (syndicatedUrls.push(post.data.gardenUrl), syndicatedUrls) %}
-  {%- endif %}
-{%- endfor %}
 
 <section class="h-feed" aria-labelledby="writing-feed-heading">
   <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
 
-  {%- if gardenPosts.length %}
-  <section class="index-table garden-panel" aria-label="From the Garden">
-    <p class="garden-portal">
-      <span class="eyebrow">from the garden</span>
-      <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
-    </p>
-    {%- set gardenShown = 0 %}
-    {%- for gp in gardenPosts %}
-      {%- if gp.url not in syndicatedUrls and gardenShown < 12 %}
-        {%- set gardenShown = gardenShown + 1 %}
-    <article class="index-row h-entry">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a class="u-url p-name" href="{{ gp.url }}" rel="external">{{ gp.title }}</a>
-        {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
-      </span>
-      {%- if gp.date %}
-      <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | humanDate }}</time>
-      {%- else %}
-      <span class="index-row__meta"></span>
-      {%- endif %}
-    </article>
-      {%- endif %}
-    {%- endfor %}
-    <div class="index-row">
-      <span class="index-row__label">garden/</span>
-      <span class="index-row__desc">
-        <a href="https://cognitivearchitecture.ca/" rel="external">more in the garden &rarr;</a>
-      </span>
-      <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
-    </div>
-  </section>
-  {%- else %}
-  <p>Garden offline at build time. See <a href="https://cognitivearchitecture.ca/">the source</a>.</p>
-  {%- endif %}
-
   {%- if collections.writing.length %}
-  <h2 class="eyebrow">Also published natively here</h2>
+  <h2 class="eyebrow">Published here</h2>
   <ul class="native-posts">
     {%- for post in collections.writing %}
     <li class="h-entry">

@@ -2,7 +2,7 @@
   <nav aria-label="Primary">
     <ul>
       {%- for item in navigation.primary %}
-      <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      <li><a href="{{ item.url }}"{% if page.url == item.url or (item.url != "/" and page.url.startsWith(item.url)) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
       {%- endfor %}
     </ul>
   </nav>

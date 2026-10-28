@@ -332,16 +332,30 @@ footer nav a:visited {
 }
 
 /* ── Keyboard shortcuts overlay ─────────────────────────────────────────── */
+/* A native <dialog> opened with showModal(): the browser traps focus and
+   makes the page behind inert. The dialog element itself fills the viewport
+   and carries the tint, so a click outside the panel is a backdrop click. */
 .kbd-overlay {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--pad);
+  border: 0;
+  color: var(--ink);
   background: color-mix(in oklab, var(--bg) 80%, transparent);
   backdrop-filter: blur(3px);
-  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: var(--pad);
+}
+.kbd-overlay[open] {
+  display: flex;
+}
+.kbd-overlay::backdrop {
+  background: transparent;
 }
 
 .kbd-overlay-inner {
@@ -410,6 +424,11 @@ kbd {
   margin-bottom: 0;
 }
 
+.kbd-overlay-close {
+  display: block;
+  margin: var(--space-md) auto 0;
+}
+
 /* ── Buttons (shared with the JS-injected theme toggle) ─────────────────── */
 .button,
 .theme-toggle {
@@ -431,6 +450,25 @@ a.button:visited { color: var(--muted); }
 .theme-toggle:hover {
   color: var(--moss);
   border-color: var(--moss);
+}
+
+/* The theme switch: a role="switch" button; the pixel square shows the
+   state (filled = dark on). Stays at the right edge when the header wraps. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  margin-left: auto;
+  border-color: var(--muted);
+}
+.theme-toggle__mark {
+  width: 0.6em;
+  height: 0.6em;
+  border: 1px solid var(--moss);
+  background: transparent;
+}
+.theme-toggle[aria-checked="true"] .theme-toggle__mark {
+  background: var(--moss);
 }
 
 .button--print {
@@ -696,11 +734,11 @@ a.button:visited { color: var(--muted); }
   transition: opacity 0.15s var(--ease);
 }
 h2:hover > .heading-anchor,
-h3:hover > .heading-anchor,
-.heading-anchor:focus-visible {
+h3:hover > .heading-anchor {
   opacity: 0.5;
 }
-.heading-anchor:hover {
+.heading-anchor:hover,
+.heading-anchor:focus-visible {
   opacity: 1;
   text-decoration: none;
 }

@@ -13,10 +13,5 @@
     "platform": "ORCID",
     "url": "https://orcid.org/0009-0003-1402-6973",
     "rel": "me"
-  },
-  {
-    "platform": "Garden",
-    "url": "https://cognitivearchitecture.ca/",
-    "rel": "me"
   }
 ]

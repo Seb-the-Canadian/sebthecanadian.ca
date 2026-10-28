@@ -36,9 +36,9 @@ Warm parchment and forest accents, hand-built and slowly tended: one voice, many
 ```
 sebthecanadian.ca/
 ├── src/
-│   ├── index.njk              # Homepage (h-card, hero, Now block, featured project, latest writing, profiles)
+│   ├── index.njk              # Homepage (h-card, hero, Projects, Now block, profiles)
 │   ├── projects.njk           # Projects page (cards from data)
-│   ├── writing.njk            # POSSE syndication hub (h-feed)
+│   ├── writing.njk            # Writing hub (h-feed); unlinked since 2026-10-27, see docs/updating-copy.md
 │   ├── resume.njk             # Printable résumé (h-resume) — linked from About, not in primary nav
 │   ├── now.njk                # /now/ → /#now redirect (Now block lives on home)
 │   ├── about.md               # Combined About + résumé (bio, philosophy, résumé, colophon)
@@ -85,6 +85,9 @@ sebthecanadian.ca/
 ├── BACKLOG.md                 # Feature roadmap
 ├── CHANGELOG.md               # Version history
 └── docs/
+    ├── brand.md               # The current brand rules
+    ├── updating-copy.md       # How to change the words on the site, step by step
+    ├── ux-audit-2026-10-27.md # UI/UX audit: findings, decisions, what was done
     └── archive/               # Archived pre-Eleventy planning docs (provenance only)
 ```
 
@@ -99,10 +102,10 @@ npm run garden-sync           # Fetch garden posts only (no build)
 
 ## Writing (POSSE)
 
-Posts originate in the digital garden and are syndicated here as excerpts. The writing page has two sections:
+The Writing section is unlinked while the writing is relaunched (since 2026-10-27): `/writing/` and its pages still build, with `noindex: true` in their front matter and no nav item. `docs/updating-copy.md` says how to bring them back.
 
 - **Posts** — Manual markdown files in `src/writing/` (native posts like "Hello, IndieWeb" use `syndicated: false`)
-- **From the Garden** — Automatically pulled from cognitivearchitecture.ca at build time via `scripts/garden-rss.js`
+- **Garden posts** — Still pulled from cognitivearchitecture.ca at build time via `scripts/garden-rss.js` for the Atom feed; the garden block on the home and writing pages is gone for now
 
 See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 
@@ -110,6 +113,9 @@ See `POSSE_POST_TEMPLATE.md` for the manual post front matter structure.
 
 The site is designed to run itself. What that means in practice:
 
+- **Updating the words.** [`docs/updating-copy.md`](docs/updating-copy.md)
+  walks through where every piece of copy lives, how to preview, publish
+  and confirm a change went live. Written for a non-sysadmin.
 - **Daily rebuild.** `build-deploy.yml` has a `schedule:` cron (09:17 UTC daily)
   in addition to push + manual dispatch. Garden posts and webmentions refresh
   on the live site within a day of changing upstream — no commit needed.

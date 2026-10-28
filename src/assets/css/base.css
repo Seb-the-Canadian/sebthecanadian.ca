@@ -17,6 +17,11 @@ html {
   color-scheme: light dark;
 }
 
+/* The theme switch overrides the system setting; native controls and
+   scrollbars follow the switch too. */
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
 /* Seasonal text selection — the highlight takes the season's accent (see the
    data-season blocks in tokens.css). A small, deliberate detail you meet only
    when you select text. */
@@ -109,7 +114,9 @@ a:visited {
 }
 
 a:hover {
-  color: var(--amber);              /* pitch a:hover — warm amber on hover */
+  /* Amber borders and tints; it never colours text (docs/brand.md): on hover
+     the link keeps its colour and the underline turns amber. */
+  text-decoration-color: var(--amber);
   text-decoration-thickness: 0.14em;
 }
 

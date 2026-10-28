@@ -9,12 +9,12 @@ permalink: /about/
 {% include "masthead.njk" %}
 
 <figure class="about-portrait">
-  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" alt="Pixel-art portrait of Seb Lathangue" />
+  <img class="u-photo" src="/assets/img/seb-pixel-portrait.jpg" width="886" height="886" alt="Pixel-art portrait of Seb Lathangue" />
 </figure>
 
 <p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run <a href="/projects/">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
 
-This site is a stable front door. The primary body of my writing lives in the garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/) — this page gathers the durable parts: who I am, how I approach the work, and how this site is built.
+This site is a stable front door. This page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
 <p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | humanDate }}</time></p>
 
@@ -35,7 +35,7 @@ A few things I've come to believe about the work: the governed path has to be th
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, writing (syndicated from the garden), this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
 
 ### Stack
 

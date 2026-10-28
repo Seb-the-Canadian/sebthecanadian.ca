@@ -4,6 +4,49 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-27 — Keyboard, theme switch, and the garden links come down
+
+### Added
+- **`docs/updating-copy.md`** — a step-by-step guide to changing the words
+  on the site by hand: where each piece of copy lives, editing, previewing
+  on a Mac, publishing, how GitHub Pages deploys and how to check it went
+  live. Linked from the README's runbook section.
+- **`docs/ux-audit-2026-10-27.md`** — the UI/UX audit behind this entry:
+  findings with severity, the Safari keyboard diagnosis, the decisions
+  taken, and what was left for later.
+
+### Changed
+- **The garden is unlinked for now.** While the writing is relaunched, the
+  home page's garden block, the Garden entries under Elsewhere and in the
+  footer, and the garden sentences on About, Uses and in the Now text are
+  gone. The Writing section leaves the nav, the `g w` chord, the keyboard
+  page, the 404 page and `llms.txt` with it. `/writing/` and its pages stay
+  at their addresses, marked `noindex` and left out of the sitemap until
+  the relaunch: `noindex: true` in each page's front matter, one line to
+  delete per page to bring them back. The garden fetch, the feed, the
+  résumé and the Cognitive Architecture project card are unchanged.
+- **Keyboard navigation works in Safari.** Safari only tabs to text fields
+  by default, and the site has none, so Tab reached nothing at all. Every
+  link and button now gets an explicit `tabindex` at load
+  (`keyboard-nav.js`), which Safari honours; no effect in other browsers.
+  The keyboard page explains the Mac settings.
+- **The `?` overlay is a real dialog.** Built as a `<dialog>` and opened
+  with `showModal()`, so Tab stays inside it, the page behind is inert,
+  Escape closes it, and there is a Close button for mouse and touch.
+- **The theme switch has two states.** Light or dark, following the system
+  until pressed; the choice is remembered in the browser and applied before
+  first paint, so no flash. To a screen reader it is a switch named "Dark
+  theme" that reports on or off and announces each change. `color-scheme`
+  and the `theme-color` meta follow it. Recorded in `docs/brand.md`.
+- **Small accessibility fixes.** The hidden h-card URL on the home page no
+  longer takes keyboard focus; `<main>` is focusable for the skip link;
+  heading anchors are fully visible when focused; link hover in light mode
+  keeps the link colour and puts the amber in the underline (amber text on
+  parchment is 3.3:1); the nav marks Projects current on case-study pages;
+  footer links no longer open new tabs; the external-link arrow is hidden
+  from screen readers; images declare their size so text does not jump;
+  the switch border is clearer and it stays right-aligned on phones.
+
 ## 2026-10-27 — "A use case has a life", in the case-study room's look
 
 ### Added

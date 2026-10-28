@@ -11,7 +11,7 @@ permalink: /uses/
 
 ## Knowledge Work
 
-- **Obsidian** — Primary thinking and writing environment. Powers the digital garden at [cognitivearchitecture.ca](https://cognitivearchitecture.ca/).
+- **Obsidian** — Primary thinking and writing environment.
 - **Claude** — AI pair for research, writing, and development. This site's recent history is one long collaboration with it.
 - **NVivo** — Qualitative coding, from an earlier research life; still shapes how I think about classification.
 

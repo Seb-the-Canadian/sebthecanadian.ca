@@ -2,12 +2,15 @@
  * Keyboard Navigation — Data Druid shortcuts
  *
  * Chord navigation (g then key):
- *   g h → Home        g w → Writing
- *   g p → Projects    g r → Resume
- *   g n → Now
+ *   g h → Home        g p → Projects
+ *   g r → Resume      g n → Now
  *
- * ? → open shortcut help overlay
- * Esc → close overlay
+ * ? → open the shortcut dialog (a native <dialog>, so Tab stays inside it
+ *     and the page behind is inert); Esc or the Close button closes it
+ *
+ * Tab order: Safari on macOS only tabs to text fields by default, and this
+ * site has none, so every link and button gets an explicit tabindex="0" at
+ * load. Safari honours that; other browsers already tab to them.
  *
  * Progressive enhancement — site works identically without this script.
  * Ignored when focus is inside any input, textarea, select, or contenteditable.
@@ -17,7 +20,6 @@
 
   const routes = {
     h: "/",
-    w: "/writing/",
     p: "/projects/",
     r: "/resume/",
     n: "/#now",
@@ -25,7 +27,6 @@
 
   const chordItems = [
     { chord: "g → h", dest: "Home" },
-    { chord: "g → w", dest: "Writing" },
     { chord: "g → p", dest: "Projects" },
     { chord: "g → r", dest: "Resume" },
     { chord: "g → n", dest: "Now" },
@@ -36,9 +37,22 @@
   let overlay = null;
   let _previousFocus = null;
 
+  /* ── Tab order for Safari ─────────────────────────────────────────────── */
+
+  function makeTabbable() {
+    const els = document.querySelectorAll("a[href], button");
+    Array.prototype.forEach.call(els, function (el) {
+      if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "0");
+    });
+  }
+
+  // Runs after every deferred script (the theme switch and the heading
+  // anchors are built by then), so they are covered too.
+  document.addEventListener("DOMContentLoaded", makeTabbable);
+
   /* ── Overlay ──────────────────────────────────────────────────────────── */
 
-  function buildOverlayHTML() {
+  function buildOverlay() {
     const rows = chordItems
       .map(function (item) {
         return (
@@ -50,36 +64,55 @@
       })
       .join("");
 
-    return (
-      '<div class="kbd-overlay-inner" role="document" tabindex="-1">' +
+    const dialog = document.createElement("dialog");
+    dialog.className = "kbd-overlay";
+    dialog.setAttribute("aria-labelledby", "kbd-overlay-heading");
+    dialog.innerHTML =
+      '<div class="kbd-overlay-inner" tabindex="-1">' +
       '<h2 id="kbd-overlay-heading" class="kbd-overlay-title">Keyboard shortcuts</h2>' +
       '<dl class="kbd-shortcut-list">' + rows + "</dl>" +
       '<p class="kbd-overlay-meta"><kbd>?</kbd> to toggle &nbsp;·&nbsp; <kbd>Esc</kbd> to close</p>' +
-      "</div>"
-    );
+      '<button type="button" class="button kbd-overlay-close" tabindex="0">Close</button>' +
+      "</div>";
+
+    // A click on the dialog itself (outside the panel) is a backdrop click.
+    dialog.addEventListener("click", function (e) {
+      if (e.target === dialog) closeOverlay();
+    });
+    dialog.querySelector(".kbd-overlay-close").addEventListener("click", closeOverlay);
+    // Fires for Esc (the browser's own cancel) and for close() alike.
+    dialog.addEventListener("close", teardown);
+    return dialog;
   }
 
   function openOverlay() {
     if (overlay) return;
     _previousFocus = document.activeElement;
-    overlay = document.createElement("div");
-    overlay.className = "kbd-overlay";
-    overlay.setAttribute("role", "dialog");
-    overlay.setAttribute("aria-modal", "true");
-    overlay.setAttribute("aria-labelledby", "kbd-overlay-heading");
-    overlay.innerHTML = buildOverlayHTML();
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) closeOverlay();
-    });
+    overlay = buildOverlay();
     document.body.appendChild(overlay);
-    const inner = overlay.querySelector(".kbd-overlay-inner");
-    if (inner) inner.focus();
+    if (typeof overlay.showModal === "function") {
+      overlay.showModal();
+    } else {
+      overlay.setAttribute("open", "");
+    }
+    // Start the reading order at the title, not on the Close button.
+    overlay.querySelector(".kbd-overlay-inner").focus();
   }
 
   function closeOverlay() {
     if (!overlay) return;
-    overlay.remove();
+    if (overlay.open && typeof overlay.close === "function") {
+      overlay.close(); // → "close" event → teardown
+    } else {
+      teardown();
+    }
+  }
+
+  function teardown() {
+    if (!overlay) return;
+    const el = overlay;
     overlay = null;
+    el.remove();
     if (_previousFocus && document.contains(_previousFocus)) {
       _previousFocus.focus();
     }
@@ -89,7 +122,10 @@
   /* ── Key handler ──────────────────────────────────────────────────────── */
 
   function isTyping(target) {
-    return target.matches("input, textarea, select, [contenteditable]");
+    return (
+      target instanceof Element &&
+      target.matches("input, textarea, select, [contenteditable]")
+    );
   }
 
   document.addEventListener("keydown", function (e) {

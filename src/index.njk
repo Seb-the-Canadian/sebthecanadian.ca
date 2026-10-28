@@ -15,7 +15,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <span class="identity__sep">·</span>
       <span class="p-locality">Toronto</span><span class="identity__sep">/</span><span class="p-region">ON</span>
     </p>
-    <a class="u-url u-uid sr-only" href="{{ site.url }}">{{ site.url }}</a>
+    <a class="u-url u-uid sr-only" href="{{ site.url }}" tabindex="-1">{{ site.url }}</a>
     <span class="p-country-name sr-only">Canada</span>
   </header>
 
@@ -24,7 +24,8 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
   <hr class="home-rule" />
 
   {#- Order (2026-10-26): work first (case studies, then projects), then Now,
-      then the garden. Writing lives off-site and follows the work. -#}
+      then Elsewhere. The garden block came down 2026-10-27 while the
+      writing is relaunched; see CHANGELOG. -#}
 
   <section class="home-block" aria-label="Projects">
     <h2 class="eyebrow">Projects</h2>
@@ -47,7 +48,7 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
           <a href="{{ project.url }}">{{ project.name }}</a>
           <span class="index-pill index-pill--active">active</span>
         </span>
-        <span class="index-row__meta">{{ project.url | hostname }} &#8599;</span>
+        <span class="index-row__meta">{{ project.url | hostname }} <span aria-hidden="true">&#8599;</span></span>
       </div>
         {%- endif %}
       {%- endfor %}
@@ -63,37 +64,6 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
       <span class="live-dot" aria-hidden="true"></span><time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
     </p>
   </section>
-
-  {%- if gardenPosts.length > 0 %}
-  {#- The garden as its own standalone block — the night panel carries its
-      own weather (design-v3 Phase 2) and self-labels via the portal. -#}
-  <section class="home-block" aria-label="From the garden">
-    <div class="index-table garden-panel">
-      <p class="garden-portal">
-        <span class="eyebrow">the garden</span>
-        <a class="garden-portal__link" href="https://cognitivearchitecture.ca/" rel="external">cognitivearchitecture.ca &#8599;</a>
-      </p>
-      <p class="garden-portal__note">The main body of my writing lives here &mdash; a digital garden, tended in the open and gathered back to this site.</p>
-      {%- for gp in gardenPosts %}{% if loop.index <= 4 %}
-      <article class="index-row h-entry">
-        <span class="index-row__label">garden/</span>
-        <span class="index-row__desc">
-          <a class="u-url p-name" href="{{ gp.url }}">{{ gp.title }}</a>
-          {%- if gp.status %} <span class="index-pill">{{ gp.status }}</span>{%- endif %}
-        </span>
-        <time class="index-row__meta dt-published" datetime="{{ gp.date }}">{{ gp.date | humanDate }}</time>
-      </article>
-      {% endif %}{%- endfor %}
-      <div class="index-row">
-        <span class="index-row__label">garden/</span>
-        <span class="index-row__desc">
-          <a href="https://cognitivearchitecture.ca/" rel="external">more in the garden &rarr;</a>
-        </span>
-        <span class="index-row__meta">{{ "https://cognitivearchitecture.ca/" | hostname }} &#8599;</span>
-      </div>
-    </div>
-  </section>
-  {%- endif %}
 
   <section class="home-block" aria-label="Elsewhere">
     <h2 class="eyebrow">Elsewhere</h2>

@@ -19,6 +19,9 @@
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {%- if noindex %}
+  <meta name="robots" content="noindex" />
+  {%- endif %}
   {% include "json-ld.njk" %}
 
   {#- Open Graph — courtesy metadata for humans sharing links -#}
@@ -34,6 +37,15 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" sizes="180x180" />
   <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)" />
+  <script>
+    /* A remembered theme is applied before first paint; theme-toggle.js builds the switch. */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme-preference");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ pageTitle }}" />
   <meta name="twitter:description" content="{{ description or excerpt or site.description }}" />
@@ -57,7 +69,7 @@
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   {% include "nav.njk" %}
-  <main id="content">
+  <main id="content" tabindex="-1">
     {{ content | safe }}
   </main>
   {% include "footer.njk" %}
