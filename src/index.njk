@@ -40,6 +40,19 @@ description: "Personal site for Seb Lathangue — civic technology, knowledge ar
         <span class="index-row__meta">practice piece</span>
       </div>
       {%- endfor %}
+      {#- Work in progress told as an evolving native post (front matter: inProgress: true). -#}
+      {%- for post in collections.writing %}
+        {%- if post.data.inProgress %}
+      <div class="index-row">
+        <span class="index-row__label">writing/</span>
+        <span class="index-row__desc">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+          <span class="index-pill index-pill--active">in progress</span>
+        </span>
+        <span class="index-row__meta">evolving post</span>
+      </div>
+        {%- endif %}
+      {%- endfor %}
       {%- for project in projects %}
         {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
       <div class="index-row">

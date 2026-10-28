@@ -4,6 +4,17 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-28 — A front door for "Down and Out, revisited"
+
+### Added
+- **"Down and Out, revisited" on the home page.** An evolving native post
+  (`/writing/revisiting-down-and-out/`) re-examining my 2023 MA thesis in
+  public. It was reachable from nowhere once the Writing section left the
+  nav, so it now has a row in the Projects block (`writing/`, "in progress",
+  "evolving post") and a line in the Now text. The row is driven by
+  `inProgress: true` in a post's front matter, so later work-in-progress
+  posts appear the same way, and drop off when the flag is removed.
+
 ## 2026-10-27 — Keyboard, theme switch, and the garden links come down
 
 ### Added

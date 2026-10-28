@@ -8,6 +8,7 @@ tags:
   - research
   - revisiting
 syndicated: false
+inProgress: true
 pageStyles:
   - /assets/css/posts/revisiting-down-and-out.css
 ---
