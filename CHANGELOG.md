@@ -4,6 +4,21 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-10-29 — The writing pipeline gets a home
+
+### Added
+- **`docs/writing-pipeline.md`**: the record of how writing moves from
+  Drafts to the site, and later to the garden and the private vault:
+  principles, the three rooms, a process map, decisions, the next round and
+  open questions.
+- **`tools/drafts/`**: the Publish Note action's script (v1.2, warning
+  words kept in Drafts and not in the code), now kept here as the canonical
+  copy, with install and token notes.
+- **`CLAUDE.md`**: orientation for Claude Code sessions: working rules,
+  source of truth, where things live, how to build and check.
+
+Nothing on the site changes.
+
 ## 2026-10-28 — Writing comes home
 
 ### Added
