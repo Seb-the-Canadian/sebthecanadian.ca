@@ -84,6 +84,11 @@ fixes this; until then, re-set the stage in the file after an update.
 | 2026-10-28/29 | The principles above: front door and garden; Drafts as capture and archive; write once, three rooms; words edited where they live; the title as the key. |
 | 2026-10-29 | Caution words move out of the script into the Drafts credential (script v1.2), so the public repository never holds them. |
 | 2026-10-29 | The script's canonical copy lives in `tools/drafts/`; this page is the pipeline's record. |
+| 2026-10-29 | The garden is a separate vault from my.cofolio. |
+| 2026-10-29 | The archive sweep keeps archived drafts 30 days. Only `published` is exempt, so a published note keeps its draft. |
+| 2026-10-29 | The 18 archived drafts tagged `work` are left to the sweep. |
+| 2026-10-29 | A note can be adopted by its title, so a lost or new draft can still update it: the title is the key. |
+| 2026-10-29 | Bluesky posts use the note's first sentences plus the link. |
 
 ## Next round
 
@@ -107,6 +112,13 @@ Specified, not built. Each was tested or investigated; the findings are facts.
   seedling / budding / evergreen, preset to the note's current stage (read
   from the file on GitHub). First publishes stay seedling without asking.
   Also a **Garden** workspace in Drafts: archive, tag `published`.
+- **Adopt a note by title.** Today a draft can only update the note it made.
+  When a draft has no record of a note but one exists at its address, the
+  action reads that file's title: if it matches the draft's title exactly,
+  the confirmation asks to update the existing note, and on yes the draft
+  takes it over, keeping the note's original date (and, with the stage
+  picker, its stage). A different title at the same address is still
+  refused.
 - **Three rooms from one tap.** After the site commit, the action includes
   the existing Drafts actions that write to the garden vault (the full note
   plus `site:` front matter) and to my.cofolio (a pointer note). Vault
@@ -120,11 +132,12 @@ Specified, not built. Each was tested or investigated; the findings are facts.
   published note, never automatically. It posts to the real account
   (`com.atproto.server.createSession`, then `com.atproto.repo.createRecord`)
   with an app password stored as a Drafts credential, the link as a proper
-  facet, within 300 characters (first sentences plus link; title plus link
-  as the fallback). It reads the post's address back and writes `blueskyUrl`
+  facet, within 300 characters: as many whole first sentences as fit, plus
+  the link; title plus link only when not even the first sentence fits. It
+  reads the post's address back and writes `blueskyUrl`
   into the note's front matter on GitHub.
 - **Archive sweep.** A Drafts action that deletes archived drafts older than
-  N days unless they carry an exempt tag (`published` at least).
+  30 days, except those tagged `published`.
 - **Fewer Obsidian actions.** Collapse the eight "New Note →" actions to two
   with a vault picker: "(safe)" writes the body only; "(title)" writes the
   whole draft plus tags. Both name the file after the first line and use a
@@ -134,10 +147,5 @@ Specified, not built. Each was tested or investigated; the findings are facts.
 
 For Seb to answer; nothing here is assumed.
 
-- Is the garden a separate vault from my.cofolio, and which folder in it
-  should seeds land in? (That folder decides the Obsidian Publish address.)
-- Archive sweep: how long are archived drafts kept, and which tags are
-  exempt?
-- Bluesky post text: first sentences plus link, or title plus link?
-- The 18 archived drafts tagged `work` were never sent anywhere: route them
-  to the work vault, or let the sweep take them?
+- Which folder in the garden vault should seeds land in? (That folder
+  decides the Obsidian Publish address.) Seb is settling it.
