@@ -262,4 +262,7 @@ your employer. Each note's front matter carries `type: note` and
 If the action says GitHub refused it, the token has probably expired
 (28 Oct 2027): make a new fine-grained token for this repository with
 Contents: Read and write, then in Drafts open Settings → Credentials,
-forget "GitHub · sebthecanadian.ca", and run the action again.
+forget "GitHub · sebthecanadian.ca", and run the action again. It asks
+for the token and for the words to warn on (an employer name, say) again;
+those words stay in Drafts, never in this repository. The script itself,
+and how to reinstall it, is in `tools/drafts/`.

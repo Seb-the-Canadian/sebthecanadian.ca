@@ -76,6 +76,7 @@ sebthecanadian.ca/
 │   └── gardenPosts.json       # Garden posts snapshot — regenerated at build, kept-last-good on fetch failure
 ├── scripts/
 │   └── garden-rss.js          # Obsidian Publish → garden posts JSON
+├── tools/drafts/              # Drafts action scripts (canonical copies; paste into Drafts)
 ├── eleventy.config.js         # Eleventy config (ESM)
 ├── package.json
 ├── .github/workflows/
@@ -84,9 +85,11 @@ sebthecanadian.ca/
 ├── DESIGN_BRIEF.md            # Approved design spec
 ├── BACKLOG.md                 # Feature roadmap
 ├── CHANGELOG.md               # Version history
+├── CLAUDE.md                  # Orientation for Claude Code sessions
 └── docs/
     ├── brand.md               # The current brand rules
     ├── updating-copy.md       # How to change the words on the site, step by step
+    ├── writing-pipeline.md    # How writing moves from Drafts to the site (and what's next)
     ├── ux-audit-2026-10-27.md # UI/UX audit: findings, decisions, what was done
     └── archive/               # Archived pre-Eleventy planning docs (provenance only)
 ```
@@ -104,7 +107,7 @@ npm run garden-sync           # Fetch garden posts only (no build)
 
 Writing starts here (since 2026-10-28), at `/writing/`, linked from the nav and from a Writing block on the home page.
 
-- **Notes** — published from Drafts by the "Publish Note → sebthecanadian.ca" action, which commits `src/writing/<slug>.md` to `main` with `type: note` and `stage: seedling`. `docs/updating-copy.md` → "Publishing a note".
+- **Notes** — published from Drafts by the "Publish Note → sebthecanadian.ca" action, which commits `src/writing/<slug>.md` to `main` with `type: note` and `stage: seedling`. `docs/updating-copy.md` → "Publishing a note". How the pipeline fits together, and what comes next: [`docs/writing-pipeline.md`](docs/writing-pipeline.md). The action's script: [`tools/drafts/`](tools/drafts/).
 - **Other posts** — markdown files in `src/writing/` (native posts use `syndicated: false`).
 - **Garden posts** — still pulled from cognitivearchitecture.ca at build time via `scripts/garden-rss.js` for the Atom feed only, linking out, until they move here.
 
