@@ -17,6 +17,13 @@ Format:
 - **`CLAUDE.md`**: orientation for Claude Code sessions: working rules,
   source of truth, where things live, how to build and check.
 
+### Decided
+- **The pipeline's open questions, answered** (in `docs/writing-pipeline.md`):
+  archived drafts are kept 30 days, with `published` exempt; the old
+  `work` drafts go with the sweep; a note can be adopted by its title;
+  Bluesky posts use the first sentences plus the link. Which garden folder
+  seeds land in is deferred.
+
 Nothing on the site changes.
 
 ## 2026-10-28 — Writing comes home
