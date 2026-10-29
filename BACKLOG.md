@@ -11,7 +11,11 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
 
 ## Bugs / Issues
 
-_None currently tracked._
+- [ ] **Updating a note resets its stage.** The Publish Note action writes
+      `stage: seedling` on every run, so re-publishing a budding or
+      evergreen note demotes it. Fixed by the stage picker in
+      `docs/writing-pipeline.md` → "Next round"; until then, re-set the stage
+      in the file after an update.
 
 ---
 
@@ -237,7 +241,10 @@ Candidates for future work beyond the current sprint. No commitment implied.
 
 ### Future POSSE Enhancements
 
-- [ ] Bluesky automation via Bridgy Fed or AT Protocol GitHub Action
+- [ ] Share on Bluesky — decided 2026-10-29: a Drafts action run by choice
+      per note (first sentences plus link), not automatic syndication. Spec
+      and the rest of the writing pipeline's next round:
+      `docs/writing-pipeline.md`.
 
 ---
 
