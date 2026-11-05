@@ -207,6 +207,8 @@ html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 html:not(.story-js) .story #crosswalk .graphic .sec.dim, html:not(.story-js) .story #structure .graphic .sec.dim{ display: block; }
 html:not(.story-js) .story #crosswalk .graphic .cmkey .dim{ display: inline-flex; }
 html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ display: none; }
+/* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
+.story .dim{ opacity: .9; }
 
 /* ── Claims register on phones: one claim per block, nothing squeezed ──── */
 @media (max-width: 560px){
