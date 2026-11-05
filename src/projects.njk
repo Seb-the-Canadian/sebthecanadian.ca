@@ -5,7 +5,7 @@ description: "Practice pieces in data governance and information architecture, a
 permalink: /projects/
 ---
 {% set mastheadLabel = "projects/" %}
-{% set mastheadLede %}Two kinds of work are gathered here. First, practice pieces: one way I&rsquo;ve approached a data-governance or information-architecture problem, told through an invented example. Then the civic-tech side: CivCitDev, a program for civic-focused open-source tooling, starting with tools for tenants, voters, and community organizers in Ontario.{% endset %}
+{% set mastheadLede %}Two kinds of work are gathered here: practice pieces first, then the civic-tech side, CivCitDev, a program for civic-focused open-source tooling, starting with tools for tenants, voters, and community organizers in Ontario.{% endset %}
 {% include "masthead.njk" %}
 
 {%- if collections["case-study"] and collections["case-study"].length %}
@@ -22,7 +22,7 @@ permalink: /projects/
 {%- endif %}
 
 <section class="section">
-  <h2>Civic tech, elsewhere</h2>
+  <h2>Projects, elsewhere</h2>
   {%- for project in projects %}
     {% include "project-card.njk" %}
   {%- endfor %}
