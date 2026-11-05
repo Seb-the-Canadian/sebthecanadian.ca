@@ -53,6 +53,18 @@ Format:
 - The case-study converter's `--marks` mode regenerates only the marks
   stylesheet (`case-study-marks.css`), so a CSS-only fix does not touch the
   story.
+## 2026-11-05 — Keyboard shortcuts can be switched off
+
+### Added
+- **A "Keyboard shortcuts" switch** in the `?` dialog and on `/keyboard/`.
+  Off turns every single-key shortcut off, including `?`; the choice is
+  remembered in this browser. It is the same switch control as the theme one
+  (WCAG 2.1.4).
+
+### Changed
+- Keys pressed with Ctrl, Cmd or Alt are no longer shortcuts, so Ctrl+G /
+  Cmd+G (find) no longer starts a `g` chord.
+- `docs/brand.md` → Behaviour records the rule.
 
 ## 2026-10-29 — The writing pipeline gets a home
 
