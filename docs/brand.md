@@ -52,6 +52,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 | **Atkinson Hyperlegible** | body and UI text |
 | **IBM Plex Mono** | code and the data/terminal devices: index rows, the `S·L` stamp, the footer wordmark, labels and numbers in figures |
 
+- IBM Plex Mono is subset to Latin (plus ✓); extend the range in `scripts/fonts/subset.sh` before using other scripts.
 - Type and gutters scale fluidly with `clamp()`; no snapping at breakpoints.
 - One date format everywhere: "24 Jul 2026" (the `humanDate` filter).
 
