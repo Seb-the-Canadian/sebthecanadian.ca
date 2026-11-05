@@ -6,4 +6,9 @@
       {%- endfor %}
     </ul>
   </nav>
+  {# The theme switch, exactly as theme-toggle.js builds it. It ships hidden so its box is
+      reserved from first paint (no shift when the script runs); the script removes "hidden".
+      Without JavaScript it stays invisible and out of the tab order. #}
+  <button type="button" class="theme-toggle" role="switch" hidden><span class="theme-toggle__mark" aria-hidden="true"></span>Dark<span class="sr-only"> theme</span></button>
+  <span class="sr-only" role="status" aria-live="polite"></span>
 </header>

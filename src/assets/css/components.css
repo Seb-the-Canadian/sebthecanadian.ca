@@ -473,6 +473,18 @@ a.button:visited { color: var(--muted); }
 #shortcuts-switch:empty {
   display: none;
 }
+/* Rendered hidden in the header so its box is reserved before the script
+   runs; visibility keeps it unseen and out of the tab order without JS. */
+.site-header > .theme-toggle[hidden] {
+  display: inline-flex;
+  visibility: hidden;
+}
+
+/* Buttons keep the same visible border as the theme switch (3:1 non-text
+   contrast); hover still wins on specificity. */
+.button {
+  border-color: var(--muted);
+}
 .theme-toggle__mark {
   width: 0.6em;
   height: 0.6em;
@@ -858,7 +870,7 @@ h3:hover > .heading-anchor {
 
 .index-row {
   display: grid;
-  grid-template-columns: 10ch 1fr auto;
+  grid-template-columns: 10ch minmax(0, 1fr) auto;
   column-gap: 1ch;
   align-items: baseline;
   padding-block: var(--space-sm);
@@ -875,6 +887,7 @@ h3:hover > .heading-anchor {
 }
 .index-row__desc {
   color: var(--ink);
+  overflow-wrap: anywhere;
 }
 .index-row__desc a {
   color: var(--ink);
@@ -914,7 +927,7 @@ h3:hover > .heading-anchor {
 
 @media (max-width: 520px) {
   .index-row {
-    grid-template-columns: 10ch 1fr;
+    grid-template-columns: 10ch minmax(0, 1fr);
   }
   .index-row__meta {
     grid-column: 2;
@@ -941,7 +954,7 @@ h3:hover > .heading-anchor {
 }
 .masthead__stamp {
   font-family: var(--mono);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--text-sm);
   color: var(--moss);
   border: 1px solid var(--rule);
