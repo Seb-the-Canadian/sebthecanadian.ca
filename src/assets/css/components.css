@@ -469,6 +469,10 @@ a.button:visited { color: var(--muted); }
 .shortcuts-switch {
   margin-left: 0; /* inside the dialog and the keyboard page it sits in flow */
 }
+/* Without JavaScript the placeholder stays empty: no gap on /keyboard/. */
+#shortcuts-switch:empty {
+  display: none;
+}
 .theme-toggle__mark {
   width: 0.6em;
   height: 0.6em;
