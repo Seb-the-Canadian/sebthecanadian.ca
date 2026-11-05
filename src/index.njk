@@ -27,16 +27,18 @@ pageStyles:
 
   <p class="home-lede p-note">I work on knowledge architecture and data governance inside organizations &mdash; and run <a href="https://civcitdev.ca">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
 
+  {% if site.openTo %}<p class="home-open">{{ site.openTo | safe }}</p>{% endif %}
+
   {% set figState = 3 %}{% include "fig-join.njk" %}
 
   <hr class="home-rule" />
 
-  {#- Order (2026-10-26): work first (case studies, then projects), then Now,
-      then Elsewhere. The garden block came down 2026-10-27 while the
-      writing is relaunched; see CHANGELOG. -#}
+  {#- Order: work (case studies, then projects), writing, Now, then Write.
+      The garden block came down 2026-10-27 while the writing is relaunched;
+      see CHANGELOG. -#}
 
-  <section class="home-block" aria-label="Projects">
-    <h2 class="eyebrow">Projects</h2>
+  <section class="home-block" aria-label="Work">
+    <h2 class="eyebrow">Work</h2>
     <div class="index-table">
       {#- Case studies (pages tagged case-study) lead: they live on this site. -#}
       {%- for study in collections["case-study"] %}
@@ -63,16 +65,6 @@ pageStyles:
     </div>
   </section>
 
-  <section id="now" class="home-block home-now panel--alt" aria-label="Now">
-    <h2 class="eyebrow">Now</h2>
-    <p>
-      <strong>Currently:</strong> {{ now.currently | safe }}
-    </p>
-    <p class="post-meta">
-      <span class="live-dot" aria-hidden="true"></span><time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
-    </p>
-  </section>
-
   {#- The writing bed: in-progress pieces sit in its evolving/ group. With no
       pieces at all, no section and no eyebrow. -#}
   {%- if bed.total %}
@@ -83,14 +75,19 @@ pageStyles:
   </section>
   {%- endif %}
 
-  <section class="home-block" aria-label="Elsewhere">
-    <h2 class="eyebrow">Elsewhere</h2>
+  <section id="now" class="home-block home-now panel--alt" aria-label="Now">
+    <h2 class="eyebrow">Now</h2>
+    <p>
+      <strong>Currently:</strong> {{ now.currently | safe }}
+    </p>
+    <p class="post-meta">
+      <span class="live-dot" aria-hidden="true"></span><time class="dt-updated" datetime="{{ now.updated }}">{{ now.updated | tendedState }}</time>
+    </p>
+  </section>
+
+  <section class="home-block" aria-label="Write">
+    <h2 class="eyebrow">Write</h2>
     <div class="index-table">
-      <div class="index-row">
-        <span class="index-row__label">r&eacute;sum&eacute;/</span>
-        <span class="index-row__desc"><a href="/resume/">Seb Lathangue &middot; data governance &middot; information architecture</a></span>
-        <span class="index-row__meta">print to PDF</span>
-      </div>
       <div class="index-row">
         <span class="index-row__label">contact/</span>
         <span class="index-row__desc">
@@ -98,6 +95,16 @@ pageStyles:
           {%- for profile in profiles %} &middot; <a rel="me" href="{{ profile.url }}">{{ profile.platform | lower }}</a>{%- endfor %}
         </span>
         <span class="index-row__meta"></span>
+      </div>
+      <div class="index-row">
+        <span class="index-row__label">r&eacute;sum&eacute;/</span>
+        <span class="index-row__desc"><a href="/resume/">Seb Lathangue &middot; data governance &middot; information architecture</a></span>
+        <span class="index-row__meta">print to PDF</span>
+      </div>
+      <div class="index-row">
+        <span class="index-row__label">writing/</span>
+        <span class="index-row__desc"><a href="/writing/">All writing</a></span>
+        <span class="index-row__meta">{{ bed.total | pluralPieces }} &middot; {{ now.updated | tendedState }}</span>
       </div>
     </div>
   </section>
