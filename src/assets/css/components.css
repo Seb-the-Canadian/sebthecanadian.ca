@@ -928,10 +928,19 @@ h3:hover > .heading-anchor {
   text-transform: uppercase;
   color: var(--muted);
 }
+/* A state (in progress, active) is amber with an icon and a word
+   (docs/brand.md). Amber sits on the border and tint only, never the text:
+   light-mode amber on parchment fails as text, so the word stays --ink. The
+   ◆ is generated with empty alternative text, so assistive tech reads only
+   the word in the markup. */
 .index-pill--active {
-  background: var(--wash);
-  border-color: var(--moss);
+  background: color-mix(in oklab, var(--amber) 10%, transparent);
+  border-color: var(--amber);
   color: var(--ink);
+}
+.index-pill--active::before {
+  content: "\25C6\00A0";
+  content: "\25C6\00A0" / "";
 }
 
 @media (max-width: 520px) {

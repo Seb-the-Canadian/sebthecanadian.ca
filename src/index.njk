@@ -4,6 +4,9 @@ title: Seb Lathangue
 pageStyles:
   - /assets/css/figures.css
 ---
+{#- The writing, grouped once (eleventy.config.js → groupWriting): the WRITING
+    block draws it, and bed.total counts every piece. -#}
+{%- set bed = collections.writing | groupWriting %}
 <div class="h-card">
   <header class="home-hero">
     {% set markClass = "home-hero__mark" %}{% include "mark.njk" %}
@@ -45,19 +48,6 @@ pageStyles:
         <span class="index-row__meta">practice piece</span>
       </div>
       {%- endfor %}
-      {#- Work in progress told as an evolving native post (front matter: inProgress: true). -#}
-      {%- for post in collections.writing %}
-        {%- if post.data.inProgress %}
-      <div class="index-row">
-        <span class="index-row__label">writing/</span>
-        <span class="index-row__desc">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          <span class="index-pill index-pill--active">in progress</span>
-        </span>
-        <span class="index-row__meta">evolving post</span>
-      </div>
-        {%- endif %}
-      {%- endfor %}
       {%- for project in projects %}
         {%- if project.status == "active" and project.name != "Cognitive Architecture" and "cognitivearchitecture.ca" not in project.url %}
       <div class="index-row">
@@ -83,14 +73,12 @@ pageStyles:
     </p>
   </section>
 
-  {%- if collections.writingRecent.length %}
+  {#- The writing bed: in-progress pieces sit in its evolving/ group. With no
+      pieces at all, no section and no eyebrow. -#}
+  {%- if bed.total %}
   <section class="home-block" aria-label="Writing">
     <h2 class="eyebrow">Writing</h2>
-    <div class="index-table">
-      {%- for post in collections.writingRecent %}
-      {%- include "writing-row.njk" %}
-      {%- endfor %}
-    </div>
+    {% include "fig-writing-bed.njk" %}
     <p class="home-more"><a href="/writing/">All writing &rarr;</a></p>
   </section>
   {%- endif %}

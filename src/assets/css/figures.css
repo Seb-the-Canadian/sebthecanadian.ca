@@ -54,6 +54,35 @@
 .chip--ruled{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-ruled); }
 .chip--hatch{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-hatch); }
 
+/* ── The writing bed: one chip per piece, the stage mark at its edge ──
+   seedling = dashed edge, no strip · budding = hatch strip · evergreen = solid
+   strip · no stage = plain (its hidden word says "stage not set"). Moss is only
+   for the newest piece; amber only on the in-progress pill (components.css). */
+.fig--bed .fig__legend{ margin: 0 0 .9rem; }
+.fig--bed .bed__group{
+  display: grid;
+  grid-template-columns: 8ch minmax(0,1fr) auto;
+  grid-template-areas: "label chips count";
+  gap: .5rem .75rem;
+  align-items: baseline;
+  padding: .55rem 0;
+  border-top: 1px solid var(--rule);
+}
+.bed__label, .bed__count{ margin: 0; font-family: var(--mono); font-size: var(--text-xs); line-height: 26px; }
+.bed__label{ grid-area: label; color: var(--ink); }
+.bed__count{ grid-area: count; color: var(--muted); text-align: right; white-space: nowrap; }
+.bed__chips{ grid-area: chips; align-self: start; }
+.bed__chips li{ display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+a.chip{ min-height: 26px; color: var(--ink); text-decoration: none; }
+a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
+.chip--seedling{ border: 1.5px dashed var(--mark); }
+.chip--budding{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-hatch); }
+.chip--evergreen{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-solid); }
+.chip--newest{ border: 2px solid var(--moss); }
+.chip--newest.chip--seedling{ border-style: dashed; }
+.chip__newest{ font-family: var(--mono); font-size: var(--text-xs); color: var(--moss); }
+.chip .index-pill{ flex: none; margin-inline-start: 1ch; }
+
 /* ── The join: the system | the path | the people ── */
 .fig__join{
   display: grid;
@@ -81,6 +110,11 @@
   .fig__svg--v{ display: block; width: 165px; max-width: 100%; margin: 0 auto; }
 }
 
+@media (max-width: 520px){
+  /* The label sits above its chips; the count stays right. */
+  .fig--bed .bed__group{ grid-template-columns: minmax(0,1fr) auto; grid-template-areas: "label count" "chips chips"; gap: .35rem .75rem; }
+}
+
 @media print{
   .fig{ break-inside: avoid; }
   /* Keep the marks on paper. print.css clears every background with !important
@@ -91,7 +125,7 @@
      re-resolves them against the pinned --mark instead of :root's dark ink. */
   .fig, .fig *{
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    --mark: #3a453d; --moss: #5b3fa3; --muted: #595249;
+    --mark: #3a453d; --moss: #5b3fa3; --muted: #595249; --amber: #b07a0f;
     --mark-solid: linear-gradient(var(--mark), var(--mark));
     --mark-ruled: repeating-linear-gradient(0deg, var(--mark) 0 1.5px, transparent 1.5px 4px);
     --mark-hatch: repeating-linear-gradient(45deg, var(--mark) 0 1.5px, transparent 1.5px 4.5px);
@@ -106,4 +140,6 @@
   .fig__mk--dither{ background: var(--mark-dither) !important; }
   .chip--ruled{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-ruled) !important; }
   .chip--hatch{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
+  .chip--budding{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
+  .chip--evergreen{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-solid) !important; }
 }
