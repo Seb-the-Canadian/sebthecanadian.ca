@@ -53,6 +53,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 | **IBM Plex Mono** | code and the data/terminal devices: index rows, the `S·L` stamp, the footer wordmark, labels and numbers in figures |
 
 - IBM Plex Mono is subset to Latin (plus ✓); extend the range in `scripts/fonts/subset.sh` before using other scripts.
+- Fallback fonts carry matched metrics (the `size-adjust` and override rules in `tokens.css`), so text set in a stand-in font holds the brand fonts' space; regenerate those values when a brand font file changes (the comment in `tokens.css` says how).
 - Type and gutters scale fluidly with `clamp()`; no snapping at breakpoints.
 - One date format everywhere: "24 Jul 2026" (the `humanDate` filter).
 
