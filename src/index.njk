@@ -1,6 +1,8 @@
 ---
 layout: base.njk
 title: Seb Lathangue
+pageStyles:
+  - /assets/css/figures.css
 ---
 <div class="h-card">
   <header class="home-hero">
@@ -21,6 +23,8 @@ title: Seb Lathangue
   </header>
 
   <p class="home-lede p-note">I work on knowledge architecture and data governance inside organizations &mdash; and run <a href="https://civcitdev.ca">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
+
+  {% set figState = 3 %}{% include "fig-join.njk" %}
 
   <hr class="home-rule" />
 

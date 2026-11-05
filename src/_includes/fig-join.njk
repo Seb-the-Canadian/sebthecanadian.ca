@@ -1,0 +1,79 @@
+{#- fig-join.njk — the join, as a figure (docs/pen-and-pixel.md).
+    Set before the include:
+      figState  1 | 2 | 3 (default 3). 1: the system alone. 2: the people
+                arrive, the line between is dashed and unresolved. 3: the
+                governed path in moss and the ungoverned detour, dotted.
+      figId     string (default "fig-join"); every id inside derives from it,
+                so one page can hold the figure more than once.
+    Styles: /assets/css/figures.css (add it to the page's pageStyles). -#}
+{%- set fjState = (figState or 3) | int -%}
+{%- set fjId = figId or "fig-join" -%}
+{%- if fjState == 1 -%}
+  {%- set fjSentence = "The system on its own: rules, schemas, policies and records, with no one on the other side yet" -%}
+{%- elif fjState == 2 -%}
+  {%- set fjSentence = "The people arrive with their questions; the line between them and the system is dashed, still unresolved" -%}
+{%- else -%}
+  {%- set fjSentence = "The governed path runs from the people to the system; the ungoverned one takes the long way round" -%}
+{%- endif %}
+<figure class="fig fig--join" aria-labelledby="{{ fjId }}-title">
+  <p class="fig__title" id="{{ fjId }}-title">THE JOIN · SCHEMATIC</p>
+  <div class="fig__join">
+    <div class="fig__box">
+      <p class="fig__box-title" id="{{ fjId }}-system">the system</p>
+      <ul class="fig__chips" aria-labelledby="{{ fjId }}-system">
+        <li class="chip chip--ruled">rules</li>
+        <li class="chip chip--ruled">schemas</li>
+        <li class="chip chip--ruled">policies</li>
+        <li class="chip chip--ruled">records</li>
+      </ul>
+    </div>
+    <svg class="fig__svg fig__svg--h" viewBox="0 0 220 120" role="img" aria-label="{{ fjSentence }}" focusable="false">
+      {%- if fjState == 2 %}
+      <line class="fig__line fig__line--dashed" x1="14" y1="64" x2="206" y2="64" />
+      <text x="110" y="52" text-anchor="middle">unresolved</text>
+      {%- elif fjState >= 3 %}
+      <text class="fig__label--moss" x="110" y="24" text-anchor="middle">the governed path</text>
+      <line class="fig__line fig__line--moss" x1="210" y1="36" x2="14" y2="36" />
+      <polygon class="fig__head" points="5,36 15,30.5 15,41.5" />
+      <path class="fig__line fig__line--dotted" d="M206 43 V102 H14 V43" />
+      <text x="110" y="82" text-anchor="middle">the ungoverned one</text>
+      {%- endif %}
+    </svg>
+    <svg class="fig__svg fig__svg--v" viewBox="0 0 120 160" role="img" aria-label="{{ fjSentence }}" focusable="false">
+      {%- if fjState == 2 %}
+      <line class="fig__line fig__line--dashed" x1="40" y1="6" x2="40" y2="154" />
+      <text x="48" y="83">unresolved</text>
+      {%- elif fjState >= 3 %}
+      <line class="fig__line fig__line--moss" x1="16" y1="156" x2="16" y2="12" />
+      <polygon class="fig__head" points="16,3 10.5,13 21.5,13" />
+      <text class="fig__label--moss" x="25" y="34">the governed</text>
+      <text class="fig__label--moss" x="25" y="44">path</text>
+      <path class="fig__line fig__line--dotted" d="M23 156 H110 V6 H23" />
+      <text x="102" y="124" text-anchor="end">the ungoverned</text>
+      <text x="102" y="134" text-anchor="end">one</text>
+      {%- endif %}
+    </svg>
+    {%- if fjState >= 2 %}
+    <div class="fig__box">
+      <p class="fig__box-title" id="{{ fjId }}-people">the people</p>
+      <ul class="fig__chips" aria-labelledby="{{ fjId }}-people">
+        <li class="chip chip--hatch">what do I do?</li>
+        <li class="chip chip--hatch">who decides?</li>
+        <li class="chip chip--hatch">where is it?</li>
+      </ul>
+    </div>
+    {%- endif %}
+  </div>
+  <ul class="fig__legend" aria-label="What the marks mean">
+    <li><span class="fig__mk fig__mk--ruled" aria-hidden="true"></span>ruled · documented</li>
+    {%- if fjState >= 2 %}
+    <li><span class="fig__mk fig__mk--hatch" aria-hidden="true"></span>hatch · a person's question</li>
+    {%- endif %}
+    {%- if fjState >= 3 %}
+    <li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · the path to look at</li>
+    {%- endif %}
+  </ul>
+  {%- if fjState >= 3 %}
+  <figcaption>Moss marks the path to look at.</figcaption>
+  {%- endif %}
+</figure>
