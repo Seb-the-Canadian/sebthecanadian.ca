@@ -3,6 +3,8 @@ layout: base.njk
 title: About
 description: "About Seb Lathangue: the data governance and information architecture work, and how this site is built."
 permalink: /about/
+pageStyles:
+  - /assets/css/figures.css
 ---
 
 {% set mastheadLabel = "about/" %}
@@ -17,6 +19,24 @@ permalink: /about/
 This site is a stable front door. This page gathers the durable parts: who I am, how I approach the work, and how this site is built.
 
 <p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | humanDate }}</time></p>
+
+<div class="fig-seq">
+<div class="fig-seq__step">
+<p class="fig-seq__kicker">1 OF 3 · THE SYSTEM</p>
+{% set figState = 1 %}{% set figId = "about-join-1" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">Taxonomies, classification schemes, glossaries, metadata standards: the structures that make information findable and trustworthy.</p>
+</div>
+<div class="fig-seq__step">
+<p class="fig-seq__kicker">2 OF 3 · THE PEOPLE</p>
+{% set figState = 2 %}{% set figId = "about-join-2" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">On the other side, people trying to use them, and not enough translation between the two.</p>
+</div>
+<div class="fig-seq__step">
+<p class="fig-seq__kicker">3 OF 3 · THE GOVERNED PATH</p>
+{% set figState = 3 %}{% set figId = "about-join-3" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
+</div>
+</div>
 
 ## How I approach the work
 

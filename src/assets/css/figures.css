@@ -159,3 +159,30 @@ a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
   .chip--hatch, .chip--budding{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
   .chip--evergreen{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-solid) !important; }
 }
+
+/* ── About's sequence: the join told in three states, three panels in a row.
+   clear: both keeps it below the floated portrait. Inside it the join's inner
+   grid is always one column and the vertical drawing shows (as on a phone).
+   Each step is kicker / panel / sentence on shared rows, so the three panels
+   match in height; in the panel the join sits in the middle and the legend at
+   the foot, so state 1 (the system alone) does not read as empty. ── */
+.fig-seq{
+  clear: both;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-rows: auto 1fr auto;
+  gap: 0 1rem;
+  margin: 1.5rem 0;
+}
+.fig-seq__step{ display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; min-width: 0; }
+.fig-seq__kicker{ margin: 0 0 .5rem; font-family: var(--mono); font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fig-seq .fig{ display: flex; flex-direction: column; margin: 0; }
+.fig-seq__text{ margin: .6rem 0 0; font-size: var(--text-sm); line-height: 1.5; color: var(--ink); }
+.fig-seq .fig__join{ flex: 1; grid-template-columns: minmax(0,1fr); align-content: center; }
+.fig-seq .fig__svg--h{ display: none; }
+.fig-seq .fig__svg--v{ display: block; width: 165px; max-width: 100%; margin: 0 auto; }
+@media (max-width: 760px){
+  .fig-seq{ grid-template-columns: minmax(0,1fr); grid-template-rows: none; gap: 1.5rem 0; }
+  .fig-seq__step{ grid-row: auto; grid-template-rows: auto; }
+  .fig-seq .fig__join{ flex: none; }
+}
