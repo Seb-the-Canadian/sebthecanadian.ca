@@ -164,8 +164,8 @@ a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
    clear: both keeps it below the floated portrait. Inside it the join's inner
    grid is always one column and the vertical drawing shows (as on a phone).
    Each step is kicker / panel / sentence on shared rows, so the three panels
-   match in height; in the panel the join sits in the middle and the legend at
-   the foot, so state 1 (the system alone) does not read as empty. ── */
+   match in height. The content is top-aligned and the legend sits at the foot,
+   so the three frames read as one picture gaining a part each step. ── */
 .fig-seq{
   clear: both;
   display: grid;
@@ -178,7 +178,7 @@ a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
 .fig-seq__kicker{ margin: 0 0 .5rem; font-family: var(--mono); font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .fig-seq .fig{ display: flex; flex-direction: column; margin: 0; }
 .fig-seq__text{ margin: .6rem 0 0; font-size: var(--text-sm); line-height: 1.5; color: var(--ink); }
-.fig-seq .fig__join{ flex: 1; grid-template-columns: minmax(0,1fr); align-content: center; }
+.fig-seq .fig__join{ flex: 1; grid-template-columns: minmax(0,1fr); align-content: start; }
 .fig-seq .fig__svg--h{ display: none; }
 .fig-seq .fig__svg--v{ display: block; width: 165px; max-width: 100%; margin: 0 auto; }
 @media (max-width: 760px){

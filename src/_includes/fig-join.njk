@@ -5,6 +5,9 @@
                 governed path in moss and the ungoverned detour, dotted.
       figId     string (default "fig-join"); every id inside derives from it,
                 so one page can hold the figure more than once.
+      figKicker optional flag. When set, the figure is also named by the
+                element with id "<figId>-kicker" (a kicker outside the
+                figure), read before the title. Reset it after use.
     Set both before every include: Nunjucks keeps a variable for the rest of
     the page, so an include that omits figId reuses the previous one's id.
     State 1 draws no SVG; its sentence is a visually hidden paragraph.
@@ -18,7 +21,7 @@
 {%- else -%}
   {%- set fjSentence = "The governed path runs from the people to the system; the ungoverned one takes the long way round" -%}
 {%- endif %}
-<figure class="fig fig--join" aria-labelledby="{{ fjId }}-title">
+<figure class="fig fig--join" aria-labelledby="{% if figKicker %}{{ fjId }}-kicker {% endif %}{{ fjId }}-title">
   <p class="fig__title" id="{{ fjId }}-title">THE JOIN · SCHEMATIC</p>
   {%- if fjState == 1 %}
   <p class="sr-only">{{ fjSentence }}</p>
