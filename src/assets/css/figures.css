@@ -86,8 +86,17 @@
   /* Keep the marks on paper. print.css clears every background with !important
      (it is tuned for the résumé), so the marks re-assert themselves here,
      narrowly: swatches and chip strips only, never a panel or box fill. The
-     light-mode values are pinned so a print from dark mode stays legible. */
-  .fig, .fig *, .fig *::before{ -webkit-print-color-adjust: exact; print-color-adjust: exact; --mark: #3a453d; --moss: #5b3fa3; --muted: #595249; }
+     light-mode values are pinned so a print from dark mode stays legible; the
+     four mark gradients are re-declared (as in tokens.css) so each element
+     re-resolves them against the pinned --mark instead of :root's dark ink. */
+  .fig, .fig *{
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    --mark: #3a453d; --moss: #5b3fa3; --muted: #595249;
+    --mark-solid: linear-gradient(var(--mark), var(--mark));
+    --mark-ruled: repeating-linear-gradient(0deg, var(--mark) 0 1.5px, transparent 1.5px 4px);
+    --mark-hatch: repeating-linear-gradient(45deg, var(--mark) 0 1.5px, transparent 1.5px 4.5px);
+    --mark-dither: conic-gradient(var(--mark) 25%, transparent 0 50%, var(--mark) 0 75%, transparent 0) 0 0 / 4px 4px;
+  }
   .fig__mk{ box-shadow: inset 0 0 0 1px var(--mark) !important; }
   .fig__mk--dashed{ box-shadow: none !important; }
   .fig__mk--moss{ box-shadow: inset 0 0 0 2px var(--moss) !important; }
