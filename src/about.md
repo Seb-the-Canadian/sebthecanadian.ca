@@ -35,7 +35,7 @@ A few things I've come to believe about the work: the governed path has to be th
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a [`/uses` page](/uses/). It's small on purpose. It's meant to last.
 
 ### Stack
 
