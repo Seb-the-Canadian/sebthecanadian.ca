@@ -203,6 +203,10 @@ html:not(.story-js) .story .reassess .rreset{ display: none; }
 /* use-case-life hides a card's detail until its step; without the script, show it. */
 html:not(.story-js) .story #between .graphic .mini.dim{ display: block; }
 html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
+/* front-door: step sections and the audience/mode toggles need the script; without it, show every step and drop the toggles. */
+html:not(.story-js) .story #crosswalk .graphic .sec.dim, html:not(.story-js) .story #structure .graphic .sec.dim{ display: block; }
+html:not(.story-js) .story #crosswalk .graphic .cmkey .dim{ display: inline-flex; }
+html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ display: none; }
 
 /* ── Claims register on phones: one claim per block, nothing squeezed ──── */
 @media (max-width: 560px){
