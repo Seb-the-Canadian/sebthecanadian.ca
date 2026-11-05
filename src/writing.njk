@@ -3,22 +3,62 @@ layout: base.njk
 title: Writing
 description: "Notes and longer pieces, written and tended on this site."
 permalink: /writing/
+pageStyles:
+  - /assets/css/figures.css
 ---
+{#- The Writing room: how writing works here, the newest three, then every
+    piece by type (eleventy.config.js → groupWriting), the stage key, the
+    tags, and the garden row when _data/writing.json says to show it. -#}
+{%- set wr = collections.writing | groupWriting %}
 {% set mastheadLabel = "writing/" %}
 {% set mastheadLede %}Notes and longer pieces, written and tended here. Notes are short and often unfinished, so each one says how far along it is.{% endset %}
 {% include "masthead.njk" %}
 
-<section class="h-feed" aria-labelledby="writing-feed-heading">
-  <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
+<figure class="fig fig--stages" aria-labelledby="fig-stages-title">
+  <p class="fig__title" id="fig-stages-title">How writing works here</p>
+  <ol class="stages" aria-label="One note, from first pass to settled">
+    <li class="stages__step"><span class="chip chip--seedling" aria-hidden="true">a note</span><span class="stages__word">a first pass<span class="sr-only">, seedling</span></span></li>
+    <li class="stages__step"><span class="chip chip--budding" aria-hidden="true">a note</span><span class="stages__word">reworked<span class="sr-only">, budding</span></span></li>
+    <li class="stages__step"><span class="chip chip--evergreen" aria-hidden="true">a note</span><span class="stages__word">settled<span class="sr-only">, evergreen</span></span></li>
+  </ol>
+  <figcaption>A note lands here the day it's written, marked as a seedling, from a phone, in one tap. When it's reworked it changes its mark, not its colour. A few settle.</figcaption>
+</figure>
 
-  {%- if collections.writing.length %}
+{%- if wr.total %}
+{#- The newest three repeat entries from the index below, so they carry no
+    microformats (rowPlain); the h-feed holds each piece once. -#}
+<section class="writing-block" aria-labelledby="writing-newest">
+  <h2 class="eyebrow" id="writing-newest">Newest</h2>
   <div class="index-table">
-    {%- for post in collections.writing %}
+    {%- set rowPlain = true %}
+    {%- for post in collections.writing.slice(0, 3) %}
     {%- include "writing-row.njk" %}
     {%- endfor %}
+    {%- set rowPlain = false %}
+  </div>
+</section>
+
+<section class="h-feed" aria-labelledby="writing-feed-heading">
+  <span class="p-name sr-only" id="writing-feed-heading">Writing</span>
+  {%- for wrGroup in [["notes", "notes/"], ["essays", "essays/"], ["evolving", "evolving/"]] %}
+  {%- set wrItems = wr[wrGroup[0]] %}
+  {%- if wrItems.length %}
+  <div class="writing-block">
+    <h2 class="eyebrow" id="writing-{{ wrGroup[0] }}">{{ wrGroup[1] }}</h2>
+    <div class="index-table">
+      {%- for post in wrItems %}
+      {#- Over 12 rows, a mono year label opens each year (newest first). -#}
+      {%- if wrItems.length > 12 and (loop.first or post.date.getUTCFullYear() != wrItems[loop.index0 - 1].date.getUTCFullYear()) %}
+      <p class="writing-year">{{ post.date.getUTCFullYear() }}</p>
+      {%- endif %}
+      {%- include "writing-row.njk" %}
+      {%- endfor %}
+    </div>
   </div>
   {%- endif %}
+  {%- endfor %}
 </section>
+{%- endif %}
 
 <p class="writing-key">
   <span class="eyebrow">How far along</span>
@@ -33,4 +73,15 @@ permalink: /writing/
   <a href="/writing/tags/{{ tag | slug }}/">{{ tag }}</a>
   {%- endfor %}
 </p>
+{%- endif %}
+
+{%- if writing.elsewhere.show %}
+{#- The garden slot (_data/writing.json): one row, off-site. -#}
+<div class="index-table">
+  <div class="index-row">
+    <span class="index-row__label">{{ writing.elsewhere.label }}</span>
+    <span class="index-row__desc"><a href="{{ writing.elsewhere.url }}">{{ writing.elsewhere.text }}</a></span>
+    <span class="index-row__meta">{{ writing.elsewhere.url | hostname }} <span aria-hidden="true">&#8599;</span></span>
+  </div>
+</div>
 {%- endif %}

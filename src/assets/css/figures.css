@@ -52,7 +52,7 @@
   border-radius: 5px;
 }
 .chip--ruled{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-ruled); }
-.chip--hatch{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-hatch); }
+.chip--hatch, .chip--budding{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-hatch); }
 
 /* ── The writing bed: one chip per piece, the stage mark at its edge ──
    seedling = dashed edge, no strip · budding = hatch strip · evergreen = solid
@@ -73,15 +73,32 @@
 .bed__count{ grid-area: count; color: var(--muted); text-align: right; white-space: nowrap; }
 .bed__chips{ grid-area: chips; align-self: start; }
 .bed__chips li{ display: inline-flex; align-items: center; gap: 6px; margin: 0; }
-a.chip{ min-height: 26px; color: var(--ink); text-decoration: none; }
+a.chip{ color: var(--ink); text-decoration: none; } /* color: a:visited (base.css) outranks .chip alone */
 a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
 .chip--seedling{ border: 1.5px dashed var(--mark); }
-.chip--budding{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-hatch); }
 .chip--evergreen{ background-image: linear-gradient(90deg, transparent 0 6px, var(--bg) 6px), var(--mark-solid); }
 .chip--newest{ border: 2px solid var(--moss); }
 .chip--newest.chip--seedling{ border-style: dashed; }
 .chip__newest{ font-family: var(--mono); font-size: var(--text-xs); color: var(--moss); }
 .chip .index-pill{ flex: none; margin-inline-start: 1ch; }
+
+/* ── How writing works here (the Writing room): one piece at its three
+   stages, dashed → hatch → solid, each chip over the words for its stage.
+   The chips are pictures, not links; the words carry the meaning. ── */
+.stages{ display: flex; flex-wrap: wrap; align-items: flex-start; gap: .75rem 1rem; margin: 0; padding: 0; list-style: none; }
+.stages__step{ display: grid; justify-items: start; align-items: center; row-gap: .35rem; margin: 0; }
+.stages__step + .stages__step{ grid-template-columns: auto auto; column-gap: 1rem; }
+.stages__step + .stages__step > *{ grid-column: 2; }
+.stages__step + .stages__step::before{ content: "\2192"; content: "\2192" / ""; grid-column: 1; grid-row: 1; align-self: center; font-family: var(--mono); line-height: 1; color: var(--muted); }
+.stages__word{ font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-soft); }
+
+/* ── The Writing room's index: an eyebrow over each block's rows; a group of
+   more than 12 rows splits by year under a mono label (not a heading). ── */
+.writing-block{ margin-top: var(--flow); }
+.writing-block > h2{ margin: 0 0 var(--space-sm); }
+.writing-block > .index-table{ margin-top: 0; }
+.writing-year{ margin: var(--space-md) 0 0; padding-bottom: var(--space-xs); border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); }
+.writing-year:first-child{ margin-top: 0; }
 
 /* ── The join: the system | the path | the people ── */
 .fig__join{
@@ -139,7 +156,6 @@ a.chip:hover{ text-decoration: underline; text-underline-offset: .16em; }
   .fig__mk--solid{ background: var(--mark-solid) !important; }
   .fig__mk--dither{ background: var(--mark-dither) !important; }
   .chip--ruled{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-ruled) !important; }
-  .chip--hatch{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
-  .chip--budding{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
+  .chip--hatch, .chip--budding{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-hatch) !important; }
   .chip--evergreen{ background: linear-gradient(90deg, transparent 0 6px, #fff 6px), var(--mark-solid) !important; }
 }

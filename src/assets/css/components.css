@@ -1066,6 +1066,7 @@ h3:hover > .heading-anchor {
 
 /* The open-to line: one mono sentence under the lede, drawn only when
    site.openTo is set. Links inside keep the normal link colour. */
+/* The negative top margin relies on .home-lede keeping its --space-xl bottom margin. */
 .home-open {
   font-family: var(--mono);
   font-size: var(--text-sm);

@@ -208,7 +208,7 @@ export default function (eleventyConfig) {
   // sort is stable, and collections.writing is already newest first). total
   // is the number of pieces. Returns { notes, essays, evolving, newest, total }.
   eleventyConfig.addFilter("groupWriting", (items) => {
-    const sorted = [...(items || [])].sort((a, b) => b.date - a.date);
+    const sorted = [...(items || [])].sort((a, b) => (b.date || 0) - (a.date || 0));
     const bed = { notes: [], essays: [], evolving: [], newest: sorted[0] || null, total: sorted.length };
     for (const item of sorted) {
       const data = item.data || {};
