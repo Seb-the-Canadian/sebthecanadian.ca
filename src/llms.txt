@@ -1,6 +1,6 @@
 # sebthecanadian.ca
 
-> A personal site for Seb Lathangue — civic technology, knowledge architecture, slow writing. Hand-built, hand-tended, in Toronto.
+> A personal site for Seb Lathangue — data governance, information architecture, civic tech, slow writing. Hand-built, hand-tended, in Toronto.
 
 ## About
 

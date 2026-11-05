@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: About
-description: "About Seb Lathangue and how this site is built."
+description: "About Seb Lathangue: the data governance and information architecture work, and how this site is built."
 permalink: /about/
 ---
 
