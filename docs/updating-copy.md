@@ -76,7 +76,7 @@ those.
 | Links | Everything | `src/links.md` | Markdown; same shape as Uses |
 | Keyboard reference | Everything | `src/keyboard.md` | The chord table must match `src/assets/js/keyboard-nav.js`: add or remove chords in both |
 | 404 page | The text | `src/404.md` | |
-| 404 page | The cliff picture | `src/assets/img/pixel/404.webp` | For now a quality-80 WebP of the earlier `404.png` (in the git history), shown at its own 400 × 400; it is waiting for a redraw with each drawn square at its true size and the background left see-through instead of painted |
+| 404 page | The cliff picture | `src/assets/img/pixel/404.webp` | For now a quality-80 WebP of the earlier `404.png` (in the git history), with its own 400 × 400 as width and height (the page shows it 320 pixels wide); it is waiting for a redraw with each drawn square at its true size and the background left see-through instead of painted |
 | Writing | The page intro and the stage key; the posts | `src/writing.njk`; `src/writing/*.md` | New notes usually arrive from Drafts: see "Publishing a note" |
 | For machines | The crawler note and the hidden "for curious humans" file | `src/llms.txt`, `src/stranger.txt` | Plain text |
 

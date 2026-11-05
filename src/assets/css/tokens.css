@@ -71,11 +71,16 @@
    and the page does not jump when the brand font arrives. One rule per local
    font; a local() source missing on the device fails and the browser moves to
    the next name in the stack (Arial on iOS, macOS, Windows; Roboto and
-   Noto Serif on Android). Bold is synthesised from the regular metrics.
+   Noto Serif on Android). Each stand-in has one face, fitted to the brand
+   font's Regular; bold and heavy text uses the same face (the browser
+   thickens it), which is why the front-door heading still shows a small
+   shift in the lab.
    Values from @capsizecss/core 4.1.1 createFontStack, @capsizecss/metrics 3.6.0
    (fallback fonts) and @capsizecss/unpack 2.4.0 (the woff2 files above),
-   rounded to two decimals. Generator: build/b/task-5.3/gen-fallbacks.js in the
-   2026-11-04 audit folder. */
+   rounded to two decimals; the method is Capsize createFontStack, from the brand
+   fonts' own metrics read out of the woff2 files and the fallback fonts'
+   published metrics. The generator script is kept with the audit's evidence;
+   committing it under scripts/fonts/ is the owner's call. */
 @font-face {
   font-family: "Atkinson Fallback Arial";
   src: local("Arial"), local("ArialMT");

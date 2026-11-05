@@ -11,17 +11,17 @@ Format:
   subset to Latin (plus ✓); the unused Mono Italic is gone; the `S·L` stamp
   is set at 600 so it no longer pulls a bold file for two letters; the two
   faces every page needs are preloaded. Font transfer on `/writing/` is
-  about 130 KB, down from about 290 KB.
+  about 130 KB, down from about 245 KB.
 - **Text should jump less when the fonts land.** While a brand font is still
   downloading, the stand-in system font (Arial or Roboto, Georgia or Noto
   Serif, Courier New) is adjusted to take up about the same space.
 - **Three images re-exported for the size they are shown at**: the résumé
   photo and the About portrait as WebP with `srcset`, the 404 picture as a
-  smaller WebP for now (about 62 KB in all, down from about 490 KB). The
+  smaller WebP for now (the files add up to about 62 KB, down from about 490 KB). The
   404's native-cell export waits on the source art.
 - **The theme switch has its slot from first paint**, so the header does
   not shift when the script adds it.
-- `docs/brand.md` → Type records the subset range and the fallback metrics.
+- `docs/brand.md` → Type records the subset and the fallback metrics.
 
 ## 2026-10-29 — The writing pipeline gets a home
 

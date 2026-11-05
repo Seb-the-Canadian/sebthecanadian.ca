@@ -11,6 +11,10 @@ eyebrow + URL. The mark is the light-mode one, the lavender sprig (violet
 florets, lilac highlights, forest-green stems), because these images serve
 both modes. The dark-mode conifer lives only in favicon.svg, which switches
 between the two with the colour scheme.
+
+The cards are drawn from the IBM Plex Mono woff2 files, which are subset to
+Latin (plus ✓): a subtitle with a glyph outside that range would print a
+missing-glyph box, so extend the range in scripts/fonts/subset.sh first.
 """
 import io
 from fontTools.ttLib import TTFont
