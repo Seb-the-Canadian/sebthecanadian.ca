@@ -22,6 +22,37 @@ Format:
 - **The theme switch has its slot from first paint**, so the header does
   not shift when the script adds it.
 - `docs/brand.md` → Type records the subset and the fallback metrics.
+## 2026-11-05 — Dates, no-JS figures, reflow and layout stability
+
+### Fixed
+- **Page dates are right again.** The deploy fetches the full git history,
+  so each page's "Last updated" comes from its own history rather than the
+  day of the deploy, and the sitemap's `lastmod` is only written from
+  authored dates.
+- **The front-door figures' step sections read without JavaScript.** The
+  Crosswalk and Structure sections show in full and the script-only
+  controls are hidden. The hero menu, the current-state sketch and the
+  crossmap are drawn by the script and still wait for a static copy, which
+  touches the stamped page.
+- **Faded figure text stays readable.** Inactive steps dim to 0.9, which
+  keeps their text above the 4.5:1 contrast floor.
+- **The home page reflows at 320px.** A long email in an index row no
+  longer pushes the page sideways.
+- **The page no longer shifts when the fonts arrive.** The column width is
+  `49.57rem`, the width it already has once the fonts load, instead of a
+  unit that depends on the font.
+- **Buttons have a visible border**, the same muted one as the theme switch.
+
+### Added
+- **`scripts/site-check.js`** (`npm run check:site -- <url> <out-dir>`): one
+  way to run the first three items of the list in `docs/brand.md` →
+  "Before shipping a visual change": desktop and phone, light and dark,
+  JavaScript off, with screenshots, and a fail when a case-study figure is
+  empty without JavaScript. It needs Playwright on the machine that runs
+  it.
+- The case-study converter's `--marks` mode regenerates only the marks
+  stylesheet (`case-study-marks.css`), so a CSS-only fix does not touch the
+  story.
 
 ## 2026-10-29 — The writing pipeline gets a home
 

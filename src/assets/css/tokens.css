@@ -178,7 +178,8 @@
   --space-3xl: 4rem;
 
   /* Layout */
-  --maxw: 68ch;
+  /* 793px at a 16px root: the width 68ch gave once Atkinson loaded, fixed so the column does not move when the font lands */
+  --maxw: 49.57rem;
   --pad: clamp(1.1rem, 0.6rem + 2.4vw, 2.25rem);   /* fluid page gutter */
   --flow: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);      /* fluid section rhythm */
   --radius: 10px;
