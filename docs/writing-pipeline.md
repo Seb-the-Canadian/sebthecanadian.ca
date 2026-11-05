@@ -88,6 +88,7 @@ fixes this; until then, re-set the stage in the file after an update.
 | 2026-10-29 | The archive sweep keeps archived drafts 30 days. Only `published` is exempt, so a published note keeps its draft. |
 | 2026-10-29 | The 18 archived drafts tagged `work` are left to the sweep. |
 | 2026-10-29 | A note can be adopted by its title, so a lost or new draft can still update it: the title is the key. |
+| 2026-11-05 | The `stage` word now drives the home's writing bed and the Writing room's grouping and marks, so the stage picker in the next round matters more. A piece with no stage renders as "stage not set". |
 | 2026-10-29 | Bluesky posts use the note's first sentences plus the link. |
 
 ## Next round

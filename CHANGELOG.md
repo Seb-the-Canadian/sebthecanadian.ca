@@ -4,6 +4,66 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-05 — Two figures on the home page; the stories move to their rooms; one specialty line
+
+### Added
+- **The join and the writing bed on the home.** Two small figures, drawn
+  in the site's marks (dashed, hatch, solid, moss), with no script and no
+  image. The join sits after the lede and shows a governed path beside an
+  ungoverned one. The bed sits under Writing and is generated from the
+  writing collection: every piece is a chip grouped as `notes/`,
+  `essays/` or `evolving/`, marked by its stage, with the newest in moss.
+  A stage that is not set says so ("stage not set") instead of guessing.
+  The home carries the two figures and no story.
+- **The Writing room has a landing.** How writing works here (a note
+  shown as a first pass, reworked, settled), the newest three, then the
+  index grouped by type, split by year when a group spans more than one.
+  A slot for "earlier notes stay in the garden" is built and switched
+  off (`_data/writing.json`, `show: false`).
+- **About opens with the join in three steps**, the system, the people,
+  the governed path, each with one sentence.
+- **The open-to line** under the home lede, from one key in
+  `_data/site.json` (`openTo`). The key is empty, so nothing shows yet.
+- The pieces behind it: two includes (`fig-join.njk`,
+  `fig-writing-bed.njk`), one stylesheet (`figures.css`, loaded on `/`,
+  `/about/` and `/writing/` only), one data file, one data key, and two
+  filters in `eleventy.config.js` (`groupWriting`, `pluralPieces`).
+- The design and the plan are kept in `docs/superpowers/specs/` and
+  `docs/superpowers/plans/`.
+
+### Changed
+- **The words (audit Phase 4).**
+  - One specialty line, in one order (data governance, information
+    architecture, civic tech, Toronto), on the home hero, About, Projects
+    and `llms.txt`; the home title is "Seb Lathangue".
+  - The site description is one sentence.
+  - The résumé gets a row in the home's Write block, with a next-step
+    line at the end of each case study and each post.
+  - The Projects lede says what the two kinds of work are.
+  - The garden is described as the older, secondary surface in the machine
+    files (`llms.txt`, `stranger.txt`, the feed's subtitle) and in the
+    Links note.
+  - Stages on every piece: the two posts that had none now have one.
+  - One address: `hello@cognitivearchitecture.ca` is the résumé's email,
+    and the structured data, the page comment, the console message and
+    the feed no longer carry an address of their own. Every mailto link
+    stays.
+  - The honest sentence about visitors: the site "keeps no record of
+    anyone who visits", and says what your own browser remembers.
+- **The home is reordered**: hero, lede, the open-to line (when set), the
+  join, Work, Writing, Now, Write. The in-progress piece no longer sits
+  in Work; it is in the bed under `evolving/`.
+- **The in-progress and active pills are amber with a ◆**, the word beside
+  it.
+- `docs/brand.md`, `docs/pen-and-pixel.md` (new section, "The stage key"),
+  `docs/writing-pipeline.md` and `docs/updating-copy.md` record the rules.
+
+### Decided
+- D1, D2, D4 and D8 at their defaults (one specialty line, the home title,
+  the next-step lines, one address).
+- D3 (the open-to sentence) still empty; D14/Q1 (what happens to the
+  garden) still open, the slot built and off.
+
 ## 2026-11-05 — Fonts that hold their space, images at the size they are shown
 
 ### Changed

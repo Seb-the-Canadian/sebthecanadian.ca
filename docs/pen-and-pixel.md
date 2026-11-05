@@ -43,6 +43,21 @@ Two colours keep a job inside figures:
 - **Amber means a state** (a gap, something held), always with an icon and a
   word. Light-mode amber never colours text; it fails contrast as text.
 
+## The stage key
+
+Writing shown as a figure uses the same marks, read one more way:
+
+- **dashed** = seedling, a first pass
+- **hatch** = budding, reworked
+- **solid** = evergreen, settled
+- **moss** = newest
+
+It rhymes with the base meanings (open, judgement applied, settled), so
+nothing new has to be learned. One way I've used it: wherever writing is
+shown as a figure, that is, the home's writing bed and the Writing room's
+stage sequence. The word always sits beside the mark (hidden text on the
+chips).
+
 ## Rules
 
 1. **Inside figures only.** Never as a page, section or card background.
