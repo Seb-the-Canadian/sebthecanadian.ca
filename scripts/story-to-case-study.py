@@ -1,6 +1,7 @@
 """Convert a Portfolio Pudding story into a sebthecanadian.ca case study.
 
 Usage:  python3 scripts/story-to-case-study.py <story.html> <slug> <site-repo> [body-out-dir]
+        python3 scripts/story-to-case-study.py --marks <site-repo>   (case-study-marks.css only; no story needed)
 
 <story.html> sits beside the substrate.css and substrate.js it was published with.
 Writes into the site repo:
@@ -15,13 +16,18 @@ Refuses stories whose markup doesn't balance. Python 3 standard library only.
 """
 import re, sys, os, pathlib
 
-if len(sys.argv) < 4:
+MARKS_ONLY = sys.argv[1:2] == ["--marks"]
+if MARKS_ONLY:
+    if len(sys.argv) != 3:
+        sys.exit(__doc__)
+elif len(sys.argv) < 4:
     sys.exit(__doc__)
-story_path, slug, site = sys.argv[1], sys.argv[2], pathlib.Path(sys.argv[3])
-here = pathlib.Path(story_path).parent
-substrate_css = (here / "substrate.css").read_text()
-substrate_js = (here / "substrate.js").read_text()
-story = pathlib.Path(story_path).read_text()
+if not MARKS_ONLY:
+    story_path, slug, site = sys.argv[1], sys.argv[2], pathlib.Path(sys.argv[3])
+    here = pathlib.Path(story_path).parent
+    substrate_css = (here / "substrate.css").read_text()
+    substrate_js = (here / "substrate.js").read_text()
+    story = pathlib.Path(story_path).read_text()
 
 # ── CSS scoping ────────────────────────────────────────────────────────────
 SCOPE = ".story"
@@ -208,10 +214,17 @@ html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 }
 """
 
-shared = ALIASES + "\n" + scope_rules(rename_vars(drop_colour_roots(substrate_css)))
 marks = ("/* case-study-marks.css — pen + pixel for case studies (docs/pen-and-pixel.md),\n"
          "   plus the no-JavaScript and phone fixes. Loaded LAST, after the story's own\n"
          "   stylesheet, so these win over equally specific story rules. */\n" + MARKS)
+if MARKS_ONLY:
+    p = pathlib.Path(sys.argv[2]) / "src/assets/css/case-study-marks.css"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(marks if marks.endswith("\n") else marks + "\n")
+    print(f"wrote {p}")
+    sys.exit(0)
+
+shared = ALIASES + "\n" + scope_rules(rename_vars(drop_colour_roots(substrate_css)))
 shared = ("/* case-study.css — the shared stylesheet for case studies (a Portfolio Pudding\n"
           "   scrollytelling page inside the site). Generated from the story substrate by\n"
           "   scoping every rule to .story and drawing colour and type from tokens.css.\n"
