@@ -104,7 +104,7 @@ pageStyles:
       <div class="index-row">
         <span class="index-row__label">writing/</span>
         <span class="index-row__desc"><a href="/writing/">All writing</a></span>
-        <span class="index-row__meta">{{ bed.total | pluralPieces }} &middot; {{ now.updated | tendedState }}</span>
+        <span class="index-row__meta">{{ bed.total | pluralPieces }}{% if bed.newest %} &middot; {{ bed.newest.date | isoDate | tendedState }}{% endif %}</span>
       </div>
     </div>
   </section>

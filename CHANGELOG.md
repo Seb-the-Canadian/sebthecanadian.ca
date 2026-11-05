@@ -14,7 +14,9 @@ Format:
   writing collection: every piece is a chip grouped as `notes/`,
   `essays/` or `evolving/`, marked by its stage, with the newest in moss.
   A stage that is not set says so ("stage not set") instead of guessing.
-  The home carries the two figures and no story.
+  The home carries the two figures and no story. Under the lede there is
+  also a line for what I'm open to (`openTo` in `_data/site.json`); it
+  renders nothing until the sentence exists.
 - **The Writing room has a landing.** How writing works here (a note
   shown as a first pass, reworked, settled), the newest three, then the
   index grouped by type, split by year when a group spans more than one.
@@ -22,12 +24,11 @@ Format:
   off (`_data/writing.json`, `show: false`).
 - **About opens with the join in three steps**, the system, the people,
   the governed path, each with one sentence.
-- **The open-to line** under the home lede, from one key in
-  `_data/site.json` (`openTo`). The key is empty, so nothing shows yet.
 - The pieces behind it: two includes (`fig-join.njk`,
   `fig-writing-bed.njk`), one stylesheet (`figures.css`, loaded on `/`,
   `/about/` and `/writing/` only), one data file, one data key, and two
-  filters in `eleventy.config.js` (`groupWriting`, `pluralPieces`).
+  filters in `eleventy.config.js` (`groupWriting`, `pluralPieces`). The
+  old `writingRecent` collection is gone; only the old home block used it.
 - The design and the plan are kept in `docs/superpowers/specs/` and
   `docs/superpowers/plans/`.
 
@@ -35,11 +36,14 @@ Format:
 - **The words (audit Phase 4).**
   - One specialty line, in one order (data governance, information
     architecture, civic tech, Toronto), on the home hero, About, Projects
-    and `llms.txt`; the home title is "Seb Lathangue".
+    and `llms.txt`; the home title is "Seb Lathangue — Seb (the Canadian)" (the page
+    sets "Seb Lathangue"; the layout appends the site name).
   - The site description is one sentence.
   - The résumé gets a row in the home's Write block, with a next-step
     line at the end of each case study and each post.
-  - The Projects lede says what the two kinds of work are.
+  - The Projects lede says what the two kinds of work are; the heading
+    "All Projects" is now "Projects, elsewhere", and each project card
+    shows its hostname with an arrow.
   - The garden is described as the older, secondary surface in the machine
     files (`llms.txt`, `stranger.txt`, the feed's subtitle) and in the
     Links note.
@@ -55,8 +59,6 @@ Format:
   in Work; it is in the bed under `evolving/`.
 - **The in-progress and active pills are amber with a ◆**, the word beside
   it.
-- `docs/brand.md`, `docs/pen-and-pixel.md` (new section, "The stage key"),
-  `docs/writing-pipeline.md` and `docs/updating-copy.md` record the rules.
 
 ### Decided
 - D1, D2, D4 and D8 at their defaults (one specialty line, the home title,

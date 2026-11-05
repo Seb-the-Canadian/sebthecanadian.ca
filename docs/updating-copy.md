@@ -61,7 +61,7 @@ those.
 | Every page | The top nav (Home, Projects, About) | `_data/navigation.json`, the `primary` list | Order of the list is the order on screen |
 | Every page | The footer links (Résumé, Uses, Links, Email, RSS) | `_data/navigation.json`, the `colophon` list | `"external": true` marks links that leave the site |
 | Every page | The footer small print: the keyboard-hint line and the © line | `src/_includes/footer.njk` | HTML; change only the words |
-| Home | Your name, the one-line statement under it, the three tags (civic tech · knowledge architecture · Toronto) | `src/index.njk`, the `home-hero` block near the top | HTML |
+| Home | Your name, the one-line statement under it, the identity tags (data governance · information architecture · civic tech · Toronto/ON) | `src/index.njk`, the `home-hero` block near the top; the tags are the hero meta spans | HTML |
 | Home | The paragraph under the rule (the lede) | `src/index.njk`, the `home-lede` paragraph | HTML; `&mdash;` is a dash |
 | Home | The open-to line, in mono under the lede: one sentence on what you are open to, ending with the email as a link, in your voice. One way I've done this: `I'm open to … <a href="mailto:hello@cognitivearchitecture.ca">hello@cognitivearchitecture.ca</a>` | `_data/site.json`, the `openTo` key | HTML allowed; an empty value (`""`) renders nothing, so the line is absent until you write it |
 | Writing | The garden slot in the Writing room: whether it shows, its label, its sentence and its link. One way I've done this: flip `show` to `true` once the garden question is decided | `_data/writing.json`, the `elsewhere` object (`show`, `label`, `text`, `url`) | `show: false` hides the row; the other three fields wait unchanged |
