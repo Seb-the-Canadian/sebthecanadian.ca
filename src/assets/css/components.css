@@ -461,6 +461,12 @@ a.button:visited { color: var(--muted); }
   margin-left: auto;
   border-color: var(--muted);
 }
+/* Rendered hidden in the header so its box is reserved before the script
+   runs; visibility keeps it unseen and out of the tab order without JS. */
+.theme-toggle[hidden] {
+  display: inline-flex;
+  visibility: hidden;
+}
 .theme-toggle__mark {
   width: 0.6em;
   height: 0.6em;
