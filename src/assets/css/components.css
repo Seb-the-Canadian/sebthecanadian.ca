@@ -929,7 +929,7 @@ h3:hover > .heading-anchor {
 }
 .masthead__stamp {
   font-family: var(--mono);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--text-sm);
   color: var(--moss);
   border: 1px solid var(--rule);
