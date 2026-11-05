@@ -463,7 +463,7 @@ a.button:visited { color: var(--muted); }
 }
 /* Rendered hidden in the header so its box is reserved before the script
    runs; visibility keeps it unseen and out of the tab order without JS. */
-.theme-toggle[hidden] {
+.site-header > .theme-toggle[hidden] {
   display: inline-flex;
   visibility: hidden;
 }

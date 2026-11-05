@@ -69,7 +69,7 @@
 
     // nav.njk renders the switch hidden, so its space is held from first
     // paint; reveal it. If a page lacks it, build it as before.
-    var btn = header.querySelector(".theme-toggle");
+    var btn = header.querySelector(":scope > .theme-toggle");
     var status = btn && btn.nextElementSibling && btn.nextElementSibling.getAttribute("role") === "status"
       ? btn.nextElementSibling
       : null;

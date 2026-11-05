@@ -38,7 +38,7 @@
   <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)" />
   <script>
-    /* A remembered theme is applied before first paint; theme-toggle.js builds the switch. */
+    /* A remembered theme is applied before first paint; theme-toggle.js reveals the switch nav.njk renders (and builds one only if none is there). */
     (function () {
       try {
         var t = localStorage.getItem("theme-preference");
