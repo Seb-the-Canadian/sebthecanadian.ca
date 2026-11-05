@@ -20,26 +20,44 @@
  *   node scripts/site-check.js <url> <out-dir>
  *   npm run check:site -- <url> <out-dir>
  *
- * Exit code: 0 when every view passes, 1 when any fails, 2 when it cannot run.
+ * Exit code: 0 when every view passes, 1 when any view fails, 2 when it cannot
+ * run (no Playwright, no Chromium, or no url and folder given).
  *
  * It needs Playwright with Chromium, which is not a dependency of this
  * repository. One way to get it: npm i -g playwright && npx playwright install chromium
+ * The script looks for Playwright in this repository's node_modules first, then
+ * in the global npm folder.
  */
 import { createRequire } from "node:module";
+import { execSync } from "node:child_process";
+import path from "node:path";
 import fs from "node:fs";
 
+const require = createRequire(import.meta.url);
+const notFound = (e) => e && e.code === "MODULE_NOT_FOUND";
 let chromium;
 try {
-  ({ chromium } = createRequire(import.meta.url)("playwright"));
-} catch {
-  console.error("site-check needs Playwright with Chromium: npm i -g playwright && npx playwright install chromium");
-  process.exit(2);
+  ({ chromium } = require("playwright"));
+} catch (e) {
+  if (!notFound(e)) throw e;
+  try {
+    const root = execSync("npm root -g", { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+    ({ chromium } = require(path.join(root, "playwright")));
+  } catch (e2) {
+    if (e2 && e2.code !== "MODULE_NOT_FOUND" && !e2.status && e2.code !== "ENOENT") throw e2;
+    console.error("site-check needs Playwright with Chromium: npm i -g playwright && npx playwright install chromium");
+    process.exit(2);
+  }
 }
 (async () => {
   const [url, out] = process.argv.slice(2); let fail = 0;
   if (!url || !out) { console.error('usage: node scripts/site-check.js <url> <out-dir>'); process.exit(2); }
   fs.mkdirSync(out, { recursive: true });
-  const b = await chromium.launch();
+  let b;
+  try { b = await chromium.launch(); } catch {
+    console.error('Playwright is installed but Chromium is not: run `npx playwright install chromium`');
+    process.exit(2);
+  }
   for (const [w, scheme, js] of [[1280, 'light', true], [1280, 'dark', true], [390, 'light', true], [390, 'dark', true], [390, 'light', false]]) {
     const ctx = await b.newContext({ viewport: { width: w, height: 860 }, colorScheme: scheme, javaScriptEnabled: js, deviceScaleFactor: 1 });
     const p = await ctx.newPage(); const errs = [];
