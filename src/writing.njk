@@ -46,9 +46,12 @@ pageStyles:
   <div class="writing-block">
     <h2 class="eyebrow" id="writing-{{ wrGroup[0] }}">{{ wrGroup[1] }}</h2>
     <div class="index-table">
+      {#- Over 12 rows that span more than one year, a mono year label opens
+          each year. Rows are newest first, so the first and last rows'
+          years tell whether the group spans more than one. -#}
+      {%- set wrSplit = wrItems.length > 12 and wrItems[0].date.getUTCFullYear() != wrItems[wrItems.length - 1].date.getUTCFullYear() %}
       {%- for post in wrItems %}
-      {#- Over 12 rows, a mono year label opens each year (newest first). -#}
-      {%- if wrItems.length > 12 and (loop.first or post.date.getUTCFullYear() != wrItems[loop.index0 - 1].date.getUTCFullYear()) %}
+      {%- if wrSplit and (loop.first or post.date.getUTCFullYear() != wrItems[loop.index0 - 1].date.getUTCFullYear()) %}
       <p class="writing-year">{{ post.date.getUTCFullYear() }}</p>
       {%- endif %}
       {%- include "writing-row.njk" %}
