@@ -677,6 +677,15 @@ a.button:visited { color: var(--muted); }
   margin-top: var(--space-md);
 }
 
+/* Next-step lines at the end of a post and of a case study. */
+.post-more,
+.story-next {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
+}
+
 /* ==========================================================================
    Home — Identity line + Index table (Day 03, pitch-v1)
    ========================================================================== */

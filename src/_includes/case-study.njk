@@ -15,8 +15,8 @@ layout: base.njk
 </div>
 <div class="story-note">
 {% include "clearance-note.njk" %}
-<p class="post-webmention-prompt">
+<p class="story-next">
   {%- for study in collections["case-study"] %}{% if study.url != page.url %}Another practice piece: <a href="{{ study.url }}">{{ study.data.title }}</a>. {% endif %}{% endfor -%}
-  The short version of the rest is <a href="/resume/">my r&eacute;sum&eacute;</a>; <a href="mailto:{{ site.email }}">{{ site.email }}</a> if you'd like to talk.
+  My <a href="/resume/">r&eacute;sum&eacute;</a> is the short version of everything else; <a href="mailto:{{ site.email }}">{{ site.email }}</a> if you'd like to talk.
 </p>
 </div>
