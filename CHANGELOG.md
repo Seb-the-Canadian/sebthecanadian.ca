@@ -4,6 +4,34 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-05 — Dates, no-JS figures, reflow and layout stability
+
+### Fixed
+- **Page dates are right again.** The deploy fetches the full git history,
+  so each page's "Last updated" comes from its own history rather than the
+  day of the deploy, and the sitemap's `lastmod` is only written from
+  authored dates.
+- **Case-study figures read without JavaScript.** The step sections of the
+  Crosswalk and Structure figures show in full, and the script-only
+  controls are hidden, so the story holds together with scripts off.
+- **Faded figure text stays readable.** Inactive steps dim to 0.9, which
+  keeps their text above the 4.5:1 contrast floor.
+- **The home page reflows at 320px.** A long email in an index row no
+  longer pushes the page sideways.
+- **The page no longer shifts when the fonts arrive.** The column width is
+  `49.57rem`, the width it already has once the fonts load, instead of a
+  unit that depends on the font.
+- **Buttons have a visible border**, the same muted one as the theme switch.
+
+### Added
+- **`scripts/site-check.js`** (`npm run check:site -- <url> <out-dir>`): one
+  way to run the list in `docs/brand.md` → "Before shipping a visual change":
+  desktop and phone, light and dark, JavaScript off, with screenshots, and a
+  fail when a case-study figure is empty without JavaScript. It needs
+  Playwright on the machine that runs it.
+- The case-study converter's `--marks` mode regenerates only the substrate
+  stylesheet, so a CSS-only fix does not touch the story.
+
 ## 2026-10-29 — The writing pipeline gets a home
 
 ### Added
