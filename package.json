@@ -9,6 +9,7 @@
     "webmentions-sync": "node scripts/webmentions.js",
     "dev": "npx @11ty/eleventy --serve",
     "check:portfolio": "node scripts/portfolio-check.js",
+    "check:site": "node scripts/site-check.js",
     "build": "node scripts/garden-rss.js && node scripts/webmentions.js && node scripts/portfolio-check.js && npx @11ty/eleventy"
   },
   "dependencies": {
