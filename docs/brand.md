@@ -117,6 +117,8 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   until the visitor presses the switch; a press stores light or dark in that
   browser, applied before first paint on later visits. There is no "system"
   position to cycle back to.
+- **Shortcuts can be switched off.** The choice is remembered in the browser;
+  the switch is in the `?` dialog and on `/keyboard/`.
 - **Reduced motion** is honoured; a **print** stylesheet exists and stays
   correct.
 - Phone width is a first-class layout, not a squeeze.

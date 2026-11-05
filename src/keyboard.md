@@ -9,6 +9,10 @@ permalink: /keyboard/
 
 The site supports vim-style chord shortcuts when JavaScript is enabled. Press the first key, then the second within 1.5 seconds.
 
+<p id="shortcuts-switch"></p>
+
+With JavaScript on, the switch above turns every shortcut on this site off, including `?`, and the choice is remembered in this browser. If you turn them off, this page (linked in every footer) is where you turn them back on.
+
 ## Navigation chords
 
 | Chord | Destination |

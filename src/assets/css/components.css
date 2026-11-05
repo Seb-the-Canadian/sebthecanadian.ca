@@ -424,6 +424,11 @@ kbd {
   margin-bottom: 0;
 }
 
+.kbd-overlay-switch {
+  text-align: center;
+  margin: var(--space-md) 0;
+}
+
 .kbd-overlay-close {
   display: block;
   margin: var(--space-md) auto 0;
@@ -460,6 +465,9 @@ a.button:visited { color: var(--muted); }
   gap: 0.5ch;
   margin-left: auto;
   border-color: var(--muted);
+}
+.shortcuts-switch {
+  margin-left: 0; /* inside the dialog and the keyboard page it sits in flow */
 }
 .theme-toggle__mark {
   width: 0.6em;
