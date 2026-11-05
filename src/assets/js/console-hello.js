@@ -28,7 +28,7 @@
 
     console.log("%c" + tree, green);
     console.log(
-      "%cyou opened the hood. respect.%c\n" + note + "\nbuilt by hand — hello@cognitivearchitecture.ca",
+      "%cyou opened the hood. respect.%c\n" + note + "\nbuilt by hand.",
       "color:#6f9d52;font-weight:600;font-family:ui-monospace,monospace",
       muted
     );

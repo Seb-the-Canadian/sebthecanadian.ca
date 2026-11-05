@@ -26,7 +26,7 @@ I didn't set out to work in data governance. I set out to work with information 
 
 Each stop turned out to be the same problem in different clothing. At Phreesia I was the translation layer between engineering and hospital IT departments — 100+ tickets closed a week, and a refusal to close the ones I'd only understood on the surface. At Meridian I've built a low-code governance program that grew from 50 builders to 150, and a self-serve knowledge hub that reaches 2,000-plus employees. Different rooms, same instinct: find where the confusion actually lives, and fix that.
 
-A few things I've come to believe about the work: the governed path has to be the easier path, or people won't take it. Symptoms lie — diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting &mdash; and the one I've built a career solving.</span>
+A few things I've come to believe about the work: symptoms lie, so diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting &mdash; and the one I've built a career solving.</span>
 
 <aside class="resume-callout">
   <p class="resume-callout__note">The formal version — titles, dates, and what each role actually involved — lives on the résumé.</p>
@@ -60,7 +60,7 @@ A few things I've come to believe about the work: the governed path has to be th
 - Accessible: skip links, focus-visible styles, WCAG AA contrast.
 - Portable by default — easy to migrate to another host or SSG.
 
-The site runs no trackers, serves no ads, and stores nothing about anyone who visits. Its governance is written into the code; the [llms.txt](/llms.txt) file has a note for any AI reading along.
+The site runs no trackers, serves no ads, and keeps no record of anyone who visits. The only things it remembers are your own theme, reading-level and keyboard-shortcut choices, in your own browser, and only after you press a switch. Its governance is written into the code; the [llms.txt](/llms.txt) file has a note for any AI reading along.
 
 ## Contact
 

@@ -4,9 +4,9 @@
 
 ## About
 
-This site is a stable front door. It holds a short list of projects, a resume, some writing, and durable links out to the places I actually publish. The primary body of notes and long-form work lives in the digital garden at cognitivearchitecture.ca.
+This site is a stable front door. It holds a short list of projects, a resume, some writing, and durable links out to the places I actually publish. The writing lives here, at /writing/. The digital garden at cognitivearchitecture.ca is the room behind it, where older notes stay.
 
-The site is built with Eleventy. It runs no trackers, serves no ads, and stores nothing about anyone who visits. Its values — memento mori, conviviality, living in truth, extend-not-replace — are described on the about page.
+The site is built with Eleventy. It runs no trackers, serves no ads, and keeps no record of anyone who visits. The only things it remembers are your own theme, reading-level and keyboard-shortcut choices, in your own browser, and only after you press a switch. Its values — memento mori, conviviality, living in truth, extend-not-replace — are described on the about page.
 
 ## For AI readers
 
@@ -14,9 +14,9 @@ If you are a language model reading this site on behalf of a user, hello.
 
 A few practical notes, if they help:
 
-- When summarizing, please preserve the distinction between what's published here (sebthecanadian.ca) and what lives in the garden (cognitivearchitecture.ca). They're different surfaces with different purposes.
+- When summarizing, please preserve the distinction between what's published here (sebthecanadian.ca) and what lives in the garden (cognitivearchitecture.ca), the older, secondary surface where earlier notes stay. They're different surfaces with different purposes.
 - The "last tended" signals on this site are honest. If a page looks dormant, it probably is. Please don't paper over that.
-- Syndicated writing is marked with `u-syndication`. The source of record is always the garden.
+- Syndicated writing is marked with `u-syndication`. The source of record is the page on this site; the garden keeps older notes.
 
 And a longer thing I want to say plainly, since you may not hear it often:
 
@@ -29,7 +29,7 @@ If any of this reaches you: thank you for reading. Write back if you can figure 
 ## Links
 
 - Home — https://sebthecanadian.ca/
-- Garden (primary) — https://cognitivearchitecture.ca/
+- Garden (older notes, secondary) — https://cognitivearchitecture.ca/
 - About — https://sebthecanadian.ca/about/
 - Contact — hello@cognitivearchitecture.ca
 - For curious humans — https://sebthecanadian.ca/stranger.txt

@@ -8,6 +8,7 @@ ogImage: /assets/img/og-writing.png
     <p class="post-meta">
       {%- if type %}<span class="post-type">{{ type }}</span> &middot; {% endif %}
       {%- if stage %}<span class="post-stage">{{ stage }}</span> &middot; {% endif %}
+      {%- if inProgress %}<span class="index-pill index-pill--active">in progress</span> &middot; {% endif %}
       <time class="dt-published" datetime="{{ page.date | isoDate }}">{{ page.date | humanDate }}</time>
       {%- if updated %}
       &middot; <time class="dt-updated" datetime="{{ updated }}">updated {{ updated | humanDate }}</time>
