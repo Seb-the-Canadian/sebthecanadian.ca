@@ -216,6 +216,8 @@ html:not(.story-js) .story .tttray, html:not(.story-js) .story .ttcrumbs{ displa
 html:not(.story-js) .story .nojs-q .srows li{ padding: 3px 7px; border: 1px solid var(--rule); }
 /* front-door hero: the "try it" line asks for clicks; without the script a static sentence above the routes replaces it. */
 html:not(.story-js) .story .tt .ttask span{ display: none; }
+/* Its static routes: the short answer on the right keeps to one line; the route on the left wraps instead. */
+html:not(.story-js) .story .tt .nojs-q b{ white-space: nowrap; text-align: right; }
 /* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
 .story .dim{ opacity: .9; }
 
