@@ -10,8 +10,8 @@ email: "hello@cognitivearchitecture.ca"
 location: "Toronto, Ontario, Canada"
 website: "https://sebthecanadian.ca"
 
-# The same profile addresses live in _data/profiles.json (JSON allows no
-# comment there); keep the two lists in step.
+# The four platform profiles (not Garden) also live in _data/profiles.json,
+# which feeds the structured data; keep those four in step.
 profiles:
   - platform: "LinkedIn"
     url: "https://www.linkedin.com/in/sebastianl-8b6688225"
