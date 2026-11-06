@@ -78,7 +78,6 @@ html:not(.story-js) .story #between .graphic .mini.dim{ display: block; }
 html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 /* front-door: step sections and the audience/mode toggles need the script; without it, show every step and drop the toggles. */
 html:not(.story-js) .story #crosswalk .graphic .sec.dim, html:not(.story-js) .story #structure .graphic .sec.dim{ display: block; }
-html:not(.story-js) .story #crosswalk .graphic .cmkey .dim{ display: inline-flex; }
 html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ display: none; }
 /* front-door: the page's static copies (.nojs-q) stand in for the script-built drawings, so the empty crossmap, its key and caption, and the find-it tray and breadcrumbs step aside. */
 html:not(.story-js) .story #crosswalk svg.cm, html:not(.story-js) .story #crosswalk .cmkey, html:not(.story-js) .story #crosswalk .cmkey + .caption,
