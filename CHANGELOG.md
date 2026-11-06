@@ -13,7 +13,7 @@ Format:
   rendering. One way of preparing for a stricter content-security policy.
 - **Each case study has its own social card**, and the site's two cards now
   carry the current words: the specialty line on the default card, the
-  writing card without the garden as its first line.
+  writing card no longer names the garden.
 - **The case-study descriptions name their discipline**: information
   architecture for the front-door story, data governance for the
   use-case-life story.
@@ -32,8 +32,8 @@ Format:
   heading instead of under the bar.
 - **Register tables keep their headers for screen readers** at phone widths,
   and off-state tags leave the accessibility tree.
-- **Use-case-life's heading names have their spaces back**; the next-step
-  controls are grouped and their arrows hidden from screen readers.
+- **Use-case-life's heading names have their spaces back**; the notice
+  outline reads as a named group and its arrows are hidden from screen readers.
 - **Front-door's claims legend drops "unresolved"**; the "half" chip reads
   as the word with " the answer" for screen readers; decorative arrows are
   hidden.
