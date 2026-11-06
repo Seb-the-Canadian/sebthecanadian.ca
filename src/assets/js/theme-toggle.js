@@ -5,8 +5,11 @@
  * follows prefers-color-scheme. A press stores "light" or "dark" in
  * localStorage ("theme-preference"); the inline script in base.njk applies
  * the stored value before first paint on later visits, so this file only
- * builds the control. An old stored "system" value counts as no choice.
- * Without JavaScript there is no switch and the system setting applies.
+ * wires the control. The control itself is rendered hidden by nav.njk (so
+ * the header keeps its space from first paint); this file reveals it, or
+ * builds it if a page lacks it. An old stored "system" value counts as no
+ * choice. Without JavaScript the switch stays hidden and the system setting
+ * applies.
  * The rule is recorded in docs/brand.md under Behaviour.
  */
 (function () {
@@ -64,19 +67,30 @@
     var header = document.querySelector(".site-header");
     if (!header) return;
 
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "theme-toggle";
-    btn.setAttribute("role", "switch");
-    // Visible "Dark" plus hidden " theme": the accessible name is "Dark theme".
-    btn.innerHTML =
-      '<span class="theme-toggle__mark" aria-hidden="true"></span>' +
-      'Dark<span class="sr-only"> theme</span>';
+    // nav.njk renders the switch hidden, so its space is held from first
+    // paint; reveal it. If a page lacks it, build it as before.
+    var btn = header.querySelector(":scope > .theme-toggle");
+    var status = btn && btn.nextElementSibling && btn.nextElementSibling.getAttribute("role") === "status"
+      ? btn.nextElementSibling
+      : null;
+    var built = !btn;
 
-    var status = document.createElement("span");
-    status.className = "sr-only";
-    status.setAttribute("role", "status");
-    status.setAttribute("aria-live", "polite");
+    if (built) {
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "theme-toggle";
+      btn.setAttribute("role", "switch");
+      // Visible "Dark" plus hidden " theme": the accessible name is "Dark theme".
+      btn.innerHTML =
+        '<span class="theme-toggle__mark" aria-hidden="true"></span>' +
+        'Dark<span class="sr-only"> theme</span>';
+    }
+    if (!status) {
+      status = document.createElement("span");
+      status.className = "sr-only";
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+    }
 
     function render(theme) {
       btn.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
@@ -99,8 +113,9 @@
       });
     }
 
-    header.appendChild(btn);
-    header.appendChild(status);
+    if (built) header.appendChild(btn);
+    if (!status.parentNode) btn.insertAdjacentElement("afterend", status);
+    btn.removeAttribute("hidden");
   }
 
   if (document.readyState === "loading") {
