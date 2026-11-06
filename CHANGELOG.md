@@ -11,9 +11,9 @@ Format:
   read as links by more than the leading "#".
 - **The Now panel's live dot pulses five times on arrival, then rests**
   (about 12 seconds) instead of pulsing for as long as the page is open.
-- **The résumé's "Download PDF" button only appears when it works.** It is
-  rendered hidden and a small script (`print.js`) shows it and opens the
-  print dialog. With JavaScript off there is no button that does nothing;
+- **The résumé's print button, now labelled "Print or save as PDF", only
+  appears when it works.** It is rendered hidden and a small script
+  (`print.js`) shows it and opens the print dialog. With JavaScript off there is no button that does nothing;
   the browser's own print menu still makes the PDF.
 
 ### Fixed
@@ -22,10 +22,12 @@ Format:
   out of that rule.
 
 ### Security
-- **Every page carries a Content-Security-Policy** (in a meta tag, since
-  GitHub Pages cannot send headers). One way I've set it: scripts only from
-  this site plus three small inline scripts allowed by hash (the theme
-  script, and the case studies' audience and `story-js` lines); images,
+- **Every page built from the base layout carries a Content-Security-Policy**
+  (in a meta tag, since GitHub Pages cannot send headers; the two redirect
+  stubs, `/now/` and `/colophon/`, have no layout, scripts or images). One
+  way I've set it: scripts only from this site plus three small inline
+  scripts allowed by hash (the theme script, and the case studies' audience
+  and `story-js` lines); images,
   fonts and styles from this site, with `data:` images for the paper grain;
   no outside connections, frames, plugins or form targets. Editing any of
   those three inline scripts means updating its hash in `base.njk`, where a
