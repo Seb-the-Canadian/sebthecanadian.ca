@@ -45,6 +45,8 @@
     "author": ldAuthor
   } -%}
 {%- elif layout == "case-study.njk" -%}
+  {%- set ldGitDate = page.inputPath | gitLastModified -%}
+  {%- if ldGitDate -%}{%- set ldModified = ldGitDate | isoDateShort -%}{%- endif -%}
   {%- set jsonld = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -52,14 +54,17 @@
     "url": site.url + page.url,
     "mainEntityOfPage": site.url + page.url,
     "image": ldImage,
+    "dateModified": ldModified,
     "description": description,
     "author": ldAuthor
   } -%}
 {%- elif page.url == "/" or page.url == "/about/" or page.url == "/resume/" -%}
+  {#- profiles comes from _data/profiles.json; the résumé keeps its own copy in _data/resume.yml. -#}
   {%- set sameAs = [] -%}
   {%- for profile in profiles -%}
     {%- set sameAs = (sameAs.push(profile.url), sameAs) -%}
   {%- endfor -%}
+  {#- The address below is written out by hand; keep it in step with `location` in _data/resume.yml. -#}
   {%- set jsonld = {
     "@context": "https://schema.org",
     "@type": "Person",

@@ -22,7 +22,8 @@ Format:
   labelled articles; every other page, tag pages included, is a website.
 - **Tag pages are out of search.** One way of settling it: readers can still
   use them, but they carry `noindex` and stay out of the sitemap. The
-  other way, listing all five, is a one-line switch if that changes.
+  other way, listing all five, is two edits if that changes: add
+  `addAllPagesToCollections: true` under the pagination and remove `noindex`.
 - **The feed gives native posts a published date**, and a garden entry with no
   excerpt no longer repeats its title as a summary.
 

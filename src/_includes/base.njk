@@ -30,9 +30,16 @@
   <meta property="og:type" content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}" />
   <meta property="og:site_name" content="{{ site.title }}" />
   <meta property="og:image" content="{{ site.url }}{{ ogImage or '/assets/img/og-default.png' }}" />
+  {#- Every card must be 1200x630: the width and height below are hard-coded. -#}
+  {%- set ogCardAlts = {
+    "/assets/img/og-default.png": "Card with a pixel-art lavender sprig above the site name, Seb (the Canadian), and the line data governance, information architecture, civic tech.",
+    "/assets/img/og-writing.png": "Card with a pixel-art lavender sprig above writing/, the site name, and the line notes and longer pieces, written and tended here.",
+    "/assets/img/og-front-door.png": "Card with a pixel-art lavender sprig above projects/, the title One front door for data and AI, and the line Practice piece, Information architecture.",
+    "/assets/img/og-use-case-life.png": "Card with a pixel-art lavender sprig above the title A use case has a life and the line Practice piece, Data governance."
+  } %}
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="{{ ogImageAlt or ('Social card for ' + pageTitle + ': a pixel-art lavender sprig on parchment.') }}" />
+  <meta property="og:image:alt" content="{{ ogCardAlts[ogImage or '/assets/img/og-default.png'] or 'A pixel-art lavender sprig on a parchment card with the site name.' }}" />
   <meta property="og:locale" content="en_CA" />
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/assets/img/favicon.png" sizes="32x32" type="image/png" />

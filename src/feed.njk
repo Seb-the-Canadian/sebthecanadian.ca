@@ -21,7 +21,7 @@ layout: null
     {%- if entry.page %}
     <published>{{ entry.rfc3339 }}</published>
     {%- endif %}
-    <updated>{{ entry.rfc3339 }}</updated>
+    <updated>{{ (entry.page.data.updated | isoDate) if (entry.page and entry.page.data.updated) else entry.rfc3339 }}</updated>
     <id>{{ entry.url }}</id>
     {%- if entry.page %}
     <content type="html">{{ entry.page.templateContent }}</content>
