@@ -39,15 +39,20 @@ ogImage: /assets/img/og-writing.png
       {#- Sender-chosen addresses become links only when they are plain web
           addresses (scripts/webmentions.js filters them too); no avatar, so
           nothing loads from the sender's server. -#}
-      {%- set authorUrl = m.author.url if (m.author and m.author.url and (m.author.url.startsWith("https://") or m.author.url.startsWith("http://"))) else "" %}
-      {%- set sourceUrl = m.url if (m.url and (m.url.startsWith("https://") or m.url.startsWith("http://"))) else "" %}
+      {%- set authorLower = (m.author.url | string | lower) if (m.author and m.author.url) else "" %}
+      {%- set authorUrl = m.author.url if (authorLower.startsWith("https://") or authorLower.startsWith("http://")) else "" %}
+      {%- set sourceLower = (m.url | string | lower) if m.url else "" %}
+      {%- set sourceUrl = m.url if (sourceLower.startsWith("https://") or sourceLower.startsWith("http://")) else "" %}
+      {#- Names over 80 characters become 79 plus "…", as in scripts/webmentions.js. -#}
+      {%- set rawName = (m.author.name if (m.author and m.author.name) else "") or authorUrl or "someone" %}
+      {%- set authorName = (rawName | truncate(79, true, "…")) if (rawName | length) > 80 else rawName %}
       <li class="webmention h-cite">
         {%- if authorUrl %}
         <a class="u-author h-card" href="{{ authorUrl }}" rel="nofollow ugc">
-          <span class="p-name">{{ (m.author.name or authorUrl) | truncate(80, true, "…") }}</span>
+          <span class="p-name">{{ authorName }}</span>
         </a>
         {%- else %}
-        <span class="u-author h-card"><span class="p-name">{{ ((m.author.name if m.author else "") or "someone") | truncate(80, true, "…") }}</span></span>
+        <span class="u-author h-card"><span class="p-name">{{ authorName }}</span></span>
         {%- endif %}
         <span class="webmention-type">{{ m.type | replace("-", " ") }}</span>
         {%- if m.published %}

@@ -658,13 +658,6 @@ a.button:visited { color: var(--muted); }
   color: var(--moss);
 }
 
-.webmention .u-photo {
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 50%;
-  margin-right: var(--space-xs);
-}
-
 .webmention-type {
   display: inline-block;
   font-size: var(--text-xs);

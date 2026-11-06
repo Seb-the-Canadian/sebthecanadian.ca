@@ -31,6 +31,13 @@
  * path) that carries one; every page built from the base layout carries the
  * same one.
  *
+ * Two things this check does not see. Inline event handlers (onclick= and
+ * the like) are not checked, and the policy blocks them silently, so none may
+ * be added to templates: put the code in a file under src/assets/js/ instead.
+ * And because the policy is read from the first page that carries it, a page
+ * missing the meta tag is not detected here (the browser simply runs that
+ * page's scripts with no policy at all).
+ *
  * Usage
  *   node scripts/csp-check.js              check _site/ (runs in `npm run build`)
  *   node scripts/csp-check.js <folder>     check another built copy (for testing)
@@ -46,15 +53,20 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = resolve(process.argv[2] || join(ROOT, "_site"));
 
-// Script types a browser runs. Anything else (application/ld+json and the
-// like) is a data block that the policy does not cover.
-const JS_TYPES = new Set([
+// Script types the policy's script-src applies to, so each needs a hash:
+// the ones a browser runs as code, plus import maps and speculation rules,
+// which are not code but which browsers still check against script-src.
+// Anything else (application/ld+json and the like) is a data block that the
+// policy does not cover, and is skipped.
+const HASHED_TYPES = new Set([
   "",
   "module",
   "text/javascript",
   "application/javascript",
   "application/ecmascript",
   "text/ecmascript",
+  "importmap",
+  "speculationrules",
 ]);
 
 function htmlFiles(dir) {
@@ -67,8 +79,10 @@ function htmlFiles(dir) {
   return out;
 }
 
+// Reads one attribute from a tag's attribute text. The name must start the
+// text or follow whitespace, so "src" does not match "data-src".
 function attr(attrs, name) {
-  const m = attrs.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i"));
+  const m = attrs.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i"));
   return m ? (m[1] ?? m[2] ?? m[3]) : null;
 }
 
@@ -103,7 +117,7 @@ for (const file of pages) {
     const [, attrs, raw] = m;
     if (attr(attrs, "src") !== null) continue;
     const type = (attr(attrs, "type") || "").trim().toLowerCase();
-    if (!JS_TYPES.has(type)) {
+    if (!HASHED_TYPES.has(type)) {
       skippedData++;
       continue;
     }
@@ -115,7 +129,7 @@ for (const file of pages) {
 }
 
 if (!policy) {
-  console.error(`✗ No page in ${relative(ROOT, SITE) || SITE} carries a Content-Security-Policy meta tag.`);
+  console.error(`✗ No page in ${SITE} carries a Content-Security-Policy meta tag.`);
   console.error("  The policy lives in src/_includes/base.njk; if it was removed on purpose, take this check out of the build script too.");
   process.exit(1);
 }
