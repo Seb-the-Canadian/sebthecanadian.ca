@@ -26,8 +26,8 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
       visual repeat `aria-hidden="true"`; then re-run
       `scripts/story-to-case-study.py` against each story to regenerate
       `case-study.js` (never hand-edit it). Check: at 390px, Tab through the
-      front-door crosswalk chapter → 16 crossmap stops, not 32, and the
-      copies still change state on scroll.
+      front-door crosswalk chapter → 16 crossmap stops, not 32, and each
+      copy still shows its own step's state.
 
 ---
 
