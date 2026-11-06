@@ -1,3 +1,6 @@
+// Moved verbatim from the use-case-life story page (src/projects/use-case-life/index.njk).
+// Loaded with defer after case-study.js, which defines the Pudding helpers this uses.
+// Edits to this file do not change the story's clearance hash.
 (function(){
   const form=document.getElementById("toyForm");
   // [field, question, short plain label, principle chips, default]
