@@ -1,7 +1,15 @@
-// Moved verbatim from the use-case-life story page (src/projects/use-case-life/index.njk).
-// Loaded with defer after case-study.js, which defines the Pudding helpers this uses.
+// Moved from the use-case-life story page (src/projects/use-case-life/index.njk). Three things
+// differ from the block that was reviewed there: step hooks go straight into Pudding.hooks
+// through a local onStep; the "just changed" outline (mark) and the reduced-motion check
+// (reduce) are looked up each time they're used, not once at load; and the status sentences
+// read aloud say "to" where the screen showed an arrow.
+// Loaded with `defer` just BEFORE /assets/js/case-study.js (defer keeps their order): the form
+// and the step hooks must exist before case-study.js copies the figures for phones, and it
+// starts on a timer once it runs, so a script loaded after it can lose that race.
 // Edits to this file do not change the story's clearance hash.
 (function(){
+  const P=window.Pudding=window.Pudding||{}; P.hooks=P.hooks||{};
+  const onStep=(id,fn)=>{(P.hooks[id]=P.hooks[id]||[]).push(fn);};
   const form=document.getElementById("toyForm");
   // [field, question, short plain label, principle chips, default]
   const qs=[
@@ -30,9 +38,9 @@
   const statedList=document.getElementById("statedList"), compList=document.getElementById("compList"),
         reviewLine=document.getElementById("reviewLine"), retroLine=document.getElementById("retroLine"),
         strip=document.getElementById("rstrip"), rStatus=document.getElementById("rStatus");
-  const mark=(window.Pudding&&Pudding.changed)||function(){};
-  const reduce=!!(window.Pudding&&Pudding.reduce);
-  function stagger(els){els.filter(Boolean).forEach((el,i)=>{if(reduce||!i)mark(el);else setTimeout(()=>mark(el),i*120);});}
+  const mark=el=>{const f=window.Pudding&&Pudding.changed;if(f)f(el);};
+  const reduce=()=>!!(window.Pudding&&Pudding.reduce);
+  function stagger(els){els.filter(Boolean).forEach((el,i)=>{if(reduce()||!i)mark(el);else setTimeout(()=>mark(el),i*120);});}
   function li(parent,proKey,genKey,v,cls){
     const e=document.createElement("li");
     const p=document.createElement("span");p.dataset.aud="pro";p.textContent=proKey+" = ";
@@ -89,9 +97,9 @@
     const now={level:levelText(R.r),privacy:R.privacy,expert:R.expert};
     if(PREV){
       const msgs=[], els=[];
-      if(PREV.level!==now.level){msgs.push("Review path: "+PREV.level+" → "+now.level);els.push(strip.querySelector("[data-ltext]"),document.getElementById("nLevel"));}
-      if(PREV.privacy!==now.privacy){msgs.push("Privacy: "+PREV.privacy+" → "+now.privacy);els.push(pp,document.getElementById("nPriv"));}
-      if(PREV.expert!==now.expert){msgs.push("Expert review: "+PREV.expert+" → "+now.expert);els.push(pe,document.getElementById("nNext"));}
+      if(PREV.level!==now.level){msgs.push("Review path: "+PREV.level+" to "+now.level);els.push(strip.querySelector("[data-ltext]"),document.getElementById("nLevel"));}
+      if(PREV.privacy!==now.privacy){msgs.push("Privacy: "+PREV.privacy+" to "+now.privacy);els.push(pp,document.getElementById("nPriv"));}
+      if(PREV.expert!==now.expert){msgs.push("Expert review: "+PREV.expert+" to "+now.expert);els.push(pe,document.getElementById("nNext"));}
       if(els.length) els.splice(1,0,document.getElementById("nSubject"));
       stagger(els);
       rStatus.textContent=msgs.length?msgs.join(". ")+".":"Same result.";
@@ -137,7 +145,7 @@
                (nt===bt?"Different rules. For these answers the result happens to match, but other answers would differ.":"Different rules, different result. The rules are the service.");
     document.querySelectorAll("[data-swapnote]").forEach(el=>{el.textContent=note;el.classList.toggle("changed",SW.rules==="b"&&nt!==bt);});
     const key=SW.tool+SW.rules+nt;
-    if(swKey!==null&&key!==swKey){document.querySelectorAll("[data-swapout]").forEach(mark);if(announce)document.getElementById("swStatus").textContent="Review path: "+(nt!==bt?bt+" → "+nt:nt+", unchanged")+". "+note;}
+    if(swKey!==null&&key!==swKey){document.querySelectorAll("[data-swapout]").forEach(mark);if(announce)document.getElementById("swStatus").textContent="Review path: "+(nt!==bt?bt+" to "+nt:nt+", unchanged")+". "+note;}
     swKey=key;
   }
   // Reassess: the same use case a year later gets a new reference and nothing links the two
@@ -179,7 +187,7 @@
     if(z){REA=null;renderReassess();document.getElementById("btwStatus").textContent="Reassessment cleared.";const box=z.closest(".reassess");if(box){const y=box.querySelector("[data-reassess]");if(y)y.focus();}}
   });
   document.addEventListener("pudding:layout",()=>{renderSwap();renderReassess();});
-  Pudding.onStep("intake",(n,root)=>{root.querySelectorAll(".nghost a").forEach(a=>{a.tabIndex=n===3?0:-1;});});
-  Pudding.onStep("between",(n,root)=>{const g=root.querySelector("svg.gapline");if(g)g.setAttribute("class","gapline g"+(n+1));});
+  onStep("intake",(n,root)=>{root.querySelectorAll(".nghost a").forEach(a=>{a.tabIndex=n===3?0:-1;});});
+  onStep("between",(n,root)=>{const g=root.querySelector("svg.gapline");if(g)g.setAttribute("class","gapline g"+(n+1));});
   form.addEventListener("change",run); run();
 })();
