@@ -211,6 +211,10 @@ html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 html:not(.story-js) .story #crosswalk .graphic .sec.dim, html:not(.story-js) .story #structure .graphic .sec.dim{ display: block; }
 html:not(.story-js) .story #crosswalk .graphic .cmkey .dim{ display: inline-flex; }
 html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ display: none; }
+/* front-door: the page's static copies (.nojs-q) stand in for the script-built drawings, so the empty crossmap, its key and caption, and the find-it tray and breadcrumbs step aside. */
+html:not(.story-js) .story #crosswalk svg.cm, html:not(.story-js) .story #crosswalk .cmkey, html:not(.story-js) .story #crosswalk .cmkey + .caption,
+html:not(.story-js) .story .tttray, html:not(.story-js) .story .ttcrumbs{ display: none; }
+html:not(.story-js) .story .nojs-q .srows li{ padding: 3px 7px; border: 1px solid var(--rule); }
 /* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
 .story .dim{ opacity: .9; }
 

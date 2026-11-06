@@ -88,9 +88,16 @@ def icon(out, size, bg, u):
     sprig(ImageDraw.Draw(img), ox, oy, u)
     img.save(out); print("wrote", out)
 
+# Subtitles stay within the card's 1080px text width at 27px; the site line
+# drops " · Toronto/ON" for that reason (it measures 1102px).
 card("src/assets/img/og-default.png", None,
-     "civic tech · knowledge architecture · Toronto")
+     "data governance · information architecture · civic tech")
 card("src/assets/img/og-writing.png", "writing/",
-     "Notes from the front door · garden at cognitivearchitecture.ca")
+     "notes and longer pieces, written and tended here")
+# Case-study cards: the study's title, its eyebrow line as the subtitle;
+# set each with `ogImage:` in the study's front matter.
+card("src/assets/img/og-front-door.png", "projects/",
+     "Practice piece · Information architecture",
+     title="One front door for data and AI")
 icon("src/assets/img/favicon.png", 32, None, 2)
 icon("src/assets/img/apple-touch-icon.png", 180, BG + (255,), 13)
