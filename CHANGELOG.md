@@ -36,8 +36,8 @@ Format:
   declare the same person (one identifier), with the other names Seb goes
   by, the portrait, what he knows about, and Toronto as a structured
   address. LinkedIn joins Bluesky, GitHub and ORCID in the profile list, so it
-  also appears in the head's `rel="me"` links and the home page's Elsewhere
-  row. The email is not in the structured data.
+  also appears in the head's `rel="me"` links and the contact row under
+  Write on the home page. The email is not in the structured data.
 - **Posts and case studies carry fuller Article data.** Each has an image and
   a main-page address, and the author points at the same person. The case
   studies now have an Article block that uses their own "practice piece"
