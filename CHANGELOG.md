@@ -13,8 +13,9 @@ Format:
   (about 12 seconds) instead of pulsing for as long as the page is open.
 - **The résumé's print button, now labelled "Print or save as PDF", only
   appears when it works.** It is rendered hidden and a small script
-  (`print.js`) shows it and opens the print dialog. With JavaScript off there is no button that does nothing;
-  the browser's own print menu still makes the PDF.
+  (`print.js`) shows it and opens the print dialog. With JavaScript off
+  there is no button that does nothing; the browser's own print menu still
+  makes the PDF.
 
 ### Fixed
 - **The mark at the end of a printed résumé now prints.** The print
@@ -40,9 +41,10 @@ Format:
   `rel="nofollow ugc"`, and the sender's avatar is no longer shown, so a
   mention never loads an image from someone else's server. The legacy
   pingback link is gone from the page head.
-- **The "Send Webmentions" workflow runs after each successful deploy**
-  instead of on changes to `.html` files (which the site's Markdown never
-  produced, so it had stopped running), and its token has no permissions.
+- **The "Send Webmentions" workflow runs after each push or manual deploy**
+  (not the daily rebuild) instead of on changes to `.html` files (which the
+  site's Markdown never produced, so it had stopped running), and its token
+  has no permissions.
 - **Dependabot** (`.github/dependabot.yml`) opens a pull request once a month
   when an npm package or a GitHub Action the site uses has a newer version.
 - **The build checks the policy's script hashes.** `scripts/csp-check.js`

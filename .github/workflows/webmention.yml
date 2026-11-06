@@ -1,9 +1,11 @@
 name: Send Webmentions
 
-# Runs after each successful deploy, so the pages it announces are already
-# live (the old trigger watched for .html files in the repository, which the
-# site's Markdown and Nunjucks never produce). It needs no repository access,
-# so its token gets none. It can also be run by hand from the Actions tab.
+# Runs after each push or manual deploy that succeeds, so the pages it
+# announces are already live (the old trigger watched for .html files in the
+# repository, which the site's Markdown and Nunjucks never produce). The
+# daily scheduled rebuild is left out, so the same pages are not announced
+# again every day. It needs no repository access, so its token gets none. It
+# can also be run by hand from the Actions tab.
 on:
   workflow_dispatch:
   workflow_run:
@@ -14,7 +16,7 @@ permissions: {}
 
 jobs:
   send:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event != 'schedule')
     runs-on: ubuntu-latest
     steps:
       - name: Send webmentions for sources
