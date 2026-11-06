@@ -230,6 +230,21 @@ Comprehensive verification of all pages, responsive design, accessibility, micro
 
 Candidates for future work beyond the current sprint. No commitment implied.
 
+### After the audit sprint (2026-11)
+
+- [ ] **An interview method for the site's voice.** Once the audit sprint
+      (Waves 3 and 4) is done, design a way for Claude to interview Seb, a
+      structured conversation kept in Markdown, so that the stories and the
+      site's overall tone come out in his voice and in the way he explains
+      things, instead of an implementer's reading of them. Part of it is
+      speculative on purpose: approaches that could make the site more useful
+      to broader audiences than the fields it comes from. What it produces is
+      open; a voice guide beside `docs/brand.md` and a pass over the stories
+      and the home and About copy against it are the obvious candidates.
+      Check: a reader who knows Seb can't tell which sentences a machine
+      drafted, and a stranger can follow a story without the field's
+      vocabulary.
+
 ### Pitch v1 Follow-ups
 
 - [x] Generate `og-writing.png` (1200×630) for `/writing/<slug>/` `og:image` — shipped 2026-07-23 (design-v3 Phase 5) in the pixel dialect (conifer + wordmark) via committed `scripts/generate-og.py`
