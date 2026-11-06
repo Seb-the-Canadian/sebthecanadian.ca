@@ -93,10 +93,11 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   dark hero blocks.
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
-- **The home page leads with the work**: hero, lede, then Projects (case
-  studies first, then projects), then Now, then Writing (the three newest
-  posts), then Elsewhere. Writing lives on this site, at `/writing/`, and
-  follows the work.
+- **The home page**: hero, lede, the open-to line (when set), the join, Work
+  (case studies first, then projects), the writing bed, Now, Write. The home
+  carries two figures and no story; the stories live in their rooms (the
+  join's three steps on About, the bed's process in the Writing room).
+  Writing lives on this site, at `/writing/`, and follows the work.
 
 ## Figures and data
 
@@ -105,6 +106,10 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
 
 - solid = recorded, data · pixel dither = machine, AI · pen hatch = human
   judgement · ruled = documented · dashed outline = unresolved.
+- **The stage key** (writing shown as a figure): dashed = seedling, a first
+  pass · hatch = budding, reworked · solid = evergreen, settled · moss =
+  newest. It rhymes with the base meanings (open, judgement applied, settled)
+  and is a standing vocabulary (D11).
 - **Moss means where to look**: the reader's path and the answer.
 - **Amber means a state**, always with an icon and a word.
 - Marks sit in a strip at the edge of a box, beside a word that names them,

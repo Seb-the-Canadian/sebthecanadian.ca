@@ -6,14 +6,13 @@ layout: null
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>{{ site.title }}</title>
-  <subtitle>Writing from sebthecanadian.ca and the garden at cognitivearchitecture.ca</subtitle>
+  <subtitle>Writing from sebthecanadian.ca; older notes stay in the garden at cognitivearchitecture.ca</subtitle>
   <link href="{{ site.url }}/feed.xml" rel="self" />
   <link href="{{ site.url }}/" />
   <updated>{{ (collections.feedEntries | first).rfc3339 if collections.feedEntries.length else build.timestamp }}</updated>
   <id>{{ site.url }}/</id>
   <author>
     <name>{{ site.author }}</name>
-    <email>{{ site.email }}</email>
   </author>
   {%- for entry in collections.feedEntries %}
   <entry>

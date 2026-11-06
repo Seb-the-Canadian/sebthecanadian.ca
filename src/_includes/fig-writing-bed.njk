@@ -1,0 +1,58 @@
+{#- fig-writing-bed.njk — the writing bed: every piece as a chip, grouped by
+    type and marked by stage (docs/pen-and-pixel.md, spec 4.2).
+    Reads `bed` when the page has already set it
+    ({% set bed = collections.writing | groupWriting %}), else works it out.
+    Groups in order notes/, essays/, evolving/; an empty group is left out, and
+    nothing at all renders when there are no pieces. A group shows its 12
+    newest and a "+N more" chip to the Writing room. The stage mark is a strip
+    (or the dashed edge) on the chip and a hidden word inside the link, so the
+    mark is never the only carrier: seedling = dashed, budding = hatch,
+    evergreen = solid, no stage = plain with "stage not set". The newest piece
+    wears the moss outline and the word "newest". The legend lists only the
+    stage marks the chips show, plus moss · newest.
+    Styles: /assets/css/figures.css (add it to the page's pageStyles). -#}
+{%- set wbBed = bed or (collections.writing | groupWriting) -%}
+{%- if wbBed.total -%}
+{%- set wbMax = 12 -%}
+{%- set wbGroups = [["notes", "notes/", wbBed.notes], ["essays", "essays/", wbBed.essays], ["evolving", "evolving/", wbBed.evolving]] -%}
+{#- The stages the shown chips carry, so the legend never promises a mark the bed lacks. -#}
+{%- set wbStages = [] -%}
+{%- for g in wbGroups %}{% for post in g[2].slice(0, wbMax) %}{% set wbPush = wbStages.push(post.data.stage) %}{% endfor %}{% endfor -%}
+<figure class="fig fig--bed" aria-labelledby="fig-bed-title">
+  <p class="fig__title" id="fig-bed-title">THE WRITING BED · BY TYPE AND STAGE</p>
+  <ul class="fig__legend" aria-label="What the marks mean">
+    {%- if "seedling" in wbStages %}
+    <li><span class="fig__mk fig__mk--dashed" aria-hidden="true"></span>dashed · seedling, a first pass</li>
+    {%- endif %}
+    {%- if "budding" in wbStages %}
+    <li><span class="fig__mk fig__mk--hatch" aria-hidden="true"></span>hatch · budding, reworked</li>
+    {%- endif %}
+    {%- if "evergreen" in wbStages %}
+    <li><span class="fig__mk fig__mk--solid" aria-hidden="true"></span>solid · evergreen, settled</li>
+    {%- endif %}
+    <li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · newest</li>
+  </ul>
+  {%- for g in wbGroups %}
+  {%- set wbItems = g[2] %}
+  {%- if wbItems.length %}
+  <div class="bed__group">
+    <p class="bed__label" id="fig-bed-{{ g[0] }}">{{ g[1] }}</p>
+    <ul class="fig__chips bed__chips" aria-labelledby="fig-bed-{{ g[0] }}">
+      {%- for post in wbItems.slice(0, wbMax) %}
+      {%- set wbStage = post.data.stage if post.data.stage in ["seedling", "budding", "evergreen"] else "" %}
+      {%- set wbNewest = wbBed.newest and post.url == wbBed.newest.url %}
+      <li><a class="chip chip--{{ wbStage or 'unset' }}{% if wbNewest %} chip--newest{% endif %}" href="{{ post.url }}">{{ post.data.title }}
+        {%- if post.data.inProgress %} <span class="index-pill index-pill--active">in progress</span>{% endif -%}
+        <span class="sr-only">, {{ wbStage or "stage not set" }}</span></a>
+        {%- if wbNewest %}<span class="chip__newest">newest</span>{% endif %}</li>
+      {%- endfor %}
+      {%- if wbItems.length > wbMax %}
+      <li><a class="chip chip--more" href="/writing/">+{{ wbItems.length - wbMax }} more<span class="sr-only"> in {{ g[1] }}</span> <span aria-hidden="true">&rarr;</span></a></li>
+      {%- endif %}
+    </ul>
+    <p class="bed__count">{{ wbItems.length | pluralPieces }}</p>
+  </div>
+  {%- endif %}
+  {%- endfor %}
+</figure>
+{%- endif %}
