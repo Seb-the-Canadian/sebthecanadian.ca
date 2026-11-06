@@ -11,6 +11,15 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
 
 ## Bugs / Issues
 
+- [ ] **Preview a pull request in the browser.** Reviewing a visual essay
+      as a terminal diff is useless to Seb: he reviews rendered pages. Until
+      each pull request carries a link that opens its pages as they will
+      look (a preview deploy per branch, such as Cloudflare Pages or Netlify
+      connected to the repository), the session serves the branch's build
+      and sends the link, with before-and-after screenshots, before any
+      review or stamp is asked for. Check: a pull request's text carries a
+      link that opens the changed pages rendered, at desktop and phone
+      width.
 - [ ] **Updating a note resets its stage.** The Publish Note action writes
       `stage: seedling` on every run, so re-publishing a budding or
       evergreen note demotes it. Fixed by the stage picker in
