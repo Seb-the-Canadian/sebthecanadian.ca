@@ -255,6 +255,17 @@ Candidates for future work beyond the current sprint. No commitment implied.
       whether it lives under projects/ or writing/; how far back it starts.
       Check: a stranger can read it and say what this site is for and how
       its owner decides.
+- [ ] **Revise the résumé so the case studies don't trace back.** The
+      résumé names the current employer and lists the work in enough detail
+      that a reader could line it up with the invented organizations in the
+      case studies and undo the anonymization. Revise it so that line can't
+      be drawn: fewer identifying specifics, the same substance. The voice
+      and tone work above should help, since a story told in Seb's way of
+      explaining things leans less on the particulars of one workplace.
+      Read `docs/portfolio-clearance.md`'s self-test with the résumé open
+      beside each story; the stories may need the same pass from the other
+      direction. Check: a reader with the résumé and a story side by side
+      can't name the organization behind the story.
 
 ### Pitch v1 Follow-ups
 
