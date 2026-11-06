@@ -10,6 +10,11 @@ live within minutes.
 - Seb is not a developer. Explain changes in plain words, show every planned
   change before making it, and propose before anything structural (new
   folders, dependencies, layouts, moving files).
+- Seb reviews pages in a browser, never as a diff. Before asking him to
+  review or stamp a page, serve the branch's build and send him the link, or
+  send before-and-after screenshots when a server isn't possible. A terminal
+  diff tells him where the changes are, not what they look like; for a
+  visual essay it is useless.
 - Work on a branch. Never push to `main`. Push only when Seb asks. Never
   merge for him.
 - The repository is public. Before anything leaves this machine, scan the

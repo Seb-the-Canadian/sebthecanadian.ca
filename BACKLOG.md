@@ -11,6 +11,15 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
 
 ## Bugs / Issues
 
+- [ ] **Preview a pull request in the browser.** Reviewing a visual essay
+      as a terminal diff is useless to Seb: he reviews rendered pages. Until
+      each pull request carries a link that opens its pages as they will
+      look (a preview deploy per branch, such as Cloudflare Pages or Netlify
+      connected to the repository), the session serves the branch's build
+      and sends the link, with before-and-after screenshots, before any
+      review or stamp is asked for. Check: a pull request's text carries a
+      link that opens the changed pages rendered, at desktop and phone
+      width.
 - [ ] **Updating a note resets its stage.** The Publish Note action writes
       `stage: seedling` on every run, so re-publishing a budding or
       evergreen note demotes it. Fixed by the stage picker in
@@ -220,6 +229,21 @@ Comprehensive verification of all pages, responsive design, accessibility, micro
 ## Ideas
 
 Candidates for future work beyond the current sprint. No commitment implied.
+
+### After the audit sprint (2026-11)
+
+- [ ] **An interview method for the site's voice.** Once the audit sprint
+      (Waves 3 and 4) is done, design a way for Claude to interview Seb, a
+      structured conversation kept in Markdown, so that the stories and the
+      site's overall tone come out in his voice and in the way he explains
+      things, instead of an implementer's reading of them. Part of it is
+      speculative on purpose: approaches that could make the site more useful
+      to broader audiences than the fields it comes from. What it produces is
+      open; a voice guide beside `docs/brand.md` and a pass over the stories
+      and the home and About copy against it are the obvious candidates.
+      Check: a reader who knows Seb can't tell which sentences a machine
+      drafted, and a stranger can follow a story without the field's
+      vocabulary.
 
 ### Pitch v1 Follow-ups
 
