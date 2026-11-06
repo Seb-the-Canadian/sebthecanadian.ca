@@ -3,6 +3,8 @@ layout: post.njk
 title: "Down and Out, revisited"
 date: 2026-10-28
 updated: 2026-10-28
+type: post
+stage: budding
 excerpt: "I'm re-examining my 2023 MA thesis in public: what I asked, what I can and can't claim for now, and the questions I'm working through. This page changes as the work does."
 tags:
   - research

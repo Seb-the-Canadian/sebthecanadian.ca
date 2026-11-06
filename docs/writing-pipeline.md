@@ -89,6 +89,7 @@ fixes this; until then, re-set the stage in the file after an update.
 | 2026-10-29 | The 18 archived drafts tagged `work` are left to the sweep. |
 | 2026-10-29 | A note can be adopted by its title, so a lost or new draft can still update it: the title is the key. |
 | 2026-10-29 | Bluesky posts use the note's first sentences plus the link. |
+| 2026-11-05 | `type` and `inProgress` drive the grouping (`notes/`, `essays/`, `evolving/`) on the home's writing bed and the Writing room; `stage` drives the marks and the key, so the stage picker in the next round matters more. An absent stage renders "stage not set". |
 
 ## Next round
 

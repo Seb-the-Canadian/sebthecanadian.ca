@@ -677,6 +677,15 @@ a.button:visited { color: var(--muted); }
   margin-top: var(--space-md);
 }
 
+/* Next-step lines at the end of a post and of a case study. */
+.post-more,
+.story-next {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-md);
+}
+
 /* ==========================================================================
    Home — Identity line + Index table (Day 03, pitch-v1)
    ========================================================================== */
@@ -919,10 +928,19 @@ h3:hover > .heading-anchor {
   text-transform: uppercase;
   color: var(--muted);
 }
+/* A state (in progress, active) is amber with an icon and a word
+   (docs/brand.md). Amber sits on the border and tint only, never the text:
+   light-mode amber on parchment fails as text, so the word stays --ink. The
+   ◆ is generated with empty alternative text, so assistive tech reads only
+   the word in the markup. */
 .index-pill--active {
-  background: var(--wash);
-  border-color: var(--moss);
+  background: color-mix(in oklab, var(--amber) 10%, transparent);
+  border-color: var(--amber);
   color: var(--ink);
+}
+.index-pill--active::before {
+  content: "\25C6\00A0";
+  content: "\25C6\00A0" / "";
 }
 
 @media (max-width: 520px) {
@@ -1044,6 +1062,16 @@ h3:hover > .heading-anchor {
   color: var(--ink-soft);
   max-width: 60ch;
   margin-block: var(--space-md) var(--space-xl);
+}
+
+/* The open-to line: one mono sentence under the lede, drawn only when
+   site.openTo is set. Links inside keep the normal link colour. */
+/* The negative top margin relies on .home-lede keeping its --space-xl bottom margin. */
+.home-open {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-block: calc(-1 * var(--space-md)) var(--space-xl);
 }
 
 /* ── Garden portal — one coherent identity for the off-site garden, used

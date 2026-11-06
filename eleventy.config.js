@@ -28,16 +28,6 @@ export default function (eleventyConfig) {
     });
   });
 
-  // writingRecent — the home page's Writing block: the three newest posts,
-  // leaving out in-progress posts (they already have a row under Projects).
-  eleventyConfig.addCollection("writingRecent", function (collectionApi) {
-    return collectionApi
-      .getFilteredByGlob("src/writing/*.md")
-      .filter((item) => !item.data.inProgress)
-      .sort((a, b) => b.date - a.date)
-      .slice(0, 3);
-  });
-
   // feedEntries — native posts + garden posts, merged for the Atom feed
   // (src/feed.njk). The garden IS the body of work; the feed should carry
   // it. Garden entries link out to cognitivearchitecture.ca. Null-dated
@@ -208,6 +198,31 @@ export default function (eleventyConfig) {
     if (days <= 90) return "resting";
     if (days <= 180) return "dormant";
     return "fallow";
+  });
+
+  // groupWriting — the writing bed on the home (and the Writing room's index):
+  // sorts pieces into groups by front matter. inProgress: true → evolving,
+  // whatever the type; type "essay" → essays; any other or missing type →
+  // notes. Each group is newest first. newest is the single latest date across
+  // all groups; on a tie the piece that comes first in the input wins (the
+  // sort is stable, and collections.writing is already newest first). total
+  // is the number of pieces. Returns { notes, essays, evolving, newest, total }.
+  eleventyConfig.addFilter("groupWriting", (items) => {
+    const sorted = [...(items || [])].sort((a, b) => (b.date || 0) - (a.date || 0));
+    const bed = { notes: [], essays: [], evolving: [], newest: sorted[0] || null, total: sorted.length };
+    for (const item of sorted) {
+      const data = item.data || {};
+      if (data.inProgress) bed.evolving.push(item);
+      else if (data.type === "essay") bed.essays.push(item);
+      else bed.notes.push(item);
+    }
+    return bed;
+  });
+
+  // pluralPieces — a count of writing in words: "1 piece", "12 pieces".
+  eleventyConfig.addFilter("pluralPieces", (n) => {
+    const count = Number(n) || 0;
+    return `${count} ${count === 1 ? "piece" : "pieces"}`;
   });
 
   return {

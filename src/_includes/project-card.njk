@@ -2,4 +2,5 @@
   <h3><a href="{{ project.url }}" rel="external">{{ project.name }}</a></h3>
   <span class="badge badge--{{ project.status }}">{{ project.status }}</span>
   <p>{{ project.description }}</p>
+  <p>{{ project.url | hostname }} <span aria-hidden="true">&#8599;</span></p>
 </article>
