@@ -4,6 +4,33 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
+
+### Changed
+- **The Person data says more.** The home page, About and the résumé now
+  declare the same person (one identifier), with the other names Seb goes
+  by, the portrait, what he knows about, and Toronto as a structured
+  address. LinkedIn joins Bluesky, GitHub and ORCID in the profile list, so it
+  also appears in the head's `rel="me"` links and the home page's Elsewhere
+  row. The email is not in the structured data.
+- **Posts and case studies carry fuller Article data.** Each has an image and
+  a main-page address, and the author points at the same person. The case
+  studies now have an Article block that uses their own "practice piece"
+  description.
+- **Share cards say how big they are and what they show.** Each page's card
+  tags now carry width, height and a one-sentence description. Only posts are
+  labelled articles; every other page, tag pages included, is a website.
+- **Tag pages are out of search.** One way of settling it: readers can still
+  use them, but they carry `noindex` and stay out of the sitemap. The
+  other way, listing all five, is a one-line switch if that changes.
+- **The feed gives native posts a published date**, and a garden entry with no
+  excerpt no longer repeats its title as a summary.
+
+### Fixed
+- **The `/now/` and `/colophon/` redirect pages** are marked `noindex` and
+  have a viewport tag, and `/now/` names the home page, not a fragment, as its
+  canonical address.
+
 ## 2026-11-06 — The case studies read without JavaScript; their figure scripts move into files
 
 ### Changed

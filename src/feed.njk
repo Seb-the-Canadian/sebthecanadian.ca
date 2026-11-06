@@ -18,14 +18,15 @@ layout: null
   <entry>
     <title>{{ entry.title }}</title>
     <link href="{{ entry.url }}" />
+    {%- if entry.page %}
+    <published>{{ entry.rfc3339 }}</published>
+    {%- endif %}
     <updated>{{ entry.rfc3339 }}</updated>
     <id>{{ entry.url }}</id>
     {%- if entry.page %}
     <content type="html">{{ entry.page.templateContent }}</content>
     {%- elif entry.summary %}
     <summary>{{ entry.summary }}</summary>
-    {%- else %}
-    <summary>{{ entry.title }}</summary>
     {%- endif %}
   </entry>
   {%- endfor %}

@@ -13,5 +13,10 @@
     "platform": "ORCID",
     "url": "https://orcid.org/0009-0003-1402-6973",
     "rel": "me"
+  },
+  {
+    "platform": "LinkedIn",
+    "url": "https://www.linkedin.com/in/sebastianl-8b6688225",
+    "rel": "me"
   }
 ]
