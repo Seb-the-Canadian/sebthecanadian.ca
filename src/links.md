@@ -27,4 +27,4 @@ permalink: /links/
 
 ## Thinking
 
-- [Tools for Conviviality](https://en.wikipedia.org/wiki/Tools_for_Conviviality) — Ivan Illich's argument for tools that serve people rather than systems. Much of the garden's design ethic traces back here.
+- [Tools for Conviviality](https://en.wikipedia.org/wiki/Tools_for_Conviviality) — Ivan Illich's argument for tools that serve people rather than systems. Much of the design ethic of this site, and of the older notes in the garden, traces back here.

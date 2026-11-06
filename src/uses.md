@@ -6,7 +6,7 @@ permalink: /uses/
 ---
 
 {% set mastheadLabel = "uses/" %}
-{% set mastheadLede %}Tools, hardware, and software that I use regularly. Updated periodically.{% endset %}
+{% set mastheadLede %}Tools, hardware, and software that I use regularly.{% endset %}
 {% include "masthead.njk" %}
 
 ## Knowledge Work

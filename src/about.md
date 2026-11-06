@@ -1,8 +1,10 @@
 ---
 layout: base.njk
 title: About
-description: "About Seb Lathangue and how this site is built."
+description: "About Seb Lathangue: the data governance and information architecture work, and how this site is built."
 permalink: /about/
+pageStyles:
+  - /assets/css/figures.css
 ---
 
 {% set mastheadLabel = "about/" %}
@@ -18,6 +20,26 @@ This site is a stable front door. This page gathers the durable parts: who I am,
 
 <p class="meta-updated">this page rendered: <time datetime="{{ page.date | isoDateShort }}">{{ page.date | humanDate }}</time></p>
 
+{#- The join in three states. Unindented so Markdown leaves it alone; figState, figId and figKicker are set before each include. -#}
+<div class="fig-seq">
+<div class="fig-seq__step">
+<p class="fig-seq__kicker" id="about-join-1-kicker">1 OF 3 · THE SYSTEM</p>
+{% set figKicker = true %}{% set figState = 1 %}{% set figId = "about-join-1" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">Taxonomies, classification schemes, glossaries, metadata standards: the structures that make information findable and trustworthy.</p>
+</div>
+<div class="fig-seq__step">
+<p class="fig-seq__kicker" id="about-join-2-kicker">2 OF 3 · THE PEOPLE</p>
+{% set figKicker = true %}{% set figState = 2 %}{% set figId = "about-join-2" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">On the other side, people trying to use them, and not enough translation between the two.</p>
+</div>
+<div class="fig-seq__step">
+<p class="fig-seq__kicker" id="about-join-3-kicker">3 OF 3 · THE GOVERNED PATH</p>
+{% set figKicker = true %}{% set figState = 3 %}{% set figId = "about-join-3" %}{% include "fig-join.njk" %}
+<p class="fig-seq__text">I treat governance less as rulemaking and more as a design problem: if the governed path is easier than the ungoverned one, people take it without being told to.</p>
+</div>
+</div>
+{% set figKicker = false %}
+
 ## How I approach the work
 
 Before any of this had a name, I was hand-coding interview transcripts for a graduate study on how the media frames homelessness — deciding, line by line, which words belonged under which category, then defending the codebook when two coders disagreed. It looked like clerical work. It wasn't: every category was an argument about what the data meant, and who got to decide.
@@ -26,7 +48,7 @@ I didn't set out to work in data governance. I set out to work with information 
 
 Each stop turned out to be the same problem in different clothing. At Phreesia I was the translation layer between engineering and hospital IT departments — 100+ tickets closed a week, and a refusal to close the ones I'd only understood on the surface. At Meridian I've built a low-code governance program that grew from 50 builders to 150, and a self-serve knowledge hub that reaches 2,000-plus employees. Different rooms, same instinct: find where the confusion actually lives, and fix that.
 
-A few things I've come to believe about the work: the governed path has to be the easier path, or people won't take it. Symptoms lie — diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting &mdash; and the one I've built a career solving.</span>
+A few things I've come to believe about the work: symptoms lie, so diagnose at the level of the system. Communication isn't separate from governance; how you explain a rule is part of the rule. <span class="pull-line">That's the problem I find interesting &mdash; and the one I've built a career solving.</span>
 
 <aside class="resume-callout">
   <p class="resume-callout__note">The formal version — titles, dates, and what each role actually involved — lives on the résumé.</p>
@@ -35,7 +57,7 @@ A few things I've come to believe about the work: the governed path has to be th
 
 ## How this site is built
 
-**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a `/uses` page. It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a [`/uses` page](/uses/). It's small on purpose. It's meant to last.
 
 ### Stack
 
@@ -60,7 +82,7 @@ A few things I've come to believe about the work: the governed path has to be th
 - Accessible: skip links, focus-visible styles, WCAG AA contrast.
 - Portable by default — easy to migrate to another host or SSG.
 
-The site runs no trackers, serves no ads, and stores nothing about anyone who visits. Its governance is written into the code; the [llms.txt](/llms.txt) file has a note for any AI reading along.
+The site runs no trackers, serves no ads, and keeps no record of anyone who visits. The only things it remembers are your own theme, reading-level and keyboard-shortcut choices, in your own browser, and only after you press a switch. Its governance is written into the code; the [llms.txt](/llms.txt) file has a note for any AI reading along.
 
 ## Contact
 

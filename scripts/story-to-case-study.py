@@ -193,7 +193,11 @@ MARKS = """
 
 /* ── Without JavaScript: show every figure in its finished state ────────── */
 html:not(.story-js) .story .dim{ opacity: 1; }
-html:not(.story-js) .story .tag{ opacity: 1; }
+html:not(.story-js) .story .tag{ opacity: 1; visibility: visible; }
+/* Tags that are off leave the accessibility tree as well as the screen; the phone copies' tags stay shown. */
+.story .tag{ transition: opacity .4s, visibility .4s; }
+.story .tag:not(.on){ visibility: hidden; }
+.story .m-fig .tag, .story .m-fig .tag:not(.on){ visibility: visible; } /* :not(.on) variant so this wins on specificity, not source order */
 /* Script-built forms get a static copy of their default answers; controls that need the script step aside. */
 .story .nojs-q{ display: none; }
 html:not(.story-js) .story .nojs-q{ display: block; list-style: none; margin: 0; padding: 0; font-size: .88rem; }
@@ -210,10 +214,18 @@ html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ disp
 /* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
 .story .dim{ opacity: .9; }
 
+/* ── Section nav on phones: the links wrap so none hides off the edge, and the bar scrolls away like a table of contents (a tall sticky bar would cover jump targets); the audience toggle stays in the hero ── */
+@media (max-width: 820px){
+  .story .secnav{ position: static; }
+  .story .secnav ul{ flex-wrap: wrap; height: auto; row-gap: 2px; }
+  .story .secnav li.nav-aud{ display: none; }
+}
+
 /* ── Claims register on phones: one claim per block, nothing squeezed ──── */
 @media (max-width: 560px){
   .story .reg, .story .reg tbody, .story .reg tr, .story .reg td{ display: block; width: auto; }
-  .story .reg thead{ display: none; }
+  /* Header row hidden visually, not removed, so the three column headers stay in the accessibility tree. */
+  .story .reg thead{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .story .reg tr{ padding: 10px 0; border-bottom: 1px solid var(--rule); }
   .story .reg td{ border: 0; padding: 3px 12px; white-space: normal; }
   .story .reg td:first-child{ width: auto; white-space: nowrap; }

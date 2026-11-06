@@ -3,6 +3,8 @@ layout: post.njk
 title: "Hello, IndieWeb"
 date: 2026-01-13
 updated: 2026-10-28
+type: post
+stage: evergreen
 excerpt: "First post on sebthecanadian.ca — testing h-entry markup and webmentions."
 tags:
   - indieweb
