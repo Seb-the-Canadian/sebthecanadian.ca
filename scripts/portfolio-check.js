@@ -16,6 +16,10 @@
  *   5. Each case study invents its own organization, in its own sector. Read
  *      together, entries sharing one fictional organization could add up to a
  *      portrait of a real employer even when each passes on its own.
+ *   6. A story's figure files (src/assets/js/case-studies/*.js and
+ *      src/assets/css/case-studies/*.css) hold story text too, so they are
+ *      scanned for blocked terms as well. They carry no clearance record and
+ *      aren't part of the stamp: an edit there doesn't force a new review.
  *
  * Case studies = every file under src/projects/ (any depth), plus any file
  * elsewhere tagged "case-study". The Projects index (src/projects.njk) is not
@@ -44,6 +48,11 @@ const TERMS_FILE = join(ROOT, "portfolio", "terms.json");
 const NOTE_INCLUDE = "clearance-note.njk";
 const MAX_NGRAM = 5;
 const CONTENT_EXT = new Set([".njk", ".md", ".html", ".liquid"]);
+// Figure files that sit outside the case-study pages: scanned for terms only.
+const FIGURE_DIRS = [
+  [join(SRC, "assets", "js", "case-studies"), ".js"],
+  [join(SRC, "assets", "css", "case-studies"), ".css"],
+];
 const SELF_TEST_KEYS = [
   "unethical",      // could it be seen as unethical, dishonest or discriminatory?
   "culture",        // could it conflict with the employer's culture or code?
@@ -155,6 +164,19 @@ function caseStudies() {
   return [...files].sort();
 }
 
+/** The story's figure scripts and stylesheets (one folder level, no deeper). */
+function figureFiles() {
+  const out = [];
+  for (const [dir, ext] of FIGURE_DIRS) {
+    if (!existsSync(dir)) continue;
+    for (const name of readdirSync(dir)) {
+      const p = join(dir, name);
+      if (extname(p) === ext && statSync(p).isFile()) out.push(p);
+    }
+  }
+  return out.sort();
+}
+
 /* ── Checks ───────────────────────────────────────────────────────────── */
 
 function checkRecord(file, parsed) {
@@ -222,7 +244,8 @@ function report(label, hits) {
 function runCheck() {
   const terms = loadTerms();
   const files = caseStudies();
-  if (files.length === 0) {
+  const figures = figureFiles();
+  if (files.length === 0 && figures.length === 0) {
     console.log("portfolio-check: no case studies yet. Nothing to check.");
     return 0;
   }
@@ -238,10 +261,21 @@ function runCheck() {
     console.log(`${bad ? "✗" : "✓"} ${relative(ROOT, f)}`);
     lines.forEach((l) => console.log(l));
   }
+  // Figure files: the term scan only (no record, no stamp).
+  let figFailed = 0;
+  for (const f of figures) {
+    const hits = scanText(readFileSync(f, "utf-8"), terms);
+    if (hits.block.size) figFailed++;
+    console.log(`${hits.block.size ? "✗" : "✓"} ${relative(ROOT, f)}`);
+    report(f, hits).forEach((l) => console.log(l));
+  }
+  const figNote = figFailed ? ` ${figFailed} of ${figures.length} figure files hold a blocked term.` : "";
   console.log(failed
-    ? `portfolio-check: ${failed} of ${files.length} case studies can't publish yet.`
-    : `portfolio-check: ${files.length} case studies clear.`);
-  return failed ? 1 : 0;
+    ? `portfolio-check: ${failed} of ${files.length} case studies can't publish yet.${figNote}`
+    : figFailed
+      ? `portfolio-check: ${files.length} case studies clear.${figNote}`
+      : `portfolio-check: ${files.length} case studies and ${figures.length} figure files clear.`);
+  return failed || figFailed ? 1 : 0;
 }
 
 function runScan(paths) {

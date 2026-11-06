@@ -4,6 +4,39 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-06 — The case studies read without JavaScript; their figure scripts move into files
+
+### Changed
+- **Each case study's figure script lives in its own file** under
+  `src/assets/js/case-studies/`, loaded deferred, so the story pages carry no
+  inline figure code and the shared case-study script no longer blocks
+  rendering. One way of preparing for a stricter content-security policy.
+- **Each case study has its own social card**, and the site's two cards now
+  carry the current words: the specialty line on the default card, the
+  writing card no longer names the garden.
+- **The case-study descriptions name their discipline**: information
+  architecture for the front-door story, data governance for the
+  use-case-life story.
+
+### Fixed
+- **The front-door crosswalk reads without JavaScript.** A static list of
+  the invented sections and the six categories, the current-state boxes and
+  the find-it routes in the hero stand in for the drawings the script makes;
+  the empty drawing, its key and the find-it tray stay hidden until the
+  script runs.
+- **Front-door's structure figure shows one part per step again.** A lost
+  tag had kept the reference list on screen at every step (and in every
+  phone copy) and pushed the design review outside the figure's frame.
+- **Phone readers get the whole section nav.** Below 820px the section
+  links wrap and the bar stops being sticky, so a section link lands on its
+  heading instead of under the bar.
+- **Register tables keep their headers for screen readers** at phone widths,
+  and off-state tags leave the accessibility tree.
+- **Use-case-life's heading names have their spaces back**; the notice
+  outline reads as a named group and its arrows are hidden from screen readers.
+- **Front-door's claims legend drops "unresolved"**; the "half" chip reads
+  as the word with " the answer" for screen readers; decorative arrows are
+  hidden.
 ## 2026-11-05 — Two figures on the home page; the stories move to their rooms; one specialty line
 
 ### Added

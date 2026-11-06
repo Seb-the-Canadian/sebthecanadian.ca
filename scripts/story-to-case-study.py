@@ -209,8 +209,17 @@ html:not(.story-js) .story #between .graphic .mini.dim{ display: block; }
 html:not(.story-js) .story #between .graphic .mini.flowline{ display: flex; }
 /* front-door: step sections and the audience/mode toggles need the script; without it, show every step and drop the toggles. */
 html:not(.story-js) .story #crosswalk .graphic .sec.dim, html:not(.story-js) .story #structure .graphic .sec.dim{ display: block; }
-html:not(.story-js) .story #crosswalk .graphic .cmkey .dim{ display: inline-flex; }
 html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ display: none; }
+/* front-door: the page's static copies (.nojs-q) stand in for the script-built drawings, so the empty crossmap, its key and caption, and the find-it tray and breadcrumbs step aside. */
+html:not(.story-js) .story #crosswalk svg.cm, html:not(.story-js) .story #crosswalk .cmkey, html:not(.story-js) .story #crosswalk .cmkey + .caption,
+html:not(.story-js) .story .tttray, html:not(.story-js) .story .ttcrumbs{ display: none; }
+html:not(.story-js) .story .nojs-q .srows li{ padding: 3px 7px; border: 1px solid var(--rule); }
+/* front-door: the hero menu and the crossmap's screen-reader list are filled by the script; without it they'd be read as empty lists, so they step aside too. */
+html:not(.story-js) .story .ttlist, html:not(.story-js) .story .cmlist{ display: none; }
+/* front-door hero: the "try it" line asks for clicks; without the script a static sentence above the routes replaces it. */
+html:not(.story-js) .story .tt .ttask span{ display: none; }
+/* Its static routes: the short answer on the right keeps to one line; the route on the left wraps instead. */
+html:not(.story-js) .story .tt .nojs-q b{ white-space: nowrap; text-align: right; }
 /* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
 .story .dim{ opacity: .9; }
 

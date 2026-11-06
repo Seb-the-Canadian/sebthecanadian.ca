@@ -25,6 +25,29 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
       evergreen note demotes it. Fixed by the stage picker in
       `docs/writing-pipeline.md` → "Next round"; until then, re-set the stage
       in the file after an update.
+- [ ] **Phone figure copies sit in the keyboard path twice (substrate
+      follow-up).** On phones, `case-study.js` copies each chapter's figure
+      under every step, so the front-door crossmap's boxes are reached by Tab
+      once per copy. The fix belongs in the Portfolio Pudding substrate
+      (`substrate.js`, in `buildPhone`), which lives with the stories outside
+      this repository: give the focusable nodes of a copy whose controls
+      repeat an earlier copy's `tabindex="-1"`, and a copy that is a pure
+      visual repeat `aria-hidden="true"`; then re-run
+      `scripts/story-to-case-study.py` against each story to regenerate
+      `case-study.js` (never hand-edit it). Check: at 390px, Tab through the
+      front-door crosswalk chapter → 16 crossmap stops, not 32, and each
+      copy still shows its own step's state.
+- [ ] **The converter still writes figure scripts inline.**
+      `scripts/story-to-case-study.py` (around lines 292–294) appends a
+      story's scripts to the page, after a `case-study.js` tag that blocks
+      rendering. The two pages no longer work that way: each figure script
+      lives in `src/assets/js/case-studies/<slug>.js`, and both tags load
+      with `defer`. So re-converting either story would bring the old
+      pattern and order back. The fix: have the converter write the figure
+      script to `src/assets/js/case-studies/<slug>.js` and emit the two
+      deferred tags (figure script first, then `case-study.js`), keeping the
+      one-line `story-js` class script in the page. Check: re-converting a
+      story produces the same script tags the page carries now.
 
 ---
 

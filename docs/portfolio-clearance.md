@@ -103,7 +103,12 @@ Case studies are Portfolio Pudding stories living inside the site, at
    listing `/assets/css/case-study.css`, `/assets/css/case-studies/<slug>.css`
    and `/assets/css/case-study-marks.css` (in that order; the marks load last).
    Then the body between `{% raw %}` and `{% endraw %}`.
-3. Answer the self-test, stamp, build. The Projects page lists every page
+3. Move the story's figure script out of the page into
+   `src/assets/js/case-studies/<slug>.js`, and load it with `defer`, before
+   `/assets/js/case-study.js` (which gets `defer` too). Keep the one-line
+   script in the page that adds the `story-js` class: it has to run first, so
+   the page knows JavaScript is on.
+4. Answer the self-test, stamp, build. The Projects page lists every page
    tagged `case-study`.
 
 ## What the check does, and what it can't
@@ -113,6 +118,12 @@ anything tagged `case-study`, as a case study. It confirms the record is
 complete and current, that the note is shown, that no other case study uses
 the same invented organization or sector, and that no blocked term appears
 anywhere in the file: text, scripts, comments or metadata.
+
+The story's figure script (in `src/assets/js/case-studies/`) and its own
+stylesheet (in `src/assets/css/case-studies/`) are scanned for blocked terms
+on every build too, but they aren't part of the stamp, so an edit there
+doesn't force a new review. When I change one, I re-read it with the same care
+as the page.
 
 Terms live in `portfolio/terms.json` as hashes only, so the list doesn't publish
 the names it guards. Add one with
