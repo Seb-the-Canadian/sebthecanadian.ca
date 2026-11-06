@@ -83,6 +83,8 @@ html:not(.story-js) .story .aud-toggle, html:not(.story-js) .story .ttmode{ disp
 html:not(.story-js) .story #crosswalk svg.cm, html:not(.story-js) .story #crosswalk .cmkey, html:not(.story-js) .story #crosswalk .cmkey + .caption,
 html:not(.story-js) .story .tttray, html:not(.story-js) .story .ttcrumbs{ display: none; }
 html:not(.story-js) .story .nojs-q .srows li{ padding: 3px 7px; border: 1px solid var(--rule); }
+/* front-door hero: the "try it" line asks for clicks; without the script a static sentence above the routes replaces it. */
+html:not(.story-js) .story .tt .ttask span{ display: none; }
 /* Faded figure text stays above 4.5:1: inactive steps dim to .9, not further. */
 .story .dim{ opacity: .9; }
 
