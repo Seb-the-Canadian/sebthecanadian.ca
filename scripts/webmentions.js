@@ -52,12 +52,13 @@ const NAME_LIMIT = 80;
 let droppedAddresses = 0;
 
 // The address itself if it starts with https:// or http:// (in any letter
-// case), otherwise null.
+// case) and holds no whitespace or control characters (a line break could
+// start a new line in the Actions log), otherwise null.
 function webUrl(value) {
   if (typeof value !== "string") return null;
-  const url = value.trim();
-  const lower = url.toLowerCase();
-  return lower.startsWith("https://") || lower.startsWith("http://") ? url : null;
+  if (/[\s\u0000-\u001f\u007f-\u009f]/.test(value)) return null;
+  const lower = value.toLowerCase();
+  return lower.startsWith("https://") || lower.startsWith("http://") ? value : null;
 }
 
 // webUrl, plus a log line when a non-empty address is thrown away.
@@ -66,7 +67,9 @@ function keepUrl(value, what, item) {
   if (url === null && typeof value === "string" && value.trim() !== "") {
     droppedAddresses++;
     const from = typeof item["wm-source"] === "string" ? item["wm-source"] : "unknown source";
-    console.warn(`::warning::webmentions: dropped ${what} ${JSON.stringify(value.slice(0, 80))} (mention from ${from})`);
+    console.warn(
+      `::warning::webmentions: dropped ${what} ${JSON.stringify(value.slice(0, 80))} (mention from ${JSON.stringify(String(from).slice(0, 200))})`
+    );
   }
   return url;
 }

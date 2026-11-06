@@ -37,12 +37,13 @@ ogImage: /assets/img/og-writing.png
     <ol class="webmentions-list">
       {%- for m in thisMentions %}
       {#- Sender-chosen addresses become links only when they are plain web
-          addresses (scripts/webmentions.js filters them too); no avatar, so
-          nothing loads from the sender's server. -#}
-      {%- set authorLower = (m.author.url | string | lower) if (m.author and m.author.url) else "" %}
-      {%- set authorUrl = m.author.url if (authorLower.startsWith("https://") or authorLower.startsWith("http://")) else "" %}
-      {%- set sourceLower = (m.url | string | lower) if m.url else "" %}
-      {%- set sourceUrl = m.url if (sourceLower.startsWith("https://") or sourceLower.startsWith("http://")) else "" %}
+          addresses: https:// or http:// in any letter case, with no
+          whitespace or control characters (scripts/webmentions.js filters
+          them the same way first); no avatar, so nothing loads from the
+          sender's server. -#}
+      {%- set webAddress = r/^https?:\/\/[^\s\x00-\x1f\x7f-\x9f]*$/i %}
+      {%- set authorUrl = m.author.url if (m.author and m.author.url and webAddress.test(m.author.url)) else "" %}
+      {%- set sourceUrl = m.url if (m.url and webAddress.test(m.url)) else "" %}
       {#- Names over 80 characters become 79 plus "…", as in scripts/webmentions.js. -#}
       {%- set rawName = (m.author.name if (m.author and m.author.name) else "") or authorUrl or "someone" %}
       {%- set authorName = (rawName | truncate(79, true, "…")) if (rawName | length) > 80 else rawName %}

@@ -28,11 +28,10 @@ Format:
   stubs, `/now/` and `/colophon/`, have no layout, scripts or images). One
   way I've set it: scripts only from this site plus three small inline
   scripts allowed by hash (the theme script, and the case studies' audience
-  and `story-js` lines); images,
-  fonts and styles from this site, with `data:` images for the paper grain;
-  no outside connections, frames, plugins or form targets. Editing any of
-  those three inline scripts means updating its hash in `base.njk`, where a
-  comment says how.
+  and `story-js` lines); images, fonts and styles from this site, with
+  `data:` images for the paper grain; no outside connections, frames,
+  plugins or form targets. Editing any of those three inline scripts means
+  updating its hash in `base.njk`, where a comment says how.
 - **A referrer policy** (`strict-origin-when-cross-origin`): sites linked
   from here see the domain a reader came from, not the full page address.
 - **Webmentions are filtered before they show.** A received mention's links
@@ -51,7 +50,8 @@ Format:
   runs after Eleventy in `npm run build` and fails it when an inline script
   has no matching hash in the policy (it prints the one to add) or the policy
   lists a hash no script uses, so an edited script stops the deploy instead
-  of silently not running on the live site.
+  of silently not running on the live site. It also fails on any inline
+  event handler (`onclick=` and the like), which the policy would block.
 
 ## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
 

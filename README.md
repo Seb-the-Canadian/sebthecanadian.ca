@@ -75,7 +75,10 @@ sebthecanadian.ca/
 │   ├── resume.yml             # Resume data (experience, education, skills)
 │   └── gardenPosts.json       # Garden posts snapshot — regenerated at build, kept-last-good on fetch failure
 ├── scripts/
-│   └── garden-rss.js          # Obsidian Publish → garden posts JSON
+│   ├── garden-rss.js          # Obsidian Publish → garden posts JSON
+│   ├── webmentions.js         # webmention.io → webmentions JSON, unsafe addresses dropped
+│   ├── portfolio-check.js     # Case-study clearance gate (runs in every build)
+│   └── csp-check.js           # Checks the policy's script hashes against the built pages
 ├── tools/drafts/              # Drafts action scripts (canonical copies; paste into Drafts)
 ├── eleventy.config.js         # Eleventy config (ESM)
 ├── package.json

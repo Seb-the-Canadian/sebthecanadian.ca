@@ -31,12 +31,13 @@
  * path) that carries one; every page built from the base layout carries the
  * same one.
  *
- * Two things this check does not see. Inline event handlers (onclick= and
- * the like) are not checked, and the policy blocks them silently, so none may
- * be added to templates: put the code in a file under src/assets/js/ instead.
- * And because the policy is read from the first page that carries it, a page
- * missing the meta tag is not detected here (the browser simply runs that
- * page's scripts with no policy at all).
+ * It also fails on any inline event handler (an onclick= or similar
+ * attribute in a tag): the policy blocks those silently, so the code belongs
+ * in a file under src/assets/js/ instead.
+ *
+ * One thing this check does not see: because the policy is read from the
+ * first page that carries it, a page missing the meta tag is not detected
+ * here (the browser simply runs that page's scripts with no policy at all).
  *
  * Usage
  *   node scripts/csp-check.js              check _site/ (runs in `npm run build`)
@@ -99,6 +100,7 @@ const pages = htmlFiles(SITE).sort();
 const scripts = new Map(); // sha256 → { page, body }
 let policy = null;
 let skippedData = 0;
+const handlers = []; // { page, attribute }
 
 for (const file of pages) {
   const html = readFileSync(file, "utf8");
@@ -125,6 +127,17 @@ for (const file of pages) {
     const body = raw.replace(/\r\n?/g, "\n");
     const key = hash("sha256", body);
     if (!scripts.has(key)) scripts.set(key, { page, body });
+  }
+
+  // Inline event handlers: an on…= attribute inside a tag, looked for with
+  // script bodies and HTML comments taken out first.
+  const markup = html
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/(<script\b[^>]*>)[\s\S]*?(<\/script\s*>)/gi, "$1$2");
+  for (const tag of markup.matchAll(/<[a-zA-Z][^>]*>/g)) {
+    for (const a of tag[0].matchAll(/\s(on[a-z]+)\s*=/gi)) {
+      handlers.push({ page, attribute: a[1] });
+    }
   }
 }
 
@@ -166,9 +179,14 @@ for (const [key, { page, body }] of scripts) {
   console.log(`✗ sha256-${key}  ${page}  not in the policy; script starts: ${JSON.stringify(body.slice(0, 60))}`);
 }
 
+for (const { page, attribute } of handlers) {
+  problems++;
+  console.log(`✗ ${attribute}=  ${page}  inline event handler: the policy blocks it silently; move the code into a file under src/assets/js/`);
+}
+
 if (problems) {
   console.error(
-    `\n✗ ${problems} mismatch(es) between the policy in src/_includes/base.njk and the inline scripts. ` +
+    `\n✗ ${problems} mismatch(es) between the policy in src/_includes/base.njk and the inline scripts or handlers. ` +
       "A script whose hash is missing will not run on the live site: put the hash printed above into script-src " +
       "(in place of the old one, if a script was edited), and remove hashes no script uses."
   );
