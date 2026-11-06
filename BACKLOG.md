@@ -244,6 +244,17 @@ Candidates for future work beyond the current sprint. No commitment implied.
       Check: a reader who knows Seb can't tell which sentences a machine
       drafted, and a stranger can follow a story without the field's
       vocabulary.
+- [ ] **The changelog as a story.** The audit sprint turned the CHANGELOG
+      into a working record: every change written in plain words with its
+      reason, one entry per wave. Build on that and tell the site's own
+      evolution as a story in its own right, in the shape of the case
+      studies: one way a site came to be what it is, what changed, why, and
+      what each choice cost, drawn from the changelog's entries and the
+      audit's decisions. Open questions: whether it is a page that
+      regenerates from `CHANGELOG.md` or a written piece that quotes it;
+      whether it lives under projects/ or writing/; how far back it starts.
+      Check: a stranger can read it and say what this site is for and how
+      its owner decides.
 
 ### Pitch v1 Follow-ups
 
