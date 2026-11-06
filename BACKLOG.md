@@ -28,6 +28,17 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
       `case-study.js` (never hand-edit it). Check: at 390px, Tab through the
       front-door crosswalk chapter → 16 crossmap stops, not 32, and each
       copy still shows its own step's state.
+- [ ] **The converter still writes figure scripts inline.**
+      `scripts/story-to-case-study.py` (around lines 292–294) appends a
+      story's scripts to the page, after a `case-study.js` tag that blocks
+      rendering. The two pages no longer work that way: each figure script
+      lives in `src/assets/js/case-studies/<slug>.js`, and both tags load
+      with `defer`. So re-converting either story would bring the old
+      pattern and order back. The fix: have the converter write the figure
+      script to `src/assets/js/case-studies/<slug>.js` and emit the two
+      deferred tags (figure script first, then `case-study.js`), keeping the
+      one-line `story-js` class script in the page. Check: re-converting a
+      story produces the same script tags the page carries now.
 
 ---
 
