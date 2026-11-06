@@ -134,7 +134,10 @@ npm run build
 ```
 
 It fetches the latest garden posts and webmentions, checks the case
-studies, and writes the site into `_site/`. A line starting with `Error`
+studies, writes the site into `_site/`, and then checks that the
+content-security policy still lists every small script written into the
+pages (`scripts/csp-check.js`; if it fails, it prints the hash to put into
+`src/_includes/base.njk`). A line starting with `Error`
 means something to fix, usually a comma or a quote in a JSON or YAML file;
 the message names the file. A `warning` about the garden fetch is not a
 problem: the build keeps the last good copy.

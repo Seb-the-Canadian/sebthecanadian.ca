@@ -45,6 +45,11 @@ Format:
   produced, so it had stopped running), and its token has no permissions.
 - **Dependabot** (`.github/dependabot.yml`) opens a pull request once a month
   when an npm package or a GitHub Action the site uses has a newer version.
+- **The build checks the policy's script hashes.** `scripts/csp-check.js`
+  runs after Eleventy in `npm run build` and fails it when an inline script
+  has no matching hash in the policy (it prints the one to add) or the policy
+  lists a hash no script uses, so an edited script stops the deploy instead
+  of silently not running on the live site.
 
 ## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
 

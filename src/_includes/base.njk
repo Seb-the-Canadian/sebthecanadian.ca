@@ -20,11 +20,12 @@
         1. sha256-EZqC…  the theme script below (this file);
         2. sha256-8S0l…  the audience script (src/_includes/case-study.njk);
         3. sha256-OTJk…  the story-js one-liner (each case study's index.njk).
-      Changing a single byte of any of them, whitespace included, blocks it.
-      To recompute a hash, copy the script's exact body from the built HTML in
-      _site/ (everything between <script> and </script>, line breaks and
-      indentation included) and run, in single quotes because the scripts
-      contain double quotes:
+      Changing a single byte of any of them, whitespace included, blocks it;
+      scripts/csp-check.js then fails the build and prints the hash the edited
+      script needs. To recompute a hash by hand, copy the script's exact body
+      from the built HTML in _site/ (everything between <script> and
+      </script>, line breaks and indentation included) and run, in single
+      quotes because the scripts contain double quotes:
         printf '%s' '<exact body>' | openssl dgst -sha256 -binary | openssl base64
       then replace the old value here. JSON-LD blocks are data, not scripts, and
       need no hash. img-src keeps data: for the paper grain in base.css. -#}
