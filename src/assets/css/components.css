@@ -498,6 +498,10 @@ a.button:visited { color: var(--muted); }
 .button--print {
   margin-top: var(--space-md);
 }
+/* Hidden until print.js runs: .button's display would otherwise override [hidden]. */
+.button--print[hidden] {
+  display: none;
+}
 
 /* ── Single post page ──────────────────────────────────────────────────── */
 .h-entry .post-header {

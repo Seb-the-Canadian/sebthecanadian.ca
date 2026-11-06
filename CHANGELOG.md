@@ -4,6 +4,31 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-06 — A content security policy; the résumé's print button and mark
+
+### Changed
+- **The résumé's "Download PDF" button only appears when it works.** It is
+  rendered hidden and a small script (`print.js`) shows it and opens the
+  print dialog. With JavaScript off there is no button that does nothing;
+  the browser's own print menu still makes the PDF.
+
+### Fixed
+- **The mark at the end of a printed résumé now prints.** The print
+  stylesheet cleared every background, the mark's included; it is now left
+  out of that rule.
+
+### Security
+- **Every page carries a Content-Security-Policy** (in a meta tag, since
+  GitHub Pages cannot send headers). One way I've set it: scripts only from
+  this site plus three small inline scripts allowed by hash (the theme
+  script, and the case studies' audience and `story-js` lines); images,
+  fonts and styles from this site, with `data:` images for the paper grain;
+  no outside connections, frames, plugins or form targets. Editing any of
+  those three inline scripts means updating its hash in `base.njk`, where a
+  comment says how.
+- **A referrer policy** (`strict-origin-when-cross-origin`): sites linked
+  from here see the domain a reader came from, not the full page address.
+
 ## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
 
 ### Changed

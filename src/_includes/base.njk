@@ -14,6 +14,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  {# One way I've kept third-party code out: a Content-Security-Policy in a meta tag
+      (GitHub Pages cannot send headers). It allows scripts from this site only, plus
+      three inline scripts by their SHA-256 hash: the theme script below, and the
+      audience script (case-study.njk) and story-js one-liner (each case study's
+      index.njk). Changing a single byte of any of them, whitespace included, blocks
+      it: recompute the hash from the built HTML and update the list here.
+      img-src keeps data: for the paper grain in base.css. -#}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-EZqCzoyb48yuKfTVBZwDH3hxJYkCMR2mFkYKPp9MJcA=' 'sha256-8S0lUzJN6/q6JZCyqt3wuZt72MAqnISKQhW3M6ixmW8=' 'sha256-OTJkP5d4BBe7bZDAniE5L0VtSz50SnGkfrCQfPrC6Ro='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   {%- set pageTitle = site.title if (not title or title == site.title) else (title + " — " + site.title) %}
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />

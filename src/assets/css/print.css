@@ -4,9 +4,11 @@
    ========================================================================== */
 
 @media print {
+  /* The résumé's print mark (.h-resume::after, below) is a background
+     image, so it is left out of the transparent rule; otherwise it never prints. */
   *,
   *::before,
-  *::after {
+  *:not(.h-resume)::after {
     background: transparent !important;
     color: #000 !important;
     box-shadow: none !important;
