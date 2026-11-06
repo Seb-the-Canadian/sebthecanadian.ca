@@ -59,14 +59,20 @@ def sprig(d, ox, oy, u):
 def center(d, W, text, fnt, y, fill):
     d.text(((W - d.textlength(text, font=fnt)) / 2, y), text, font=fnt, fill=fill)
 
-def card(out, eyebrow, subtitle):
+def card(out, eyebrow, subtitle, title=None):
+    """title=None draws the site name as the main line (the site cards);
+    a title replaces it (case-study cards). Long titles shrink to fit."""
     W, H = 1200, 630
     img = Image.new("RGB", (W, H), BG); d = ImageDraw.Draw(img)
     u = 12; ox = (W - 12*u) // 2
     sprig(d, ox, 48, u)
     if eyebrow:
         center(d, W, eyebrow, font("IBMPlexMono-SemiBold", 28), 258, VIOLET)
-    center(d, W, "Seb (the Canadian)", font("IBMPlexMono-Bold", 58), 332, INK)
+    size = 58
+    main = title or "Seb (the Canadian)"
+    while d.textlength(main, font=font("IBMPlexMono-Bold", size)) > W - 120 and size > 30:
+        size -= 2
+    center(d, W, main, font("IBMPlexMono-Bold", size), 332, INK)
     center(d, W, subtitle, font("IBMPlexMono-Regular", 27), 432, MUTED)
     d.line([(300, 514), (900, 514)], fill=RULE, width=2)
     center(d, W, "sebthecanadian.ca", font("IBMPlexMono-SemiBold", 26), 544, VIOLET)
