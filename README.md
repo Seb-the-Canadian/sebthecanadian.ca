@@ -79,9 +79,11 @@ sebthecanadian.ca/
 ├── tools/drafts/              # Drafts action scripts (canonical copies; paste into Drafts)
 ├── eleventy.config.js         # Eleventy config (ESM)
 ├── package.json
-├── .github/workflows/
-│   ├── build-deploy.yml       # Eleventy build → GitHub Pages
-│   └── webmention.yml         # Telegraph webmention sender
+├── .github/
+│   ├── dependabot.yml         # Monthly update PRs for npm packages and Actions
+│   └── workflows/
+│       ├── build-deploy.yml   # Eleventy build → GitHub Pages
+│       └── webmention.yml     # Telegraph webmention sender, after each successful deploy
 ├── DESIGN_BRIEF.md            # Approved design spec
 ├── BACKLOG.md                 # Feature roadmap
 ├── CHANGELOG.md               # Version history

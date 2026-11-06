@@ -1,15 +1,20 @@
 name: Send Webmentions
 
+# Runs after each successful deploy, so the pages it announces are already
+# live (the old trigger watched for .html files in the repository, which the
+# site's Markdown and Nunjucks never produce). It needs no repository access,
+# so its token gets none. It can also be run by hand from the Actions tab.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "**/*.html"
+  workflow_run:
+    workflows: ["Build and Deploy"]
+    types: [completed]
+
+permissions: {}
 
 jobs:
   send:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Send webmentions for sources

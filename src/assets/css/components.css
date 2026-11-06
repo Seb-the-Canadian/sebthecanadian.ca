@@ -520,8 +520,9 @@ a.button:visited { color: var(--muted); }
 }
 
 .h-entry .post-meta .p-category {
-  text-decoration: none;
   color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
 }
 
 .h-entry .post-meta .p-category:hover {
@@ -763,7 +764,9 @@ a.button:visited { color: var(--muted); }
   top: -1px;
   background: var(--season, var(--moss));
   border-radius: 50%;
-  animation: live-pulse 2.5s ease-in-out infinite;
+  /* Five pulses (about 12 seconds) on arrival, then still: movement that
+     stops on its own, without the reader having to find a control. */
+  animation: live-pulse 2.5s ease-in-out 5;
 }
 
 @media (prefers-reduced-motion: reduce) {

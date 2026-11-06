@@ -36,6 +36,31 @@ function keepLastGood(reason) {
   console.warn(`::warning::webmentions: ${reason} — no existing snapshot, wrote empty webmentions.json`);
 }
 
+/**
+ * Everything in a webmention's author card is chosen by whoever sent it, so
+ * one way I've kept it safe: only plain web addresses survive (a
+ * "javascript:" link would run when clicked), the name is capped at
+ * NAME_LIMIT characters, and the photo is dropped, because showing it would
+ * load an image from someone else's server (the site loads nothing from
+ * outside). The template applies the same address rule again.
+ */
+const NAME_LIMIT = 80;
+
+function webUrl(value) {
+  if (typeof value !== "string") return null;
+  const url = value.trim();
+  return url.startsWith("https://") || url.startsWith("http://") ? url : null;
+}
+
+function cleanAuthor(author) {
+  if (!author || typeof author !== "object") return null;
+  const name = typeof author.name === "string" ? author.name.trim() : "";
+  return {
+    name: name ? (name.length > NAME_LIMIT ? name.slice(0, NAME_LIMIT - 1) + "…" : name) : null,
+    url: webUrl(author.url),
+  };
+}
+
 async function main() {
   console.log(`Fetching mentions from ${API_URL}...`);
   const response = await fetch(API_URL);
@@ -53,8 +78,8 @@ async function main() {
     if (!target) continue;
     const normalized = {
       type: wmProp,
-      author: item.author || null,
-      url: item.url || item["wm-source"] || null,
+      author: cleanAuthor(item.author),
+      url: webUrl(item.url) || webUrl(item["wm-source"]),
       published: item.published || item["wm-received"] || null,
       content: item.content && item.content.text ? item.content.text : null,
     };

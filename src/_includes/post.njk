@@ -36,19 +36,25 @@ ogImage: /assets/img/og-writing.png
     <h2 class="webmentions-title">Webmentions</h2>
     <ol class="webmentions-list">
       {%- for m in thisMentions %}
+      {#- Sender-chosen addresses become links only when they are plain web
+          addresses (scripts/webmentions.js filters them too); no avatar, so
+          nothing loads from the sender's server. -#}
+      {%- set authorUrl = m.author.url if (m.author and m.author.url and (m.author.url.startsWith("https://") or m.author.url.startsWith("http://"))) else "" %}
+      {%- set sourceUrl = m.url if (m.url and (m.url.startsWith("https://") or m.url.startsWith("http://"))) else "" %}
       <li class="webmention h-cite">
-        <a class="u-author h-card" href="{{ m.author.url }}">
-          {%- if m.author.photo %}
-          <img class="u-photo" src="{{ m.author.photo }}" alt="" width="24" height="24" />
-          {%- endif %}
-          <span class="p-name">{{ m.author.name or m.author.url }}</span>
+        {%- if authorUrl %}
+        <a class="u-author h-card" href="{{ authorUrl }}" rel="nofollow ugc">
+          <span class="p-name">{{ (m.author.name or authorUrl) | truncate(80, true, "…") }}</span>
         </a>
+        {%- else %}
+        <span class="u-author h-card"><span class="p-name">{{ ((m.author.name if m.author else "") or "someone") | truncate(80, true, "…") }}</span></span>
+        {%- endif %}
         <span class="webmention-type">{{ m.type | replace("-", " ") }}</span>
         {%- if m.published %}
         <time class="dt-published" datetime="{{ m.published }}">{{ m.published | humanDate }}</time>
         {%- endif %}
-        {%- if m.url %}
-        &middot; <a class="u-url" href="{{ m.url }}" rel="external">source</a>
+        {%- if sourceUrl %}
+        &middot; <a class="u-url" href="{{ sourceUrl }}" rel="external nofollow ugc">source</a>
         {%- endif %}
       </li>
       {%- endfor %}

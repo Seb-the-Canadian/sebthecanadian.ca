@@ -1,0 +1,16 @@
+# Dependabot opens a pull request when a newer version of something the site
+# depends on is out: the npm packages in package.json, and the GitHub Actions
+# the workflows use. One way I've kept it quiet: once a month, a few PRs at
+# most. Nothing merges by itself; each PR runs the PR Check like any other.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5

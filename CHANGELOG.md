@@ -4,9 +4,13 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
-## 2026-11-06 — A content security policy; the résumé's print button and mark
+## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
 ### Changed
+- **Tag links on a post are underlined** (a faint rule-coloured line), so they
+  read as links by more than the leading "#".
+- **The Now panel's live dot pulses five times on arrival, then rests**
+  (about 12 seconds) instead of pulsing for as long as the page is open.
 - **The résumé's "Download PDF" button only appears when it works.** It is
   rendered hidden and a small script (`print.js`) shows it and opens the
   print dialog. With JavaScript off there is no button that does nothing;
@@ -28,6 +32,17 @@ Format:
   comment says how.
 - **A referrer policy** (`strict-origin-when-cross-origin`): sites linked
   from here see the domain a reader came from, not the full page address.
+- **Webmentions are filtered before they show.** A received mention's links
+  are kept only when they are plain web addresses (`https://` or `http://`),
+  the sender's name is capped at 80 characters, both links carry
+  `rel="nofollow ugc"`, and the sender's avatar is no longer shown, so a
+  mention never loads an image from someone else's server. The legacy
+  pingback link is gone from the page head.
+- **The "Send Webmentions" workflow runs after each successful deploy**
+  instead of on changes to `.html` files (which the site's Markdown never
+  produced, so it had stopped running), and its token has no permissions.
+- **Dependabot** (`.github/dependabot.yml`) opens a pull request once a month
+  when an npm package or a GitHub Action the site uses has a newer version.
 
 ## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
 
