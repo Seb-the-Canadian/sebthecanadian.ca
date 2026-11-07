@@ -7,9 +7,9 @@ permalink: /colophon/
 
 {% set mastheadLabel = "colophon/" %}{% include "masthead.njk" %}
 
-This page is one way I've built a small personal site, written down so it's easy to check.
+Here is one way I've built a small personal site, written down so it's easy to check.
 
-**sebthecanadian.ca** houses projects, this about page and the résumé it hands off to, [the Now block](/#now) on the home page, and a [`/uses` page](/uses/). It's small on purpose. It's meant to last.
+**sebthecanadian.ca** houses projects, the About page and the résumé it hands off to, [the Now block](/#now) on the home page, and a [`/uses` page](/uses/). It's small on purpose. It's meant to last.
 
 ## Stack
 

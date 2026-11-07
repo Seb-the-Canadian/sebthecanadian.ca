@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: About
-description: "About Seb Lathangue: the data governance and information architecture work, and how this site is built."
+description: "About Seb Lathangue: the data governance and information architecture work, and how to reach me."
 permalink: /about/
 pageStyles:
   - /assets/css/figures.css
@@ -16,9 +16,9 @@ pageStyles:
 
 <p class="lede">I'm Seb Lathangue. I live near Toronto, but I'm most at home when I'm outside, without shoes on, and can see lots of green around me. I work on knowledge architecture and data governance at Meridian Credit Union, and I run <a href="/projects/">CivCitDev</a>, a civic-technology program building tools like Ontario Tenant Tools. I think a lot about how information moves through organizations — which pieces stick, which get lost, and who ends up accountable for the difference.</p>
 
-This site is a stable front door. This page gathers the durable parts: who I am, how I approach the work, and how this site is built.
+This site is a stable front door. This page gathers the durable parts: who I am, how I approach the work, where to find the résumé, and how to reach me.
 
-{#- The join in three states. Unindented so Markdown leaves it alone; figState, figId and figKicker are set before each include. -#}
+{# The join in three states. Unindented so Markdown leaves it alone; figState, figId and figKicker are set before each include. #}
 <div class="fig-seq">
 <div class="fig-seq__step">
 <p class="fig-seq__kicker" id="about-join-1-kicker">1 OF 3 · THE SYSTEM</p>

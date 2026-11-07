@@ -87,7 +87,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   and the résumé keep their own `h1` and take only the stamp and eyebrow.
   The exceptions: the home page opens with an arrival hero instead (the
   mark, the name in Fraunces as the `h1`, one line in the display face); the
-  two redirect stubs (`/now/`, `/colophon/`) have no title block; each case
+  redirect stub (`/now/`) has no title block; each case
   study's hero carries its own copy (Rooms, below).
 - **Moss H2s** site-wide (fluid 1.3–1.6rem, 600, `--moss`; see Type). The
   résumé keeps its own ruled section labels; case studies keep their own

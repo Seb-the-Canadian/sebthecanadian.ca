@@ -96,15 +96,6 @@ footer nav a:visited {
   opacity: 0.75;
 }
 
-/* Page-level updated / last-tended signal */
-.meta-updated {
-  font-family: var(--mono);
-  font-size: var(--text-sm);
-  color: var(--muted);
-  margin-top: calc(-1 * var(--space-sm));
-  margin-bottom: var(--space-lg);
-}
-
 /* Card */
 .card {
   /* One shared content-card look (matches .panel--alt): warm top-lit
@@ -326,13 +317,6 @@ footer nav a:visited {
 .resume-profiles {
   margin-bottom: var(--space-sm);
   color: var(--muted);
-}
-
-/* ── Dotted-underline hint on "last updated" timestamps ─────────────────── */
-.meta-updated time {
-  text-decoration: underline dotted var(--rule);
-  text-underline-offset: 0.25em;
-  cursor: help;
 }
 
 /* ── Keyboard shortcuts overlay ─────────────────────────────────────────── */
