@@ -31,8 +31,9 @@ permalink: /resume/
 
   <p class="resume-nav no-print">
     <a href="/about/">&larr; Back to About</a>
-    <button class="button button--print" type="button" onclick="window.print()">Download PDF</button>
+    <button class="button button--print" type="button" hidden>Print or save as PDF</button>
   </p>
 
   {% include "resume-body.njk" %}
 </article>
+<script src="/assets/js/print.js" defer></script>

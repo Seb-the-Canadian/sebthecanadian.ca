@@ -14,6 +14,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  {# One way I've kept third-party code out: a Content-Security-Policy in a meta tag
+      (GitHub Pages cannot send headers). It allows scripts from this site only, plus
+      three inline scripts by their SHA-256 hash, listed in script-src in this order:
+        1. sha256-EZqC…  the theme script below (this file);
+        2. sha256-8S0l…  the audience script (src/_includes/case-study.njk);
+        3. sha256-OTJk…  the story-js one-liner (each case study's index.njk).
+      Changing a single byte of any of them, whitespace included, blocks it;
+      scripts/csp-check.js then fails the build and prints the hash the edited
+      script needs. To recompute a hash by hand, copy the script's exact body
+      from the built HTML in _site/ (everything between <script> and
+      </script>, line breaks and indentation included) and run, in single
+      quotes because the scripts contain double quotes:
+        printf '%s' '<exact body>' | openssl dgst -sha256 -binary | openssl base64
+      then replace the old value here. JSON-LD blocks are data, not scripts, and
+      need no hash. img-src keeps data: for the paper grain in base.css. -#}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-EZqCzoyb48yuKfTVBZwDH3hxJYkCMR2mFkYKPp9MJcA=' 'sha256-8S0lUzJN6/q6JZCyqt3wuZt72MAqnISKQhW3M6ixmW8=' 'sha256-OTJkP5d4BBe7bZDAniE5L0VtSz50SnGkfrCQfPrC6Ro='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   {%- set pageTitle = site.title if (not title or title == site.title) else (title + " — " + site.title) %}
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />
@@ -27,9 +44,19 @@
   <meta property="og:title" content="{{ pageTitle }}" />
   <meta property="og:description" content="{{ description or excerpt or site.description }}" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  <meta property="og:type" content="{% if page.url.startsWith('/writing/') and page.url != '/writing/' %}article{% else %}website{% endif %}" />
+  <meta property="og:type" content="{% if layout == 'post.njk' %}article{% else %}website{% endif %}" />
   <meta property="og:site_name" content="{{ site.title }}" />
   <meta property="og:image" content="{{ site.url }}{{ ogImage or '/assets/img/og-default.png' }}" />
+  {#- Every card must be 1200x630: the width and height below are hard-coded. -#}
+  {%- set ogCardAlts = {
+    "/assets/img/og-default.png": "Card with a pixel-art lavender sprig above the site name, Seb (the Canadian), and the line data governance, information architecture, civic tech.",
+    "/assets/img/og-writing.png": "Card with a pixel-art lavender sprig above writing/, the site name, and the line notes and longer pieces, written and tended here.",
+    "/assets/img/og-front-door.png": "Card with a pixel-art lavender sprig above projects/, the title One front door for data and AI, and the line Practice piece, Information architecture.",
+    "/assets/img/og-use-case-life.png": "Card with a pixel-art lavender sprig above the title A use case has a life and the line Practice piece, Data governance."
+  } %}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ ogCardAlts[ogImage or '/assets/img/og-default.png'] or 'A pixel-art lavender sprig on a parchment card with the site name.' }}" />
   <meta property="og:locale" content="en_CA" />
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/assets/img/favicon.png" sizes="32x32" type="image/png" />
@@ -55,7 +82,6 @@
   <link rel="me" href="{{ profile.url }}" />
   {%- endfor %}
   <link rel="webmention" href="https://webmention.io/sebthecanadian.ca/webmention" />
-  <link rel="pingback" href="https://webmention.io/sebthecanadian.ca/xmlrpc" />
   <link rel="preload" href="/assets/fonts/AtkinsonHyperlegible-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />

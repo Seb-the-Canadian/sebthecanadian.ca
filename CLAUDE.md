@@ -50,10 +50,11 @@ Only `src/` is built; nothing outside it appears on the site.
 ## Build and check
 
 - `npm run build` must pass. It fetches garden posts and webmentions (keeping
-  the last good copy when offline), runs the clearance check, then builds
-  `_site/`.
+  the last good copy when offline), runs the clearance check, builds
+  `_site/`, then checks the policy's script hashes against the built pages
+  (`scripts/csp-check.js`).
 - `npx @11ty/eleventy` rebuilds `_site/` alone, skipping the fetches and the
-  check; use it for quick previews.
+  checks; use it for quick previews.
 - Serve `_site` and look at desktop and phone (390px), light and dark, and
   with JavaScript off. `docs/brand.md` → "Before shipping a visual change"
   has the full list.

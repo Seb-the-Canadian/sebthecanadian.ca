@@ -36,6 +36,53 @@ function keepLastGood(reason) {
   console.warn(`::warning::webmentions: ${reason} — no existing snapshot, wrote empty webmentions.json`);
 }
 
+/**
+ * Everything in a webmention's author card is chosen by whoever sent it, so
+ * one way I've kept it safe: only plain web addresses survive (a
+ * "javascript:" link would run when clicked), the name is capped at
+ * NAME_LIMIT characters, and the photo is dropped, because showing it would
+ * load an image from someone else's server (the site loads nothing from
+ * outside). The template applies the same address rule again.
+ *
+ * Each address the filter throws away is logged as a warning (it shows in the
+ * Actions run), with a count at the end, so a hostile mention is visible when
+ * it arrives. Avatars are dropped every time by design and are not logged.
+ */
+const NAME_LIMIT = 80;
+let droppedAddresses = 0;
+
+// The address itself if it starts with https:// or http:// (in any letter
+// case) and holds no whitespace or control characters (a line break could
+// start a new line in the Actions log), otherwise null.
+function webUrl(value) {
+  if (typeof value !== "string") return null;
+  if (/[\s\u0000-\u001f\u007f-\u009f]/.test(value)) return null;
+  const lower = value.toLowerCase();
+  return lower.startsWith("https://") || lower.startsWith("http://") ? value : null;
+}
+
+// webUrl, plus a log line when a non-empty address is thrown away.
+function keepUrl(value, what, item) {
+  const url = webUrl(value);
+  if (url === null && typeof value === "string" && value.trim() !== "") {
+    droppedAddresses++;
+    const from = typeof item["wm-source"] === "string" ? item["wm-source"] : "unknown source";
+    console.warn(
+      `::warning::webmentions: dropped ${what} ${JSON.stringify(value.slice(0, 80))} (mention from ${JSON.stringify(String(from).slice(0, 200))})`
+    );
+  }
+  return url;
+}
+
+function cleanAuthor(author, item) {
+  if (!author || typeof author !== "object") return null;
+  const name = typeof author.name === "string" ? author.name.trim() : "";
+  return {
+    name: name ? (name.length > NAME_LIMIT ? name.slice(0, NAME_LIMIT - 1) + "…" : name) : null,
+    url: keepUrl(author.url, "author address", item),
+  };
+}
+
 async function main() {
   console.log(`Fetching mentions from ${API_URL}...`);
   const response = await fetch(API_URL);
@@ -53,8 +100,8 @@ async function main() {
     if (!target) continue;
     const normalized = {
       type: wmProp,
-      author: item.author || null,
-      url: item.url || item["wm-source"] || null,
+      author: cleanAuthor(item.author, item),
+      url: keepUrl(item.url, "mention address", item) || keepUrl(item["wm-source"], "source address", item),
       published: item.published || item["wm-received"] || null,
       content: item.content && item.content.text ? item.content.text : null,
     };
@@ -75,6 +122,7 @@ async function main() {
   const totalTargets = Object.keys(grouped).length;
   const totalMentions = items.filter((i) => ALLOWED_TYPES.has(i["wm-property"])).length;
   console.log(`Wrote ${totalMentions} mentions across ${totalTargets} targets to ${OUTPUT_PATH}`);
+  console.log(`Address filter: ${droppedAddresses} address(es) dropped.`);
 }
 
 main().catch((err) => {

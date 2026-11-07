@@ -68,7 +68,8 @@ those.
 | Home | Section labels (Work, Writing, Now, Write) | `src/index.njk`, the `<h2 class="eyebrow">` lines | |
 | Home, Projects | The project rows (name, one-line description, status) | `_data/projects.json` | One object per project; case studies are added through `portfolio-clearance.md`, not here |
 | Home | The Now block | `_data/now.json` | Two fields: `currently` (the prose, HTML links allowed) and `updated` (the date, `YYYY-MM-DD`). The "tended / resting / fallow" state comes from the date, so update the date when you update the text |
-| Home | The Write block's links (Bluesky, GitHub, ORCID, on the `contact/` row) | `_data/profiles.json` | These also become the `rel="me"` identity links in the page head |
+| Home | The Write block's links (Bluesky, GitHub, ORCID, LinkedIn, on the `contact/` row) | `_data/profiles.json` | These also become the `rel="me"` identity links in the page head and the profile list in the structured data. `_data/resume.yml` keeps its own copy of the four, so change both |
+| Every page | The picture shown when a link is pasted into LinkedIn or Bluesky (the share card), and its one-sentence description | `scripts/generate-og.py` draws the cards; the description of each is the `ogCardAlts` lookup in `src/_includes/base.njk` | Change both together; each card must stay 1200 × 630 pixels |
 | About | Everything on the page | `src/about.md` | Markdown; the opening paragraph is HTML inside `<p class="lede">`. The "this page rendered" line is the build date, not an edit date |
 | Résumé | Everything: name, tagline, summary, experience, credentials, profile links | `_data/resume.yml` | YAML: indentation matters; multi-paragraph fields are split on blank lines. Keep the `|` after a field name when the text runs over several lines |
 | Résumé | The photo | `src/assets/img/seb-headshot.jpg` and `seb-headshot.webp` | 1086 × 724 pixels (the two shots side by side are on purpose). Browsers load the WebP; the JPG is the fallback, so replace the JPG and then make the WebP again from it. One way I've done this, from the repository folder: `python3 -c "from PIL import Image; im=Image.open('src/assets/img/seb-headshot.jpg'); im.save('src/assets/img/seb-headshot.webp', 'WEBP', quality=80, method=6, icc_profile=im.info.get('icc_profile'))"` (quality 80). The command does not resize, so export the JPG at 1086 pixels wide first and the WebP comes out the same width. If you replace it with another size, change the `width` and `height` on the `<img>` in `src/resume.njk` to match |
@@ -133,7 +134,10 @@ npm run build
 ```
 
 It fetches the latest garden posts and webmentions, checks the case
-studies, and writes the site into `_site/`. A line starting with `Error`
+studies, writes the site into `_site/`, and then checks that the
+content-security policy still lists every small script written into the
+pages (`scripts/csp-check.js`; if it fails, it prints the hash to put into
+`src/_includes/base.njk`). A line starting with `Error`
 means something to fix, usually a comma or a quote in a JSON or YAML file;
 the message names the file. A `warning` about the garden fetch is not a
 problem: the build keeps the last good copy.

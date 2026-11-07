@@ -4,6 +4,83 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
+
+### Changed
+- **Tag links on a post are underlined** (a faint rule-coloured line), so they
+  read as links by more than the leading "#".
+- **The Now panel's live dot pulses five times on arrival, then rests**
+  (about 12 seconds) instead of pulsing for as long as the page is open.
+- **The résumé's print button, now labelled "Print or save as PDF", only
+  appears when it works.** It is rendered hidden and a small script
+  (`print.js`) shows it and opens the print dialog. With JavaScript off
+  there is no button that does nothing; the browser's own print menu still
+  makes the PDF.
+
+### Fixed
+- **The mark at the end of a printed résumé now prints.** The print
+  stylesheet cleared every background, the mark's included; it is now left
+  out of that rule.
+
+### Security
+- **Every page built from the base layout carries a Content-Security-Policy**
+  (in a meta tag, since GitHub Pages cannot send headers; the two redirect
+  stubs, `/now/` and `/colophon/`, have no layout, scripts or images). One
+  way I've set it: scripts only from this site plus three small inline
+  scripts allowed by hash (the theme script, and the case studies' audience
+  and `story-js` lines); images, fonts and styles from this site, with
+  `data:` images for the paper grain; no outside connections, frames,
+  plugins or form targets. Editing any of those three inline scripts means
+  updating its hash in `base.njk`, where a comment says how.
+- **A referrer policy** (`strict-origin-when-cross-origin`): sites linked
+  from here see the domain a reader came from, not the full page address.
+- **Webmentions are filtered before they show.** A received mention's links
+  are kept only when they are plain web addresses (`https://` or `http://`),
+  the sender's name is capped at 80 characters, both links carry
+  `rel="nofollow ugc"`, and the sender's avatar is no longer shown, so a
+  mention never loads an image from someone else's server. The legacy
+  pingback link is gone from the page head.
+- **The "Send Webmentions" workflow runs after each push or manual deploy**
+  (not the daily rebuild) instead of on changes to `.html` files (which the
+  site's Markdown never produced, so it had stopped running), and its token
+  has no permissions.
+- **Dependabot** (`.github/dependabot.yml`) opens a pull request once a month
+  when an npm package or a GitHub Action the site uses has a newer version.
+- **The build checks the policy's script hashes.** `scripts/csp-check.js`
+  runs after Eleventy in `npm run build` and fails it when an inline script
+  has no matching hash in the policy (it prints the one to add) or the policy
+  lists a hash no script uses, so an edited script stops the deploy instead
+  of silently not running on the live site. It also fails on any inline
+  event handler (`onclick=` and the like), which the policy would block.
+
+## 2026-11-06 — Richer search and sharing data; tag pages kept out of search
+
+### Changed
+- **The Person data says more.** The home page, About and the résumé now
+  declare the same person (one identifier), with the other names Seb goes
+  by, the portrait, what he knows about, and Toronto as a structured
+  address. LinkedIn joins Bluesky, GitHub and ORCID in the profile list, so it
+  also appears in the head's `rel="me"` links and the contact row under
+  Write on the home page. The email is not in the structured data.
+- **Posts and case studies carry fuller Article data.** Each has an image and
+  a main-page address, and the author points at the same person. The case
+  studies now have an Article block that uses their own "practice piece"
+  description.
+- **Share cards say how big they are and what they show.** Each page's card
+  tags now carry width, height and a one-sentence description. Only posts are
+  labelled articles; every other page, tag pages included, is a website.
+- **Tag pages are out of search.** One way of settling it: readers can still
+  use them, but they carry `noindex` and stay out of the sitemap. The
+  other way, listing all five, is two edits if that changes: add
+  `addAllPagesToCollections: true` under the pagination and remove `noindex`.
+- **The feed gives native posts a published date**, and a garden entry with no
+  excerpt no longer repeats its title as a summary.
+
+### Fixed
+- **The `/now/` and `/colophon/` redirect pages** are marked `noindex` and
+  have a viewport tag, and `/now/` names the home page, not a fragment, as its
+  canonical address.
+
 ## 2026-11-06 — The case studies read without JavaScript; their figure scripts move into files
 
 ### Changed

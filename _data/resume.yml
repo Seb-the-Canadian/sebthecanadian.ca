@@ -6,9 +6,12 @@
 name: "Sebastian Lathangue"
 tagline: "Data Governance · Information Architecture"
 email: "hello@cognitivearchitecture.ca"
+# Also written out as a PostalAddress in src/_includes/json-ld.njk; keep the two in step.
 location: "Toronto, Ontario, Canada"
 website: "https://sebthecanadian.ca"
 
+# The four platform profiles (not Garden) also live in _data/profiles.json,
+# which feeds the structured data; keep those four in step.
 profiles:
   - platform: "LinkedIn"
     url: "https://www.linkedin.com/in/sebastianl-8b6688225"

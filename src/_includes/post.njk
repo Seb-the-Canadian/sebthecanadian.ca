@@ -36,19 +36,31 @@ ogImage: /assets/img/og-writing.png
     <h2 class="webmentions-title">Webmentions</h2>
     <ol class="webmentions-list">
       {%- for m in thisMentions %}
+      {#- Sender-chosen addresses become links only when they are plain web
+          addresses: https:// or http:// in any letter case, with no
+          whitespace or control characters (scripts/webmentions.js filters
+          them the same way first); no avatar, so nothing loads from the
+          sender's server. -#}
+      {%- set webAddress = r/^https?:\/\/[^\s\x00-\x1f\x7f-\x9f]*$/i %}
+      {%- set authorUrl = m.author.url if (m.author and m.author.url and webAddress.test(m.author.url)) else "" %}
+      {%- set sourceUrl = m.url if (m.url and webAddress.test(m.url)) else "" %}
+      {#- Names over 80 characters become 79 plus "…", as in scripts/webmentions.js. -#}
+      {%- set rawName = (m.author.name if (m.author and m.author.name) else "") or authorUrl or "someone" %}
+      {%- set authorName = (rawName | truncate(79, true, "…")) if (rawName | length) > 80 else rawName %}
       <li class="webmention h-cite">
-        <a class="u-author h-card" href="{{ m.author.url }}">
-          {%- if m.author.photo %}
-          <img class="u-photo" src="{{ m.author.photo }}" alt="" width="24" height="24" />
-          {%- endif %}
-          <span class="p-name">{{ m.author.name or m.author.url }}</span>
+        {%- if authorUrl %}
+        <a class="u-author h-card" href="{{ authorUrl }}" rel="nofollow ugc">
+          <span class="p-name">{{ authorName }}</span>
         </a>
+        {%- else %}
+        <span class="u-author h-card"><span class="p-name">{{ authorName }}</span></span>
+        {%- endif %}
         <span class="webmention-type">{{ m.type | replace("-", " ") }}</span>
         {%- if m.published %}
         <time class="dt-published" datetime="{{ m.published }}">{{ m.published | humanDate }}</time>
         {%- endif %}
-        {%- if m.url %}
-        &middot; <a class="u-url" href="{{ m.url }}" rel="external">source</a>
+        {%- if sourceUrl %}
+        &middot; <a class="u-url" href="{{ sourceUrl }}" rel="external nofollow ugc">source</a>
         {%- endif %}
       </li>
       {%- endfor %}
