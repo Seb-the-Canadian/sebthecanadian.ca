@@ -4,6 +4,23 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-07 — A colophon page, and About as a portrait
+
+### Changed
+- **"How this site is built" has its own page, `/colophon/`.** It is the
+  same address the old redirect used, so old links still land, but it is now
+  a real page with the `S·L` stamp and a `colophon/` eyebrow, and it is in
+  the sitemap. The Stack, Hosting and deployment and Design approach
+  sections moved over as they were, including the sentence about what the
+  site keeps (and doesn't) about a visit. It opens with one line saying what
+  the page is.
+- **About reads as a portrait again.** The section on how the site is built
+  left, Contact moved up to sit right after the résumé hand-off, and a
+  single line at the end points to the colophon.
+- **The "this page rendered" line on About is gone.** It showed the build
+  date, which read as a date for the writing.
+- **The footer links to Colophon**, after Links.
+
 ## 2026-11-07 — The title block on every page, a table style, and small text a size larger
 
 ### Changed
