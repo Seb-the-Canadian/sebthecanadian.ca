@@ -38,7 +38,7 @@ import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, extname, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 
 // The repo root is the folder above scripts/, wherever the command is run from.
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -118,7 +118,7 @@ const FM = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
 function parse(file) {
   const raw = readFileSync(file, "utf-8");
   const m = raw.match(FM);
-  const data = m ? yaml.load(m[1]) || {} : {};
+  const data = m ? load(m[1]) || {} : {};
   const body = m ? raw.slice(m[0].length) : raw;
   return { raw, data, body, fmText: m ? m[1] : null };
 }
