@@ -249,6 +249,10 @@ footer nav a:visited {
 }
 
 .resume-header {
+  /* undo the page padding base.css gives every header, as .masthead does */
+  max-width: none;
+  margin-inline: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -505,6 +509,9 @@ a.button:visited { color: var(--muted); }
 
 /* ── Single post page ──────────────────────────────────────────────────── */
 .h-entry .post-header {
+  max-width: none;
+  margin-inline: 0;
+  padding: 0;
   margin-bottom: var(--space-xl);
 }
 
@@ -1088,7 +1095,7 @@ h3:hover > .heading-anchor {
 }
 .garden-portal__link {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.03em;
   color: var(--link);
   text-decoration: none;
@@ -1161,15 +1168,13 @@ html[data-theme="light"] .mark__dark { display: none; }
 html[data-theme="dark"] .mark__light { display: none; }
 html[data-theme="dark"] .mark__dark { display: inline; }
 
-/* ── Tables — one way I've done this ─────────────────────────────────────
+/* ── Tables ───────────────────────────────────────────────────────────────
    Hairline rules in --rule, room in the cells, mono uppercase headers (the
-   same look as the claims register). Wide tables scroll inside themselves
-   instead of pushing the page sideways on a phone. Tables with a class
-   (the case studies' register) keep their own look. */
+   same look as the claims register). Cells may break a long word rather
+   than push the page sideways on a phone. Tables with a class (the case
+   studies' register) keep their own look. */
 table:not([class]) {
-  display: block;
   max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   margin-block: var(--space-md);
 }
@@ -1177,6 +1182,7 @@ table:not([class]) :is(th, td) {
   padding: var(--space-xs) var(--space-sm);
   border-bottom: 1px solid var(--rule);
   vertical-align: baseline;
+  overflow-wrap: anywhere;
 }
 table:not([class]) thead th {
   border-bottom-color: var(--muted);

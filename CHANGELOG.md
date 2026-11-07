@@ -15,13 +15,9 @@ Format:
   they now have hairline rules, room in the cells and mono uppercase
   headers. Tables that already carry their own class (the case studies'
   register) are left alone.
-- **Row meta, the in-progress pill and the garden link move to 12px** (they
+- **Row meta and the in-progress pill move to 12px** (they
   were 10 to 11px). The tracked uppercase labels and the footer wordmark
   stay at 11px.
-
-### Fixed
-- **The script that checks case studies now imports its YAML reader by
-  name,** so the pending js-yaml 5 upgrade will not break the build.
 
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
