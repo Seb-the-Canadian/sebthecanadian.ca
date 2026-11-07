@@ -18,6 +18,13 @@ Format:
 - **Row meta and the in-progress pill move to 12px** (they
   were 10 to 11px). The tracked uppercase labels and the footer wordmark
   stay at 11px.
+- **`docs/brand.md` and `docs/pen-and-pixel.md` are level with the site
+  again.** brand.md now lists every colour token the stylesheets use
+  (`--link`, `--visited`, `--code-bg`, `--wash`, `--surface`), the fluid
+  heading sizes, the 12px floor for small text, the stamp at 600 on every
+  title block, the table style, the résumé's year-only dates, and the
+  contrast floor at about 4.9:1; pen-and-pixel.md records that a figure may
+  carry a local key beside the standing ones.
 
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 

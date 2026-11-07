@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Date | 2026-10-26 |
-| Status | Adopted. First used by the case studies (`src/assets/css/case-study.css`) |
+| Status | Adopted. Used by the case studies (`src/assets/css/case-study-marks.css`, generated), the home's and About's figures and the Writing room's stages (`figures.css`), and one post's figures (`posts/revisiting-down-and-out.css`) |
 | Tokens | `--mark`, `--mark-solid`, `--mark-ruled`, `--mark-hatch`, `--mark-dither` in `src/assets/css/tokens.css` |
 
 ## The problem it solves
@@ -58,6 +58,14 @@ shown as a figure, that is, the home's writing bed and the Writing room's
 stage sequence. The word always sits beside the mark (hidden text on the
 chips).
 
+## Local keys
+
+The vocabulary above and the stage key are the standing ones: wherever they
+are used, a mark means what they say. A figure may also carry a key of its
+own when its marks mean something only there (the front-door story's
+crosswalk key is one). The local key sits inside its figure, each mark beside
+the word that names it, like everything else here.
+
 ## Rules
 
 1. **Inside figures only.** Never as a page, section or card background.
@@ -73,3 +81,7 @@ chips).
    and direct labels, three at most. More than that: small multiples.
 
 The mark tokens follow the mode on their own; they are drawn in `--ink-soft`.
+`print.css` clears backgrounds, so `figures.css` and the post's own
+stylesheet put the marks back for print, inside figures only and in the
+light-mode ink, whatever mode the page was printed from. The case studies'
+stylesheets have no such rule yet.
