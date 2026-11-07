@@ -5,7 +5,7 @@
 | Updated | 2026-11-07 |
 | Status | **Current.** The one place for how the site looks and behaves now |
 | Precedence | The built site, then this page, then the documents it links to. `DESIGN_BRIEF.md` and the pitch/plan docs are history |
-| Sources | `src/assets/css/tokens.css`, `base.css`, `components.css`, CHANGELOG (Design v3, 2026-07-23), `docs/implementation-plan-design-v3.md`, `docs/pen-and-pixel.md` |
+| Sources | `src/assets/css/tokens.css`, `base.css`, `components.css`, `figures.css`, `print.css`, CHANGELOG (Design v3, 2026-07-23), `docs/implementation-plan-design-v3.md`, `docs/pen-and-pixel.md` |
 
 Change a rule here when you change it on the site, in the same commit.
 
@@ -41,9 +41,11 @@ never carries meaning inside a figure (see Figures).
   the page does (the greeting in the browser console names the season too).
 - **Dark mode is neutral charcoal.** The forest lives in the accents, not the
   background.
-- **Links** are `--link`, underlined. A link set in the text colour (an
-  index row, a post's tags) carries a faint `--rule` underline, so it reads
-  as a link by more than its colour.
+- **Links** in running text are `--link`, underlined. A link in running
+  text set in ink or muted (an index row, a post's tags) carries a faint
+  `--rule` underline, so it reads as a link by more than its colour.
+  Navigation, the footer, card titles and webmention authors are links where
+  a link is expected: ink or muted, no underline.
 - **Contrast.** Text meets WCAG AA (4.5:1). The accents clear it on every
   background; the lowest is dark-mode moss at about 4.9:1, on the shortcuts
   dialog's `--surface` (4.87:1) and on the 12% moss tint inside case-study
@@ -119,7 +121,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   separator systems; one per page is plenty.
 - **Tables**: hairline `--rule` lines between rows (a `--muted` one under the
   header row), cells padded `--space-xs` by `--space-sm`, and headers in
-  mono, 12px, uppercase, tracked, in `--muted`. A long word breaks inside its
+  mono at 600 (like the stamp), 12px, uppercase, tracked, in `--muted`. A long word breaks inside its
   cell rather than push a phone page sideways. A table that carries a class
   (the case studies' register) keeps its own look.
 - **The home page**: hero, lede, the open-to line (when set), the join, Work
@@ -175,7 +177,9 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   and figures in flat framed panels on `--bg-alt`, not the glowing card.
   Figures follow pen + pixel like everywhere else. Bring a story in with the
   converter, which keeps this look; never restyle the room toward the
-  site-wide heading tier or card. How to bring one in and publish it:
+  site-wide heading tier or card. Each story's hero carries the `S·L` stamp
+  inside its own eyebrow, written in the story rather than drawn from
+  `masthead.njk`. How to bring one in and publish it:
   `docs/portfolio-clearance.md`.
 - **Writing** (`/writing/`): notes and longer pieces in the site's own look.
   The room opens with its title block and a small figure of the stages, then
@@ -199,4 +203,5 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
 5. If a rule above changed, change it here too.
 
 One way to run the first three: `node scripts/site-check.js <url> <out-dir>`
-(desktop and phone, light and dark, JavaScript off, with screenshots).
+(desktop and phone, light and dark, JavaScript off, with screenshots); it
+needs Playwright on the machine that runs it.
