@@ -43,6 +43,12 @@ Format:
   contrast floor at about 4.9:1; pen-and-pixel.md records that a figure may
   carry a local key beside the standing ones.
 
+### Fixed
+- **"Down and Out, revisited" prints its figure marks in the light ink**
+  from dark mode too (they printed in the pale dark-mode ink). Table headers
+  use a weight the mono font actually loads (600; the 500 they asked for
+  fell back to regular). Unused garden-portal styles are gone.
+
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
 ### Changed

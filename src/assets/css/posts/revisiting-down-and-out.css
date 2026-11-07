@@ -83,8 +83,18 @@
   .rdo-fig{ break-inside: avoid; }
   /* Keep the pen + pixel marks on paper. print.css clears every background with
      !important (it is tuned for the résumé), so the marks re-assert themselves here,
-     narrowly: only the mark swatches, step strips and chip strips, never a fill. */
-  .rdo-fig, .rdo-fig *, .rdo-fig *::before{ -webkit-print-color-adjust: exact; print-color-adjust: exact; --mark: #3a453d; }
+     narrowly: only the mark swatches, step strips and chip strips, never a fill.
+     --mark is pinned to the light-mode ink and the four mark gradients are
+     re-declared (as in tokens.css and figures.css) so each element resolves them
+     against the pinned ink, not :root's dark-mode ink. */
+  .rdo-fig, .rdo-fig *, .rdo-fig *::before{
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    --mark: #3a453d;
+    --mark-solid: linear-gradient(var(--mark), var(--mark));
+    --mark-ruled: repeating-linear-gradient(0deg, var(--mark) 0 1.5px, transparent 1.5px 4px);
+    --mark-hatch: repeating-linear-gradient(45deg, var(--mark) 0 1.5px, transparent 1.5px 4.5px);
+    --mark-dither: conic-gradient(var(--mark) 25%, transparent 0 50%, var(--mark) 0 75%, transparent 0) 0 0 / 4px 4px;
+  }
   .rdo-mk--pen{ background: var(--mark-hatch) !important; }
   .rdo-mk--pixel{ background: var(--mark-dither) !important; }
   .rdo-mk--solid{ background: var(--mark-solid) !important; }

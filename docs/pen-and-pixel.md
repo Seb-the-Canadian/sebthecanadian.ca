@@ -62,9 +62,11 @@ chips).
 
 The vocabulary above and the stage key are the standing ones: wherever they
 are used, a mark means what they say. A figure may also carry a key of its
-own when its marks mean something only there (the front-door story's
-crosswalk key is one). The local key sits inside its figure, each mark beside
-the word that names it, like everything else here.
+own when its marks mean something only there, and it may give moss or a
+border weight a meaning that holds only in that figure (the front-door
+story's crosswalk key does: a moss tint and a heavy moss border). The local
+key sits inside its figure, each mark beside the word that names it, like
+everything else here.
 
 ## Rules
 
@@ -81,7 +83,9 @@ the word that names it, like everything else here.
    and direct labels, three at most. More than that: small multiples.
 
 The mark tokens follow the mode on their own; they are drawn in `--ink-soft`.
-`print.css` clears backgrounds, so `figures.css` and the post's own
-stylesheet put the marks back for print, inside figures only and in the
-light-mode ink, whatever mode the page was printed from. The case studies'
-stylesheets have no such rule yet.
+`print.css` clears backgrounds, so two stylesheets put the marks back for
+print, inside figures only: `figures.css` (the home, About and Writing
+figures) and `posts/revisiting-down-and-out.css` (that post's figures). Each
+pins `--mark` to the light-mode ink and re-declares the four mark gradients,
+so the marks print in that ink whatever mode the page was printed from. The
+case-study marks have no print rule yet.
