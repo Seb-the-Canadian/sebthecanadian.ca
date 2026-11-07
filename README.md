@@ -41,7 +41,7 @@ sebthecanadian.ca/
 │   ├── writing.njk            # Writing index (h-feed): index rows by type and stage, plus the stage key
 │   ├── resume.njk             # Printable résumé (h-resume) — linked from About, not in primary nav
 │   ├── now.njk                # /now/ → /#now redirect (Now block lives on home)
-│   ├── about.md               # Combined About + résumé (bio, approach, résumé hand-off, contact)
+│   ├── about.md               # About page (bio, approach, résumé hand-off, contact)
 │   ├── colophon.md            # The colophon: how the site is built (old redirect stub retired)
 │   ├── uses.md                # /uses page
 │   ├── links.md               # Blogroll
