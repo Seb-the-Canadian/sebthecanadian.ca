@@ -4,6 +4,25 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-07 — The title block on every page, a table style, and small text a size larger
+
+### Changed
+- **Posts, the keyboard page and the 404 now open with the `S·L` stamp and
+  an eyebrow** (`note/`, `post/`, `keyboard/`, `404/`), like About and the
+  other pages. The résumé and the tag pages now draw the block from the one
+  shared include instead of their own copies.
+- **Tables have a style.** The keyboard page's tables had almost no padding;
+  they now have hairline rules, room in the cells and mono uppercase
+  headers. Tables that already carry their own class (the case studies'
+  register) are left alone.
+- **Row meta, the in-progress pill and the garden link move to 12px** (they
+  were 10 to 11px). The tracked uppercase labels and the footer wordmark
+  stay at 11px.
+
+### Fixed
+- **The script that checks case studies now imports its YAML reader by
+  name,** so the pending js-yaml 5 upgrade will not break the build.
+
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
 ### Changed

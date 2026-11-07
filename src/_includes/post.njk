@@ -4,6 +4,7 @@ ogImage: /assets/img/og-writing.png
 ---
 <article class="h-entry">
   <header class="post-header">
+    {%- set mastheadLabel = (type + "/") if type else "post/" %}{% set mastheadBare = true %}{% include "masthead.njk" %}
     <h1 class="p-name">{{ title }}</h1>
     <p class="post-meta">
       {%- if type %}<span class="post-type">{{ type }}</span> &middot; {% endif %}

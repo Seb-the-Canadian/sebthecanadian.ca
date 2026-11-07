@@ -3,16 +3,27 @@
   Usage:  {% set mastheadLabel = "writing/" %}{% include "masthead.njk" %}
   Reads: mastheadLabel (eyebrow text, required), title (page front
   matter), mastheadLede (optional lede paragraph, HTML allowed).
+  mastheadTitle (optional): the h1 text when it should differ from the
+  front-matter title (the 404's tab title carries its number).
+  mastheadBare (optional, true): print only the stamp and eyebrow, for
+  pages that keep their own h1 (posts, the résumé).
   The S·L stamp is the pitch's Move 05 "section stamp": two characters
   of ink at the start of each page title block.
 -#}
+{%- if mastheadBare %}
+<p class="masthead__meta">
+  <span class="masthead__stamp" aria-hidden="true">S&middot;L</span>
+  <span class="eyebrow">{{ mastheadLabel }}</span>
+</p>
+{%- else %}
 <header class="masthead">
   <p class="masthead__meta">
     <span class="masthead__stamp" aria-hidden="true">S&middot;L</span>
     <span class="eyebrow">{{ mastheadLabel }}</span>
   </p>
-  <h1 class="masthead__title">{{ title }}</h1>
+  <h1 class="masthead__title">{{ mastheadTitle or title }}</h1>
   {%- if mastheadLede %}
   <p class="lede">{{ mastheadLede | safe }}</p>
   {%- endif %}
 </header>
+{%- endif %}

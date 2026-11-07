@@ -908,7 +908,7 @@ h3:hover > .heading-anchor {
 }
 .index-row__meta {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   text-align: right;
   white-space: nowrap;
 }
@@ -923,7 +923,7 @@ h3:hover > .heading-anchor {
   padding-inline: 0.4ch;
   border: 1px solid var(--rule);
   border-radius: 3px;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -950,7 +950,7 @@ h3:hover > .heading-anchor {
   .index-row__meta {
     grid-column: 2;
     text-align: left;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -1088,7 +1088,7 @@ h3:hover > .heading-anchor {
 }
 .garden-portal__link {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.03em;
   color: var(--link);
   text-decoration: none;
@@ -1160,3 +1160,32 @@ html[data-theme="light"] .mark__light { display: inline; }
 html[data-theme="light"] .mark__dark { display: none; }
 html[data-theme="dark"] .mark__light { display: none; }
 html[data-theme="dark"] .mark__dark { display: inline; }
+
+/* ── Tables — one way I've done this ─────────────────────────────────────
+   Hairline rules in --rule, room in the cells, mono uppercase headers (the
+   same look as the claims register). Wide tables scroll inside themselves
+   instead of pushing the page sideways on a phone. Tables with a class
+   (the case studies' register) keep their own look. */
+table:not([class]) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-block: var(--space-md);
+}
+table:not([class]) :is(th, td) {
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: 1px solid var(--rule);
+  vertical-align: baseline;
+}
+table:not([class]) thead th {
+  border-bottom-color: var(--muted);
+}
+table:not([class]) th {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
