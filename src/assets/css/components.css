@@ -249,6 +249,7 @@ footer nav a:visited {
 }
 
 .resume-header {
+  margin-top: var(--space-md);   /* the eyebrow's gap was sized for an h1 */
   /* undo the page padding base.css gives every header, as .masthead does */
   max-width: none;
   margin-inline: 0;
@@ -550,8 +551,11 @@ a.button:visited { color: var(--muted); }
 }
 
 .h-entry .post-footer {
+  /* undo the page padding base.css gives every footer, as the header does */
+  max-width: none;
+  margin-inline: 0;
+  padding: var(--space-md) 0 0;
   border-top: 1px solid var(--rule);
-  padding-top: var(--space-md);
   margin-top: var(--space-xl);
   font-family: var(--mono);
   font-size: var(--text-sm);
