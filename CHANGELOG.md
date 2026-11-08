@@ -15,9 +15,9 @@ Format:
   they now have hairline rules, room in the cells and mono uppercase
   headers at 600. Tables that already carry their own class (the case studies'
   register) are left alone.
-- **A post's closing block (author, permalink and contact lines) lines up with the
-  text column** instead of sitting a little in from it, and no longer has
-  extra space below it.
+- **A post's closing block (the author, permalink, webmention and
+  all-writing lines) lines up with the text column** instead of sitting a
+  little in from it, and no longer has extra space below it.
 - **The résumé's photo sits a little further below the `S·L` stamp line.**
 - **Row meta and the in-progress pill move to 12px** (they
   were 10 to 11px). The tracked uppercase labels and the footer wordmark
