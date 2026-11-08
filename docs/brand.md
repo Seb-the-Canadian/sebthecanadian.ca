@@ -41,8 +41,8 @@ never carries meaning inside a figure (see Figures).
   the page does (the greeting in the browser console names the season too).
 - **Dark mode is neutral charcoal.** The forest lives in the accents, not the
   background.
-- **Links** in running text are `--link`, underlined. A link in running
-  text set in ink or muted (an index row, a post's tags) carries a faint
+- **Links** in running text are `--link`, underlined. A link that keeps its
+  text's colour (an index row's title, a post's tags) carries a faint
   `--rule` underline, so it reads as a link by more than its colour.
   Navigation, the footer, card titles and webmention authors are links where
   a link is expected: ink or muted, no underline.
@@ -121,9 +121,10 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   separator systems; one per page is plenty.
 - **Tables**: hairline `--rule` lines between rows (a `--muted` one under the
   header row), cells padded `--space-xs` by `--space-sm`, and headers in
-  mono at 600 (like the stamp), 12px, uppercase, tracked, in `--muted`. A long word breaks inside its
-  cell rather than push a phone page sideways. A table that carries a class
-  (the case studies' register) keeps its own look.
+  mono at 600 (like the stamp), 12px, uppercase, tracked, in `--muted`. A
+  long word breaks inside its cell rather than push a phone page sideways. A
+  table that carries a class (the case studies' register) keeps its own
+  look.
 - **The home page**: hero, lede, the open-to line (when set), the join, Work
   (case studies first, then projects), the writing bed, Now, Write. The home
   carries two figures and no story; the stories live in their rooms (the

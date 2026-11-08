@@ -13,8 +13,12 @@ Format:
   shared include instead of their own copies.
 - **Tables have a style.** The keyboard page's tables had almost no padding;
   they now have hairline rules, room in the cells and mono uppercase
-  headers. Tables that already carry their own class (the case studies'
+  headers at 600. Tables that already carry their own class (the case studies'
   register) are left alone.
+- **A post's closing block (author, permalink and contact lines) lines up with the
+  text column** instead of sitting a little in from it, and no longer has
+  extra space below it.
+- **The résumé's photo sits a little further below the `S·L` stamp line.**
 - **Row meta and the in-progress pill move to 12px** (they
   were 10 to 11px). The tracked uppercase labels and the footer wordmark
   stay at 11px.
@@ -28,9 +32,8 @@ Format:
 
 ### Fixed
 - **"Down and Out, revisited" prints its figure marks in the light ink**
-  from dark mode too (they printed in the pale dark-mode ink). Table headers
-  use a weight the mono font actually loads (600; the 500 they asked for
-  fell back to regular). Unused garden-portal styles are gone.
+  from dark mode too (they printed in the pale dark-mode ink). Unused
+  garden-portal styles are gone.
 
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
