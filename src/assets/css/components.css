@@ -1151,7 +1151,7 @@ table:not([class]) :is(th, td) {
   padding: var(--space-xs) var(--space-sm);
   border-bottom: 1px solid var(--rule);
   vertical-align: baseline;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 table:not([class]) thead th {
   border-bottom-color: var(--muted);
