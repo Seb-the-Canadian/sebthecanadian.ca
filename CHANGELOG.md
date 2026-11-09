@@ -4,6 +4,27 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-09 — A quieter surface
+
+### Changed
+- **The seasonal under-glow, the card gradient and the paper grain are
+  retired.** Project cards, the Now panel and About's résumé hand-off are
+  now one flat framed box: a hairline border, the shared corner, a flat
+  panel fill, no shadow. Hovering a card turns its border the accent colour;
+  it no longer lifts. The page behind is flat parchment in light mode and
+  flat charcoal in dark. The seasons still shift the Now pulse and text
+  selection.
+- **The shortcuts dialog is a plain tinted sheet.** The page behind it is
+  tinted but no longer blurred, the dialog has no shadow, and it takes the
+  same panel fill and padding as the other boxes.
+- **The boxes and chips inside figures take the site's small corner**, and
+  the figure panels in "Down and Out, revisited" pad the same on every side.
+
+### Fixed
+- **In dark mode, panels sit above the page again.** The grain had lifted
+  the page to the panel's own colour, so the Now panel and the cards did not
+  stand out from it.
+
 ## 2026-11-07 — A colophon page, and About as a portrait
 
 ### Changed

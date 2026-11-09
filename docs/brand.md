@@ -31,14 +31,14 @@ never carries meaning inside a figure (see Figures).
 | `--link` / `--visited` | `#513592` / `#5e4b3e` | `#85ab63` / `#b89c84` | links (a shade off the accent) / visited links; `--link` also colours the résumé's section labels |
 | `--code-bg` | `#ebe7df` | `#1e1f22` | code, `kbd` keys, the webmention type tag |
 | `--wash` | `--moss` at 6% | `--moss` at 7% | a moss tint: blockquotes, the current page in the nav |
-| `--surface` | `--bg` mixed 8% toward `--ink` | the same mix | a raised surface: nav hover, the archived badge, the shortcuts dialog |
+| `--surface` | `--bg` mixed 8% toward `--ink` | the same mix | a raised surface: nav hover, the archived badge |
 
-- **Duotone.** The accent is violet in light mode and fern in dark, each
-  matching its card under-glow. The name `--moss` is legacy.
-- **Seasons.** The build sets `data-season` on `<html>`; the card glow
-  (`--glow-l` / `--glow-d`) and a seasonal accent (`--season-l` /
-  `--season-d`: the Now pulse, text selection) shift with it. Nothing else on
-  the page does (the greeting in the browser console names the season too).
+- **Duotone.** The accent is violet in light mode and fern in dark. The
+  name `--moss` is legacy.
+- **Seasons.** The build sets `data-season` on `<html>`; a seasonal accent
+  (`--season-l` / `--season-d`) shifts with it and drives two things: the
+  Now pulse and text selection. Nothing else on the page does (the greeting
+  in the browser console names the season too).
 - **Dark mode is neutral charcoal.** The forest lives in the accents, not the
   background.
 - **Links** in running text are `--link`, underlined. A link that keeps its
@@ -47,11 +47,12 @@ never carries meaning inside a figure (see Figures).
   Navigation, the footer, card titles and webmention authors are links where
   a link is expected: ink or muted, no underline.
 - **Contrast.** Text meets WCAG AA (4.5:1). The accents clear it on every
-  background; the lowest is dark-mode moss at about 4.9:1, on the shortcuts
-  dialog's `--surface` (4.87:1) and on the 12% moss tint inside case-study
-  figures (4.91:1) (measured 2026-11-04; the earlier 5.25:1 on panels was not
-  the lowest pair). Light-mode amber is 3.3:1, so it never colours text; it
-  borders and tints.
+  background; the lowest is dark-mode moss at about 4.9:1, on the 12% moss
+  tint inside case-study figures (4.91:1) (measured 2026-11-04; the earlier
+  5.25:1 on panels was not the lowest pair). The shortcuts dialog, once
+  4.87:1 on `--surface`, now sits on `--bg-alt` like every panel (5.25:1).
+  Light-mode amber is 3.3:1, so it never colours text; it borders and
+  tints.
 - **No new colours** without updating this table.
 
 ## Type
@@ -107,15 +108,16 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   portrait. Pixel is an accent, never a texture. (The home's divider is a
   plain hairline now.)
 - **Retired:** the woodcut stamp and corner frames, the speckled forest-floor
-  background, the dark garden night panel, the maple leaf.
+  background, the dark garden night panel, the maple leaf; the seasonal
+  under-glow, the card gradient and the paper grain (2026-11).
 
 ## Surfaces and composition
 
-- **One card look**: hairline border, the shared radius and padding, a soft
-  shadow, a warm top-lit gradient in light mode, and the seasonal
-  **under-glow** (`--card-shadow`). Project cards, the Now panel and the
-  garden all use it.
-- **Backgrounds**: only a whisper of paper grain. No pattern, no texture, no
+- **One framed box**: hairline `--rule`, the shared radius, a flat
+  `--bg-alt` fill, no shadow. Content panels (project cards, the Now panel,
+  About's résumé hand-off, the shortcuts dialog) pad `--space-lg`; figure
+  panels `--space-md`.
+- **Backgrounds**: flat parchment and charcoal. No texture, no pattern, no
   dark hero blocks.
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
@@ -175,7 +177,7 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   site, scoped to `.story`, on these tokens and fonts. Their composition is
   their own, and the live front-door page is the reference: a heavy Fraunces
   headline (800), chapter H2s in moss at display size (about 2.3rem, 700),
-  and figures in flat framed panels on `--bg-alt`, not the glowing card.
+  and figures in flat framed panels on `--bg-alt`, like the site's own.
   Figures follow pen + pixel like everywhere else. Bring a story in with the
   converter, which keeps this look; never restyle the room toward the
   site-wide heading tier or card. Each story's hero carries the `S·L` stamp

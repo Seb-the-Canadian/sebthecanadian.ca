@@ -98,25 +98,18 @@ footer nav a:visited {
 
 /* Card */
 .card {
-  /* One shared content-card look (matches .panel--alt): warm top-lit
-     bg-alt, hairline border, soft shadow, consistent radius + padding. */
+  /* One framed box (matches .panel--alt, .resume-callout, the shortcuts
+     dialog): hairline border, the shared radius, flat bg-alt, no shadow. */
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  background: var(--bg-alt);
   margin-bottom: var(--space-lg);
-  box-shadow: var(--card-shadow);
-  transition: border-color 0.2s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+  transition: border-color 0.2s var(--ease);
 }
 
 .card:hover {
   border-color: var(--moss);
-  box-shadow: var(--shadow), 0 10px 26px -8px var(--glow), 0 28px 56px -14px var(--glow);
-  transform: translateY(-2px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card:hover { transform: none; }
 }
 
 .card h3 {
@@ -271,7 +264,7 @@ footer nav a:visited {
 }
 
 /* Résumé — the headshot photo (professional but human), stacked above the
-   identity block: a clean rounded frame with a soft shadow. */
+   identity block: a clean rounded frame, no shadow. */
 .resume-photo {
   width: 100%;
   max-width: 420px;
@@ -282,7 +275,6 @@ footer nav a:visited {
   width: 100%;
   height: auto;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
 }
 
 .resume-identity {
@@ -336,7 +328,6 @@ footer nav a:visited {
   border: 0;
   color: var(--ink);
   background: color-mix(in oklab, var(--bg) 80%, transparent);
-  backdrop-filter: blur(3px);
   align-items: center;
   justify-content: center;
 }
@@ -348,13 +339,12 @@ footer nav a:visited {
 }
 
 .kbd-overlay-inner {
-  background: var(--surface);
+  background: var(--bg-alt);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   max-width: 340px;
   width: 100%;
-  box-shadow: 0 4px 24px color-mix(in oklab, var(--ink) 12%, transparent);
 }
 
 .kbd-overlay-title {
@@ -856,22 +846,6 @@ h3:hover > .heading-anchor {
   line-height: 1.55;
 }
 
-/* ── Garden panel — the same content card as .card / .panel--alt. The
-   garden was a scoped forest-at-night block (design-v3 Phase 2, D1); the
-   owner later asked every card to share one look with the lavender/lichen
-   under-glow, so the garden's dark treatment was retired and its identity
-   now rides on the "garden/" rows, not chrome. */
-.garden-panel {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: var(--space-lg);
-  box-shadow: var(--card-shadow);
-}
-.garden-panel .index-row:last-child {
-  border-bottom: 0;
-}
-
 .index-row {
   display: grid;
   grid-template-columns: 10ch minmax(0, 1fr) auto;
@@ -1017,13 +991,11 @@ h3:hover > .heading-anchor {
 
 /* ── Framed panel — bg-alt card treatment (pitch .diag / .thesis) ─────── */
 .panel--alt {
-  /* Subtle top-lit gradient instead of a flat fill (refined surfaces) */
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  background: var(--bg-alt);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
   position: relative;
-  box-shadow: var(--card-shadow);
 }
 .panel--alt > :last-child { margin-bottom: 0; }
 
@@ -1098,11 +1070,10 @@ h3:hover > .heading-anchor {
    where the embedded résumé used to sit, so About stays a portrait, not a
    twin of the CV. */
 .resume-callout {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--bg-alt) 55%, var(--bg)) 0%, var(--bg-alt) 100%);
+  background: var(--bg-alt);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: var(--space-lg);
-  box-shadow: var(--card-shadow);
   margin-block: var(--space-xl);
 }
 .resume-callout__note {
