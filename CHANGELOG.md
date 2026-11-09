@@ -41,6 +41,8 @@ Format:
   the home page, a little further off in the Writing room and the Now
   panel); and the last thing on a page sits the same distance above the
   footer on every page.
+- **The colophon's design line no longer names the retired glow**: the
+  accents it lists are moss and lichen.
 
 ### Fixed
 - **In dark mode, panels sit above the page again.** The grain had lifted

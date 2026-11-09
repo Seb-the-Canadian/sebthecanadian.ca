@@ -47,11 +47,12 @@ never carries meaning inside a figure (see Figures).
   Navigation, the footer, card titles and webmention authors are links where
   a link is expected: ink or muted, no underline.
 - **Contrast.** Text meets WCAG AA (4.5:1). The accents clear it on every
-  background; the lowest is dark-mode moss at about 4.9:1, on `--surface`
-  under a hovered nav link (4.88:1) and on the 12% moss tint inside
-  case-study figures (4.91:1) (measured 2026-11-04 and 2026-11-09; the
-  earlier 5.25:1 on panels was not the lowest pair). The shortcuts dialog,
-  once on `--surface` too, now sits on `--bg-alt` like every panel (5.25:1).
+  background; the lowest is dark-mode moss on the active badge's 10% moss
+  tint over a card, at about 4.6:1; then `--surface` under a hovered nav
+  link (4.88:1) and the 12% moss tint inside case-study figures (4.91:1)
+  (measured 2026-11-04 and 2026-11-09; the earlier 5.25:1 on panels was not
+  the lowest pair). The shortcuts dialog, once on `--surface` too, now sits
+  on `--bg-alt` like every panel (5.25:1).
   Light-mode amber is 3.3:1, so it never colours text; it borders and
   tints.
 - **No new colours** without updating this table.
@@ -81,6 +82,8 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   title, state labels. Moss when the label is a heading; muted when it names
   a box or a table. Three stay at 11px: index-row labels, the Writing year
   labels, the footer wordmark; the résumé keeps its own ruled section labels.
+  State labels add a 1px border in the state's colour, a 10% tint of it,
+  `2px 6px` padding and the small corner.
 - One date format everywhere: "24 Jul 2026" (the `humanDate` filter). The
   résumé is the exception: its roles give years only ("2025–2026"), as
   résumés do.
@@ -174,8 +177,8 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   it (the résumé's print button).
 - **Controls look like controls.** Buttons and the switches carry a
   `--muted` border, not the faint `--rule` hairline.
-- **A card's hover is a border, not a lift.** A hovered card's border turns moss; the
-  card does not move and casts no shadow.
+- **A card's hover is a border, not a lift.** A hovered card's border
+  turns moss; the card does not move and casts no shadow.
 - **The shortcuts dialog sits on a plain tint.** The page behind it is
   tinted, not blurred.
 - **The theme switch has two states.** The site follows the system setting
