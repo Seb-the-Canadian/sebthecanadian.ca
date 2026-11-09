@@ -47,10 +47,11 @@ never carries meaning inside a figure (see Figures).
   Navigation, the footer, card titles and webmention authors are links where
   a link is expected: ink or muted, no underline.
 - **Contrast.** Text meets WCAG AA (4.5:1). The accents clear it on every
-  background; the lowest is dark-mode moss at about 4.9:1, on the 12% moss
-  tint inside case-study figures (4.91:1) (measured 2026-11-04; the earlier
-  5.25:1 on panels was not the lowest pair). The shortcuts dialog, once
-  4.87:1 on `--surface`, now sits on `--bg-alt` like every panel (5.25:1).
+  background; the lowest is dark-mode moss at about 4.9:1, on `--surface`
+  under a hovered nav link (4.88:1) and on the 12% moss tint inside
+  case-study figures (4.91:1) (measured 2026-11-04 and 2026-11-09; the
+  earlier 5.25:1 on panels was not the lowest pair). The shortcuts dialog,
+  once on `--surface` too, now sits on `--bg-alt` like every panel (5.25:1).
   Light-mode amber is 3.3:1, so it never colours text; it borders and
   tints.
 - **No new colours** without updating this table.
