@@ -28,6 +28,18 @@ Format:
 - **Directory rows are easier to read**: the rows on the home page, in the
   Writing room and on the tag pages, and the "All writing" link, go from
   13px to 14px.
+- **The home page's opening lines up with everything below it.** The mark,
+  the name, the line and the topics now start on the same left edge as the
+  text, and the name sits the same distance under the header as every
+  other page's title.
+- **The lines under the header and above the footer are the width of the
+  text**, no longer wider than it, and the first menu word starts on the
+  same edge.
+- **One rhythm on every page.** A page's title sits the same distance above
+  its first content everywhere (Projects, Uses and Links had a larger gap); a
+  section label sits closer to its list on the home page, in the Writing
+  room and in the Now panel; and the last thing on a page sits the same
+  distance above the footer on every page.
 
 ### Fixed
 - **In dark mode, panels sit above the page again.** The grain had lifted

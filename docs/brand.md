@@ -127,6 +127,14 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   dark hero blocks.
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
+- **Rhythm.** The title block sits 88px under the header rule and 32px
+  above the first content on every page that has it; a section eyebrow sits
+  16px above its list; the last block sits 112px above the footer rule (64px
+  of page padding and 48px of footer margin); the header and footer rules
+  span the text column. Composed pages (home, Writing) space their blocks by
+  `--flow`; running-text pages space sections by the heading's
+  `--space-2xl`. On a phone the page padding narrows, so the first and third
+  gaps read 64px and 88px.
 - **Tables**: hairline `--rule` lines between rows (a `--muted` one under the
   header row), cells padded `--space-xs` by `--space-sm`, and headers in
   mono at 600 (like the stamp), 12px, uppercase, tracked, in `--muted`. A
@@ -164,6 +172,10 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   it (the résumé's print button).
 - **Controls look like controls.** Buttons and the switches carry a
   `--muted` border, not the faint `--rule` hairline.
+- **Hover is a border, not a lift.** A hovered card's border turns moss; the
+  card does not move and casts no shadow.
+- **The shortcuts dialog sits on a plain tint.** The page behind it is
+  tinted, not blurred.
 - **The theme switch has two states.** The site follows the system setting
   until the visitor presses the switch; a press stores light or dark in that
   browser, applied before first paint on later visits. There is no "system"

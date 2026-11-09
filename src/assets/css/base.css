@@ -192,3 +192,12 @@ main {
   padding-top: var(--flow);
   padding-bottom: var(--flow);
 }
+
+/* The last block sits the same distance above the footer rule on every page
+   (main's padding plus the footer's margin): its own bottom margin goes,
+   and a closing list's last item's too. The post and the résumé, whose
+   last block is a wrapper, do the same in components.css. */
+main > :last-child,
+main > ul:last-child > li:last-child {
+  margin-bottom: 0;
+}

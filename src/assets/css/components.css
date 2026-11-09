@@ -9,6 +9,8 @@ nav[aria-label="Primary"] ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 0.75rem;
+  /* the first word on the column; its hover pill reaches 8px left of it */
+  margin-left: calc(-1 * var(--space-sm));
 }
 
 nav[aria-label="Primary"] a {
@@ -38,31 +40,41 @@ nav[aria-label="Primary"] a[aria-current="page"] {
   font-weight: 700;
 }
 
-/* Header */
+/* Header. The hairline is a flex row of its own inside the padded box, so
+   it spans the text column exactly; the 16px row gap sits above it. */
 .site-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
   padding-top: var(--space-lg);
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0;
   margin-bottom: var(--space-lg);
 }
-
-@media (max-width: 600px) {
-  .site-header {
-    flex-wrap: wrap;
-  }
+.site-header::after {
+  content: "";
+  flex-basis: 100%;
+  height: 1px;
+  background: var(--rule);
 }
 
-/* Footer */
+/* Footer. The site footer's hairline is drawn inside the padded box, the
+   width of the text column, 24px above the footer's first line. */
 footer {
-  border-top: 1px solid var(--rule);
-  padding-top: var(--space-lg);
   margin-top: var(--space-2xl);
   color: var(--muted);
   font-size: var(--text-sm);
+}
+body > footer {
+  padding-top: 0;
+}
+body > footer::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: var(--space-lg);
 }
 
 footer nav ul {
@@ -205,6 +217,15 @@ footer nav a:visited {
 
 .resume-entry:last-child {
   border-bottom: none;
+}
+
+/* The résumé's last entry ends the page: nothing under it but the footer's
+   rhythm (base.css, main > :last-child). */
+.h-resume > .resume-section:last-child,
+.h-resume > .resume-section:last-child > .resume-entry:last-child,
+.h-resume > .resume-section:last-child > .resume-entry:last-child > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .resume-entry h3 {
@@ -532,6 +553,11 @@ a.button:visited { color: var(--muted); }
   color: var(--muted);
 }
 
+/* the post's footer ends the page: its last line keeps no margin (base.css) */
+.h-entry .post-footer > :last-child {
+  margin-bottom: 0;
+}
+
 .h-entry .post-footer .p-author .p-name {
   color: var(--ink);
 }
@@ -687,7 +713,12 @@ a.button:visited { color: var(--muted); }
    supersedes the mono .identity line's utilitarian register while keeping
    every h-card microformat (p-name, p-category, p-locality, u-url) intact. */
 .home-hero {
-  margin-block: var(--space-lg);
+  /* undo the page padding base.css gives every header, as .masthead does:
+     the mark, name, line and meta start on the column */
+  max-width: none;
+  margin-inline: 0;
+  padding: 0;
+  margin-block: 0 var(--space-xl);
 }
 .home-hero__mark {
   display: block;
@@ -846,7 +877,7 @@ table:not([class]) th,
 
 .index-table {
   display: block;
-  margin-block: var(--space-xl) 0;
+  margin-block: var(--space-md) 0;   /* an eyebrow sits 16px above its list */
   font-family: var(--mono);
   font-size: var(--text-sm);
   line-height: 1.55;
@@ -951,6 +982,12 @@ table:not([class]) th,
 .masthead__title {
   margin-bottom: var(--space-sm);
 }
+/* The title block sits 32px above the first content: a first heading's own
+   48px top margin would otherwise collapse through. */
+.masthead + h2,
+.masthead + section > h2:first-child {
+  margin-top: 0;
+}
 
 /* ── Resume — ruled section headers + tabular dates (design-v3 Phase 3) ───
    The pitch's resume screen spec: small uppercase ruled headers instead of
@@ -998,6 +1035,7 @@ table:not([class]) th,
   position: relative;
 }
 .panel--alt > :last-child { margin-bottom: 0; }
+.panel--alt > h2.eyebrow { margin-bottom: var(--space-md); }
 
 /* ── Home sections — one quiet, consistent rhythm (design-v3 P12 cleanup).
    The numbered section tags + per-section pixel dividers + corner frames
@@ -1009,6 +1047,10 @@ table:not([class]) th,
 .home-block > h2 {
   margin-top: 0;
   margin-bottom: var(--space-sm);
+}
+/* the writing bed's figure keeps its 24px elsewhere; under an eyebrow, 16 */
+.home-block > h2.eyebrow + .fig {
+  margin-top: var(--space-md);
 }
 
 /* ── Home rule — a quiet centered hairline under the intro lede ──────────── */
