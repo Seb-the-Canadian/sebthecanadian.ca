@@ -429,6 +429,11 @@ kbd {
   display: block;
   margin: var(--space-md) auto 0;
 }
+/* the shared .button rule below sets inline-block; this keeps Close centred */
+.kbd-overlay-inner .kbd-overlay-close {
+  display: block;
+  margin-inline: auto;
+}
 
 /* ── Buttons (shared with the JS-injected theme toggle) ─────────────────── */
 .button,
@@ -511,7 +516,7 @@ a.button:visited { color: var(--muted); }
   margin-bottom: var(--space-sm);
 }
 
-.h-entry .post-meta {
+.post-meta {
   font-family: var(--mono);
   font-size: var(--text-sm);
   color: var(--muted);
@@ -917,6 +922,7 @@ table:not([class]) th,
   font-size: var(--text-xs);
   text-align: right;
   white-space: nowrap;
+  overflow-wrap: anywhere;   /* takes effect on the phone, where the meta wraps (below) */
 }
 /* base.css sizes every <time>; inside a row's meta it matches the words beside it. */
 .index-row__meta time {
@@ -950,6 +956,7 @@ table:not([class]) th,
     grid-column: 2;
     text-align: left;
     font-size: var(--text-xs);
+    white-space: normal;   /* with overflow-wrap above: a long domain breaks, no sideways scroll */
   }
 }
 

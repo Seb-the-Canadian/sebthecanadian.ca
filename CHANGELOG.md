@@ -45,6 +45,14 @@ Format:
 - **In dark mode, panels sit above the page again.** The grain had lifted
   the page to the panel's own colour, so the Now panel and the cards did not
   stand out from it.
+- **The shortcuts dialog's Close button is centred**, under the switch and
+  the line above it.
+- **The shortcuts dialog keeps its rounded corners when it opens.** The
+  focus ring no longer tightened them.
+- **The Now panel's "tended" line** is set in the small grey mono type that
+  the same line uses on a post.
+- **The home page no longer scrolls sideways on a very narrow phone**: a
+  long web address in the Work list now breaks onto a second line.
 
 ## 2026-11-07 — A colophon page, and About as a portrait
 
