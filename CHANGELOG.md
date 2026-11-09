@@ -37,9 +37,10 @@ Format:
   same edge.
 - **One rhythm on every page.** A page's title sits the same distance above
   its first content everywhere (Projects, Uses and Links had a larger gap); a
-  section label sits closer to its list on the home page, in the Writing
-  room and in the Now panel; and the last thing on a page sits the same
-  distance above the footer on every page.
+  section label now sits the same 16px above its list everywhere (closer on
+  the home page, a little further off in the Writing room and the Now
+  panel); and the last thing on a page sits the same distance above the
+  footer on every page.
 
 ### Fixed
 - **In dark mode, panels sit above the page again.** The grain had lifted
@@ -48,9 +49,7 @@ Format:
 - **The shortcuts dialog's Close button is centred**, under the switch and
   the line above it.
 - **The shortcuts dialog keeps its rounded corners when it opens.** The
-  focus ring no longer tightened them.
-- **The Now panel's "tended" line** is set in the small grey mono type that
-  the same line uses on a post.
+  focus ring no longer tightens them.
 - **The home page no longer scrolls sideways on a very narrow phone**: a
   long web address in the Work list now breaks onto a second line.
 

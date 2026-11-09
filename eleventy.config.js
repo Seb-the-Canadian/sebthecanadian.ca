@@ -79,9 +79,9 @@ export default function (eleventyConfig) {
   });
 
   // season — the Toronto meteorological season at build time. Drives the
-  // Now pulse and text selection (tokens.css) and the console easter egg. Recomputed
-  // on every build, so the daily cron keeps the site's ambient colour tracking
-  // the real calendar. Northern hemisphere: Dec–Feb winter, etc.
+  // Now pulse and text selection (tokens.css) and the console easter egg.
+  // Recomputed on every build, so the daily cron keeps the site's ambient
+  // colour tracking the real calendar. Northern hemisphere: Dec–Feb winter, etc.
   eleventyConfig.addGlobalData("season", () => {
     const m = new Date().getUTCMonth(); // 0 = Jan … 11 = Dec
     if (m === 11 || m <= 1) return "winter";

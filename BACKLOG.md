@@ -299,10 +299,14 @@ Candidates for future work beyond the current sprint. No commitment implied.
       both pages with the eyebrows set as display-serif headings.
 - [ ] **The type scale.** A census of every size in use, and a proposal for
       a shorter scale.
-- [ ] **The story badge's line height.** The shared `.badge` rule now sets
-      `line-height: 1`, which the generated `.story .badge` would inherit if
-      a story ever rendered a badge (none does today); settle it in the
-      converter when the stories are next re-stamped.
+- [ ] **The story badge's line height and weight.** The shared `.badge`
+      rule now sets `line-height: 1` and weight 600, which the generated
+      `.story .badge` would also pick up through the cascade if a story ever
+      rendered a badge (none does today); settle it in the converter when
+      the stories are next re-stamped.
+- [ ] **The Work list's ↗ on a narrow phone.** Between about 321 and 350px
+      wide, a row's trailing ↗ drops onto a line of its own; a non-breaking
+      space before it in `src/index.njk` would hold it beside the address.
 
 ### Pitch v1 Follow-ups
 
