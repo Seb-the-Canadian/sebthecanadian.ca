@@ -19,6 +19,15 @@ Format:
   same panel fill and padding as the other boxes.
 - **The boxes and chips inside figures take the site's small corner**, and
   the figure panels in "Down and Out, revisited" pad the same on every side.
+- **Small labels are one thing.** Eyebrows, section labels, table headers,
+  figure titles, the shortcuts dialog's title and the webmention heading now
+  share one size, weight and letter-spacing. Labels that head a section stay
+  the accent colour; labels that name a box or a table are grey. The
+  "in progress" pill and the project badges are now one family too: same
+  size, padding, border and corner, each in its own state's colour.
+- **Directory rows are easier to read**: the rows on the home page, in the
+  Writing room and on the tag pages, and the "All writing" link, go from
+  13px to 14px.
 
 ### Fixed
 - **In dark mode, panels sit above the page again.** The grain had lifted

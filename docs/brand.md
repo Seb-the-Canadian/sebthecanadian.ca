@@ -62,7 +62,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 
 | Family | Role |
 |---|---|
-| **Fraunces** | display: `h1`–`h3`, figure titles |
+| **Fraunces** | display: `h1`–`h3`, a post's own figure headings |
 | **Atkinson Hyperlegible** | body and UI text |
 | **IBM Plex Mono** | code and the data/terminal devices: index rows, the `S·L` stamp, the footer wordmark, labels and numbers in figures |
 
@@ -73,9 +73,13 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   (`clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem)`), `h3` 1.12–1.35rem.
 - **Small text has a floor.** 12px (`--text-xs`, 0.75rem) is the smallest
   running text: row meta and its dates, pills, eyebrows, table headers, the
-  stage key. Tracked labels can go to 11px: the index-row labels, the year
-  labels in the Writing index, the résumé's section labels (0.7rem) and the
-  footer wordmark. Figures set their own label sizes.
+  stage key. Below it sit only the smaller labels named under Labels, and
+  the words inside a figure's drawing, which set their own sizes.
+- **Labels.** Tracked labels are mono, 12px, 600, uppercase, tracked 0.1em:
+  the eyebrow, section eyebrows, table headers, figure titles, the dialog
+  title, state labels. Moss when the label is a heading; muted when it names
+  a box or a table. Three stay at 11px: index-row labels, the Writing year
+  labels, the footer wordmark; the résumé keeps its own ruled section labels.
 - One date format everywhere: "24 Jul 2026" (the `humanDate` filter). The
   résumé is the exception: its roles give years only ("2025–2026"), as
   résumés do.

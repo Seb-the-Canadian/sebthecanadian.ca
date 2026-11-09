@@ -35,7 +35,7 @@ nav[aria-label="Primary"] a:hover {
 nav[aria-label="Primary"] a[aria-current="page"] {
   background: var(--wash);
   color: var(--moss);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Header */
@@ -135,17 +135,18 @@ footer nav a:visited {
   margin-bottom: 0;
 }
 
-/* Status Badge */
-.badge {
+/* State labels: the project badge and the index pill are one construction
+   (docs/brand.md → Type → Labels). A variant sets only its colours: the
+   state's colour on the border and a 10% tint of it behind the word. */
+.badge,
+.index-pill {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: var(--text-xs);
-  font-weight: 600;
+  font: 600 var(--text-xs)/1 var(--mono);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.15em 0.5em;
-  border-radius: var(--radius-sm);
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
   border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
 }
 
 .badge--active {
@@ -347,15 +348,10 @@ footer nav a:visited {
   width: 100%;
 }
 
-.kbd-overlay-title {
-  font-family: var(--mono);
-  font-size: var(--text-sm);
-  font-weight: 600;
+.kbd-overlay-title {   /* type: the tracked label (.eyebrow) */
   color: var(--moss);
   margin-top: 0;
   margin-bottom: var(--space-md);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 .kbd-shortcut-list {
@@ -555,11 +551,12 @@ a.button:visited { color: var(--muted); }
   align-items: baseline;
   margin-block: var(--space-xl) 0;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--muted);
 }
-.writing-key .eyebrow {
+.writing-key .eyebrow {   /* a label that names a box, not a heading: muted */
   margin: 0;
+  color: var(--muted);
 }
 .writing-key strong {
   font-weight: 600;
@@ -570,7 +567,7 @@ a.button:visited { color: var(--muted); }
 .home-more {
   margin-block: var(--space-md) 0;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: var(--text-sm);
 }
 
 /* ── Footer kbd hint ─────────────────────────────────────────────────────── */
@@ -605,12 +602,7 @@ a.button:visited { color: var(--muted); }
   margin-top: var(--space-xl);
 }
 
-.webmentions-title {
-  font-family: var(--mono);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.webmentions-title {   /* type: the tracked label (.eyebrow) */
   color: var(--moss);
   margin-bottom: var(--space-md);
 }
@@ -816,12 +808,25 @@ h3:hover > .heading-anchor {
 /* ── Editorial utilities (design-v2 C3 + eyebrow trial) ──────────────────
    Opt-in, hand-authored classes — no build-time transforms. Documented
    in POSSE_POST_TEMPLATE.md. */
-.eyebrow {
+/* The tracked label (docs/brand.md → Type → Labels): one face, size,
+   weight and tracking for the eyebrow, section eyebrows, the dialog title,
+   the webmention heading, table headers and figure titles. Colour goes by
+   role and stays on each rule: moss for a heading, muted for a label that
+   names a box or a table. 600 is a loaded Plex Mono weight (400, 600, 700);
+   500 would fall back to 400. */
+.eyebrow,
+.kbd-overlay-title,
+.webmentions-title,
+table:not([class]) th,
+.fig__title,
+.fig-seq__kicker {
   font-family: var(--mono);
   font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+.eyebrow {
   /* moss, not amber: amber text on light bg is 3.33:1 (BACKLOG contrast
      note forbids new amber text uses); moss measures ~4.5:1 both modes */
   color: var(--moss);
@@ -834,7 +839,7 @@ h3:hover > .heading-anchor {
 }
 
 .pull-line {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
 }
 
@@ -842,7 +847,7 @@ h3:hover > .heading-anchor {
   display: block;
   margin-block: var(--space-xl) 0;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.55;
 }
 
@@ -877,7 +882,7 @@ h3:hover > .heading-anchor {
 }
 .index-row__meta {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-xs);
   text-align: right;
   white-space: nowrap;
 }
@@ -886,15 +891,8 @@ h3:hover > .heading-anchor {
   font-size: inherit;
 }
 
-.index-pill {
-  display: inline-block;
+.index-pill {   /* construction: the state label (.badge) */
   margin-inline-start: 0.5ch;
-  padding-inline: 0.4ch;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--muted);
 }
 /* A state (in progress, active) is amber with an icon and a word
@@ -919,7 +917,7 @@ h3:hover > .heading-anchor {
   .index-row__meta {
     grid-column: 2;
     text-align: left;
-    font-size: 12px;
+    font-size: var(--text-xs);
   }
 }
 
@@ -973,12 +971,13 @@ h3:hover > .heading-anchor {
 
 /* ── Footer wordmark (design-v3 Phase 4) ─────────────────────────────────
    Pitch identity table row 3: "S·L / seb the canadian — wordmark / mono —
-   footer · print · cli". At the pitch's label spec: 11px, tracking +0.15.
+   footer · print · cli". 11px, below the tracked label's 12px, but on its
+   0.1em tracking.
    Deliberately printable (print.css hides footer nav/meta, not this line). */
 .wordmark {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   color: var(--muted);
 }
 .wordmark__site { text-transform: lowercase; }
@@ -1115,11 +1114,6 @@ table:not([class]) :is(th, td) {
 table:not([class]) thead th {
   border-bottom-color: var(--muted);
 }
-table:not([class]) th {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 600;   /* a loaded Plex Mono weight (400, 600, 700); 500 fell back to 400 */
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+table:not([class]) th {   /* type: the tracked label (.eyebrow) */
   color: var(--muted);
 }
