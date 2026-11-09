@@ -805,9 +805,10 @@ h3:hover > .heading-anchor {
 }
 .pullquote__cite::before { content: "— "; }
 
-/* ── Editorial utilities (design-v2 C3 + eyebrow trial) ──────────────────
-   Opt-in, hand-authored classes — no build-time transforms. Documented
-   in POSSE_POST_TEMPLATE.md. */
+/* ── Editorial utilities and the tracked label ───────────────────────────
+   The pull-line and pull-quote are opt-in, hand-authored post classes
+   (documented in POSSE_POST_TEMPLATE.md); the label rule below them is
+   site-wide. */
 /* The tracked label (docs/brand.md → Type → Labels): one face, size,
    weight and tracking for the eyebrow, section eyebrows, the dialog title,
    the webmention heading, table headers and figure titles. Colour goes by

@@ -62,7 +62,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 
 | Family | Role |
 |---|---|
-| **Fraunces** | display: `h1`–`h3`, a post's own figure headings |
+| **Fraunces** | display: `h1`–`h3`, the headings inside figure boxes (the join's, a post's own) |
 | **Atkinson Hyperlegible** | body and UI text |
 | **IBM Plex Mono** | code and the data/terminal devices: index rows, the `S·L` stamp, the footer wordmark, labels and numbers in figures |
 
@@ -73,8 +73,9 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   (`clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem)`), `h3` 1.12–1.35rem.
 - **Small text has a floor.** 12px (`--text-xs`, 0.75rem) is the smallest
   running text: row meta and its dates, pills, eyebrows, table headers, the
-  stage key. Below it sit only the smaller labels named under Labels, and
-  the words inside a figure's drawing, which set their own sizes.
+  stage key. Below it sit the smaller labels named under Labels, and
+  the words inside a figure's drawing, which set their own sizes; the case
+  studies keep their own scale (Rooms, below).
 - **Labels.** Tracked labels are mono, 12px, 600, uppercase, tracked 0.1em:
   the eyebrow, section eyebrows, table headers, figure titles, the dialog
   title, state labels. Moss when the label is a heading; muted when it names
