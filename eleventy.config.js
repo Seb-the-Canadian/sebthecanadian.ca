@@ -1,4 +1,4 @@
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 export default function (eleventyConfig) {
   // YAML data file support
   eleventyConfig.addDataExtension("yml,yaml", (contents) => {
-    return yaml.load(contents);
+    return load(contents);
   });
 
   // Passthrough copy

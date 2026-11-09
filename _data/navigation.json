@@ -9,6 +9,7 @@
     { "label": "R\u00e9sum\u00e9", "url": "/resume/" },
     { "label": "Uses",   "url": "/uses/" },
     { "label": "Links",  "url": "/links/" },
+    { "label": "Colophon", "url": "/colophon/" },
     { "label": "Email",  "url": "mailto:hello@cognitivearchitecture.ca", "external": true },
     { "label": "RSS",    "url": "/feed.xml" }
   ]

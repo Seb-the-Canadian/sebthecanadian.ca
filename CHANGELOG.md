@@ -4,6 +4,54 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-07 — A colophon page, and About as a portrait
+
+### Changed
+- **"How this site is built" has its own page, `/colophon/`.** It is the
+  same address the old redirect used, so old links still land, but it is now
+  a real page with the `S·L` stamp and a `colophon/` eyebrow, and it is in
+  the sitemap. The Stack, Hosting and deployment and Design approach
+  sections moved over as they were, including the sentence about what the
+  site keeps (and doesn't) about a visit. It opens with one line saying what
+  the page is.
+- **About reads as a portrait again.** The section on how the site is built
+  left, Contact moved up to sit right after the résumé hand-off, and a
+  single line at the end points to the colophon.
+- **The "this page rendered" line on About is gone.** It showed the build
+  date, which read as a date for the writing.
+- **The footer links to Colophon**, after Links.
+
+## 2026-11-07 — The title block on every page, a table style, and small text a size larger
+
+### Changed
+- **Posts, the keyboard page and the 404 now open with the `S·L` stamp and
+  an eyebrow** (`note/`, `post/`, `keyboard/`, `404/`), like About and the
+  other pages. The résumé and the tag pages now draw the block from the one
+  shared include instead of their own copies.
+- **Tables have a style.** The keyboard page's tables had almost no padding;
+  they now have hairline rules, room in the cells and mono uppercase
+  headers at 600. Tables that already carry their own class (the case studies'
+  register) are left alone.
+- **A post's closing block (the author, permalink, webmention and
+  all-writing lines) lines up with the text column** instead of sitting a
+  little in from it, and no longer has extra space below it.
+- **The résumé's photo sits a little further below the `S·L` stamp line.**
+- **Row meta and the in-progress pill move to 12px** (they
+  were 10 to 11px). The tracked uppercase labels and the footer wordmark
+  stay at 11px.
+- **`docs/brand.md` and `docs/pen-and-pixel.md` are level with the site
+  again.** brand.md now lists every colour token the stylesheets use
+  (`--link`, `--visited`, `--code-bg`, `--wash`, `--surface`), the fluid
+  heading sizes, the 12px floor for small text, the stamp at 600 on every
+  title block, the table style, the résumé's year-only dates, and the
+  contrast floor at about 4.9:1; pen-and-pixel.md records that a figure may
+  carry a local key beside the standing ones.
+
+### Fixed
+- **"Down and Out, revisited" prints its figure marks in the light ink**
+  from dark mode too (they printed in the pale dark-mode ink). Unused
+  garden-portal styles are gone.
+
 ## 2026-11-06 — A content security policy and safer webmentions; the résumé's print button and mark
 
 ### Changed

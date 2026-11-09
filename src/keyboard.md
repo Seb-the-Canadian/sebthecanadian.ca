@@ -5,7 +5,7 @@ description: "Keyboard shortcuts for navigating sebthecanadian.ca."
 permalink: /keyboard/
 ---
 
-# Keyboard reference
+{% set mastheadLabel = "keyboard/" %}{% include "masthead.njk" %}
 
 The site supports vim-style chord shortcuts when JavaScript is enabled. Press the first key, then the second within 1.5 seconds.
 

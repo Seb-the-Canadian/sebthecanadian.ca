@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Date | 2026-10-26 |
-| Status | Adopted. First used by the case studies (`src/assets/css/case-study.css`) |
+| Status | Adopted. Used by the case studies (`src/assets/css/case-study-marks.css`, generated), the home's and About's figures and the Writing room's stages (`figures.css`), and one post's figures (`posts/revisiting-down-and-out.css`) |
 | Tokens | `--mark`, `--mark-solid`, `--mark-ruled`, `--mark-hatch`, `--mark-dither` in `src/assets/css/tokens.css` |
 
 ## The problem it solves
@@ -58,6 +58,16 @@ shown as a figure, that is, the home's writing bed and the Writing room's
 stage sequence. The word always sits beside the mark (hidden text on the
 chips).
 
+## Local keys
+
+The vocabulary above and the stage key are the standing ones: wherever they
+are used, a mark means what they say. A figure may also carry a key of its
+own when its marks mean something only there, and it may give moss or a
+border weight a meaning that holds only in that figure (the front-door
+story's crosswalk key does: a moss tint and a heavy moss border). The local
+key sits inside its figure, each mark beside the word that names it, like
+everything else here.
+
 ## Rules
 
 1. **Inside figures only.** Never as a page, section or card background.
@@ -73,3 +83,9 @@ chips).
    and direct labels, three at most. More than that: small multiples.
 
 The mark tokens follow the mode on their own; they are drawn in `--ink-soft`.
+`print.css` clears backgrounds, so two stylesheets put the marks back for
+print, inside figures only: `figures.css` (the home, About and Writing
+figures) and `posts/revisiting-down-and-out.css` (that post's figures). Each
+pins `--mark` to the light-mode ink and re-declares the four mark gradients,
+so the marks print in that ink whatever mode the page was printed from. The
+case-study marks have no print rule yet.
