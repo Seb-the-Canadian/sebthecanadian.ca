@@ -52,6 +52,9 @@ Format:
   focus ring no longer tightens them.
 - **The home page no longer scrolls sideways on a very narrow phone**: a
   long web address in the Work list now breaks onto a second line.
+- **The footer's "last built" line now clears the contrast floor.** It had
+  been faded below it (3.8:1 on light parchment); it now takes the plain
+  grey of the rest of the footer.
 
 ## 2026-11-07 — A colophon page, and About as a portrait
 
