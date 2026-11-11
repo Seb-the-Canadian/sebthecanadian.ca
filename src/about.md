@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: About
-description: "About Seb Lathangue: the data governance and information architecture work, and how to reach me."
+description: "About Seb Lathangue: the data governance and information architecture work, and how to get in touch."
 permalink: /about/
 pageStyles:
   - /assets/css/figures.css

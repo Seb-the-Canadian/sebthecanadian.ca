@@ -58,6 +58,13 @@ Format:
   been faded below it (3.8:1 on light parchment); it now takes the plain
   grey of the rest of the footer.
 
+## 2026-11-09 — About's link preview in one voice
+
+### Changed
+- **About's description, the sentence link previews and search results
+  show, ends "and how to get in touch"** instead of "and how to reach me",
+  so it no longer starts in the third person and ends in the first.
+
 ## 2026-11-07 — A colophon page, and About as a portrait
 
 ### Changed

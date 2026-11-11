@@ -11,6 +11,17 @@ Sprint issues are tracked in Linear: [sebthecanadian.ca project](https://linear.
 
 ## Bugs / Issues
 
+- [ ] **The case studies' figure marks print in the dark-mode ink when
+      printed from dark mode.** Posts were fixed in Wave 4 (their stylesheet
+      re-declares the four `--mark-*` gradients in a print block, so the
+      light ink is used whatever the theme). The two stories' mark
+      stylesheet (`src/assets/css/case-study-marks.css`) is written by the
+      converter and has no print block. Fix: add the same print block to
+      the generator, regenerate both stories' stylesheets with the
+      marks-only mode, then Seb re-answers the clearance self-test and
+      re-stamps both stories (the gate counts the stylesheet as part of the
+      stamped page). Do it the next time the stories are re-stamped for
+      another reason. Decided 2026-11-09 (Wave 4 decisions).
 - [ ] **Preview a pull request in the browser.** Reviewing a visual essay
       as a terminal diff is useless to Seb: he reviews rendered pages. Until
       each pull request carries a link that opens its pages as they will
