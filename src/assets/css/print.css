@@ -75,10 +75,15 @@
     margin: 0;
   }
 
-  footer {
+  body > footer {
     border-top: 1px solid #ccc;
     padding-top: 0.5rem;
     margin-top: 1rem;
+  }
+
+  body > footer::before,
+  .site-header::after {
+    display: none;
   }
 
   @page {

@@ -9,9 +9,10 @@
 ## The problem it solves
 
 On this site colour is **weather**. The accent changes with the mode (violet
-in light, fern in dark) and the card glow changes with the season. That is the
-point of it, and it means colour can't carry information: a figure whose
-legend says "violet means data" is wrong half the time.
+in light, fern in dark) and the season shifts the Now pulse and text
+selection. That is the point of it, and it means colour can't carry
+information: a figure whose legend says "violet means data" is wrong half the
+time.
 
 Figures need **signal** that holds still. Two other ways were tested
 (2026-10-26) and set aside:

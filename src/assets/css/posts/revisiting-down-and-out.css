@@ -5,7 +5,7 @@
 
 .rdo-fig{
   margin: 1.5rem 0;
-  padding: 1rem 1.1rem 1.1rem;
+  padding: var(--space-md);
   background: var(--bg-alt);
   border: 1px solid var(--rule);
   border-radius: var(--radius);

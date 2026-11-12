@@ -31,14 +31,14 @@ never carries meaning inside a figure (see Figures).
 | `--link` / `--visited` | `#513592` / `#5e4b3e` | `#85ab63` / `#b89c84` | links (a shade off the accent) / visited links; `--link` also colours the résumé's section labels |
 | `--code-bg` | `#ebe7df` | `#1e1f22` | code, `kbd` keys, the webmention type tag |
 | `--wash` | `--moss` at 6% | `--moss` at 7% | a moss tint: blockquotes, the current page in the nav |
-| `--surface` | `--bg` mixed 8% toward `--ink` | the same mix | a raised surface: nav hover, the archived badge, the shortcuts dialog |
+| `--surface` | `--bg` mixed 8% toward `--ink` | the same mix | a raised surface: nav hover, the archived badge |
 
-- **Duotone.** The accent is violet in light mode and fern in dark, each
-  matching its card under-glow. The name `--moss` is legacy.
-- **Seasons.** The build sets `data-season` on `<html>`; the card glow
-  (`--glow-l` / `--glow-d`) and a seasonal accent (`--season-l` /
-  `--season-d`: the Now pulse, text selection) shift with it. Nothing else on
-  the page does (the greeting in the browser console names the season too).
+- **Duotone.** The accent is violet in light mode and fern in dark. The
+  name `--moss` is legacy.
+- **Seasons.** The build sets `data-season` on `<html>`; a seasonal accent
+  (`--season-l` / `--season-d`) shifts with it and drives two things: the
+  Now pulse and text selection. Nothing else on the page does (the greeting
+  in the browser console names the season too).
 - **Dark mode is neutral charcoal.** The forest lives in the accents, not the
   background.
 - **Links** in running text are `--link`, underlined. A link that keeps its
@@ -47,11 +47,14 @@ never carries meaning inside a figure (see Figures).
   Navigation, the footer, card titles and webmention authors are links where
   a link is expected: ink or muted, no underline.
 - **Contrast.** Text meets WCAG AA (4.5:1). The accents clear it on every
-  background; the lowest is dark-mode moss at about 4.9:1, on the shortcuts
-  dialog's `--surface` (4.87:1) and on the 12% moss tint inside case-study
-  figures (4.91:1) (measured 2026-11-04; the earlier 5.25:1 on panels was not
-  the lowest pair). Light-mode amber is 3.3:1, so it never colours text; it
-  borders and tints.
+  background; the lowest is dark-mode moss on the active badge's 10% moss
+  tint over a card, at about 4.6:1; then `--surface` under a hovered nav
+  link (4.88:1) and the 12% moss tint inside case-study figures (4.91:1)
+  (measured 2026-11-04 and 2026-11-09; the earlier 5.25:1 on panels was not
+  the lowest pair). The shortcuts dialog, once on `--surface` too, now sits
+  on `--bg-alt` like every panel (5.25:1).
+  Light-mode amber is 3.3:1, so it never colours text; it borders and
+  tints.
 - **No new colours** without updating this table.
 
 ## Type
@@ -60,7 +63,7 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
 
 | Family | Role |
 |---|---|
-| **Fraunces** | display: `h1`–`h3`, figure titles |
+| **Fraunces** | display: `h1`–`h3`, the headings inside figure boxes (the join's, a post's own) |
 | **Atkinson Hyperlegible** | body and UI text |
 | **IBM Plex Mono** | code and the data/terminal devices: index rows, the `S·L` stamp, the footer wordmark, labels and numbers in figures |
 
@@ -71,9 +74,16 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   (`clamp(1.3rem, 1.12rem + 0.9vw, 1.6rem)`), `h3` 1.12–1.35rem.
 - **Small text has a floor.** 12px (`--text-xs`, 0.75rem) is the smallest
   running text: row meta and its dates, pills, eyebrows, table headers, the
-  stage key. Tracked labels can go to 11px: the index-row labels, the year
-  labels in the Writing index, the résumé's section labels (0.7rem) and the
-  footer wordmark. Figures set their own label sizes.
+  stage key. Below it sit the smaller labels named under Labels, and
+  the words inside a figure's drawing, which set their own sizes; the case
+  studies keep their own scale (Rooms, below).
+- **Labels.** Tracked labels are mono, 12px, 600, uppercase, tracked 0.1em:
+  the eyebrow, section eyebrows, table headers, figure titles, the dialog
+  title, state labels. Moss when the label is a heading; muted when it names
+  a box or a table. Three stay at 11px: index-row labels, the Writing year
+  labels, the footer wordmark; the résumé keeps its own ruled section labels.
+  State labels add a 1px border in the state's colour, a 10% tint of it,
+  `2px 6px` padding and the small corner.
 - One date format everywhere: "24 Jul 2026" (the `humanDate` filter). The
   résumé is the exception: its roles give years only ("2025–2026"), as
   résumés do.
@@ -107,18 +117,29 @@ Three families, all self-hosted from `src/assets/fonts/` (never Google Fonts):
   portrait. Pixel is an accent, never a texture. (The home's divider is a
   plain hairline now.)
 - **Retired:** the woodcut stamp and corner frames, the speckled forest-floor
-  background, the dark garden night panel, the maple leaf.
+  background, the dark garden night panel, the maple leaf; the seasonal
+  under-glow, the card gradient and the paper grain (2026-11).
 
 ## Surfaces and composition
 
-- **One card look**: hairline border, the shared radius and padding, a soft
-  shadow, a warm top-lit gradient in light mode, and the seasonal
-  **under-glow** (`--card-shadow`). Project cards, the Now panel and the
-  garden all use it.
-- **Backgrounds**: only a whisper of paper grain. No pattern, no texture, no
+- **One framed box**: hairline `--rule`, the shared radius, a flat
+  `--bg-alt` fill, no shadow. Content panels (project cards, the Now panel,
+  About's résumé hand-off, the shortcuts dialog) pad `--space-lg`; figure
+  panels `--space-md`.
+- **Backgrounds**: flat parchment and charcoal. No texture, no pattern, no
   dark hero blocks.
 - **Separation**: quiet eyebrow labels and generous whitespace. Never stack
   separator systems; one per page is plenty.
+- **Rhythm.** The title block sits 88px under the header rule and 32px
+  above the first content on every page that uses the shared title block
+  (the résumé keeps its own header, 16px under the stamp line; on the 404
+  the illustration comes first); a section eyebrow sits 16px above its list;
+  the last block sits 112px above the footer rule (64px of page padding and
+  48px of footer margin); the header and footer rules span the text column.
+  Composed pages (home, Writing) space their blocks by `--flow`;
+  running-text pages space sections by the heading's `--space-2xl`. On a
+  phone the page padding narrows, so the first and third gaps read 64px and
+  88px.
 - **Tables**: hairline `--rule` lines between rows (a `--muted` one under the
   header row), cells padded `--space-xs` by `--space-sm`, and headers in
   mono at 600 (like the stamp), 12px, uppercase, tracked, in `--muted`. A
@@ -156,6 +177,10 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   it (the résumé's print button).
 - **Controls look like controls.** Buttons and the switches carry a
   `--muted` border, not the faint `--rule` hairline.
+- **A card's hover is a border, not a lift.** A hovered card's border
+  turns moss; the card does not move and casts no shadow.
+- **The shortcuts dialog sits on a plain tint.** The page behind it is
+  tinted, not blurred.
 - **The theme switch has two states.** The site follows the system setting
   until the visitor presses the switch; a press stores light or dark in that
   browser, applied before first paint on later visits. There is no "system"
@@ -175,7 +200,7 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   site, scoped to `.story`, on these tokens and fonts. Their composition is
   their own, and the live front-door page is the reference: a heavy Fraunces
   headline (800), chapter H2s in moss at display size (about 2.3rem, 700),
-  and figures in flat framed panels on `--bg-alt`, not the glowing card.
+  and figures in flat framed panels on `--bg-alt`, like the site's own.
   Figures follow pen + pixel like everywhere else. Bring a story in with the
   converter, which keeps this look; never restyle the room toward the
   site-wide heading tier or card. Each story's hero carries the `S·L` stamp

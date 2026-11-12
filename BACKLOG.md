@@ -300,6 +300,33 @@ Candidates for future work beyond the current sprint. No commitment implied.
       beside each story; the stories may need the same pass from the other
       direction. Check: a reader with the résumé and a story side by side
       can't name the organization behind the story.
+- [ ] **The device-decisions pass.** Go through the small signatures the
+      audit lists in D.3 ("Fewer devices, not more": the stamp, seasons,
+      pixel marks, mono rows, the console greeting, stranger.txt, llms.txt,
+      the chords) and decide, one by one, which stay.
+- [ ] **Corner radius 10 → 6?** A mock of Projects and the shortcuts dialog
+      at 6px beside today's 10px.
+- [ ] **The home and Writing section headings as Fraunces H2s?** A mock of
+      both pages with the eyebrows set as display-serif headings.
+- [ ] **The type scale.** A census of every size in use, and a proposal for
+      a shorter scale.
+- [ ] **The story badge's line height and weight.** The shared `.badge`
+      rule now sets `line-height: 1` and weight 600, which the generated
+      `.story .badge` would also pick up through the cascade if a story ever
+      rendered a badge (none does today); settle it in the converter when
+      the stories are next re-stamped.
+- [ ] **The console greeting still talks about the glow.**
+      `src/assets/js/console-hello.js` says the glow runs to frost, lilac,
+      full and amber by season; the glow is retired and the season now
+      shifts only the Now pulse and text selection. Reword it in Seb's voice,
+      or retire it with the device-decisions pass.
+- [ ] **One colour for "active"?** Now that the pill and the badge are one
+      family, "ACTIVE" is amber on the home's Work list pill and moss on the
+      Projects badge, so the same word reads as two states. Seb's call on
+      one colour.
+- [ ] **The Work list's ↗ on a narrow phone.** Between about 321 and 350px
+      wide, a row's trailing ↗ drops onto a line of its own; a non-breaking
+      space before it in `src/index.njk` would hold it beside the address.
 
 ### Pitch v1 Follow-ups
 

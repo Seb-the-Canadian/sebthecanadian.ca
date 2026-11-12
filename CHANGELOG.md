@@ -4,6 +4,60 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-09 — A quieter surface
+
+### Changed
+- **The seasonal under-glow, the card gradient and the paper grain are
+  retired.** Project cards, the Now panel and About's résumé hand-off are
+  now one flat framed box: a hairline border, the shared corner, a flat
+  panel fill, no shadow. Hovering a card turns its border the accent colour;
+  it no longer lifts. The page behind is flat parchment in light mode and
+  flat charcoal in dark. The seasons still shift the Now pulse and text
+  selection.
+- **The shortcuts dialog is a plain tinted sheet.** The page behind it is
+  tinted but no longer blurred, the dialog has no shadow, and it takes the
+  same panel fill and padding as the other boxes.
+- **The boxes and chips inside figures take the site's small corner**, and
+  the figure panels in "Down and Out, revisited" pad the same on every side.
+- **Small labels are one thing.** Eyebrows, section labels, table headers,
+  figure titles, the shortcuts dialog's title and the webmention heading now
+  share one size, weight and letter-spacing. Labels that head a section stay
+  the accent colour; labels that name a box or a table are grey. The
+  "in progress" pill and the project badges are now one family too: same
+  size, padding, border and corner, each in its own state's colour.
+- **Directory rows are easier to read**: the rows on the home page, in the
+  Writing room and on the tag pages, and the "All writing" link, go from
+  13px to 14px.
+- **The home page's opening lines up with everything below it.** The mark,
+  the name, the line and the topics now start on the same left edge as the
+  text, and the name sits the same distance under the header as every
+  other page's title.
+- **The lines under the header and above the footer are the width of the
+  text**, no longer wider than it, and the first menu word starts on the
+  same edge.
+- **One rhythm on every page.** A page's title sits the same distance above
+  its first content everywhere (Projects, Uses and Links had a larger gap); a
+  section label now sits the same 16px above its list everywhere (closer on
+  the home page, a little further off in the Writing room and the Now
+  panel); and the last thing on a page sits the same distance above the
+  footer on every page.
+- **The colophon's design line no longer names the retired glow**: the
+  accents it lists are moss and lichen.
+
+### Fixed
+- **In dark mode, panels sit above the page again.** The grain had lifted
+  the page to the panel's own colour, so the Now panel and the cards did not
+  stand out from it.
+- **The shortcuts dialog's Close button is centred**, under the switch and
+  the line above it.
+- **The shortcuts dialog keeps its rounded corners when it opens.** The
+  focus ring no longer tightens them.
+- **The home page no longer scrolls sideways on a very narrow phone**: a
+  long web address in the Work list now breaks onto a second line.
+- **The footer's "last built" line now clears the contrast floor.** It had
+  been faded below it (3.8:1 on light parchment); it now takes the plain
+  grey of the rest of the footer.
+
 ## 2026-11-09 — About's link preview in one voice
 
 ### Changed
