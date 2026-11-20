@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Date | 2026-11-20 |
-| Status | Builder check done (5 questions, all settled below as Claude's calls); waiting for Grieves's approval |
+| Status | Approved by Grieves, 2026-11-20 (builder check's 5 questions settled as Claude's calls) |
 | Branch | `feature/revision-history` (from `main` at 8c307fa) |
 | First case | "Reading power, sphere by sphere", whose 2nd revision ("What it could change") ships in the same branch |
 
