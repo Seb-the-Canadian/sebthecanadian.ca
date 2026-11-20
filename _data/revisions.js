@@ -2,11 +2,11 @@
 // build (lib/revisions.js). A post gets versions only when its "## Revisions"
 // section has two or more dated lines. Returns
 //   { bySlug: { <slug>: [version…] }, pages: [version…] }
-// where a version is { slug, n, total, date, text, isLatest, data, html, css,
-// url, postUrl }: data is that version's own front matter, html its body with
-// the changes since the version before marked, css its pageStyles as they
-// stood then (inlined on the version page; "" for the newest, which links the
-// current files). With no or shallow git history it warns and returns nothing.
+// where a version is { slug, n, total, prevN, nextN, date, text, isLatest,
+// data, html, css, url, postUrl, prevUrl, nextUrl }: data is that version's
+// own front matter, html its body with the changes since the version before
+// marked, css its pageStyles as they stood then (inlined on the version page;
+// "" for the newest, which links the current files). With no or shallow git history it warns and returns nothing.
 import { readdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import markdownIt from "markdown-it";
@@ -41,7 +41,12 @@ export default function () {
       return {
         slug,
         n: v.n,
-        total: versions.length,
+        // total is the number of declared lines; a version left out (its
+        // commit has no copy of the file) leaves a gap, so the pages link
+        // to their neighbours in this list, not by number.
+        total: versions[versions.length - 1].n,
+        prevN: i > 0 ? versions[i - 1].n : null,
+        nextN: i < versions.length - 1 ? versions[i + 1].n : null,
         date: v.date,
         text: v.text,
         isLatest: i === versions.length - 1,
@@ -52,6 +57,10 @@ export default function () {
         postUrl: `/writing/${slug}/`,
       };
     });
+    for (const v of list) {
+      v.prevUrl = v.prevN ? `/writing/${slug}/v${v.prevN}/` : null;
+      v.nextUrl = v.nextN ? `/writing/${slug}/v${v.nextN}/` : null;
+    }
     bySlug[slug] = list;
     pages.push(...list);
   }

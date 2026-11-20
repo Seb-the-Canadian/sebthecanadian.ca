@@ -97,8 +97,12 @@ is now the one space; the garden may come back later.
 - **Which history:** every build reads HEAD's first-parent line. On the
   deploy that is `main`. On a branch preview or a PR check it is the
   branch, so v1 and v2 can be previewed before merging. This holds for
-  merge, squash or rebase merges, as long as **a revision's content and its
-  Revisions line land in the same commit**. `docs/updating-copy.md` will say
+  merge, squash or rebase merges of one revision, as long as **a
+  revision's content and its Revisions line land in the same commit**. When
+  one merge commit brings two revisions, the version between is read from the
+  merged branch's own line; a squash of two revisions loses it, so it is left
+  out with a warning. *(Second pass, 2026-11-20: the first wording claimed all
+  merge kinds; two revisions per pull request broke it.)* `docs/updating-copy.md` will say
   so. *(Claude's call, builder check Q2.)*
 - **The PR check gets `fetch-depth: 0`**, like the deploy, so CI builds the
   version pages and doesn't only test the fallback. *(Claude's call, Q2.)*

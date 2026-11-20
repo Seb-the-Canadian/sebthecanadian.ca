@@ -300,9 +300,13 @@ by sphere". Don't run **Publish Note** for these; edit the file instead.
   a "How this page has grown" figure, and each version gets its own page
   (`/writing/<slug>/v1/`, `/v2/` …), built from the site's history with the
   changes since the version before marked. Commit the line together with
-  the change it describes, in one commit; a line committed on its own
-  splits the versions in the wrong place. Typo fixes need no line: they
-  stay part of the version they fix.
+  the change it describes, in one commit; content committed before its
+  line ends up in the version before. Typo fixes
+  need no line: they become part of the newest version, so a fix to a
+  passage an older version already had shows there as "changed".
+  Two revisions in one pull request are fine with **Merge pull request**
+  (a merge commit). With **Squash and merge** the one between is lost: the
+  build leaves that version out and warns.
 - **When it stops changing,** delete the `inProgress: true` line (the "in
   progress" tag goes, and the post moves out of `evolving/`) and move
   `stage` on to `budding` or `evergreen`.

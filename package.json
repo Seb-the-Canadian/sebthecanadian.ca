@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Personal site for Seb Lathangue \u2014 sebthecanadian.ca",
+  "description": "Personal site for Seb Lathangue — sebthecanadian.ca",
   "scripts": {
     "garden-sync": "node scripts/garden-rss.js",
     "webmentions-sync": "node scripts/webmentions.js",

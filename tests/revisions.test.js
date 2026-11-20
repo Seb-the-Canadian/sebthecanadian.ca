@@ -89,3 +89,106 @@ test("diffBlocks marks a wholly new run (heading, paragraph, new list) once", ()
   assert.doesNotMatch(html, /ver-li--new/);
   assert.match(html, /ver-mark--new[\s\S]*<h2>Added<\/h2>[\s\S]*<li>a<\/li>[\s\S]*End para[\s\S]*<\/div>/);
 });
+
+test("findVersions: a fix after the next declaration stays out of the earlier version", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "revs-"));
+  git(dir, "init", "-q", "-b", "main");
+  const f = path.join(dir, "p.md");
+  writeFileSync(f, post("First idea.", [["1 Jan 2026", "a"]]));
+  git(dir, "add", "-A"); git(dir, "commit", "-q", "-m", "v1");
+  writeFileSync(f, post("First idea.\n\nSecnd thought.", [["1 Jan 2026", "a"], ["2 Jan 2026", "b"]]));
+  git(dir, "commit", "-q", "-am", "v2");
+  writeFileSync(f, post("First idea.\n\nSecond thought.", [["1 Jan 2026", "a"], ["2 Jan 2026", "b"]]));
+  git(dir, "commit", "-q", "-am", "typo in v2");
+  const { versions } = findVersions("p.md", { cwd: dir });
+  assert.doesNotMatch(versions[0].source, /thought/);
+  assert.match(versions[1].source, /Second thought/);
+});
+
+test("findVersions: on a merge commit, the earlier version is the main line before the merge", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "revs-"));
+  git(dir, "init", "-q", "-b", "main");
+  const f = path.join(dir, "p.md");
+  writeFileSync(f, post("First idea.", [["1 Jan 2026", "a"]]));
+  git(dir, "add", "-A"); git(dir, "commit", "-q", "-m", "v1");
+  git(dir, "checkout", "-q", "-b", "pr");
+  writeFileSync(f, post("First idear.", [["1 Jan 2026", "a"]]));
+  git(dir, "commit", "-q", "-am", "edit on the branch");
+  writeFileSync(f, post("First idear.\n\nSecond thought.", [["1 Jan 2026", "a"], ["2 Jan 2026", "b"]]));
+  git(dir, "commit", "-q", "-am", "v2");
+  git(dir, "checkout", "-q", "main");
+  writeFileSync(path.join(dir, "other.txt"), "x");
+  git(dir, "add", "-A"); git(dir, "commit", "-q", "-m", "main moves");
+  git(dir, "merge", "-q", "--no-ff", "-m", "merge pr", "pr");
+  const { versions } = findVersions("p.md", { cwd: dir });
+  assert.match(versions[0].source, /First idea\./);
+  assert.match(versions[1].source, /Second thought/);
+});
+
+test("findVersions: a shallow clone gives no versions and a warning", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "revs-"));
+  git(dir, "init", "-q", "-b", "main");
+  const f = path.join(dir, "p.md");
+  writeFileSync(f, post("A.", [["1 Jan 2026", "a"]]));
+  git(dir, "add", "-A"); git(dir, "commit", "-q", "-m", "v1");
+  writeFileSync(f, post("A.\n\nB.", [["1 Jan 2026", "a"], ["2 Jan 2026", "b"]]));
+  git(dir, "commit", "-q", "-am", "v2");
+  const shallow = mkdtempSync(path.join(tmpdir(), "shallow-"));
+  git(shallow, "clone", "-q", "--depth", "1", `file://${dir}`, "c");
+  const { versions, warning } = findVersions("p.md", { cwd: path.join(shallow, "c") });
+  assert.deepEqual(versions, []);
+  assert.match(warning, /shallow/);
+});
+
+test("diffBlocks keeps one list when a new item comes first or one is removed from the middle", () => {
+  const first = diffBlocks(md, "Intro.\n\n1. two\n2. three", "Intro.\n\nNew para.\n\n1. one\n2. two\n3. three");
+  assert.equal((first.match(/<ol>/g) || []).length, 1);
+  assert.match(first, /<ol>\s*<li class="ver-li ver-li--new">[\s\S]*one[\s\S]*<li>two<\/li>/);
+  const mid = diffBlocks(md, "- one\n- two\n- three", "- one\n- three");
+  assert.equal((mid.match(/<ul>/g) || []).length, 2); // the list, and the removed item's own box
+  assert.match(mid, /<li>one<\/li>\s*<li class="ver-li ver-li--removed">[\s\S]*two[\s\S]*<\/li>\s*<li>three<\/li>\s*<\/ul>/);
+});
+
+test("diffBlocks keeps an ordered list's start number", () => {
+  assert.match(diffBlocks(md, "3. c\n4. d", "3. c\n4. d\n5. e"), /<ol start="3">/);
+});
+
+test("diffBlocks pairs a changed unit only with one of its own kind", () => {
+  const html = diffBlocks(md, "Alpha beta gamma delta.", "- Alpha beta gamma delta");
+  assert.doesNotMatch(html, /changed/);
+  assert.match(html, /ver-removed[\s\S]*ver-mark--new/);
+});
+
+test("findVersions: two revisions in one merged branch keep a correct middle version; a squash leaves it out with a warning", () => {
+  const make = () => {
+    const dir = mkdtempSync(path.join(tmpdir(), "revs-two-"));
+    git(dir, "init", "-q", "-b", "main");
+    mkdirSync(path.join(dir, "w"));
+    writeFileSync(path.join(dir, "other.txt"), "x");
+    const f = path.join(dir, "w", "p.md");
+    writeFileSync(f, post("A.", [["1 Jan 2026", "one"]]));
+    git(dir, "add", "-A"); git(dir, "commit", "-q", "-m", "v1");
+    git(dir, "checkout", "-q", "-b", "feat");
+    writeFileSync(f, post("A.\n\nB.", [["1 Jan 2026", "one"], ["2 Jan 2026", "two"]]));
+    git(dir, "commit", "-q", "-am", "v2");
+    writeFileSync(f, post("A.\n\nB.\n\nC.", [["1 Jan 2026", "one"], ["2 Jan 2026", "two"], ["3 Jan 2026", "three"]]));
+    git(dir, "commit", "-q", "-am", "v3");
+    git(dir, "checkout", "-q", "main");
+    writeFileSync(path.join(dir, "other.txt"), "y");
+    git(dir, "commit", "-q", "-am", "main moves");
+    return dir;
+  };
+  const m = make();
+  git(m, "merge", "-q", "--no-ff", "-m", "merge", "feat");
+  const merged = findVersions("w/p.md", { cwd: m });
+  assert.deepEqual(merged.versions.map((v) => v.n), [1, 2, 3]);
+  assert.doesNotMatch(merged.versions[0].source, /B\./);
+  assert.match(merged.versions[1].source, /B\./);
+  assert.doesNotMatch(merged.versions[1].source, /C\./);
+
+  const s = make();
+  git(s, "merge", "-q", "--squash", "feat"); git(s, "commit", "-q", "-m", "squash");
+  const squashed = findVersions("w/p.md", { cwd: s });
+  assert.deepEqual(squashed.versions.map((v) => v.n), [1, 3]);
+  assert.ok(squashed.warning);
+});
