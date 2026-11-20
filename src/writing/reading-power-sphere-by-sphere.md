@@ -167,6 +167,8 @@ Every role runs back to something checkable. Sources are documented first. Event
 
 I don't think of this as one person and an AI. My hope is that it becomes a shared framework: a schema that journalists, researchers and citizens could fill in, check and argue over together, the way [Wikipedia's editors challenge each other](/writing/grokipedia-was-a-warning-shot/). It's the kind of [public knowledge infrastructure](/writing/public-knowledge-infrastructure-instead-of-a-private-trainin/) I've been asking about. A news app like Ground News could use something like it to show not only how a story is told, but who holds the channel behind it.
 
+A first version of that schema is now on GitHub: [spheres-ledger](https://github.com/Seb-the-Canadian/spheres-ledger). It holds the six spheres, the tests and the evidence trail as files anyone can open and check, with invented example data, the rules written out, and a way to challenge them. It's version 1.0. The next versions will come from testing it against real cases, and each one will say what changed and why.
+
 Mostly, I want people to be able to trace who constrains them and why: to understand how the world works, and how often it doesn't work for them.
 
 ## What it could change
@@ -195,8 +197,10 @@ Collecting the next window of events, testing whether the six spheres hold up or
 
 - **20 Nov 2026.** First version of this page (MVP 1.0): where the idea came from, the structure, the tests and the evidence trail. No results yet.
 - **20 Nov 2026.** What it could change: three things the framework could do inside the tools people use to read the news.
+- **20 Nov 2026.** The schema, version 1.0, published on GitHub and linked from "Who it's for".
 
 ## Sources
 
-- The spheres ledger: my working dataset and its rules (not public yet).
+- The spheres ledger schema, version 1.0: [github.com/Seb-the-Canadian/spheres-ledger](https://github.com/Seb-the-Canadian/spheres-ledger). The method, the schema and invented example data. MIT for the code; CC BY 4.0 for the rest.
+- The spheres ledger: my working dataset (not public yet).
 - This project is done with Claude, an AI model made by Anthropic. Its part is labelled as its own.
