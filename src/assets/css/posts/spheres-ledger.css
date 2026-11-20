@@ -1,0 +1,97 @@
+/* posts/spheres-ledger.css — figures for "Reading power, sphere by sphere".
+   Loaded after figures.css through the post's pageStyles; reuses its panel,
+   title, legend, chips, sequence and print rules, and adds only what this
+   post needs (prefix sl-). Pen + pixel marks (docs/pen-and-pixel.md): meaning
+   rides on marks, never colour; marks sit in a strip at the edge and always
+   beside a word; text never sits on texture. Moss = where to look. Amber = a
+   state, with ◆ and a word, on border and tint only. Works without JS. */
+
+.sl-fig .fig__chips{ margin-top: .7rem; }
+
+/* ── Figure 1: the spheres, drawn in SVG. Every colour is a token. ── */
+.sl-spheres{ display: block; width: 100%; max-width: 260px; height: auto; margin: 0 auto; overflow: visible; }
+.sl-ring circle{ fill: none; stroke: var(--mark); stroke-width: 1.5; }
+.sl-spheres text{
+  font-family: var(--mono); font-size: 13px; font-weight: 600; text-anchor: middle; fill: var(--muted);
+  paint-order: stroke; stroke: var(--bg-alt); stroke-width: 4px; stroke-linejoin: round;
+}
+.sl-spheres .sl-name{ fill: var(--ink); font-size: 14px; }
+.sl-edge{ stroke: var(--ink-soft); stroke-width: 2; stroke-linecap: round; }
+.sl-edge--moss{ stroke: var(--moss); stroke-width: 2.5; }
+.sl-head{ fill: var(--moss); }
+.sl-head--ink{ fill: var(--ink-soft); }
+.sl-node{ stroke: var(--ink); stroke-width: 2; }
+.sl-node--x{ fill: var(--ink); }
+.sl-node--y{ fill: var(--bg-alt); }
+
+/* The role chips and legend swatches mirror the nodes: filled and open. */
+.sl-chip--node-x, .sl-chip--node-y{ padding-left: .45rem; }
+.sl-chip--node-x::before, .sl-chip--node-y::before{
+  content: ""; flex: none; width: 10px; height: 10px; margin-right: .4rem; border-radius: 50%; border: 2px solid var(--ink);
+}
+.sl-chip--node-x::before{ background: var(--ink); }
+.sl-mk--node-x, .sl-mk--node-y{ border-radius: 50%; box-shadow: inset 0 0 0 2px var(--ink); }
+.sl-mk--node-x{ background: var(--ink); }
+
+/* The sequence's sentence sits under each panel, as on About. */
+.sl-seq .fig{ margin: 0; }
+
+/* ── Figures 2 and 3: tiles, as in Down and Out's five steps ── */
+.sl-row{ margin: 0 0 .9rem; }
+.sl-row__name{
+  margin: 0 0 .45rem; font-family: var(--mono); font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+}
+.sl-steps{ display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .55rem; margin: 0; padding: 0; list-style: none; }
+.sl-step{
+  position: relative; margin: 0; min-width: 0; background: var(--bg); border: 1px solid var(--rule);
+  border-radius: var(--radius-sm); padding: 1rem .75rem .75rem; overflow: hidden;
+}
+.sl-step::before{ content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7px; }
+.sl-step--hatch::before{ background: var(--mark-hatch); }
+.sl-step--solid::before{ background: var(--mark-solid); }
+.sl-step--ruled::before{ background: var(--mark-ruled); }
+.sl-step--dither::before{ background: var(--mark-dither); }
+.sl-step--out{ padding-top: .75rem; }
+.sl-step--moss{ outline: 2px solid var(--moss); outline-offset: 2px; }
+.sl-step__k{ display: block; font-family: var(--mono); font-size: var(--text-xs); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.sl-step__t{ display: block; font-weight: 700; color: var(--ink); margin: .1rem 0 .25rem; line-height: 1.25; }
+.sl-step__d{ display: block; font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.45; }
+.sl-step--out .sl-step__t{ font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.sl-outs{ margin-top: .55rem !important; gap: 4px; }
+
+/* Outcome chips: dashed = unresolved; the state chip = amber border and tint, ink text. */
+.sl-chip--dashed{ border: 1.5px dashed var(--mark); background-image: none; padding-left: .45rem; }
+.sl-chip--state{
+  padding-left: .45rem; background-image: none; border-color: var(--amber);
+  background: color-mix(in oklab, var(--amber) 10%, var(--bg));
+}
+.sl-icon{ margin-right: .35rem; }
+.sl-outs .chip{ max-width: 100%; }
+.sl-mk--state{ box-shadow: none; border: 1px solid var(--amber); background: color-mix(in oklab, var(--amber) 10%, transparent); }
+
+/* Claude's scan: one tile beside the trail, under steps 2 and 3. */
+.sl-scan{ display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .55rem; margin-top: .55rem; }
+.sl-scan .sl-step{ grid-column: 2 / span 2; }
+
+@media (max-width: 760px){
+  .sl-steps, .sl-scan{ grid-template-columns: minmax(0,1fr); }
+  .sl-scan .sl-step{ grid-column: 1; }
+  .sl-step{ padding: .8rem .8rem .75rem 1.2rem; }
+  .sl-step::before{ right: auto; bottom: 0; width: 7px; height: auto; }
+  .sl-step--out{ padding-left: .8rem; }
+}
+
+@media print{
+  .sl-fig{ break-inside: avoid; }
+  /* figures.css pins the light-mode ink and the mark gradients on .fig and its
+     children; re-assert this post's strips, nodes and outlines over print.css. */
+  .sl-fig, .sl-fig *, .sl-fig *::before{ -webkit-print-color-adjust: exact; print-color-adjust: exact; --ink: #15201a; --ink-soft: #3a453d; --bg: #fff; --bg-alt: #fff; }
+  .sl-step--hatch::before{ background: var(--mark-hatch) !important; }
+  .sl-step--solid::before{ background: var(--mark-solid) !important; }
+  .sl-step--ruled::before{ background: var(--mark-ruled) !important; }
+  .sl-step--dither::before{ background: var(--mark-dither) !important; }
+  .sl-mk--node-x, .sl-chip--node-x::before{ background: #15201a !important; }
+  .sl-mk--state{ border: 1px solid #b07a0f !important; }
+  .sl-chip--state{ border-color: #b07a0f !important; }
+}
