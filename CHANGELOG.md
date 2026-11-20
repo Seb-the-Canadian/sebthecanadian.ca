@@ -4,6 +4,20 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-20 — Reading power, sphere by sphere
+
+### Added
+- **A new evolving post, "Reading power, sphere by sphere".** It sets out
+  the spheres ledger as information architecture: where the idea came
+  from, six overlapping spheres, the controller and resident tests, and the
+  evidence trail, in three pen + pixel figures. It is marked in progress
+  and shows no results yet.
+
+### Changed
+- `docs/updating-copy.md` explains how to change a post that has figures
+  and how to publish work that was built on a branch. `docs/brand.md` and
+  `docs/pen-and-pixel.md` now count this post's print rules.
+
 ## 2026-11-09 — A quieter surface
 
 ### Changed

@@ -190,7 +190,7 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
 - **Motion stops on its own.** The Now dot pulses five times on arrival
   (about 12 seconds), then rests.
 - **Reduced motion** is honoured; a **print** stylesheet exists and stays
-  correct (the figures on the home, About and Writing, and in one post, keep
+  correct (the figures on the home, About and Writing, and in two posts, keep
   their marks on paper; the résumé's mark prints).
 - Phone width is a first-class layout, not a squeeze.
 

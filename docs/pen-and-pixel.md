@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Date | 2026-10-26 |
-| Status | Adopted. Used by the case studies (`src/assets/css/case-study-marks.css`, generated), the home's and About's figures and the Writing room's stages (`figures.css`), and one post's figures (`posts/revisiting-down-and-out.css`) |
+| Status | Adopted. Used by the case studies (`src/assets/css/case-study-marks.css`, generated), the home's and About's figures and the Writing room's stages (`figures.css`), and two posts' figures (`posts/revisiting-down-and-out.css`, `posts/spheres-ledger.css`) |
 | Tokens | `--mark`, `--mark-solid`, `--mark-ruled`, `--mark-hatch`, `--mark-dither` in `src/assets/css/tokens.css` |
 
 ## The problem it solves
@@ -84,9 +84,11 @@ everything else here.
    and direct labels, three at most. More than that: small multiples.
 
 The mark tokens follow the mode on their own; they are drawn in `--ink-soft`.
-`print.css` clears backgrounds, so two stylesheets put the marks back for
+`print.css` clears backgrounds, so three stylesheets put the marks back for
 print, inside figures only: `figures.css` (the home, About and Writing
-figures) and `posts/revisiting-down-and-out.css` (that post's figures). Each
-pins `--mark` to the light-mode ink and re-declares the four mark gradients,
-so the marks print in that ink whatever mode the page was printed from. The
+figures), `posts/revisiting-down-and-out.css` and `posts/spheres-ledger.css`
+(those posts' figures). Each pins `--mark` to the light-mode ink and
+re-declares the four mark gradients (the spheres post takes them from
+`figures.css` and re-asserts its own strips), so the marks print in that ink
+whatever mode the page was printed from. The
 case-study marks have no print rule yet.
