@@ -1,0 +1,19 @@
+{#- fig-versions.njk — "How this page has grown": one step per declared
+    version of the post (_data/revisions.js), placed by post.njk just before
+    "Revisions". Solid = a recorded version; moss = the current one. Each step
+    links to that version's page, where the changes since the one before are
+    marked. Set `vers` (the post's version list) before the include.
+    Styles: figures.css + versions.css (writing.11tydata.js adds them). -#}
+<figure class="fig ver-fig" aria-labelledby="ver-fig-title">
+<p class="fig__title" id="ver-fig-title">How this page has grown</p>
+<ol class="ver-steps">
+{%- for v in vers %}
+<li class="ver-step{% if v.isLatest %} ver-step--current{% endif %}"><a class="ver-step__link" href="{{ v.url }}"><span class="ver-step__k">version {{ v.n }} · {{ v.date }}</span>{% if v.isLatest %}<span class="ver-step__now">current</span>{% endif %}<span class="ver-step__d">{{ v.text }}</span></a></li>
+{%- endfor %}
+</ol>
+<ul class="fig__legend" aria-label="What the marks mean">
+<li><span class="fig__mk fig__mk--solid" aria-hidden="true"></span>solid · a recorded version</li>
+<li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · the one you're reading</li>
+</ul>
+<figcaption>Each step opens the page as it stood then, with what changed since the step before marked.</figcaption>
+</figure>
