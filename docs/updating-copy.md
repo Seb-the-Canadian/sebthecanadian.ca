@@ -274,3 +274,78 @@ forget "GitHub · sebthecanadian.ca", and run the action again. It asks
 for the token and for the words to warn on (an employer name, say) again;
 those words stay in Drafts, never in this repository. The script itself,
 and how to reinstall it, is in `tools/drafts/`.
+
+## Changing a post that has figures
+
+Two posts are written by hand rather than from Drafts, because Drafts
+can't carry figures: "Down and Out, revisited" and "Reading power, sphere
+by sphere". Don't run **Publish Note** for these; edit the file instead.
+
+| Post | Words and figures | Figure styles |
+|------|-------------------|---------------|
+| Down and Out, revisited | `src/writing/revisiting-down-and-out.md` | `src/assets/css/posts/revisiting-down-and-out.css` |
+| Reading power, sphere by sphere | `src/writing/reading-power-sphere-by-sphere.md` | `src/assets/css/figures.css` and `src/assets/css/posts/spheres-ledger.css` |
+
+- **The words** between the figures are ordinary Markdown.
+- **The figures** are the blocks that start with `<figure` or
+  `<div class="fig-seq`. You can change the words inside them; leave the
+  tags, the `class="…"` and `id="…"` parts, and the numbers in the
+  drawings alone. Meaning in a figure rides on marks, not colour
+  (`docs/pen-and-pixel.md`).
+- **Each time you change one of these posts,** set `updated:` in its front
+  matter to today's date (`YYYY-MM-DD`) and add a dated line under
+  `## Revisions`, in the same shape as the ones there.
+- **When it stops changing,** delete the `inProgress: true` line (the "in
+  progress" tag goes, and the post moves out of `evolving/`) and move
+  `stage` on to `budding` or `evergreen`.
+
+Preview it the usual way (`npm run dev`), in light and dark and at phone
+width, then publish as above.
+
+## Publishing work that's on a branch
+
+Sometimes a change is built on a branch in a separate folder, so `main`
+stays untouched until you've read it. "Reading power, sphere by sphere"
+was built that way: branch `writing/spheres-ledger`, in the folder
+`~/sebthecanadian.ca-spheres`. To publish it, send the branch to GitHub
+and merge it there.
+
+Go to the branch's folder:
+
+```bash
+cd ~/sebthecanadian.ca-spheres
+```
+
+Check there is nothing left uncommitted (it should print nothing):
+
+```bash
+git status --short
+```
+
+Send the branch to GitHub:
+
+```bash
+git push -u origin writing/spheres-ledger
+```
+
+On github.com, open the repository. A yellow bar offers **Compare & pull
+request**; click it, read the changes in **Files changed**, then click
+**Merge pull request** and **Confirm merge**. Merging puts it on `main`,
+and `main` is what goes live, one to three minutes later. Check it the
+same way as any change (see "Check it went live").
+
+To take it back down after merging, open the merged pull request and
+click **Revert**, then merge the pull request that makes. That is a new
+commit, so `main`'s history stays straight.
+
+Once it's merged, tidy away the separate folder. Go to the main folder:
+
+```bash
+cd ~/sebthecanadian.ca
+```
+
+Remove the branch's folder (the branch itself stays on GitHub):
+
+```bash
+git worktree remove ../sebthecanadian.ca-spheres
+```
