@@ -4,6 +4,22 @@ Format:
 - Dates in ISO format (YYYY-MM-DD)
 - Focus on user-visible changes and structural milestones
 
+## 2026-11-20 — How a page has grown
+
+### Added
+- **Versions of evolving posts.** A post with two or more dated Revisions
+  lines now shows "How this page has grown" before its Revisions, and each
+  version has its own page (`/writing/<slug>/v1/` and on) showing the post
+  as it stood then, with what changed since the version before marked.
+  Built from the site's git history at build time; old versions keep the
+  figure styles they had.
+- **"Reading power, sphere by sphere" gets its second version**, "What it
+  could change".
+
+### Changed
+- The pull-request check builds with full history and runs the new unit
+  tests (`npm test`).
+
 ## 2026-11-20 — Reading power, sphere by sphere
 
 ### Added

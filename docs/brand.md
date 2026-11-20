@@ -217,6 +217,18 @@ Meaning in figures rides on marks, not colour: **pen + pixel**
   words, never colour: seedling (a first pass), budding (reworked),
   evergreen (settled). A post page opens with the stamp and its type as the
   eyebrow, then its title, and shows type and stage in its meta line.
+- **Versions of evolving posts.** A post with two or more dated lines under
+  its Revisions heading shows a figure, "How this page has grown", just
+  before that heading: one step per version, solid = a recorded version,
+  moss = the current one. Each version has its own page at
+  `/writing/<slug>/v<n>/`, built from the site's history, opened by an
+  amber state banner (◆ and the words "An earlier version" or "The current
+  version"). On a version page, what changed since the version before is
+  marked on the prose, outside any figure, so it is a plain 2px line beside
+  the word (solid = new, dashed = changed), never a texture; removed
+  passages fold into a closed "Removed here" box. Version pages are not
+  indexed and point search engines to the live post. Styles:
+  `versions.css`.
 - **The garden** (cognitivearchitecture.ca) is no longer where writing
   starts. Its posts stay in the Atom feed, linking out, until they move here.
 
