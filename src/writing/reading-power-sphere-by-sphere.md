@@ -50,13 +50,16 @@ Power isn't one thing. A country can set the terms for banking and have almost n
 <svg class="sl-spheres" viewBox="0 0 240 240" role="img" aria-label="Inside the security sphere, Controller X points to Resident Y: one edge, one claim" focusable="false">
 <g class="sl-ring"><circle cx="120" cy="68" r="56"/><circle cx="165" cy="94" r="56"/><circle cx="165" cy="146" r="56"/><circle cx="120" cy="172" r="56"/><circle cx="75" cy="146" r="56"/><circle cx="75" cy="94" r="56"/></g>
 <g class="sl-tags"><text x="120" y="29">S1</text><text x="204" y="76">S2</text><text x="204" y="172">S3</text><text x="120" y="223">S4</text><text x="36" y="172">S5</text><text x="36" y="76">S6</text></g>
-<line class="sl-edge sl-edge--moss" x1="99" y1="44" x2="134" y2="44"/><polygon class="sl-head" points="142,44 132,38.5 132,49.5"/>
-<circle class="sl-node sl-node--x" cx="90" cy="44" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="44" r="8"/>
-<text class="sl-name" x="90" y="70">X</text><text class="sl-name" x="150" y="70">Y</text>
+<line class="sl-edge sl-edge--moss" x1="99" y1="36" x2="134" y2="36"/><polygon class="sl-head" points="142,36 132,30.5 132,41.5"/>
+<circle class="sl-node sl-node--x" cx="90" cy="36" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="36" r="8"/>
+<text class="sl-name" x="90" y="62">X</text><text class="sl-name" x="150" y="62">Y</text>
 </svg>
 <ul class="fig__chips sl-chips" aria-label="The two roles">
 <li class="chip sl-chip--node-x">Controller X</li>
 <li class="chip sl-chip--node-y">Resident Y</li>
+</ul>
+<ul class="fig__legend" aria-label="What the marks mean">
+<li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · the edge to look at</li>
 </ul>
 </figure>
 <p class="fig-seq__text">Inside one sphere, a controller and a resident, joined by an edge: a claim that one constrains the other.</p>
@@ -68,12 +71,12 @@ Power isn't one thing. A country can set the terms for banking and have almost n
 <svg class="sl-spheres" viewBox="0 0 240 240" role="img" aria-label="The same pair meets again in the energy and logistics sphere: a second edge, a second claim with its own evidence" focusable="false">
 <g class="sl-ring"><circle cx="120" cy="68" r="56"/><circle cx="165" cy="94" r="56"/><circle cx="165" cy="146" r="56"/><circle cx="120" cy="172" r="56"/><circle cx="75" cy="146" r="56"/><circle cx="75" cy="94" r="56"/></g>
 <g class="sl-tags"><text x="120" y="29">S1</text><text x="204" y="76">S2</text><text x="204" y="172">S3</text><text x="120" y="223">S4</text><text x="36" y="172">S5</text><text x="36" y="76">S6</text></g>
-<line class="sl-edge" x1="99" y1="44" x2="134" y2="44"/><polygon class="sl-head sl-head--ink" points="142,44 132,38.5 132,49.5"/>
-<circle class="sl-node sl-node--x" cx="90" cy="44" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="44" r="8"/>
-<text class="sl-name" x="90" y="70">X</text><text class="sl-name" x="150" y="70">Y</text>
-<line class="sl-edge sl-edge--moss" x1="99" y1="198" x2="134" y2="198"/><polygon class="sl-head" points="142,198 132,192.5 132,203.5"/>
-<circle class="sl-node sl-node--x" cx="90" cy="198" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="198" r="8"/>
-<text class="sl-name" x="90" y="183">X</text><text class="sl-name" x="150" y="183">Y</text>
+<line class="sl-edge" x1="99" y1="36" x2="134" y2="36"/><polygon class="sl-head sl-head--ink" points="142,36 132,30.5 132,41.5"/>
+<circle class="sl-node sl-node--x" cx="90" cy="36" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="36" r="8"/>
+<text class="sl-name" x="90" y="62">X</text><text class="sl-name" x="150" y="62">Y</text>
+<line class="sl-edge sl-edge--moss" x1="99" y1="204" x2="134" y2="204"/><polygon class="sl-head" points="142,204 132,198.5 132,209.5"/>
+<circle class="sl-node sl-node--x" cx="90" cy="204" r="8"/><circle class="sl-node sl-node--y" cx="150" cy="204" r="8"/>
+<text class="sl-name" x="90" y="189">X</text><text class="sl-name" x="150" y="189">Y</text>
 </svg>
 <ul class="fig__legend" aria-label="What the marks mean">
 <li><span class="fig__mk sl-mk--node-x" aria-hidden="true"></span>filled · controller</li>
@@ -87,13 +90,13 @@ Power isn't one thing. A country can set the terms for banking and have almost n
 
 ## Earned, not asserted
 
-A label like "superpower" is usually asserted. Here a role has to be earned. A country is a controller in a sphere only if three things hold, each backed by linked evidence:
+A label like "superpower" is usually asserted. Here a role has to be earned. An actor is a controller in a sphere only if three things hold, each backed by linked evidence. The actor is usually a state, and sometimes an institution that enforces the rule itself:
 
 - **C1, imposition:** it applied an enforceable rule or action.
 - **C2, compliance capture:** third parties (banks, shippers, vendors, allies) changed what they did because of it.
 - **C3, net effect:** there's a measurable cost or constraint, or a strong sign of one.
 
-Fewer than three, and it stays a candidate. A resident is the other side of the edge: it depends on a channel the controller holds, it felt the constraint during an event, and routing around it would be slow or costly. A resident doesn't have to be a whole country. It can be a firm, a sector, or a state reached through one firm's asset, and the ledger keeps those apart rather than stretching a claim about a company into a claim about a nation.
+Fewer than three, and it stays a candidate. A controller whose hold weakens in a later window, because others stop complying or the effect fades, is marked contested. A resident is the other side of the edge: it depends on a channel the controller holds, it felt the constraint during an event, and routing around it would be slow or costly. A resident doesn't have to be a whole country. It can be a firm, a sector, or a state reached through one firm's asset, and the ledger keeps those apart rather than stretching a claim about a company into a claim about a nation.
 
 <figure class="fig sl-fig" aria-labelledby="sl-tests-title">
 <p class="fig__title" id="sl-tests-title">SPHERES LEDGER · THE TESTS</p>
@@ -104,7 +107,7 @@ Fewer than three, and it stays a candidate. A resident is the other side of the 
 <li class="sl-step sl-step--hatch"><span class="sl-step__k">C2 · compliance</span><span class="sl-step__t">Others comply</span><span class="sl-step__d">Banks, shippers, vendors or allies change course.</span></li>
 <li class="sl-step sl-step--hatch"><span class="sl-step__k">C3 · net effect</span><span class="sl-step__t">It bites</span><span class="sl-step__d">A measurable cost, or a strong sign of one.</span></li>
 <li class="sl-step sl-step--out sl-step--moss"><span class="sl-step__k">all three</span><span class="sl-step__t">Controller</span><span class="sl-step__d">Promoted, with the evidence linked.</span>
-<ul class="fig__chips sl-outs" aria-label="Otherwise">
+<ul class="fig__chips sl-outs" aria-label="Otherwise, or later">
 <li class="chip sl-chip--dashed">fewer: candidate</li>
 <li class="chip sl-chip--state"><span class="sl-icon" aria-hidden="true">◆</span>contested</li>
 </ul></li>
@@ -120,6 +123,7 @@ Fewer than three, and it stays a candidate. A resident is the other side of the 
 <ul class="fig__chips sl-outs" aria-label="Who can be a resident">
 <li class="chip">state</li>
 <li class="chip">firm</li>
+<li class="chip">sector</li>
 <li class="chip">asset</li>
 </ul></li>
 </ol>
@@ -128,12 +132,12 @@ Fewer than three, and it stays a candidate. A resident is the other side of the 
 <li><span class="fig__mk fig__mk--hatch" aria-hidden="true"></span>hatch · my judgement on the evidence</li>
 <li><span class="fig__mk fig__mk--dashed" aria-hidden="true"></span>dashed · unresolved</li>
 <li><span class="fig__mk sl-mk--state" aria-hidden="true"></span>◆ amber · a state: contested</li>
-<li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · the path to look at</li>
+<li><span class="fig__mk fig__mk--moss" aria-hidden="true"></span>moss · where to look</li>
 </ul>
-<figcaption>All three tests, or it stays a candidate. Contested means the evidence points both ways. Moss marks the path to look at.</figcaption>
+<figcaption>All three tests, or it stays a candidate. A controller whose hold weakens in a later window becomes contested. Moss marks where to look.</figcaption>
 </figure>
 
-## Every claim has a trail
+## Every role has a trail
 
 Every role runs back to something checkable. Sources are documented first. Events are recorded from them, each tagged with a sphere, the kind of instrument used (a sanction, a tariff, an export licence) and a time window. The edge between a controller and a resident is my judgement on those events, and the register is what the edges add up to. Claude helps scan for events and patterns; nothing it surfaces goes in until I've checked it against a source.
 
@@ -162,7 +166,7 @@ Every role runs back to something checkable. Sources are documented first. Event
 - **It's a lens:** a structure for asking who can constrain whom, where, and on what evidence.
 - **It isn't a finding.** There are 21 events in the ledger so far, too few to say who controls what, so this page names no countries.
 - **It's measurement, not advocacy.** "Insufficient evidence" is a real answer, and often the right one.
-- **It will be wrong in places.** The tests are written so that evidence can prove them wrong.
+- **It will be wrong in places.** The tests are meant to be ones evidence can prove wrong. Writing down, for each test, exactly what would do that is still on my list.
 
 ## What's next
 
@@ -170,7 +174,7 @@ Collecting the next window of events, and testing whether the six spheres hold u
 
 ## Revisions
 
-- **20 Nov 2026.** First version (MVP 1.0): the structure, the tests and the evidence trail. No findings yet.
+- **20 Nov 2026.** First version of this page (MVP 1.0): the structure, the tests and the evidence trail. No findings yet.
 
 ## Sources
 

@@ -117,9 +117,9 @@ Two rows of step tiles:
 
 ```
 CONTROLLER  [C1 imposes] ▶ [C2 others comply] ▶ [C3 a measurable effect] ▶ CONTROLLER (moss)
-            fewer than three ▶ candidate (dashed)      evidence both ways ▶ ⚠ contested (amber + word)
+            fewer than three ▶ candidate (dashed)      weakens later ▶ ◆ contested (amber + word)
 RESIDENT    [R1 depends] ▶ [R2 felt it] ▶ [R3 costly to leave] ▶ RESIDENT
-            scope: state · firm · asset (chips)
+            scope: state · firm · sector · asset (chips; the ledger's four resident types)
 ```
 
 Each test tile has a pen-hatch strip, because each test is Grieves's
