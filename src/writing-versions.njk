@@ -1,0 +1,14 @@
+---
+pagination:
+  data: revisions.pages
+  size: 1
+  alias: ver
+  addAllPagesToCollections: false
+permalink: "/writing/{{ ver.slug }}/v{{ ver.n }}/"
+layout: post-version.njk
+eleventyExcludeFromCollections: true
+noindex: true
+---
+{#- One page per declared version of an evolving post (_data/revisions.js).
+    The layout draws everything; computed values are in
+    writing-versions.11tydata.js. -#}

@@ -35,7 +35,7 @@
   {%- set pageTitle = site.title if (not title or title == site.title) else (title + " — " + site.title) %}
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ description or excerpt or site.description }}" />
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  <link rel="canonical" href="{{ site.url }}{{ canonicalPath or page.url }}" />
   {%- if noindex %}
   <meta name="robots" content="noindex" />
   {%- endif %}
@@ -90,6 +90,9 @@
   <link rel="stylesheet" href="/assets/css/components.css" />
   <link rel="stylesheet" href="/assets/css/utilities.css" />
   {%- for href in pageStyles %}
+  <link rel="stylesheet" href="{{ href }}" />
+  {%- endfor %}
+  {%- for href in versionStyles %}
   <link rel="stylesheet" href="{{ href }}" />
   {%- endfor %}
   <link rel="stylesheet" href="/assets/css/print.css" media="print" />

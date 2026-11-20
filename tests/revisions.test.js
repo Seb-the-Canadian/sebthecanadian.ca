@@ -82,3 +82,10 @@ test("diffBlocks with no old body marks nothing", () => {
   const html = diffBlocks(md, null, "Only text.");
   assert.doesNotMatch(html, /ver-mark/);
 });
+
+test("diffBlocks marks a wholly new run (heading, paragraph, new list) once", () => {
+  const html = diffBlocks(md, "Intro.", "Intro.\n\n## Added\n\nA para.\n\n- a\n- b\n\nEnd para.");
+  assert.equal((html.match(/ver-mark--new/g) || []).length, 1);
+  assert.doesNotMatch(html, /ver-li--new/);
+  assert.match(html, /ver-mark--new[\s\S]*<h2>Added<\/h2>[\s\S]*<li>a<\/li>[\s\S]*End para[\s\S]*<\/div>/);
+});

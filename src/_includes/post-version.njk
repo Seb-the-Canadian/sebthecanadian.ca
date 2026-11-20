@@ -1,0 +1,44 @@
+---
+layout: base.njk
+---
+{#- post-version.njk — one declared version of an evolving post
+    (src/writing-versions.njk, _data/revisions.js). The meta line is the
+    version's own front matter; the amber banner says which version this is
+    and links to the current one; changes since the version before are marked
+    (versions.css). No h-entry markup: the post itself is the entry. -#}
+{%- set vd = ver.data %}
+{%- set vers = revisions.bySlug[ver.slug] %}
+<article class="ver-page">
+  <header class="post-header">
+    {%- set mastheadLabel = (vd.type + "/") if vd.type else "post/" %}{% set mastheadBare = true %}{% include "masthead.njk" %}
+    <h1>{{ vd.title }}</h1>
+    <p class="post-meta">
+      {%- if vd.type %}<span class="post-type">{{ vd.type }}</span> &middot; {% endif %}
+      {%- if vd.stage %}<span class="post-stage">{{ vd.stage }}</span> &middot; {% endif %}
+      {%- if vd.inProgress %}<span class="index-pill index-pill--active">in progress</span> &middot; {% endif %}
+      <span>version {{ ver.n }} of {{ ver.total }}, {{ ver.date }}</span>
+    </p>
+  </header>
+
+  <div class="ver-banner" role="note">
+    <p class="ver-banner__state"><span class="ver-banner__icon" aria-hidden="true">◆</span>{% if ver.isLatest %}The current version{% else %}An earlier version{% endif %} · {{ ver.date }} · version {{ ver.n }} of {{ ver.total }}</p>
+    <p class="ver-banner__text">{{ ver.text }}</p>
+    <p class="ver-banner__nav">
+      {%- if ver.n > 1 %}<a href="{{ vers[ver.n - 2].url }}">&larr; version {{ ver.n - 1 }}</a> &middot; {% endif -%}
+      <a href="{{ ver.postUrl }}">Read the current version &rarr;</a>
+      {%- if ver.n < ver.total %} &middot; <a href="{{ vers[ver.n].url }}">version {{ ver.n + 1 }} &rarr;</a>{% endif %}
+    </p>
+  </div>
+  {%- if ver.n > 1 %}
+  <p class="ver-key">A solid line marks what's new since version {{ ver.n - 1 }}; a dashed line, what changed. Anything removed is folded away where it stood.</p>
+  {%- else %}
+  <p class="ver-key">The first version, so nothing is marked.</p>
+  {%- endif %}
+
+  {%- if ver.css %}
+  <style>{{ ver.css | safe }}</style>
+  {%- endif %}
+  <div class="e-content">
+    {{ ver.html | safe }}
+  </div>
+</article>

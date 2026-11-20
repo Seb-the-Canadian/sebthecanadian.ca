@@ -27,7 +27,18 @@ ogImage: /assets/img/og-writing.png
   </header>
 
   <div class="e-content">
+    {#- With two or more declared revisions, "How this page has grown"
+        (fig-versions.njk) goes just before the Revisions heading. -#}
+    {%- set vers = revisions.bySlug[page.fileSlug] if (revisions and revisions.bySlug) else null %}
+    {%- set revHeading = "<h2>Revisions</h2>" %}
+    {%- if vers and vers.length > 1 and (revHeading in content) %}
+    {%- set revParts = content.split(revHeading) %}
+    {{ revParts[0] | safe }}
+    {% include "fig-versions.njk" %}
+    {{ revHeading | safe }}{{ revParts.slice(1).join(revHeading) | safe }}
+    {%- else %}
     {{ content | safe }}
+    {%- endif %}
   </div>
 
   {%- set canonicalUrl = site.url ~ page.url %}
