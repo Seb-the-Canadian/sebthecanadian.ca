@@ -5,7 +5,7 @@ date: 2026-11-20
 updated: 2026-11-20
 type: post
 stage: seedling
-excerpt: "A first version of the spheres ledger: an information architecture for reading who can constrain whom, where, and on what evidence. The structure and the tests, no findings yet."
+excerpt: "Spheres of influence used to be regions on a map. This is a first version of a framework for the world as it works now: who can constrain whom, in which domain, and on what evidence."
 tags:
   - research
 syndicated: false
@@ -15,13 +15,15 @@ pageStyles:
   - /assets/css/posts/spheres-ledger.css
 ---
 
-Most maps of world power are stories: who's rising, who's falling, who counts as a superpower. I wanted something I could check. The spheres ledger is my attempt at an architecture for reading power instead: a small set of categories, two roles, and tests a claim has to pass before it counts.
+At the start of this year I'd been reading about spheres of influence: the old idea that great powers divide the world into regions they control. At the same time, the world was watching the United States take action against Venezuela in a way that looked a lot like the imperialism of days gone by. The old idea seemed to be coming back. I wanted to know whether today's geopolitics could be understood as spheres of influence too, with a much broader reach and far more moving parts.
 
-In [Grokipedia was a warning shot](/writing/grokipedia-was-a-warning-shot/) I asked who controls the infrastructure. This is one way I've tried to make that kind of question answerable. It's a first version, shared to show the thinking rather than the findings. This page changes as the work does. Every change is dated at the bottom.
+The spheres ledger is my attempt at that: a small set of categories, two roles, and tests a claim has to pass before it counts. It's a first version, shared to show the thinking rather than results. This page changes as the work does. Every change is dated at the bottom.
 
 ## Spheres, not one map
 
-Power isn't one thing. A country can set the terms for banking and have almost no say over chips. So the ledger reads power in six spheres: security, finance, trade, energy and logistics, tech and compute, and legitimacy (who gets recognized, and whose votes bind). The spheres overlap, and the same two countries can meet in several of them on different terms.
+The old spheres were regions on a map, and that map doesn't fit anymore. The world operates on a different scale. With digital tools it doesn't matter where your borders are, or whether you share one with a country at all. Economies are tied together, and people are connected through the internet and social media, so control is expressed across a much wider range of domains, in new forms, and felt in new ways.
+
+So the ledger reads power in six spheres instead of regions: security, finance, trade, energy and logistics, tech and compute, and legitimacy (who gets recognized, and whose votes bind). A country can set the terms for banking and have almost no say over chips. The spheres overlap, and the same two countries can meet in several of them on different terms.
 
 <div class="fig-seq sl-seq">
 <div class="fig-seq__step">
@@ -90,7 +92,7 @@ Power isn't one thing. A country can set the terms for banking and have almost n
 
 ## Earned, not asserted
 
-A label like "superpower" is usually asserted. Here a role has to be earned. An actor is a controller in a sphere only if three things hold, each backed by linked evidence. The actor is usually a state, and sometimes an institution that enforces the rule itself:
+Once control can travel through that many channels, almost anything can be called control. I didn't want the ledger to rest on my read of events, or to be read as biased. I wanted something governable and inspectable, something that could one day be partly automated, and something I could learn from rather than assume I already knew what I was talking about. So a label like "superpower" isn't asserted here: a role has to be earned. An actor is a controller in a sphere only if three things hold, each backed by linked evidence. The actor is usually a state, and sometimes an institution that enforces the rule itself:
 
 - **C1, imposition:** it applied an enforceable rule or action.
 - **C2, compliance capture:** third parties (banks, shippers, vendors, allies) changed what they did because of it.
@@ -139,7 +141,7 @@ Fewer than three, and it stays a candidate. A controller whose hold weakens in a
 
 ## Every role has a trail
 
-Every role runs back to something checkable. Sources are documented first. Events are recorded from them, each tagged with a sphere, the kind of instrument used (a sanction, a tariff, an export licence) and a time window. The edge between a controller and a resident is my judgement on those events, and the register is what the edges add up to. Claude helps scan for events and patterns; nothing it surfaces goes in until I've checked it against a source.
+Every role runs back to something checkable. Sources are documented first. Events are recorded from them, each tagged with a sphere, the kind of instrument used (a sanction, a tariff, an export licence) and a time window. The edge between a controller and a resident is my judgement on those events, and the register is what the edges add up to. One person can only read so much, and a lot of what reaches us is built to distract, sometimes on purpose. I want tools like this to extend what we can see through, not replace the judgement about what counts as evidence. The first version of the ledger was drafted with an AI in one long chat. The rule I work by now is that nothing an AI surfaces goes in until I've checked it against a source.
 
 <figure class="fig sl-fig" aria-labelledby="sl-trail-title">
 <p class="fig__title" id="sl-trail-title">SPHERES LEDGER · THE EVIDENCE TRAIL</p>
@@ -161,20 +163,27 @@ Every role runs back to something checkable. Sources are documented first. Event
 <figcaption>Moss marks the step where a person decides.</figcaption>
 </figure>
 
+## Who it's for
+
+I don't think of this as one person and an AI. My hope is that it becomes a shared framework: a schema that journalists, researchers and citizens could fill in, check and argue over together, the way [Wikipedia's editors challenge each other](/writing/grokipedia-was-a-warning-shot/). It's the kind of [public knowledge infrastructure](/writing/public-knowledge-infrastructure-instead-of-a-private-trainin/) I've been asking about. A news app like Ground News could use something like it to show not only how a story is told, but who holds the channel behind it.
+
+Mostly, I want people to be able to trace who constrains them and why: to understand how the world works, and how often it doesn't work for them.
+
 ## What this is and isn't
 
-- **It's a lens:** a structure for asking who can constrain whom, where, and on what evidence.
-- **It isn't a finding.** There are 21 events in the ledger so far, too few to say who controls what, so this page names no countries.
+- **It's a lens and a schema, not a verdict:** a structure for asking who can constrain whom, where, and on what evidence.
+- **It doesn't show results yet.** There are 21 events in the ledger so far: enough to test the structure, too few for me to stand behind any result in public. The figures name no countries.
 - **It's measurement, not advocacy.** "Insufficient evidence" is a real answer, and often the right one.
+- **It can be turned in many directions.** Like any lens, it can be used in ways I haven't pictured. I'd worry about it becoming one more thing to bet on, the prediction-market version of world events. We don't need more of that.
 - **It will be wrong in places.** The tests are meant to be ones evidence can prove wrong. Writing down, for each test, exactly what would do that is still on my list.
 
 ## What's next
 
-Collecting the next window of events, and testing whether the six spheres hold up or need to be cut differently. A worked example, with real events, comes once there's enough evidence to stand behind one.
+Collecting the next window of events, testing whether the six spheres hold up or need to be cut differently, and thinking through what a shared version would need for other people to add to it and challenge it. A worked example, with real events, comes once there's enough evidence to stand behind one.
 
 ## Revisions
 
-- **20 Nov 2026.** First version of this page (MVP 1.0): the structure, the tests and the evidence trail. No findings yet.
+- **20 Nov 2026.** First version of this page (MVP 1.0): where the idea came from, the structure, the tests and the evidence trail. No results yet.
 
 ## Sources
 
